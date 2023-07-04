@@ -1,10 +1,14 @@
 import React from 'react';
+import Logo from '../../img/logo.png'
 'use client';
-import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
+import { Button, Label, TextInput } from 'flowbite-react';
 
 const Login = () => {
   return (
     <div className="flex justify-center items-center h-screen">
+    <div className="bg-gray-200 p-6 rounded-md shadow-md">
+    <img src={Logo} alt="" className='flex mx-auto items-center w-35 h-20 mr-4'/>
+    <h2 className="flex justify-center items-center text-2xl font-bold mb-4">Log In</h2>
     <form className="flex max-w-md flex-col gap-4">
     <div>
         <div className="mb-2 block">
@@ -18,20 +22,6 @@ const Login = () => {
           placeholder="name"
           required
           type="name"
-        />
-      </div>
-      <div>
-        <div className="mb-2 block">
-          <Label
-            htmlFor="email1"
-            value="Your email"
-          />
-        </div>
-        <TextInput
-          id="email1"
-          placeholder="name@flowbite.com"
-          required
-          type="email"
         />
       </div>
       <div>
@@ -51,6 +41,7 @@ const Login = () => {
         Submit
       </Button>
     </form>
+    </div>
     </div>
   );
 };

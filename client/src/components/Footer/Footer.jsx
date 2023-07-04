@@ -1,9 +1,47 @@
 import React from 'react';
+'use client';
+import { Footer } from 'flowbite-react';
+import Logo from '../../img/logo.png'
 
-const Footer = () => {
+const FooterTemp = () => {
     return (
-        <div>Footer</div>
+        // Remove min-h-screen after
+    <div className="min-h-screen flex flex-col">
+    <div className="flex-grow">
+    </div>
+    <Footer container >
+      <div className="w-full text-center" >
+        <div className="w-full justify-between sm:flex sm:items-center sm:justify-between">
+          <Footer.Brand
+            alt="Logo"
+            href="/"
+            src={Logo}
+          />
+          <Footer.LinkGroup>
+            <Footer.Link href="#" >
+              About
+            </Footer.Link>
+            <Footer.Link href="#">
+              Privacy Policy
+            </Footer.Link>
+            <Footer.Link href="#">
+              Licensing
+            </Footer.Link>
+            <Footer.Link href="#">
+              Contact
+            </Footer.Link>
+          </Footer.LinkGroup>
+        </div>
+        <Footer.Divider />
+        <Footer.Copyright
+          by="Flowbite™"
+          href="#"
+          year={2022}
+        />
+      </div>
+    </Footer>
+    </div>
     )
 }
 
-export default Footer
+export default FooterTemp
