@@ -2,20 +2,21 @@
 import react from 'react';
 import { Navbar,Dropdown } from 'flowbite-react';
 import Logo from '../../img/logo.png'
+import './Navbar.css'
 
 export default function DefaultNavbar() {
   return (
     <Navbar
       fluid
-      rounded
+      className='custom-navbar h-20'
     >
       <Navbar.Brand href="https://flowbite-react.com">
         <img
           alt="Logo"
-          className="mr-3 h-6 sm:h-9"
+          className="mr-3 h-8 sm:h-16"
           src={Logo}
         />
-        <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
+        <span className="text-navbar self-center whitespace-nowrap text-xl font-semibold dark:text-white">
           Idrettslaget Trond
         </span>
       </Navbar.Brand>
@@ -24,19 +25,19 @@ export default function DefaultNavbar() {
         <Navbar.Link active href="#">
           <p>Home</p>
         </Navbar.Link>
-        <Dropdown inline label="About">
-          <Dropdown.Item>
-            <Navbar.Link active href="#">
+        <Dropdown inline label="About" >
+          <Dropdown.Item >
+            <Navbar.Link active href="#" className='navbar-link'>
             About
             </Navbar.Link>
           </Dropdown.Item>
           <Dropdown.Item>
-            <Navbar.Link active href=''>
+            <Navbar.Link active href='' className='navbar-link'>
             Testing
             </Navbar.Link>
           </Dropdown.Item>
         </Dropdown>
-        <Navbar.Link href="#">
+        <Navbar.Link href="#" className='navbar-link'>
           Contact
         </Navbar.Link>
       </Navbar.Collapse>

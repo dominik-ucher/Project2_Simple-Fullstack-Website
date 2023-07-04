@@ -1,0 +1,28 @@
+/* navbar.css */
+
+.custom-navbar {
+    background-color: #1F2937 !important;
+  }
+  
+  .text-navbar {
+    color: white !important;
+  }
+
+  p{
+    color: white !important;
+  }
+
+  .navbar-link{
+    color: white !important;
+    
+  }
+
+  .navbar-drop{
+    color: #1F2937 !important
+  }
+
+  .dropdown-label {
+    color: white;
+  }
+
+  

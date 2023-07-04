@@ -6,7 +6,7 @@
         I. Lage en hovedside
         II. Lage en vanlig side vanlig side med Skrive-boks
         III. Lage en kontakt side
-        IIII. Lage en Register og Login side
+        <!-- IIII. Lage en Register og Login side -->
     b. Lage CSS med en fargekode som kan brukes til alle logoer
 
 2. MySQL database
