@@ -27,3 +27,4 @@
     a. Installations
         I. yarn
         II. yarn add react-router-dom localforage match-sorter sort-by
+        III. Flowbite and TailwindCSS installed
