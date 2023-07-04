@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\domin\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add react-router-dom localforage match-sorter sort-by
+  C:\Program Files\nodejs\node.exe C:\Users\domin\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js
 
 PATH: 
   C:\Program Files\Eclipse Adoptium\jdk-17.0.6.10-hotspot\bin;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64_win\compiler;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Common Files\Autodesk Shared\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Git\cmd;C:\Program Files\apache-maven-3.8.7\bin;C:\Program Files\nodejs\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\domin\AppData\Local\Programs\Python\Python311\Scripts\;C:\Users\domin\AppData\Local\Programs\Python\Python311\;C:\Users\domin\AppData\Local\Microsoft\WindowsApps;C:\Users\domin\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\domin\AppData\Roaming\npm
@@ -21,7 +21,7 @@ Trace:
       at pushDeps (C:\Users\domin\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:6894:33)
       at _loop (C:\Users\domin\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:6914:11)
       at _loop.next (<anonymous>)
-      at Add.<anonymous> (C:\Users\domin\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:7035:27)
+      at Install.<anonymous> (C:\Users\domin\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:7035:27)
       at Generator.next (<anonymous>)
       at step (C:\Users\domin\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:310:30)
       at C:\Users\domin\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:321:13
