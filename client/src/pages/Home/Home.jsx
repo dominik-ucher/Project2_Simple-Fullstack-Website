@@ -44,7 +44,7 @@ const Home = () => {
         </div>
 
         <div className="grid grid-cols-10 gap-4">
-        <div className="col-span-6 bg-gray-200">
+        <div className="col-span-10 md:col-span-6 bg-gray-200">
           {/* Left Column */}
           {posts.map((post,index) => (
           <div key={post.id} className={`p-4 flex items-center justify-between ${index % 2 === 0 ? 'flex-row':'flex-row-reverse'} `}>
@@ -62,7 +62,7 @@ const Home = () => {
           </div>
           ))}
         </div>
-        <div className="col-span-4 bg-gray-300">
+        <div className="col-span-10 md:col-span-4 bg-gray-300">
           {/* Right Column */}
           <div className="p-4">
             <div className="grid grid-cols-2 gap-4">
