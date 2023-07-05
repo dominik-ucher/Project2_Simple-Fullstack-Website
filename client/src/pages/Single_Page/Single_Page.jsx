@@ -8,7 +8,7 @@ import  Sidebar  from '../../components/Sidebar/Sidebar.jsx'
 const Single_Page = () => {
     return(
         <div className="grid grid-cols-10 gap-4">
-        <div className="col-span-10 md:col-span-7 bg-gray-200">
+        <div className="col-span-10 md:col-span-7 bg-white-200">
         <div className='single'>
             <div className='content'>
                 <img 
@@ -21,8 +21,8 @@ const Single_Page = () => {
                 <div className='edit flex items-center mt-4 px-4'>
                     <img className="rounded-full" src={Logo} alt="" style={{ width: '80px', height: '50px' }}/>
                     <div>
-                    <h1>Idrettslaget Trond</h1>
-                    <h2>Posted 2 days ago</h2>
+                    <h1 className='px-4'>Idrettslaget Trond</h1>
+                    <h2 className='px-4'>Posted 2 days ago</h2>
                     </div>
                     <Link to={`/write?edit=2`}>
                     <img className="w-10 h-10 cursor-pointer" src={editicon} alt="" />
@@ -30,7 +30,7 @@ const Single_Page = () => {
                     <img className="w-10 h-10 cursor-pointer" src={deleteicon} alt="" />
                 </div>
             </div>
-            <h1 className='flex items-center justify-center mt-20'>This is the title of this page</h1>
+            <h1 className='flex items-center justify-center mt-20 font-bold capitalize text-3xl'>This is the title of this page</h1>
             <p className='text-black flex items-center justify-center mt-10 px-10'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis turpis vitae lacus placerat ultricies. Aenean purus libero, pulvinar nec justo vel, facilisis consequat ante. Aliquam ut diam velit. Curabitur lectus mi, aliquam sit amet fringilla non, fermentum vitae diam. Donec a est laoreet, bibendum nulla vitae, pulvinar neque. Integer interdum, ligula convallis mattis sodales, urna massa dapibus purus, eget finibus augue lectus ut felis. Cras dapibus libero orci, in dictum ex rutrum eu. Quisque faucibus dignissim mi, a elementum neque pretium quis. Vestibulum lobortis, nulla eu elementum mollis, diam risus posuere tortor, quis interdum lectus lectus eget eros. Cras tincidunt sodales posuere. Ut vitae porta urna. Etiam fermentum commodo justo, sit amet dapibus sapien condimentum quis. Etiam elementum leo felis, a venenatis felis volutpat vitae.
 
                 Fusce dui elit, lacinia nec semper et, semper eget erat. Sed ornare egestas enim a porta. Suspendisse vestibulum lacus sem, nec imperdiet erat suscipit non. Praesent et lorem a ante varius egestas et id diam. Vivamus non posuere nisi. Proin lorem mauris, iaculis sit amet urna eget, finibus tristique purus. Donec aliquam quis purus eget mollis. Vivamus vestibulum ultricies ipsum et aliquet. Proin imperdiet quis velit a molestie. Phasellus aliquet fringilla ipsum et semper. Proin nec mollis ex, at sollicitudin arcu. Curabitur condimentum porta nisl, in posuere lacus condimentum eu. Integer suscipit sollicitudin leo, nec interdum magna finibus quis. Sed justo enim, pulvinar eu fringilla a, hendrerit eget ante. Vivamus vestibulum, tellus at condimentum porta, urna mauris ultrices orci, at porta felis magna sed est. Mauris congue orci massa.
@@ -43,7 +43,7 @@ const Single_Page = () => {
             </p>
         </div>
         </div>
-        <div className="col-span-10 md:col-span-3 bg-gray-200">
+        <div className="col-span-10 md:col-span-3 bg-white-200">
             <Sidebar />
         </div>
         </div>

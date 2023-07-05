@@ -28,15 +28,24 @@ const Write_Page = () => {
                     <TextInput className="px-20" id="base" sizing="md" type="text"/>
                     <div className="max-w-md px-20 mt-5" id="fileUpload">
                     <div className="mb-2 block">
+                    <Label htmlFor="file" value="Upload picture"/>
+                    </div>
+                    <FileInput
+                        helperText="Upload a picture"
+                        id="file"
+                    />
+                    </div>
+                    <div className="editorContainer h-60 max-h-100 overflow-y-scroll mt-8">
+                        <ReactQuill className="mt-5 px-20 h-full" theme="snow" value={value} onChange={setValue} />
+                    </div>
+                    <div className="max-w-md px-20 mt-8" id="fileUpload">
+                    <div className="mb-2 block">
                     <Label htmlFor="file" value="Upload file"/>
                     </div>
                     <FileInput
                         helperText="Upload a file"
                         id="file"
                     />
-                    </div>
-                    <div className="editorContainer h-60 max-h-100 overflow-y-scroll">
-                        <ReactQuill className="mt-5 px-20 h-full" theme="snow" value={value} onChange={setValue} />
                     </div>
                     <div className='mt-5 px-20'>
                     <Button color="dark">Upload</Button>

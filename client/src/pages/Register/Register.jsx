@@ -6,6 +6,7 @@ import { Button, Label, TextInput } from 'flowbite-react';
 const Register = () => {
     return(
       <div className="flex justify-center items-center h-screen">
+        <img className="w-auto h-40 p-5" src={Logo} alt=""/>
       <div className="bg-gray-200 p-6 rounded-md shadow-md">
       <h2 className="flex justify-center items-center text-2xl font-bold mb-4">Register</h2>
       <form className="flex max-w-md flex-col gap-4">
