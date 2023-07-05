@@ -8,7 +8,7 @@ const FooterTemp = () => {
     return (
         // For space between the footer
     // <div className="min-h-screen flex flex-col">
-    <div className="flex-grow">
+    <div className="flex-grow mt-20">
     {/* </div> */}
     <Footer container className='footer_1'>
       <div className="w-full text-center" >

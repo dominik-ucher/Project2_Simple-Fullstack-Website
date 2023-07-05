@@ -3,7 +3,7 @@
 # Planen til nettsiden 
 1. Frontend Development
     a. Lage nettside med frontend
-        I. Lage en hovedside
+        <!-- I. Lage en hovedside -->
         II. Lage en vanlig side vanlig side med Skrive-boks
         III. Lage en kontakt side
         <!-- IIII. Lage en Register og Login side -->
@@ -28,3 +28,4 @@
         I. yarn
         II. yarn add react-router-dom localforage match-sorter sort-by
         III. Flowbite and TailwindCSS installed
+        IIII. react-quill (Text Editor) installed
