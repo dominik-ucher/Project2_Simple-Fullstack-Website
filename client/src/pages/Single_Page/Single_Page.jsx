@@ -3,6 +3,7 @@ import editicon from '../../img/edit.png'
 import deleteicon from '../../img/delete.png'
 import Logo from '../../img/logo.png'
 import { Link } from "react-router-dom"
+import  Sidebar  from '../../components/Sidebar/Sidebar.jsx'
 
 const Single_Page = () => {
     return(
@@ -43,7 +44,7 @@ const Single_Page = () => {
         </div>
         </div>
         <div className="col-span-10 md:col-span-3 bg-gray-200">
-
+            <Sidebar />
         </div>
         </div>
     )
