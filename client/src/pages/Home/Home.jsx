@@ -7,7 +7,7 @@ import { Button } from 'flowbite-react';
     {
       id: 1,
       title: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
-      desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. A possimus excepturi aliquid nihil cumque ipsam facere aperiam at! Ea dolorem ratione sit debitis deserunt repellendus numquam ab vel perspiciatis corporis!",
+      desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. A possimus excepturi aliquid nihil cumque ipsam facere aperiam at! Ea dolorem ratione sit debitis deserunt repellendus numquam ab vel perspiciatis corporis!Lorem, ipsum dolor sit amet consectetur adipisicing elit. A possimus excepturi aliquid nihil cumque ipsam facere aperiam at! Ea dolorem ratione sit debitis deserunt repellendus numquam ab vel perspiciatis corporis!",
       img: "https://images.pexels.com/photos/7008010/pexels-photo-7008010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     },
     {
@@ -44,25 +44,27 @@ const Home = () => {
         </div>
 
         <div className="grid grid-cols-10 gap-4">
-        <div className="col-span-10 md:col-span-6 bg-gray-200">
+        <div className="col-span-10 md:col-span-6 bg-gray-200 px-4">
           {/* Left Column */}
           {posts.map((post,index) => (
-          <div key={post.id} className={`p-4 flex items-center justify-between ${index % 2 === 0 ? 'flex-row':'flex-row-reverse'} `}>
+          <div key={post.id} className={`border-solid border-2 border-gray-800 bg-emerald-300 rounded-lg p-4 mt-5 flex items-center justify-between ${index % 2 === 0 ? 'flex-row':'flex-row-reverse'} `}>
             {/* First iteration - Image on the right, text on the left */}
             <div className="w-1/2">
               {/* Image content */}
-              <img src={post.img} alt="" className='h-48 w-48 mt-3'/>
+              <div className='mr-4 px-4 p-4 object-center'>
+              <img src={post.img} alt="" className='object-cover w-full rounded-md'/>
+              </div>
             </div>
-            <div className="w-1/2">
+            <div className=" w-1/2">
               {/* Text content */}
-              <h1 className='text-lg underline decoration-1 font-bold'>{post.title}</h1>
-              <h2>{post.desc}</h2>
-              <Button gradientDuoTone='redToYellow' outline className="flex items-center justify-center"><h2>Les mer</h2></Button>
+              <h1 className='text-lg underline decoration-1 line-clamp-3 font-bold'>{post.title}</h1>
+              <h2 className='max-w-full flex-grow line-clamp-6' style={{ height: '100%' }}>{post.desc}</h2>
+              <div className='mt-5 flex items-end justify-end'><Button gradientDuoTone='redToYellow' outline className="flex"><h2>Les mer</h2></Button></div>
             </div>
           </div>
           ))}
         </div>
-        <div className="col-span-10 md:col-span-4 bg-gray-300">
+        <div className="mt-5 col-span-10 md:col-span-4 bg-gray-300">
           {/* Right Column */}
           <div className="p-4">
             <div className="grid grid-cols-2 gap-4">
@@ -102,7 +104,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-
+      
 
 
 
