@@ -6,7 +6,7 @@ import './Sidebar.css'
 
 export default function MultiLevelDropdown() {
   return (
-    <div className='sidebar_1'>
+    <div className='flex justify-center item-center mt-5'>
     <Sidebar aria-label="Sidebar with multi-level dropdown example" className='sidebar_1'>
       <Sidebar.Items className='sidebar_1'>
         <Sidebar.ItemGroup>
