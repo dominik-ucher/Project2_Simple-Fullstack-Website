@@ -35,8 +35,8 @@ const Write_Page = () => {
                         id="file"
                     />
                     </div>
-                    <div className="editorContainer">
-                        <ReactQuill className="mt-5 px-20" theme="snow" value={value} onChange={setValue} />
+                    <div className="editorContainer h-60 max-h-100 overflow-y-scroll">
+                        <ReactQuill className="mt-5 px-20 h-full" theme="snow" value={value} onChange={setValue} />
                     </div>
                     <div className='mt-5 px-20'>
                     <Button color="dark">Upload</Button>
