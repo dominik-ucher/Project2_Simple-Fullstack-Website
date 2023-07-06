@@ -40,4 +40,6 @@
     a. Installations
         I. npm init -y
         II. yarn add express mysql nodemon
+        III. yarn add bcryptjs
+        IIII. yarn add jsonwebtoken
         
