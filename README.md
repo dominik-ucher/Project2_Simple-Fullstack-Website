@@ -44,4 +44,5 @@
         IV. yarn add jsonwebtoken
         V. yarn add axios (IN CLIENT)
         VI. yarn add cors
+        VII. yarn add cookie-parser
         
