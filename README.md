@@ -6,7 +6,7 @@
         <!-- I. Lage en hovedside -->
         <!-- II. Lage en vanlig side vanlig side med Skrive-boks -->
         <!-- III. Lage en kontakt side -->
-        <!-- IIII. Lage en Register og Login side -->
+        <!-- IV. Lage en Register og Login side -->
     <!-- b. Lage CSS med en fargekode som kan brukes til alle logoer -->
 
 2. MySQL database
@@ -28,7 +28,7 @@
         I. yarn
         II. yarn add react-router-dom localforage match-sorter sort-by
         III. Flowbite and TailwindCSS installed
-        IIII. react-quill (Text Editor) installed
+        IV. react-quill (Text Editor) installed
 
 2. Database
     a. Tables
@@ -41,5 +41,7 @@
         I. npm init -y
         II. yarn add express mysql nodemon
         III. yarn add bcryptjs
-        IIII. yarn add jsonwebtoken
+        IV. yarn add jsonwebtoken
+        V. yarn add axios (IN CLIENT)
+        VI. yarn add cors
         

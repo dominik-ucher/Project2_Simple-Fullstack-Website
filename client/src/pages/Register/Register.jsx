@@ -1,9 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom'
 import Logo from '../../img/logo.png'
+import axios from "axios";
 'use client';
 import { Button, Label, TextInput } from 'flowbite-react';
 
 const Register = () => {
+  const [inputs, setInputs] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+  const [err, setError] = useState(null);
+
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post("http://localhost:8800/api/auth/register", inputs);
+      navigate("/login");
+    } catch (err) {
+      setError(err.response.data);
+    }
+  };
+
+
     return(
       <div className="flex justify-center items-center h-screen">
         <img className="w-auto h-40 p-5" src={Logo} alt=""/>
@@ -18,11 +44,13 @@ const Register = () => {
           />
         </div>
         <TextInput
-          id="name2"
+          id="username"
           placeholder="Name"
           required
           shadow
-          type="name"
+          type="text"
+          name = "username"
+          onChange={handleChange}
         />
       </div>
       <div>
@@ -33,11 +61,13 @@ const Register = () => {
           />
         </div>
         <TextInput
-          id="email2"
+          id="email"
           placeholder="name@flowbite.com"
           required
           shadow
           type="email"
+          name="email"
+          onChange={handleChange}
         />
       </div>
       <div>
@@ -48,29 +78,17 @@ const Register = () => {
           />
         </div>
         <TextInput
-          id="password2"
+          id="password"
           required
           shadow
           type="password"
-        />
-      </div>
-      <div>
-        <div className="mb-2 block">
-          <Label
-            htmlFor="repeat-password"
-            value="Repeat password"
-          />
-        </div>
-        <TextInput
-          id="repeat-password"
-          required
-          shadow
-          type="password"
+          name="password"
+          onChange={handleChange}
         />
       </div>
       <div className="flex items-center gap-2">
       </div>
-      <Button type="submit">
+      <Button type="submit" onClick={handleSubmit}>
         Register new account
       </Button>
     </form>
