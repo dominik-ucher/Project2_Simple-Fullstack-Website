@@ -1,7 +1,7 @@
 import React from 'react';
 import Logo from '../../img/logo.png'
 import { Link } from 'react-router-dom'
-import { Button } from 'flowbite-react';
+import { Button, Card } from 'flowbite-react';
 
   const posts = [
     {
@@ -43,24 +43,43 @@ const Home = () => {
         </div>
         <div className="grid grid-cols-10 gap-4">
           <div className="col-span-10 md:col-span-6 bg-white-200 px-4">
-            {/* Left Column */}
-            {posts.map((post, index) => (
-              <div key={post.id} className={`border-solid border-2 border-gray-800 bg-emerald-300 rounded-lg p-4 mt-5 flex items-center justify-between ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'} `}>
-                {/* First iteration - Image on the right, text on the left */}
-                <div className="w-1/2">
-                  {/* Image content */}
-                  <div className='mr-4 px-4 p-4 object-center'>
-                    <img src={post.img} alt="" className='object-cover w-full rounded-md' />
-                  </div>
+            <div class="grid grid-cols-2 gap-4">
+            {posts.map((posts,index) => (
+                <Link to="">
+                <div key={posts.id}>
+                <Card className="max-w-sm mt-10" href="#">
+                <img className="object-cover h-48 w-96" src={posts.img} alt="" />
+                <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                <p className='line-clamp-3'>{posts.title}</p>
+                </h5>
+                <p className="line-clamp-3 font-normal text-gray-700 dark:text-gray-400">
+                <p>{posts.desc}</p>
+                </p>
+                <Button gradientDuoTone='redToYellow' outline className="flex"><h2>Les mer</h2></Button>
+                </Card>
                 </div>
-                <div className=" w-1/2">
-                  {/* Text content */}
-                  <h1 className='text-lg underline decoration-1 line-clamp-3 font-bold'>{post.title}</h1>
-                  <h2 className='max-w-full flex-grow line-clamp-6' style={{ height: '100%' }}>{post.desc}</h2>
-                  <div className='mt-5 flex items-end justify-end'><Button gradientDuoTone='redToYellow' outline className="flex"><h2>Les mer</h2></Button></div>
-                </div>
+                </Link>
+            ))};
+
               </div>
-            ))}
+            {/* Left Column */}
+            {/* {posts.map((post, index) => ( */}
+              {/* <div key={post.id} className={`border-solid border-2 border-gray-800 bg-emerald-300 rounded-lg p-4 mt-5 flex items-center justify-between ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'} `}> */}
+                {/* First iteration - Image on the right, text on the left */}
+                {/* <div className="w-1/2"> */}
+                  {/* Image content */}
+                  {/* <div className='mr-4 px-4 p-4 object-center'> */}
+                    {/* <img src={post.img} alt="" className='object-cover w-full rounded-md' /> */}
+                  {/* </div> */}
+                {/* </div> */}
+                {/* <div className=" w-1/2"> */}
+                  {/* Text content */}
+                  {/* <h1 className='text-lg underline decoration-1 line-clamp-3 font-bold'>{post.title}</h1> */}
+                  {/* <h2 className='max-w-full flex-grow line-clamp-6' style={{ height: '100%' }}>{post.desc}</h2> */}
+                  {/* <div className='mt-5 flex items-end justify-end'><Button gradientDuoTone='redToYellow' outline className="flex"><h2>Les mer</h2></Button></div> */}
+                {/* </div> */}
+              {/* </div> */}
+            {/* ))}; */}
           </div>
           <div className="col-span-10 md:col-span-4 bg-white-300">
             {/* Right Column */}
