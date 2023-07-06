@@ -11,20 +11,9 @@ const NotFoundPage_404 = () => {
           <div className="absolute">
             <div className="">
               <h1 className="text-7xl font-bold text-gray-500 mb-4">404 Page Not Found</h1>
-              <h1 className="my-2 text-gray-800 font-bold text-2xl">
+              <h1 className="my-2 text-gray-800 font-bold text-2xl mb-10 mt-5">
                 Oops, ser ut denne siden finnes ikke lenger
               </h1>
-              <p className="my-2 text-gray-800">
-                Du kan logge inn ved å klikke{' '}
-                <Link className="font-bold underline pointer" to="/login">
-                  her
-                </Link>
-                , hvis ikke du har bruker kan du kontakte klubben for å få tildelt en bruker.
-                Dette gjøres{' '}
-                <Link className="font-bold underline pointer" to="/contact">
-                  her
-                </Link>
-              </p>
               <Button color="dark">
                 <Link to="/">Tilbake til hjemmesiden!</Link>
               </Button>
