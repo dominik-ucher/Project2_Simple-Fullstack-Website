@@ -4,7 +4,7 @@ import axios from 'axios'
 import Logo from '../../img/logo.png'
 import { AuthContext } from '../../context/authContext'
 'use client';
-import { Button, Label, TextInput } from 'flowbite-react';
+import { Button, Label, Spinner, TextInput } from 'flowbite-react';
 
 const Login = () => {
   const [inputs, setInputs] = useState({
@@ -12,6 +12,8 @@ const Login = () => {
     password: "",
   });
   const [err, setError] = useState(null);
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -23,6 +25,12 @@ const Login = () => {
   };
 
   const handleSubmit = async (e) => {
+    setIsLoading(true);
+
+    setTimeout(()=>{
+      setIsLoading(false);
+    }, 1000)
+
     e.preventDefault();
     try {
       await login(inputs)
@@ -70,10 +78,10 @@ const Login = () => {
           onChange={handleChange}
         />
       </div>
-      <Button type="submit" onClick={handleSubmit} >
-        Log in
+      <Button type="submit" onClick={handleSubmit} disabled={isLoading}>
+      {isLoading ? (<Spinner aria-label="Spinner button example" />) : ('Log In' )}
       </Button>
-      {err && <p>{err}</p>}
+      {err && <p className='text-red-500 font-bold flex items-center justify-center'>{err}</p>}
       <h2>Don't you have an account?</h2> 
       <h2>Use the <Link className="font-bold underline pointer" to="/contact">contact form</Link> to sign up!</h2>
     </form>
