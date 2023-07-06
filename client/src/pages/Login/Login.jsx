@@ -75,7 +75,7 @@ const Login = () => {
       </Button>
       {err && <p>{err}</p>}
       <h2>Don't you have an account?</h2> 
-      <h2>Use the <Link to="/contact">contact form to sign up!</Link></h2>
+      <h2>Use the <Link className="font-bold underline pointer" to="/contact">contact form</Link> to sign up!</h2>
     </form>
     </div>
     </div>

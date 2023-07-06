@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
 import Logo from '../../img/logo.png'
 import axios from "axios";
 'use client';
 import { Button, Label, TextInput } from 'flowbite-react';
+import { AuthContext } from '../../context/authContext';
 
 const Register = () => {
   const [inputs, setInputs] = useState({
@@ -28,6 +29,15 @@ const Register = () => {
       setError(err.response.data);
     }
   };
+
+  const navigate_2 = useNavigate();
+    const { currentUser } = useContext(AuthContext);
+
+    useEffect(()=>{
+        if (!currentUser){
+            navigate('/unauthorized_401');
+        }
+    }, [currentUser, navigate_2]);
 
 
     return(

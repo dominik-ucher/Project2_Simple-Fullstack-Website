@@ -4,7 +4,7 @@ import { Navbar,Dropdown } from 'flowbite-react';
 import Logo from '../../img/logo.png'
 import './Navbar.css'
 import { AuthContext } from '../../context/authContext';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function DefaultNavbar() {
 
@@ -51,6 +51,7 @@ export default function DefaultNavbar() {
         <Navbar.Link href="#">
           <p>Contact</p>
         </Navbar.Link>
+        {currentUser && <Link to="/admin">Admin Side</Link>}
         {currentUser && <span>Welcome {currentUser.username}</span>}
         {currentUser && (<span className="cursor-pointer" onClick={handleLogout}>Logout</span>)}
       </Navbar.Collapse>

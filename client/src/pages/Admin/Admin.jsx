@@ -1,10 +1,22 @@
-import React from 'react';
+import React, {useContext, useEffect} from 'react';
+import { useNavigate } from 'react-router-dom'
+import { AuthContext } from '../../context/authContext'
 'use client'
 import {Card} from 'flowbite-react'
 import { Link } from 'react-router-dom';
 
 
 const Admin = () => {
+
+    const navigate = useNavigate();
+    const { currentUser } = useContext(AuthContext);
+
+    useEffect(()=>{
+        if (!currentUser){
+            navigate('/unauthorized_401');
+        }
+    }, [currentUser, navigate]);
+
     return(
         <><div className='font-bold flex items-center justify-center text-4xl mt-10'>Velkommen til Admin Side</div>
         <div className="grid grid-cols-10 gap-4 ">
