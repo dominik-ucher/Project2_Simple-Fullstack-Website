@@ -91,6 +91,7 @@ const Register = () => {
       <Button type="submit" onClick={handleSubmit}>
         Register new account
       </Button>
+      {err && <p>{err}</p>}
     </form>
     </div>
     </div>
