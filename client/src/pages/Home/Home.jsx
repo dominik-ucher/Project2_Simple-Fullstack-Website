@@ -42,8 +42,8 @@ const Home = () => {
           <p className="text-ls mt-2 justify-center flex items-center">Artig-Inkluderende-Utviklende</p>
         </div>
         <div className="grid grid-cols-10 gap-4">
-          <div className="col-span-10 md:col-span-6 bg-white-200 px-4">
-            <div class="grid grid-cols-2 gap-4">
+          <div className="col-span-10 md:col-span-7 bg-white-200 px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             {posts.map((posts,index) => (
                 <Link to="">
                 <div key={posts.id}>
@@ -81,7 +81,7 @@ const Home = () => {
               {/* </div> */}
             {/* ))}; */}
           </div>
-          <div className="col-span-10 md:col-span-4 bg-white-300">
+          <div className="col-span-10 md:col-span-3 bg-white-300">
             {/* Right Column */}
             <div className="p-4">
               <div className="grid grid-cols-2 gap-4">
