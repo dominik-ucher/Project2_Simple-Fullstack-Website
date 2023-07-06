@@ -13,6 +13,7 @@ import Write_News from './pages/Write_News/Write_News';
 import Write_Page from './pages/Write_Page/Write_Page';
 import Admin from './pages/Admin/Admin';
 import Unauthorized_401 from './pages/Error/Unauthorized_401';
+import NotFoundPage_404 from './pages/Error/NotFoundPage_404';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
       {
         path:"/Unauthorized_401",
         element:<Unauthorized_401/>,
+      },
+      {
+        path: '*',
+        element: <NotFoundPage_404 />,
       },
     ]
   },
