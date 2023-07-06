@@ -11,6 +11,7 @@ import Single_News from './pages/Single_News/Single_News';
 import Single_Page from './pages/Single_Page/Single_Page';
 import Write_News from './pages/Write_News/Write_News';
 import Write_Page from './pages/Write_Page/Write_Page';
+import Admin from './pages/Admin/Admin';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
       {
         path:"/write_page",
         element:<Write_Page/>,
+      },
+      {
+        path:"/admin",
+        element:<Admin/>,
       },
     ]
   },
