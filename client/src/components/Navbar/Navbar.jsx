@@ -1,10 +1,21 @@
 'use client';
-import react from 'react';
+import react, { useContext } from 'react';
 import { Navbar,Dropdown } from 'flowbite-react';
 import Logo from '../../img/logo.png'
 import './Navbar.css'
+import { AuthContext } from '../../context/authContext';
+import { useNavigate } from 'react-router-dom';
 
 export default function DefaultNavbar() {
+
+  const {currentUser, logout} = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
+
   return (
     <Navbar
       fluid
@@ -40,6 +51,8 @@ export default function DefaultNavbar() {
         <Navbar.Link href="#">
           <p>Contact</p>
         </Navbar.Link>
+        {currentUser && <span>Welcome {currentUser.username}</span>}
+        {currentUser && (<span className="cursor-pointer" onClick={handleLogout}>Logout</span>)}
       </Navbar.Collapse>
     </Navbar>
   )
