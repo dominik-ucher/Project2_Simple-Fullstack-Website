@@ -69,8 +69,8 @@ const Home = () => {
                 {/* First Row */}
                 <div className="col-span-2">
                   {/* Content for the first row */}
-                  <div className="relative w-12/14 mx-auto p-4 bg-blue-500 text-white rounded-xl justify-center mt-3">
-                    <p className="text-lg justify-center flex items-center">Følg oss på Facebook</p>
+                  <div className="relative w-12/14 mx-auto p-4 text-white rounded-xl justify-center mt-3 bg-blue-500 hover:bg-blue-900">
+                    <Link to="https://www.facebook.com/iltrondfotball" className='pointer'><p className="text-lg justify-center flex items-center">Følg oss på Facebook</p></Link>
                   </div>
                 </div>
                 {/* Second Row */}

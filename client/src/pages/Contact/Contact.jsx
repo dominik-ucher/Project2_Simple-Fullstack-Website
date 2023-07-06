@@ -5,11 +5,11 @@ import Logo from '../../img/logo.png'
 
 const Contact = () => {
     return(
-        <div className="grid grid-cols-10 gap-4">
-        <div className="col-span-10 md:col-span-5 bg-gray-200">
-            <h1 className="underline decoration-2 text-center font-bold text-xl mt-5">Kontakt Oss</h1>
+        <div className="grid grid-cols-10 gap-4 px-20">
+        <div className="col-span-10 md:col-span-5 mt-20">
+            <h1 className="underline decoration-2 text-center font-bold text-4xl mt-5">Kontakt Oss</h1>
 
-            <div className="mb-2 block px-4 mt-4">
+            <div className="mb-2 block px-4 mt-20">
             <Label htmlFor="base" value="Name"/>
             </div>
             <TextInput className='px-4' id="base" sizing="md" type="text" placeholder="Name"/>
@@ -48,7 +48,7 @@ const Contact = () => {
 
 
         </div>
-        <div className="col-span-10 md:col-span-5 bg-gray-200">
+        <div className="col-span-10 md:col-span-5 mt-20">
             <h1 className='font-bold text-xl mt-4 px-4'>Besøksadresse:</h1>
             <h2 className='text-base mt-4 px-4 underline'>Ibsens gate 8, 7015 Trondheim</h2>
             <h1 className='font-bold text-xl mt-4 px-4'>Postadresse:</h1>

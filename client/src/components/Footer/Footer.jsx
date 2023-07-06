@@ -3,6 +3,7 @@ import React from 'react';
 import { Footer } from 'flowbite-react';
 import Logo from '../../img/logo.png'
 import './Footer.css'
+import { Link } from 'react-router-dom';
 
 const FooterTemp = () => {
     return (
@@ -19,24 +20,16 @@ const FooterTemp = () => {
             src={Logo}
           />
           <Footer.LinkGroup className='txt_1'>
-            <Footer.Link href="#" >
-              About
-            </Footer.Link>
-            <Footer.Link href="#">
-              Privacy Policy
-            </Footer.Link>
-            <Footer.Link href="#">
-              Licensing
-            </Footer.Link>
-            <Footer.Link href="#">
-              Contact
-            </Footer.Link>
+            <Link to="" className='px-2'>About</Link>
+            <Link to="" className='px-2'>Privacy and Policy</Link>
+            <Link to="" className='px-2'>Licensing</Link>
+            <Link to="/contact" className='px-2'>Contact</Link>
           </Footer.LinkGroup>
         </div>
         <Footer.Divider />
         <Footer.Copyright
           className='copyright_1'
-          by="Flowbite™"
+          by="Dominik"
           href="#"
           year={2022}
         />
