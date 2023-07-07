@@ -923,6 +923,11 @@ doctrine@^3.0.0:
   dependencies:
     esutils "^2.0.2"
 
+dompurify@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/dompurify/-/dompurify-3.0.4.tgz#963116d05c94ee42f8353a3690f935475d8cd2f7"
+  integrity sha512-ae0mA+Qiqp6C29pqZX3fQgK+F91+F7wobM/v8DRzDqJdZJELXiFUx4PP4pK/mzUS0xkiSEx3Ncd9gr69jg3YsQ==
+
 easy-bem@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/easy-bem/-/easy-bem-1.1.1.tgz#1bfcc10425498090bcfddc0f9c000aba91399e03"

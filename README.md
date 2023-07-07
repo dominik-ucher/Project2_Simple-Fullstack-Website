@@ -46,4 +46,5 @@
         VI. yarn add cors
         VII. yarn add cookie-parser
         VIII. yarn add moment (IN CLIENT)
+        IX. yarn add dompurify (IN CLIENT)
         
