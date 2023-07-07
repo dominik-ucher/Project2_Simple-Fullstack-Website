@@ -47,4 +47,6 @@
         VII. yarn add cookie-parser
         VIII. yarn add moment (IN CLIENT)
         IX. yarn add dompurify (IN CLIENT)
+        X. yarn add multer
+        XI. yarn add js-cookie (IN CLIENT)
         

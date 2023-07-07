@@ -47,6 +47,11 @@ const Home = () => {
     fetchData();
   }, []);
 
+  const getText = (html) =>{
+    const doc = new DOMParser().parseFromString(html, "text/html")
+    return doc.body.textContent
+  }
+
     return(
 
         <>
@@ -64,7 +69,7 @@ const Home = () => {
                 <Link to="">
                 <div key={posts.id}>
                 <Card className="max-w-sm mt-10" href="#">
-                <img className="object-cover h-48 w-96" src={posts.img} alt="" />
+                <img className="object-cover h-48 w-96" src={`../upload/${posts.img}`} alt="" />
                 <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                 <p className='line-clamp-3'>{posts.title}</p>
                 </h5>

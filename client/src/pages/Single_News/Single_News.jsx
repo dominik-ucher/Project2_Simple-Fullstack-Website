@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import editicon from '../../img/edit.png'
 import deleteicon from '../../img/delete.png'
 import Logo from '../../img/logo.png'
@@ -13,6 +13,7 @@ import DOMPurify from "dompurify";
 
 const Single_News = () => {
 
+
   const [post, setPost] = useState({});
 
   const location = useLocation();
@@ -25,7 +26,7 @@ const Single_News = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`/posts/${postId}`);
+        const res = await axios.get(`http://localhost:8800/api/posts/${postId}`);
         setPost(res.data);
       } catch (err) {
         console.log(err);
@@ -36,7 +37,7 @@ const Single_News = () => {
 
   const handleDelete = async ()=>{
     try {
-      await axios.delete(`/posts/${postId}`);
+      await axios.delete(`http://localhost:8800/api/posts/${postId}`);
       navigate("/")
     } catch (err) {
       console.log(err);
@@ -47,6 +48,34 @@ const Single_News = () => {
     const doc = new DOMParser().parseFromString(html, "text/html")
     return doc.body.textContent
   }
+
+
+  const posts = [
+    {
+      id: 1,
+      title: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
+      desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. A possimus excepturi aliquid nihil cumque ipsam facere aperiam at! Ea dolorem ratione sit debitis deserunt repellendus numquam ab vel perspiciatis corporis!Lorem, ipsum dolor sit amet consectetur adipisicing elit. A possimus excepturi aliquid nihil cumque ipsam facere aperiam at! Ea dolorem ratione sit debitis deserunt repellendus numquam ab vel perspiciatis corporis!",
+      img: "https://images.pexels.com/photos/7008010/pexels-photo-7008010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    },
+    {
+      id: 2,
+      title: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
+      desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. A possimus excepturi aliquid nihil cumque ipsam facere aperiam at! Ea dolorem ratione sit debitis deserunt repellendus numquam ab vel perspiciatis corporis!",
+      img: "https://images.pexels.com/photos/6489663/pexels-photo-6489663.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    },
+    {
+      id: 3,
+      title: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
+      desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. A possimus excepturi aliquid nihil cumque ipsam facere aperiam at! Ea dolorem ratione sit debitis deserunt repellendus numquam ab vel perspiciatis corporis!",
+      img: "https://images.pexels.com/photos/4230630/pexels-photo-4230630.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    },
+    {
+      id: 4,
+      title: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
+      desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. A possimus excepturi aliquid nihil cumque ipsam facere aperiam at! Ea dolorem ratione sit debitis deserunt repellendus numquam ab vel perspiciatis corporis!",
+      img: "https://images.pexels.com/photos/6157049/pexels-photo-6157049.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    },
+  ];
 
 
     return(
@@ -64,26 +93,21 @@ const Single_News = () => {
                 <div className='edit flex items-center mt-4 px-4'>
                     <img className="rounded-full" src={Logo} alt="" style={{ width: '80px', height: '50px' }}/>
                     <div>
-                    <h1 className='px-4'>Idrettslaget Trond</h1>
-                    <h2 className='px-4'>Posted 2 days ago</h2>
+                    <h1 className='px-4'>{post.username}</h1>
+                    <h2 className='px-4'>Posted {moment(post.date).fromNow()}</h2>
                     </div>
-                    <Link to={`/write?edit=2`}>
+                    
+                    <>
+                    <Link to={`/write?edit=2`} state={post}>
                     <img className="w-10 h-10 cursor-pointer" src={editicon} alt="" />
                     </Link>
-                    <img className="w-10 h-10 cursor-pointer" src={deleteicon} alt="" />
+                    <img onClick={handleDelete} className="w-10 h-10 cursor-pointer" src={deleteicon} alt="" />
+                    </>
+                    
                 </div>
             </div>
-            <h1 className='flex items-center justify-center mt-20 font-bold capitalize text-3xl'>This is the title of this page</h1>
-            <p className='text-black flex items-center justify-center mt-10 px-10'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis turpis vitae lacus placerat ultricies. Aenean purus libero, pulvinar nec justo vel, facilisis consequat ante. Aliquam ut diam velit. Curabitur lectus mi, aliquam sit amet fringilla non, fermentum vitae diam. Donec a est laoreet, bibendum nulla vitae, pulvinar neque. Integer interdum, ligula convallis mattis sodales, urna massa dapibus purus, eget finibus augue lectus ut felis. Cras dapibus libero orci, in dictum ex rutrum eu. Quisque faucibus dignissim mi, a elementum neque pretium quis. Vestibulum lobortis, nulla eu elementum mollis, diam risus posuere tortor, quis interdum lectus lectus eget eros. Cras tincidunt sodales posuere. Ut vitae porta urna. Etiam fermentum commodo justo, sit amet dapibus sapien condimentum quis. Etiam elementum leo felis, a venenatis felis volutpat vitae.
-
-                Fusce dui elit, lacinia nec semper et, semper eget erat. Sed ornare egestas enim a porta. Suspendisse vestibulum lacus sem, nec imperdiet erat suscipit non. Praesent et lorem a ante varius egestas et id diam. Vivamus non posuere nisi. Proin lorem mauris, iaculis sit amet urna eget, finibus tristique purus. Donec aliquam quis purus eget mollis. Vivamus vestibulum ultricies ipsum et aliquet. Proin imperdiet quis velit a molestie. Phasellus aliquet fringilla ipsum et semper. Proin nec mollis ex, at sollicitudin arcu. Curabitur condimentum porta nisl, in posuere lacus condimentum eu. Integer suscipit sollicitudin leo, nec interdum magna finibus quis. Sed justo enim, pulvinar eu fringilla a, hendrerit eget ante. Vivamus vestibulum, tellus at condimentum porta, urna mauris ultrices orci, at porta felis magna sed est. Mauris congue orci massa.
-
-                Curabitur eu odio facilisis, egestas dolor a, ultricies elit. Integer vitae risus ac lorem blandit porttitor. Nulla aliquam ex id metus gravida mattis. Quisque nec augue id tortor eleifend viverra. Proin posuere, lectus in cursus vestibulum, tortor urna suscipit orci, ac pulvinar justo metus ut est. Cras quis ipsum eu libero vulputate sodales a vel quam. In aliquet tellus vel hendrerit varius. Duis vitae tristique tortor. Duis non ultricies nisi. Morbi varius iaculis nunc et accumsan. Donec tempor lacus pretium neque faucibus, quis dictum ligula fermentum. In sit amet venenatis ligula. Mauris hendrerit lectus nisi. Sed vitae mi venenatis lectus porta lobortis. Pellentesque orci arcu, mollis nec nisi et, mollis tincidunt sapien.
-
-                Duis at convallis erat. Cras vitae arcu risus. In sed cursus lectus. Cras eu mollis nisl, sed consequat felis. Mauris nunc nibh, porttitor a metus non, fringilla sodales eros. Vestibulum non suscipit dui. Nullam erat libero, auctor eu dictum id, mattis sit amet neque. Aenean venenatis risus imperdiet pretium bibendum. Pellentesque accumsan tempus pulvinar.
-
-                Donec in diam non lectus pharetra consequat. Cras varius turpis tellus, id auctor ligula sodales vel. Curabitur convallis massa quis sem eleifend ultrices. Mauris non nunc id leo aliquet sodales a ac mi. Donec venenatis velit ipsum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vivamus quis augue neque. Nunc eu ultrices felis. Sed volutpat dui nec pulvinar convallis. Aliquam in neque at orci aliquet euismod. Praesent pretium nisl elit, ac hendrerit diam pretium eu. Integer sodales ipsum libero, ac malesuada mauris imperdiet posuere. Cras vehicula commodo pretium. Donec sagittis placerat magna, nec laoreet mauris blandit eu. Duis quis arcu sed tellus auctor molestie non at magna.
-            </p>
+            <h1 className='flex items-center justify-center mt-20 font-bold capitalize text-3xl'>{post.title}</h1>
+            <p className='text-black flex items-center justify-center mt-10 px-10' dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(post.desc)}}></p>
         </div>
         </div>
         <div className="col-span-10 md:col-span-3 bg-white-200">
@@ -101,7 +125,7 @@ const Single_News = () => {
                 </Card>
                 </div>
                 </Link>
-            ))};
+            ))}
         </div>
         </div>
     )
