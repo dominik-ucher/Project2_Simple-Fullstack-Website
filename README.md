@@ -45,4 +45,5 @@
         V. yarn add axios (IN CLIENT)
         VI. yarn add cors
         VII. yarn add cookie-parser
+        VIII. yarn add moment (IN CLIENT)
         
