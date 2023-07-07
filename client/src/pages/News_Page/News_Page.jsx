@@ -2,6 +2,7 @@ import React from 'react';
 import Logo from '../../img/logo.png'
 import { Link } from 'react-router-dom'
 import { Button, Card } from 'flowbite-react';
+import Sidebar from '../../components/Sidebar/Sidebar'
 
   const posts = [
     {
@@ -30,7 +31,7 @@ import { Button, Card } from 'flowbite-react';
     },
   ];
 
-const Home = () => {
+const News_Page = () => {
     return(
 
         <>
@@ -62,63 +63,10 @@ const Home = () => {
             ))};
 
               </div>
-            {/* Left Column */}
-            {/* {posts.map((post, index) => ( */}
-              {/* <div key={post.id} className={`border-solid border-2 border-gray-800 bg-emerald-300 rounded-lg p-4 mt-5 flex items-center justify-between ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'} `}> */}
-                {/* First iteration - Image on the right, text on the left */}
-                {/* <div className="w-1/2"> */}
-                  {/* Image content */}
-                  {/* <div className='mr-4 px-4 p-4 object-center'> */}
-                    {/* <img src={post.img} alt="" className='object-cover w-full rounded-md' /> */}
-                  {/* </div> */}
-                {/* </div> */}
-                {/* <div className=" w-1/2"> */}
-                  {/* Text content */}
-                  {/* <h1 className='text-lg underline decoration-1 line-clamp-3 font-bold'>{post.title}</h1> */}
-                  {/* <h2 className='max-w-full flex-grow line-clamp-6' style={{ height: '100%' }}>{post.desc}</h2> */}
-                  {/* <div className='mt-5 flex items-end justify-end'><Button gradientDuoTone='redToYellow' outline className="flex"><h2>Les mer</h2></Button></div> */}
-                {/* </div> */}
-              {/* </div> */}
-            {/* ))}; */}
           </div>
           <div className="col-span-10 md:col-span-3 bg-white-300">
-            {/* Right Column */}
-            <div className="p-4">
-              <div className="grid grid-cols-2 gap-4">
-                {/* First Row */}
-                <div className="col-span-2">
-                  {/* Content for the first row */}
-                  <div className="relative w-12/14 mx-auto p-4 text-white rounded-xl justify-center mt-3 bg-blue-500 hover:bg-blue-900">
-                    <Link to="https://www.facebook.com/iltrondfotball" className='pointer'><p className="text-lg justify-center flex items-center">Følg oss på Facebook</p></Link>
-                  </div>
-                </div>
-                {/* Second Row */}
-                <div className="col-span-2">
-                  {/* Content for the second row */}
-                  <h1 className="text-xl font-bold justify-center flex items-center">Nyttig Informasjon</h1>
-                </div>
-                {/* Third Row */}
-                <div className="col-span-2">
-                  {/* Content for the third row */}
-                  <Link to="/news">
-                  <img
-                    className="object-cover rounded-lg"
-                    src="https://scontent.fosl3-2.fna.fbcdn.net/v/t39.30808-6/342891160_127035133686987_4188360982766614032_n.jpg?_nc_cat=104&cb=99be929b-3346023f&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=1p9q7BNAOtIAX9_8LOq&_nc_ht=scontent.fosl3-2.fna&oh=00_AfB_YN1eMWEmd-kCIspubdMku2xSN17IVSljBfbT7AKfxQ&oe=64AA1AE7"
-                    alt="image description" />
-                  </Link>
-                </div>
-                {/* Fourth Row */}
-                <div className="col-span-2">
-                  {/* Content for the Fourth row */}
-                  <img
-                    className="object-cover rounded-lg"
-                    src="https://scontent.fosl3-2.fna.fbcdn.net/v/t39.30808-6/342891160_127035133686987_4188360982766614032_n.jpg?_nc_cat=104&cb=99be929b-3346023f&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=1p9q7BNAOtIAX9_8LOq&_nc_ht=scontent.fosl3-2.fna&oh=00_AfB_YN1eMWEmd-kCIspubdMku2xSN17IVSljBfbT7AKfxQ&oe=64AA1AE7"
-                    alt="image description" />
-                </div>
-                {/* Additional Rows */}
-                {/* Add more div elements with the desired content for additional rows */}
-              </div>
-            </div>
+            
+            <Sidebar />
           </div>
         </div>
         </>
@@ -127,4 +75,4 @@ const Home = () => {
     )
 }
 
-export default Home
+export default News_Page

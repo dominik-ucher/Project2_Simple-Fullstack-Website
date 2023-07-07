@@ -12,6 +12,7 @@ import Single_Page from './pages/Single_Page/Single_Page';
 import Write_News from './pages/Write_News/Write_News';
 import Write_Page from './pages/Write_Page/Write_Page';
 import Admin from './pages/Admin/Admin';
+import News_Page from "./pages/News_Page/News_Page";
 import Unauthorized_401 from './pages/Error/Unauthorized_401';
 import NotFoundPage_404 from './pages/Error/NotFoundPage_404';
 import Navbar from './components/Navbar/Navbar';
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
       {
         path:"/admin",
         element:<Admin/>,
+      },
+      {
+        path:"/news",
+        element:<News_Page/>,
       },
       {
         path:"/Unauthorized_401",

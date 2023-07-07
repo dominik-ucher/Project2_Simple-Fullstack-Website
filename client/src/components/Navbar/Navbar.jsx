@@ -21,7 +21,7 @@ export default function DefaultNavbar() {
       fluid
       className='custom-navbar h-20'
     >
-      <Navbar.Brand>
+      <Navbar.Brand href="/">
         <img
           alt="Logo"
           className="mr-3 h-8 sm:h-16"
@@ -33,13 +33,13 @@ export default function DefaultNavbar() {
       </Navbar.Brand>
       <Navbar.Toggle />
       <Navbar.Collapse className='z-20 navbar-link px-10'>
-        <Link className="text-xl" to="/">Home</Link>
-        <Link className="text-xl" to ="">About</Link>
-        <Link className="text-xl" to ="/contact">Contact</Link>
-        <Link className="text-xl" to ="/side/1">Side 1</Link>
-        <Link className="text-xl" to ="/nyheter/1">Nyhet 1</Link>
+        <Link className="text-md" to="/">Home</Link>
+        <Link className="text-md" to ="">About</Link>
+        <Link className="text-md" to ="/contact">Contact</Link>
+        <Link className="text-md" to ="/side/1">Side 1</Link>
+        <Link className="text-md" to ="/nyheter/1">Nyhet 1</Link>
         {currentUser && <Link to="/admin">Admin Side</Link>}
-        {currentUser && <span className='font-bold underline text-lg'>Welcome {currentUser.username}</span>}
+        {currentUser && <span className='font-bold underline text-md'>Welcome {currentUser.username}</span>}
         {currentUser && <Button color="warning" pill onClick={handleLogout}>Logout</Button>}
       </Navbar.Collapse>
     </Navbar>

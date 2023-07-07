@@ -17,7 +17,7 @@ export default function MultiLevelDropdown() {
           
           <Link to="">
           <Sidebar.ItemGroup>
-          <Sidebar.Collapse label="E-commerce" className='font-bold mt-4 bg-blue-500'>
+          <Sidebar.Collapse label="E-commerce" className='font-bold mt-4 bg-blue-500 hover:bg-blue-900'>
             <Sidebar.Item href="#">Products</Sidebar.Item>
             <Sidebar.Item href="#">Sales</Sidebar.Item><Sidebar.Item href="#">Refunds</Sidebar.Item>
             <Sidebar.Item href="#">Shipping</Sidebar.Item>
@@ -27,7 +27,7 @@ export default function MultiLevelDropdown() {
 
           <Link to="">
           <Sidebar.ItemGroup>
-          <Sidebar.Collapse label="E-commerce" className='font-bold mt-4 bg-blue-500'>
+          <Sidebar.Collapse label="E-commerce" className='font-bold mt-4 bg-blue-500 hover:bg-blue-900'>
             <Sidebar.Item href="#">Products</Sidebar.Item>
             <Sidebar.Item href="#">Sales</Sidebar.Item><Sidebar.Item href="#">Refunds</Sidebar.Item>
             <Sidebar.Item href="#">Shipping</Sidebar.Item>
@@ -37,7 +37,7 @@ export default function MultiLevelDropdown() {
 
           <Link to="">
           <Sidebar.ItemGroup>
-          <Sidebar.Collapse label="E-commerce" className='font-bold mt-4 bg-blue-500'>
+          <Sidebar.Collapse label="E-commerce" className='font-bold mt-4 bg-blue-500 hover:bg-blue-900'>
             <Sidebar.Item href="#">Products</Sidebar.Item>
             <Sidebar.Item href="#">Sales</Sidebar.Item><Sidebar.Item href="#">Refunds</Sidebar.Item>
             <Sidebar.Item href="#">Shipping</Sidebar.Item>
@@ -47,7 +47,7 @@ export default function MultiLevelDropdown() {
 
           <Link to="">
           <Sidebar.ItemGroup>
-          <Sidebar.Collapse label="E-commerce" className='font-bold mt-4 bg-blue-500'>
+          <Sidebar.Collapse label="E-commerce" className='font-bold mt-4 bg-blue-500 hover:bg-blue-900'>
             <Sidebar.Item href="#">Products</Sidebar.Item>
             <Sidebar.Item href="#">Sales</Sidebar.Item><Sidebar.Item href="#">Refunds</Sidebar.Item>
             <Sidebar.Item href="#">Shipping</Sidebar.Item>
@@ -57,7 +57,7 @@ export default function MultiLevelDropdown() {
 
           <Link to="">
           <Sidebar.ItemGroup>
-          <Sidebar.Collapse label="E-commerce" className='font-bold mt-4 bg-blue-500'>
+          <Sidebar.Collapse label="E-commerce" className='font-bold mt-4 bg-blue-500 hover:bg-blue-900'>
             <Sidebar.Item href="#">Products</Sidebar.Item>
             <Sidebar.Item href="#">Sales</Sidebar.Item><Sidebar.Item href="#">Refunds</Sidebar.Item>
             <Sidebar.Item href="#">Shipping</Sidebar.Item>
