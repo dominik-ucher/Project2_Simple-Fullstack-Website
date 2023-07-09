@@ -14,8 +14,8 @@ import axios from 'axios'
 const Write_News = () => {
 
     const state = useLocation().state;
-    const [value, setValue] = useState(state?.title || "");
-    const [title, setTitle] = useState(state?.desc || "");
+    const [title, setTitle] = useState(state?.title || "");
+    const [value, setValue] = useState(state?.desc || "");
     const [file, setFile] = useState(null);
 
     const navigate = useNavigate()
@@ -66,7 +66,7 @@ const Write_News = () => {
                     <div className="mb-2 block mt-10 px-20">
                     <Label htmlFor="base" value="Title"/>
                     </div>
-                    <TextInput className="px-20" id="base" sizing="md" type="text" placeholder='Title' onChange={(e) => setTitle(e.target.value)}/>
+                    <TextInput className="px-20" id="base" sizing="md" type="text" placeholder='Title' value={title} onChange={(e) => setTitle(e.target.value)}/>
                     <div className="max-w-md px-20 mt-5" id="fileUpload">
                     <div className="mb-2 block">
                     <Label htmlFor="file" className='file' value="Upload picture"/>
