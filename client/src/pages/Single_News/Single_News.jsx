@@ -26,7 +26,7 @@ const Single_News = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`http://localhost:8800/api/posts/${postId}`);
+        const res = await axios.get(`http://localhost:8800/api/posts/${postId}`,{withCredentials: true,});
         setPost(res.data);
       } catch (err) {
         console.log(err);
@@ -37,7 +37,7 @@ const Single_News = () => {
 
   const handleDelete = async ()=>{
     try {
-      await axios.delete(`http://localhost:8800/api/posts/${postId}`);
+      await axios.delete(`http://localhost:8800/api/posts/${postId}`,{withCredentials: true,});
       navigate("/")
     } catch (err) {
       console.log(err);
@@ -96,18 +96,18 @@ const Single_News = () => {
                     <h1 className='px-4'>{post.username}</h1>
                     <h2 className='px-4'>Posted {moment(post.date).fromNow()}</h2>
                     </div>
-                    
+                    {currentUser.username === post.username && (
                     <>
-                    <Link to={`/write?edit=2`} state={post}>
+                    <Link to={`/write_news?edit=2`} state={post}>
                     <img className="w-10 h-10 cursor-pointer" src={editicon} alt="" />
                     </Link>
                     <img onClick={handleDelete} className="w-10 h-10 cursor-pointer" src={deleteicon} alt="" />
                     </>
-                    
+                    )}
                 </div>
             </div>
             <h1 className='flex items-center justify-center mt-20 font-bold capitalize text-3xl'>{post.title}</h1>
-            <p className='text-black flex items-center justify-center mt-10 px-10' dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(post.desc)}}></p>
+            <p className='text-black flex items-center justify-center mt-10 px-10' dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(post.desc),}}></p>
         </div>
         </div>
         <div className="col-span-10 md:col-span-3 bg-white-200">

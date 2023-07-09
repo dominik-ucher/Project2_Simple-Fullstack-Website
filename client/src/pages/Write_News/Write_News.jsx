@@ -14,8 +14,8 @@ import axios from 'axios'
 const Write_News = () => {
 
     const state = useLocation().state;
-    const [title, setTitle] = useState(state?.title || "");
-    const [value, setValue] = useState(state?.desc || "");
+    const [value, setValue] = useState(state?.title || "");
+    const [title, setTitle] = useState(state?.desc || "");
     const [file, setFile] = useState(null);
 
     const navigate = useNavigate()
@@ -36,30 +36,23 @@ const Write_News = () => {
         const imgUrl = await upload();
 
         try {
-            const config = {
-                headers: {
-                  Authorization: `Bearer ${yourAuthToken}`, // Replace with your actual token
-                }
-              };
-
         state
             ? await axios.put(`http://localhost:8800/api/posts/${state.id}`, {
                 title,
                 desc: value,
                 img: file ? imgUrl : "",
-            },config)
+            },{withCredentials: true,})
             : await axios.post(`http://localhost:8800/api/posts/`, {
                 title,
                 desc: value,
                 img: file ? imgUrl : "",
                 date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
-            },config);
+            },{withCredentials: true,});
             navigate("/")
         } catch (err) {
         console.log(err);
         }
     };
-
 
 
     return(
