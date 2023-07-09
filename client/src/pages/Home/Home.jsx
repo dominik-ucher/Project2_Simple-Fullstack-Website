@@ -3,6 +3,7 @@ import Logo from '../../img/logo.png'
 import { Link } from 'react-router-dom'
 import { Button, Card } from 'flowbite-react';
 import axios from 'axios'
+import DOMPurify from 'dompurify';
 
   // const posts = [
   //   {
@@ -73,9 +74,7 @@ const Home = () => {
                 <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                 <p className='line-clamp-3'>{posts.title}</p>
                 </h5>
-                <p className="line-clamp-3 font-normal text-gray-700 dark:text-gray-400">
-                <p>{posts.desc}</p>
-                </p>
+                <p className="line-clamp-3 font-normal text-gray-700 dark:text-gray-400"  dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(posts.desc),}}></p>
                 <Button gradientDuoTone='redToYellow' outline className="flex"><h2>Les mer</h2></Button>
                 </Card>
                 </div>
