@@ -85,7 +85,7 @@ const Single_News = () => {
             <div className='content'>
                 <img 
                 className='w-100 h-auto mt-4 px-4'
-                src='https://scontent.fosl3-2.fna.fbcdn.net/v/t39.30808-6/345151623_146524801584118_676052246615036439_n.jpg?_nc_cat=111&cb=99be929b-3346023f&ccb=1-7&_nc_sid=730e14&_nc_ohc=UTt9iWkn2pQAX8fOWk4&_nc_oc=AQn05ZgY9OJutvXAA_Nw4nW7YY4XhBWaUTlLQxcXi3f7lL8xDmPI2PmD7kMj9TdZm1I&_nc_ht=scontent.fosl3-2.fna&oh=00_AfB7d15526W7TC96JqVPwVCDHfysHcJJGeX6QUCzqgumRw&oe=64AA470E' 
+                src={post.img && `http://localhost:5173/upload/${post.img}`} 
                 alt="" 
                 />
             </div>
@@ -96,7 +96,7 @@ const Single_News = () => {
                     <h1 className='px-4'>{post.username}</h1>
                     <h2 className='px-4'>Posted {moment(post.date).fromNow()}</h2>
                     </div>
-                    {currentUser.username === post.username && (
+                    {currentUser && (
                     <>
                     <Link to={`/write_news?edit=2`} state={post}>
                     <img className="w-10 h-10 cursor-pointer" src={editicon} alt="" />

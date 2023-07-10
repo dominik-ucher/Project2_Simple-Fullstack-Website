@@ -16,7 +16,7 @@ const Write_News = () => {
     const state = useLocation().state;
     const [title, setTitle] = useState(state?.title || "");
     const [value, setValue] = useState(state?.desc || "");
-    const [file, setFile] = useState(null);
+    const [file, setFile] = useState(state?.img || null);
 
     const navigate = useNavigate()
 
@@ -60,7 +60,7 @@ const Write_News = () => {
             <div className="content max-w-3xl mx-auto px-4">
                     <img 
                     className='w-100 h-auto mt-4 px-4'
-                    src='https://scontent.fosl3-2.fna.fbcdn.net/v/t39.30808-6/345151623_146524801584118_676052246615036439_n.jpg?_nc_cat=111&cb=99be929b-3346023f&ccb=1-7&_nc_sid=730e14&_nc_ohc=UTt9iWkn2pQAX8fOWk4&_nc_oc=AQn05ZgY9OJutvXAA_Nw4nW7YY4XhBWaUTlLQxcXi3f7lL8xDmPI2PmD7kMj9TdZm1I&_nc_ht=scontent.fosl3-2.fna&oh=00_AfB7d15526W7TC96JqVPwVCDHfysHcJJGeX6QUCzqgumRw&oe=64AA470E' 
+                    src={file && `http://localhost:5173/upload/${file}`} 
                     alt="" 
                     />
                     <div className="mb-2 block mt-10 px-20">
