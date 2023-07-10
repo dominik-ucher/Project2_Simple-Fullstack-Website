@@ -14,30 +14,30 @@ import DOMPurify from "dompurify";
 const Single_News = () => {
 
 
-  const [post, setPost] = useState({});
+  const [nyhet, setNyhet] = useState({});
 
   const location = useLocation();
   const navigate = useNavigate();
 
-  const postId = location.pathname.split("/")[2];
+  const nyhetId = location.pathname.split("/")[2];
 
   const { currentUser } = useContext(AuthContext);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`http://localhost:8800/api/posts/${postId}`,{withCredentials: true,});
-        setPost(res.data);
+        const res = await axios.get(`http://localhost:8800/api/nyheter/${nyhetId}`,{withCredentials: true,});
+        setNyhet(res.data);
       } catch (err) {
         console.log(err);
       }
     };
     fetchData();
-  }, [postId]);
+  }, [nyhetId]);
 
   const handleDelete = async ()=>{
     try {
-      await axios.delete(`http://localhost:8800/api/posts/${postId}`,{withCredentials: true,});
+      await axios.delete(`http://localhost:8800/api/nyheter/${nyhetId}`,{withCredentials: true,});
       navigate("/")
     } catch (err) {
       console.log(err);
@@ -85,7 +85,7 @@ const Single_News = () => {
             <div className='content'>
                 <img 
                 className='w-100 h-auto mt-4 px-4'
-                src={post.img && `http://localhost:5173/upload/${post.img}`} 
+                src={nyhet.img && `http://localhost:5173/upload/${nyhet.img}`} 
                 alt="" 
                 />
             </div>
@@ -93,12 +93,12 @@ const Single_News = () => {
                 <div className='edit flex items-center mt-4 px-4'>
                     <img className="rounded-full" src={Logo} alt="" style={{ width: '80px', height: '50px' }}/>
                     <div>
-                    <h1 className='px-4'>{post.username}</h1>
-                    <h2 className='px-4'>Posted {moment(post.date).fromNow()}</h2>
+                    <h1 className='px-4'>{nyhet.username}</h1>
+                    <h2 className='px-4'>Posted {moment(nyhet.date).fromNow()}</h2>
                     </div>
                     {currentUser && (
                     <>
-                    <Link to={`/write_news?edit=2`} state={post}>
+                    <Link to={`/write_news?edit=2`} state={nyhet}>
                     <img className="w-10 h-10 cursor-pointer" src={editicon} alt="" />
                     </Link>
                     <img onClick={handleDelete} className="w-10 h-10 cursor-pointer" src={deleteicon} alt="" />
@@ -106,8 +106,8 @@ const Single_News = () => {
                     )}
                 </div>
             </div>
-            <h1 className='flex items-center justify-center mt-20 font-bold capitalize text-3xl'>{post.title}</h1>
-            <p className='text-black flex items-center justify-center mt-10 px-10' dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(post.desc),}}></p>
+            <h1 className='flex items-center justify-center mt-20 font-bold capitalize text-3xl'>{nyhet.title}</h1>
+            <p className='text-black flex items-center justify-center mt-10 px-10' dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(nyhet.desc),}}></p>
         </div>
         </div>
         <div className="col-span-10 md:col-span-3 bg-white-200">

@@ -34,13 +34,13 @@ import DOMPurify from 'dompurify';
 
 const Home = () => {
 
-  const [posts, setPosts] = useState([]);
+  const [nyheter, setNyheter] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`http://localhost:8800/api/posts/`);
-        setPosts(res.data);
+        const res = await axios.get(`http://localhost:8800/api/nyheter/`);
+        setNyheter(res.data);
       } catch (err) {
         console.log(err);
       }
@@ -66,15 +66,15 @@ const Home = () => {
         <div className="grid grid-cols-10 gap-4">
           <div className="col-span-10 md:col-span-7 bg-white-200 px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {posts.map((posts,index) => (
-                <Link to={`/nyheter/${posts.id}`}>
-                <div key={posts.id}>
+            {nyheter.map((nyheter,index) => (
+                <Link to={`/nyheter/${nyheter.id}`}>
+                <div key={nyheter.id}>
                 <Card className="max-w-sm mt-10" href="#">
-                <img className="object-cover h-48 w-96" src={`../upload/${posts.img}`} alt="" />
+                <img className="object-cover h-48 w-96" src={`../upload/${nyheter.img}`} alt="" />
                 <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                <p className='line-clamp-3'>{posts.title}</p>
+                <p className='line-clamp-3'>{nyheter.title}</p>
                 </h5>
-                <p className="line-clamp-3 font-normal text-gray-700 dark:text-gray-400"  dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(posts.desc),}}></p>
+                <p className="line-clamp-3 font-normal text-gray-700 dark:text-gray-400"  dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(nyheter.desc),}}></p>
                 <Button gradientDuoTone='redToYellow' outline className="flex"><h2>Les mer</h2></Button>
                 </Card>
                 </div>

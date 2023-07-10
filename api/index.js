@@ -4,7 +4,7 @@ import multer from "multer";
 import cookieParser from "cookie-parser";
 import authRoutes from './routes/auth.js'
 import userRoutes from './routes/users.js'
-import postRoutes from './routes/posts.js'
+import nyheterRoutes from './routes/nyheter.js'
 
 const app = express()
 
@@ -17,7 +17,7 @@ app.use(cookieParser());
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, '../client/upload');
+      cb(null, '../client/upload/Nyheter/Nyheter_Bilder');
     },
     filename: function (req, file, cb) {
       cb(null, Date.now() + file.originalname);
@@ -26,7 +26,7 @@ const storage = multer.diskStorage({
   
   const upload = multer({ storage });
   
-  app.post('/api/upload', upload.single('file'), function (req, res) {
+  app.post('/api/upload_nyhetbilde', upload.single('file'), function (req, res) {
     const file = req.file;
     res.status(200).json(file.filename);
   });
@@ -34,7 +34,7 @@ const storage = multer.diskStorage({
 
 app.use("/api/auth", authRoutes)
 app.use("/api/users", userRoutes)
-app.use("/api/posts", postRoutes)
+app.use("/api/nyheter", nyheterRoutes)
 
 app.listen(8800,()=>{
     console.log("Connected!")
