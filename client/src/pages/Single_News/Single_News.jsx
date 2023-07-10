@@ -85,7 +85,7 @@ const Single_News = () => {
             <div className='content'>
                 <img 
                 className='w-100 h-auto mt-4 px-4'
-                src={nyhet.img && `http://localhost:5173/upload/${nyhet.img}`} 
+                src={nyhet.img && `http://localhost:5173/upload/Nyheter/Nyheter_Bilder/${nyhet.img}`} 
                 alt="" 
                 />
             </div>
