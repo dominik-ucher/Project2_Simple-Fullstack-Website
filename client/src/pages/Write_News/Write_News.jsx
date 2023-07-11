@@ -25,7 +25,7 @@ const Write_News = () => {
         const formData = new FormData();
         formData.append("file", file);
         const res = await axios.post("http://localhost:8800/api/upload_nyhetbilde", formData);
-        return res.data;
+        return res.data; // RETURNERER NULL SOM VERDI?
         } catch (err) {
         console.log(err);
         }
@@ -33,14 +33,14 @@ const Write_News = () => {
 
     const handleClick = async (e) => {
         e.preventDefault();
-        const imgUrl = await upload();
+        const imgUrl = await upload();        
 
         try {
         state
             ? await axios.put(`http://localhost:8800/api/nyheter/${state.id}`, {
                 title,
                 desc: value,
-                img: file ? imgUrl : "",
+                img: file ? imgUrl : "", //imgURL BLIR NULL
             },{withCredentials: true,})
             : await axios.post(`http://localhost:8800/api/nyheter/`, {
                 title,
@@ -60,7 +60,7 @@ const Write_News = () => {
             <div className="content max-w-3xl mx-auto px-4">
                     <img 
                     className='w-100 h-auto mt-4 px-4'
-                    src={file && `http://localhost:5173/upload/${file}`} 
+                    src={file && `http://localhost:5173/upload/Nyheter/Nyheter_Bilder/${file}`} 
                     alt="" 
                     />
                     <div className="mb-2 block mt-10 px-20">
