@@ -17,6 +17,7 @@ const Write_News = () => {
     const [title, setTitle] = useState(state?.title || "");
     const [value, setValue] = useState(state?.desc || "");
     const [file, setFile] = useState(null);
+    const [fileUrl, setFileUrl] = useState(null);
 
     const navigate = useNavigate()
 
@@ -33,7 +34,10 @@ const Write_News = () => {
 
     const handleClick = async (e) => {
         e.preventDefault();
-        const imgUrl = await upload();        
+        let imgUrl = null;
+        if (file) {
+            imgUrl = await upload();
+        }      
 
         try {
         state
@@ -60,7 +64,7 @@ const Write_News = () => {
             <div className="content max-w-3xl mx-auto px-4">
                     <img 
                     className='w-100 h-auto mt-4 px-4'
-                    src={file && `http://localhost:5173/upload/Nyheter/Nyheter_Bilder/${file}`} 
+                    src={fileUrl || `http://localhost:5173/upload/Nyheter/Nyheter_Bilder/${state?.img}`} 
                     alt="" 
                     />
                     <div className="mb-2 block mt-10 px-20">
@@ -72,10 +76,14 @@ const Write_News = () => {
                     <Label htmlFor="file" className='file' value="Upload picture"/>
                     </div>
                     <FileInput
-                        helperText="Upload a picture"
-                        id="file"
-                        type="file"
-                        onChange={(e) => setFile(e.target.files[0])}
+                    helperText="Upload a picture"
+                    id="file"
+                    type="file"
+                    onChange={(e) => {
+                        const selectedFile = e.target.files[0];
+                        setFile(selectedFile);
+                        setFileUrl(URL.createObjectURL(selectedFile));
+                    }}
                     />
                     <Label htmlFor="file" className='file' value={`Currently selected image: ${file ? file.name : (state?.img || '')}`} />
                     </div>
@@ -92,4 +100,4 @@ const Write_News = () => {
     )
 }
 
-export default Write_News
+export default Write_News;
