@@ -16,7 +16,7 @@ const Write_News = () => {
     const state = useLocation().state;
     const [title, setTitle] = useState(state?.title || "");
     const [value, setValue] = useState(state?.desc || "");
-    const [file, setFile] = useState(state?.img || null);
+    const [file, setFile] = useState(null);
 
     const navigate = useNavigate()
 
@@ -40,7 +40,7 @@ const Write_News = () => {
             ? await axios.put(`http://localhost:8800/api/nyheter/${state.id}`, {
                 title,
                 desc: value,
-                img: file ? imgUrl : "", //imgURL BLIR NULL
+                img: file ? imgUrl : state.img , //imgURL BLIR NULL
             },{withCredentials: true,})
             : await axios.post(`http://localhost:8800/api/nyheter/`, {
                 title,
@@ -77,6 +77,7 @@ const Write_News = () => {
                         type="file"
                         onChange={(e) => setFile(e.target.files[0])}
                     />
+                    <Label htmlFor="file" className='file' value={`Currently selected image: ${file ? file.name : (state?.img || '')}`} />
                     </div>
                     
                     <div className="editorContainer h-60 max-h-100 overflow-y-scroll mt-8">
