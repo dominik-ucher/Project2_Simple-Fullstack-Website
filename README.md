@@ -55,7 +55,7 @@
 - Change homepage image
 - Change homepage sidemenu 
 - Change Sidebar
-- Change Navbar
+<!-- - Change Navbar --> Working, but need to fix Add Link button and make nicer
 - Change Footer
 - Add, delete and edit pages
 - Add, edit and delete user

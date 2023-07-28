@@ -1,10 +1,11 @@
 'use client';
-import react, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Navbar,Dropdown, Button } from 'flowbite-react';
 import Logo from '../../img/logo.png'
 import './Navbar.css'
 import { AuthContext } from '../../context/authContext';
 import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios'
 
 export default function DefaultNavbar() {
 
@@ -15,6 +16,20 @@ export default function DefaultNavbar() {
     logout();
     navigate('/');
   };
+
+  const [links, setLinks] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get(`http://localhost:8800/api/navbar/`);
+        setLinks(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
     <Navbar
@@ -33,11 +48,9 @@ export default function DefaultNavbar() {
       </Navbar.Brand>
       <Navbar.Toggle />
       <Navbar.Collapse className='z-20 navbar-link px-10'>
-        <Link className="text-md" to="/">Home</Link>
-        <Link className="text-md" to ="">About</Link>
-        <Link className="text-md" to ="/contact">Contact</Link>
-        <Link className="text-md" to ="/side/1">Side 1</Link>
-        <Link className="text-md" to ="/nyheter/1">Nyhet 1</Link>
+        {links.map((link, index)=> (
+          <Link key={link.id} className='text-md' to={link.link}>{link.name}</Link>
+        ))}
         {currentUser && <Link to="/admin">Admin Side</Link>}
         {currentUser && <span className='font-bold underline text-md'>Welcome {currentUser.username}</span>}
         {currentUser && <Button color="warning" pill onClick={handleLogout}>Logout</Button>}
