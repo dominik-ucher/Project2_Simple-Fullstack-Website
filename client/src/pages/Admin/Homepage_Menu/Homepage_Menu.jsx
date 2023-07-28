@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 const Homepage_Menu = () => {
   const { currentUser } = useContext(AuthContext);
   const [pics, setPics] = useState([]);
-  const [editingIndex, setEditingIndex] = useState(null);
+  const [editingIndex, setEditingIndex] = useState(-1); // Initialize to -1
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -45,7 +45,7 @@ const Homepage_Menu = () => {
         { img, link },
         { withCredentials: true }
       );
-      setEditingIndex(null); // Done editing, reset the editingIndex state
+      setEditingIndex(-1); // Done editing, reset the editingIndex state
       fetchData();
     } catch (err) {
       console.log(err);

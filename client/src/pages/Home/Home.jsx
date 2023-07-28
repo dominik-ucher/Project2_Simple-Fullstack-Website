@@ -35,12 +35,25 @@ import DOMPurify from 'dompurify';
 const Home = () => {
 
   const [nyheter, setNyheter] = useState([]);
+  const [menu, setMenu] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const res = await axios.get(`http://localhost:8800/api/nyheter/`);
         setNyheter(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get(`http://localhost:8800/api/homepage_menu/`);
+        setMenu(res.data);
       } catch (err) {
         console.log(err);
       }
@@ -82,24 +95,6 @@ const Home = () => {
             ))};
 
               </div>
-            {/* Left Column */}
-            {/* {posts.map((post, index) => ( */}
-              {/* <div key={post.id} className={`border-solid border-2 border-gray-800 bg-emerald-300 rounded-lg p-4 mt-5 flex items-center justify-between ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'} `}> */}
-                {/* First iteration - Image on the right, text on the left */}
-                {/* <div className="w-1/2"> */}
-                  {/* Image content */}
-                  {/* <div className='mr-4 px-4 p-4 object-center'> */}
-                    {/* <img src={post.img} alt="" className='object-cover w-full rounded-md' /> */}
-                  {/* </div> */}
-                {/* </div> */}
-                {/* <div className=" w-1/2"> */}
-                  {/* Text content */}
-                  {/* <h1 className='text-lg underline decoration-1 line-clamp-3 font-bold'>{post.title}</h1> */}
-                  {/* <h2 className='max-w-full flex-grow line-clamp-6' style={{ height: '100%' }}>{post.desc}</h2> */}
-                  {/* <div className='mt-5 flex items-end justify-end'><Button gradientDuoTone='redToYellow' outline className="flex"><h2>Les mer</h2></Button></div> */}
-                {/* </div> */}
-              {/* </div> */}
-            {/* ))}; */}
           </div>
           <div className="col-span-10 md:col-span-3 bg-white-300">
             {/* Right Column */}
@@ -118,25 +113,18 @@ const Home = () => {
                   <h1 className="text-xl font-bold justify-center flex items-center">Nyttig Informasjon</h1>
                 </div>
                 {/* Third Row */}
+                {/* Content for the third row */}
                 <div className="col-span-2">
-                  {/* Content for the third row */}
-                  <Link to="/news">
+                {menu.map((menu,index) => (
+                  <Link to={menu.link}>
                   <img
-                    className="object-cover rounded-lg"
-                    src="https://scontent.fosl3-2.fna.fbcdn.net/v/t39.30808-6/342891160_127035133686987_4188360982766614032_n.jpg?_nc_cat=104&cb=99be929b-3346023f&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=1p9q7BNAOtIAX9_8LOq&_nc_ht=scontent.fosl3-2.fna&oh=00_AfB_YN1eMWEmd-kCIspubdMku2xSN17IVSljBfbT7AKfxQ&oe=64AA1AE7"
+                    className="object-cover rounded-lg mt-4"
+                    src={`http://localhost:5173/upload/HomepageMenu_Bilder/${menu.img}`}
                     alt="image description" />
                   </Link>
+                ))}
                 </div>
-                {/* Fourth Row */}
-                <div className="col-span-2">
-                  {/* Content for the Fourth row */}
-                  <img
-                    className="object-cover rounded-lg"
-                    src="https://scontent.fosl3-2.fna.fbcdn.net/v/t39.30808-6/342891160_127035133686987_4188360982766614032_n.jpg?_nc_cat=104&cb=99be929b-3346023f&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=1p9q7BNAOtIAX9_8LOq&_nc_ht=scontent.fosl3-2.fna&oh=00_AfB_YN1eMWEmd-kCIspubdMku2xSN17IVSljBfbT7AKfxQ&oe=64AA1AE7"
-                    alt="image description" />
-                </div>
-                {/* Additional Rows */}
-                {/* Add more div elements with the desired content for additional rows */}
+                
               </div>
             </div>
           </div>
