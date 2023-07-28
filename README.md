@@ -58,7 +58,7 @@
 <!-- - Change Navbar --> Working, but need to fix Add Link button and make nicer
 - Change Footer
 - Add, delete and edit pages
-- Add, edit and delete user
+<!-- - Add, edit and delete user --> Working, just make nicer
 - Add Sponsors
 - Add "Varsler"
 - Make it safer

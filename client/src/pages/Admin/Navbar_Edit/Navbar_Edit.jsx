@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { AuthContext } from '../../context/authContext';
+import { AuthContext } from '../../../context/authContext';
 import { Card } from 'flowbite-react';
 import { Link } from 'react-router-dom';
 

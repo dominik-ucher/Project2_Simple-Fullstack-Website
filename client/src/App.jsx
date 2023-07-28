@@ -17,7 +17,8 @@ import Unauthorized_401 from './pages/Error/Unauthorized_401';
 import NotFoundPage_404 from './pages/Error/NotFoundPage_404';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
-import Navbar_Edit from "./pages/Navbar_Edit/Navbar_Edit";
+import Navbar_Edit from "./pages/Admin/Navbar_Edit/Navbar_Edit";
+import User_Edit from "./pages/Admin/User_Edit/User_Edit";
 
 const Layout = () =>{
   return (
@@ -79,6 +80,10 @@ const router = createBrowserRouter([
       {
         path: "/navbar_edit",
         element:<Navbar_Edit />
+      },
+      {
+        path: "/user_edit",
+        element: <User_Edit />
       }
     ]
   },
