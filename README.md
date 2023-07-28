@@ -49,6 +49,7 @@
         IX. yarn add dompurify (IN CLIENT)
         X. yarn add multer
         XI. yarn add js-cookie (IN CLIENT)
+        XII. yarn add react-dropzone (IN CLIENT)
         
 
 # Whats Mising
@@ -63,3 +64,4 @@
 - Add "Varsler"
 - Make it safer
 - Edit Contact page
+- Teknisk Gjeld

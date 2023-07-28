@@ -2,11 +2,19 @@ import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../../../context/authContext';
 import { Card } from 'flowbite-react';
+import { useNavigate } from 'react-router-dom'
 
 const User_Edit = () => {
   const { currentUser } = useContext(AuthContext);
   const [users, setUsers] = useState([]);
   const [editedUsers, setEditedUsers] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!currentUser) {
+      navigate('/unauthorized_401');
+    }
+  }, [currentUser, navigate]);
 
   useEffect(() => {
     const fetchData = async () => {

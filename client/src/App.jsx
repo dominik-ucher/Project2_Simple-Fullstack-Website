@@ -19,6 +19,7 @@ import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import Navbar_Edit from "./pages/Admin/Navbar_Edit/Navbar_Edit";
 import User_Edit from "./pages/Admin/User_Edit/User_Edit";
+import Homepage_Menu from "./pages/Admin/Homepage_Menu/Homepage_Menu";
 
 const Layout = () =>{
   return (
@@ -84,6 +85,10 @@ const router = createBrowserRouter([
       {
         path: "/user_edit",
         element: <User_Edit />
+      },
+      {
+        path: "/homepagemenu_edit",
+        element: <Homepage_Menu />
       }
     ]
   },
