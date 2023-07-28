@@ -54,7 +54,7 @@
 
 # Whats Mising
 - Change homepage image
-- Change homepage sidemenu 
+<!-- - Change homepage sidemenu  --> Working, but fix bug that you cant edit the first row and make nicer
 - Change Sidebar
 <!-- - Change Navbar --> Working, but need to fix Add Link button and make nicer
 - Change Footer
