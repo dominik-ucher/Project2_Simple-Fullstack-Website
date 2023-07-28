@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import authRoutes from './routes/auth.js'
 import userRoutes from './routes/users.js'
 import nyheterRoutes from './routes/nyheter.js'
+import navbarRoutes from './routes/navbar.js'
 
 const app = express()
 
@@ -35,6 +36,7 @@ const storage = multer.diskStorage({
 app.use("/api/auth", authRoutes)
 app.use("/api/users", userRoutes)
 app.use("/api/nyheter", nyheterRoutes)
+app.use("/api/navbar", navbarRoutes)
 
 app.listen(8800,()=>{
     console.log("Connected!")

@@ -50,3 +50,16 @@
         X. yarn add multer
         XI. yarn add js-cookie (IN CLIENT)
         
+
+# Whats Mising
+- Change homepage image
+- Change homepage sidemenu 
+- Change Sidebar
+- Change Navbar
+- Change Footer
+- Add, delete and edit pages
+- Add, edit and delete user
+- Add Sponsors
+- Add "Varsler"
+- Make it safer
+- Edit Contact page
