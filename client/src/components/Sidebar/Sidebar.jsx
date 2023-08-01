@@ -59,10 +59,12 @@ const SidebarComponent = () => {
       .map((menu) => (
         <div key={menu.id} className="pl-4">
           <div
-            className="flex items-center gap-4 cursor-pointer hover:bg-gray-100"
+            className={`flex items-center gap-4 cursor-pointer hover:bg-gray-100 rounded-lg ${
+              level === 0 ? 'text-xl font-bold' : 'text-lg'
+            }`}
             onClick={() => toggleDropdown(menu.id)}
           >
-            <span>{`${'-'.repeat(level)} ${menu.name}`}</span>
+            <span>{menu.name}</span>
             {dropdownOpen[menu.id] ? (
               <BiChevronUp className="text-gray-500" />
             ) : (
@@ -93,12 +95,12 @@ const SidebarComponent = () => {
   };
 
   return (
-    <div className="sidebar bg-gray-200 p-4">
-      <div className="flex flex-col items-center justify-center h-screen">
-        <h1 className="text-center mt-8 text-2xl font-bold">Sidebar Menu</h1>
+    <div className="sidebar bg-gray-200 gap-5 mt-5 rounded-lg justify-center">
+      <div className="flex flex-col items-center h-screen">
+        <h1 className="text-center mt-10 text-3xl font-bold">Sidebar Menu</h1>
 
         {/* List of Menus */}
-        <div className="mt-5">{renderMenuItems(sidebarMenus)}</div>
+        <div className="mt-10 text-lg">{renderMenuItems(sidebarMenus)}</div>
       </div>
     </div>
   );
