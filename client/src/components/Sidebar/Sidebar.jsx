@@ -59,7 +59,7 @@ const SidebarComponent = () => {
       .map((menu) => (
         <div key={menu.id} className="pl-4">
           <div
-            className={`flex items-center gap-4 cursor-pointer hover:bg-gray-100 rounded-lg ${
+            className={`flex items-center gap-4 mt-2 cursor-pointer hover:bg-gray-100 rounded-lg ${
               level === 0 ? 'text-xl font-bold' : 'text-lg'
             }`}
             onClick={() => toggleDropdown(menu.id)}
@@ -71,9 +71,10 @@ const SidebarComponent = () => {
               <BiChevronDown className="text-gray-500" />
             )}
           </div>
-          {/* Render pages under the menu */}
+          {/* Render submenus inside the main menu dropdown */}
           {dropdownOpen[menu.id] && (
             <div className="pl-8">
+              {renderMenuItems(menus, menu.id, level + 1)}
               {pages
                 .filter((page) => page.sidebar_id === menu.id)
                 .map((page) => (
@@ -89,7 +90,6 @@ const SidebarComponent = () => {
                 ))}
             </div>
           )}
-          {renderMenuItems(menus, menu.id, level + 1)}
         </div>
       ));
   };
