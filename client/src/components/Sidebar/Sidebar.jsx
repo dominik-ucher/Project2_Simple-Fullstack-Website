@@ -60,11 +60,11 @@ const SidebarComponent = () => {
         <div key={menu.id} className="pl-4">
           <div
             className={`flex items-center gap-4 mt-2 p-2 cursor-pointer hover:bg-gray-100 rounded-lg ${
-              level === 0 ? 'text-xl font-bold' : 'text-lg'
+              level === 0 ? 'text-xl font-bold' : 'text-base'
             }`}
             onClick={() => toggleDropdown(menu.id)}
           >
-            <span>{menu.name}</span>
+            <span className="text-base">{menu.name}</span>
             {dropdownOpen[menu.id] ? (
               <BiChevronUp className="text-gray-500" />
             ) : (
@@ -80,7 +80,7 @@ const SidebarComponent = () => {
                 .map((page) => (
                   <div
                     key={page.id}
-                    className={`pl-2 mt-2 cursor-pointer ${
+                    className={`pl-2 mt-2 cursor-pointer text-base ${
                       location.pathname.includes(`/side/${page.id}`) ? 'font-bold' : ''
                     }`}
                     onClick={() => navigate(`/side/${page.id}`)}
@@ -95,8 +95,8 @@ const SidebarComponent = () => {
   };
 
   return (
-    <div className="sidebar bg-gray-200 gap-5 mt-5 rounded-lg justify-center ">
-      <div className="flex flex-col items-center h-screen">
+    <div className="sidebar bg-gray-200 gap-5 mt-5 rounded-lg justify-center min-h-screen overflow-y-auto pb-10">
+      <div className="flex flex-col items-center">
         <h1 className="text-center mt-10 text-3xl font-bold">Sidebar Menu</h1>
 
         {/* List of Menus */}
