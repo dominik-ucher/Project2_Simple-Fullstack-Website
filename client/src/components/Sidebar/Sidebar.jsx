@@ -1,113 +1,70 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import axios from 'axios';
 import './Sidebar.css';
+import { useNavigate } from 'react-router-dom';
 
 const SidebarComponent = () => {
-  const [dropdowns, setDropdowns] = useState([
-    {
-      id: 1,
-      label: 'E-commerce',
-      isOpen: false,
-      submenus: [
-        { id: 11, label: 'Products', isOpen: false, submenus: ['Product 1', 'Product 2'] },
-        { id: 12, label: 'Sales', isOpen: false, submenus: ['Sale 1', 'Sale 2'] },
-      ],
-    },
-    {
-      id: 2,
-      label: 'Settings',
-      isOpen: false,
-      submenus: [
-        { id: 21, label: 'General', isOpen: false, submenus: ['Setting 1', 'Setting 2'] },
-        { id: 22, label: 'Security', isOpen: false, submenus: ['Security 1', 'Security 2'] },
-        { id: 23, label: 'Notifications', isOpen: false, submenus: ['Notification 1', 'Notification 2'] },
-      ],
-    },
-    {
-      id: 3,
-      label: 'Reports',
-      isOpen: false,
-      submenus: [
-        { id: 31, label: 'Sales Report', isOpen: false, submenus: ['Report 1', 'Report 2'] },
-        { id: 32, label: 'Inventory Report', isOpen: false, submenus: ['Report 3', 'Report 4'] },
-      ],
-    },
-  ]);
+  const navigate = useNavigate();
+  const [sidebarMenus, setSidebarMenus] = useState([]);
+  const [pages, setPages] = useState([]);
 
-  const toggleDropdown = (parentId, submenuId) => {
-    setDropdowns((prevDropdowns) =>
-      prevDropdowns.map((parentDropdown) => {
-        if (parentDropdown.id === parentId) {
-          return {
-            ...parentDropdown,
-            isOpen: submenuId === null ? !parentDropdown.isOpen : parentDropdown.isOpen,
-            submenus: parentDropdown.submenus.map((submenu) =>
-              submenu.id === submenuId ? { ...submenu, isOpen: !submenu.isOpen } : { ...submenu, isOpen: false }
-            ),
-          };
-        } else {
-          return {
-            ...parentDropdown,
-            isOpen: false,
-            submenus: parentDropdown.submenus.map((submenu) => ({ ...submenu, isOpen: false })),
-          };
-        }
+  useEffect(() => {
+    // Fetch the sidebar menu items from the backend
+    axios
+      .get('http://localhost:8800/api/sidebar/menus')
+      .then((response) => {
+        setSidebarMenus(response.data);
       })
-    );
+      .catch((error) => {
+        console.error('Error fetching sidebar menu items:', error);
+      });
+  }, []);
+
+  useEffect(() => {
+    // Fetch all pages
+    axios
+      .get('http://localhost:8800/api/sider/')
+      .then((response) => {
+        setPages(response.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching pages', error);
+      });
+  }, [])
+
+  const renderMenuItems = (menus, parentId = null, level = 0) => {
+    return menus
+      .filter((menu) => menu.parent_id === parentId)
+      .map((menu) => (
+        <div key={menu.id} className="pl-4">
+          <div className="flex items-center gap-4">
+            <span>{`${'-'.repeat(level)} ${menu.name}`}</span>
+          </div>
+          {/* Render pages under the menu */}
+          <div className="pl-8">
+            {pages
+              .filter((page) => page.sidebar_id === menu.id)
+              .map((page) => (
+                <div key={page.id} className="pl-2">
+                  <span onClick={() => navigate(`/side/${page.id}`)} className="cursor-pointer">
+                    {page.title}
+                  </span>
+                </div>
+              ))}
+          </div>
+          {renderMenuItems(menus, menu.id, level + 1)}
+        </div>
+      ));
   };
 
   return (
     <div className='sidebar'>
-      <div className='sidebar-header'>
-        <h3>Dashboard</h3>
-      </div>
-      <div className='sidebar-menu'>
-        <div className='sidebar-item'>
-          <p>Dashboard</p>
-        </div>
-        {dropdowns.map((parentDropdown) => (
-          <div key={parentDropdown.id}>
-            <div
-              className={`sidebar-item ${parentDropdown.isOpen ? 'active' : ''}`}
-              onClick={() => toggleDropdown(parentDropdown.id, null)}
-            >
-              <div className="arrow-container">
-                <p>{parentDropdown.label}</p>
-                <i className={`arrow ${parentDropdown.isOpen ? 'up' : 'down'}`}></i>
-                <div className={`arrow-right ${parentDropdown.isOpen ? 'visible' : ''}`}></div>
-              </div>
-            </div>
-            {parentDropdown.isOpen && (
-              <div className='dropdown-menu'>
-                {parentDropdown.submenus.map((submenu) => (
-                  <div key={submenu.id}>
-                    <div
-                      className={`submenu-item ${submenu.isOpen ? 'active' : ''}`}
-                      onClick={() => toggleDropdown(parentDropdown.id, submenu.id)}
-                    >
-                      <p>{submenu.label}</p>
-                      <i className={`arrow ${submenu.isOpen ? 'up' : 'down'}`}></i>
-                      <div className={`arrow-right ${submenu.isOpen ? 'visible' : ''}`}></div>
-                    </div>
-                    {submenu.isOpen && (
-                      <div className='sub-submenu'>
-                        {submenu.submenus.map((subSubmenu) => (
-                          <div className='sub-submenu-item' key={subSubmenu}>
-                            <p>{subSubmenu}</p>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-        ))}
-        <div className='sidebar-item'>
-          <p>Products</p>
-        </div>
-        <div className='sidebar-item'>
-          <p>Sales</p>
+      <div className="flex flex-col items-center justify-center h-screen">
+        <h1 className="text-center mt-8 text-2xl font-bold">Sidebar Menu</h1>
+
+        {/* List of Menus */}
+        <div className="mt-5">
+          {renderMenuItems(sidebarMenus)}
         </div>
       </div>
     </div>
