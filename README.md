@@ -55,10 +55,10 @@
 # Whats Mising
 - Change homepage image
 <!-- - Change homepage sidemenu  --> Working, but fix bug that you cant edit the first row and make nicer
-- Change Sidebar
+<!-- - Change Sidebar -->
 <!-- - Change Navbar --> Working, but need to fix Add Link button and make nicer
 - Change Footer
-- Add, delete and edit pages
+<!-- - Add, delete and edit pages -->
 <!-- - Add, edit and delete user --> Working, just make nicer
 - Add Sponsors
 - Add "Varsler"

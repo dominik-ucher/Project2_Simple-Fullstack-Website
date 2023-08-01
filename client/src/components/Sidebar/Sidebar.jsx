@@ -3,6 +3,8 @@ import axios from 'axios';
 import { BiChevronDown, BiChevronUp } from 'react-icons/bi';
 import './Sidebar.css';
 import { useNavigate, useLocation } from 'react-router-dom';
+import menuicon from '../../img/menu.png';
+import articleicon from '../../img/article.png';
 
 const SidebarComponent = () => {
   const navigate = useNavigate();
@@ -64,6 +66,7 @@ const SidebarComponent = () => {
             }`}
             onClick={() => toggleDropdown(menu.id)}
           >
+            <img src={menuicon} alt="Menu Icon" className="w-5 h-5" />
             <span className="text-base">{menu.name}</span>
             {dropdownOpen[menu.id] ? (
               <BiChevronUp className="text-gray-500" />
@@ -80,12 +83,13 @@ const SidebarComponent = () => {
                 .map((page) => (
                   <div
                     key={page.id}
-                    className={`pl-2 mt-2 cursor-pointer text-base ${
+                    className={`flex items-center gap-2 pl-2 mt-2 cursor-pointer text-base ${
                       location.pathname.includes(`/side/${page.id}`) ? 'font-bold' : ''
                     }`}
                     onClick={() => navigate(`/side/${page.id}`)}
                   >
-                    {page.title}
+                    <img src={articleicon} alt="Article Icon" className="w-5 h-5" />
+                    <span>{page.title}</span>
                   </div>
                 ))}
             </div>
@@ -97,7 +101,7 @@ const SidebarComponent = () => {
   return (
     <div className="sidebar bg-gray-200 gap-5 mt-5 rounded-lg justify-center min-h-screen overflow-y-auto pb-10">
       <div className="flex flex-col items-center">
-        <h1 className="text-center mt-10 text-3xl font-bold">Sidebar Menu</h1>
+        <h1 className="text-center mt-10 text-3xl font-bold">Meny</h1>
 
         {/* List of Menus */}
         <div className="mt-10 text-lg w-full px-5">{renderMenuItems(sidebarMenus)}</div>
