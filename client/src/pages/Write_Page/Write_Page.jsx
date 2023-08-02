@@ -70,7 +70,7 @@ const Write_Page = () => {
             },
             { withCredentials: true }
           );
-      // navigate('/');
+      navigate('/');
     } catch (err) {
       console.log(err);
     }

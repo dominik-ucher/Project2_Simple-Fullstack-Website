@@ -80,7 +80,7 @@ const Sidebar_Menu = () => {
         <div key={menu.id} className="pl-4">
           <div className="flex items-center gap-4">
             <span>{`${'-'.repeat(level)} ${menu.name}`}</span>
-            <button onClick={() => handleDeleteMenu(menu.id)}>Delete</button>
+            <Button className="mt-4" size="xs" color="failure" onClick={() => handleDeleteMenu(menu.id)}>Delete</Button>
           </div>
           {renderMenuItems(menus, menu.id, level + 1)}
         </div>
@@ -88,7 +88,7 @@ const Sidebar_Menu = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
+    <div className="flex flex-col items-center justify-center h-screen pb-10 mt-20">
       <h1 className="text-center mt-8 text-2xl font-bold">Sidebar Menu</h1>
 
       {/* List of Menus */}
