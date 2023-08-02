@@ -69,6 +69,7 @@ const Sponsor_Edit = () => {
           link: '',
           type: 'Hoved',
         });
+        window.location.reload();
       })
       .catch(error => console.error(error));
   };

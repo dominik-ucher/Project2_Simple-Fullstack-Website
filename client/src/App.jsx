@@ -22,6 +22,7 @@ import User_Edit from "./pages/Admin/User_Edit/User_Edit";
 import Homepage_Menu from "./pages/Admin/Homepage_Menu/Homepage_Menu";
 import Sidebar_Menu from "./pages/Admin/Sidebar_Menu/Sidebar_Menu";
 import Sponsor_Edit from "./pages/Admin/Sponsor_Edit/Sponsor_Edit";
+import Sponsor from "./pages/Sponsor/Sponsor";
 
 const Layout = () =>{
   return (
@@ -99,6 +100,10 @@ const router = createBrowserRouter([
       {
         path: "/sponsor_edit",
         element: <Sponsor_Edit />
+      },
+      {
+        path: "/sponsorer",
+        element: <Sponsor />
       }
     ]
   },

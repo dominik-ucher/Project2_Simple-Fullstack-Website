@@ -60,7 +60,7 @@
 - Change Footer
 <!-- - Add, delete and edit pages -->
 <!-- - Add, edit and delete user --> Working, just make nicer
-- Add Sponsors
+<!-- - Add Sponsors -->
 - Add "Varsler"
 - Make it safer
 - Edit Contact page
