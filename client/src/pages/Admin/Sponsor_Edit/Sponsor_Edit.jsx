@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../../../context/authContext';
 import { useNavigate } from 'react-router-dom';
-import { Button, FileInput, Label, Select, TextInput } from 'flowbite-react';
+import { Button, FileInput, Label, Select, Table, TextInput } from 'flowbite-react';
 
 const Sponsor_Edit = () => {
   const { currentUser } = useContext(AuthContext);
@@ -84,31 +84,30 @@ const Sponsor_Edit = () => {
   return (
     <div className='flex flex-col items-center'>
       <h1 className='text-3xl font-bold mt-5'>Sponsor Management</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>Image</th>
-            <th>Link</th>
-            <th>Type</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
+      <Table className='mt-10'>
+        <Table.Head>
+          <Table.HeadCell>Image</Table.HeadCell>
+          <Table.HeadCell>Link</Table.HeadCell>
+          <Table.HeadCell>Type</Table.HeadCell>
+          <Table.HeadCell>Actions</Table.HeadCell>
+        </Table.Head>
+        <Table.Body>
           {sponsors.map(sponsor => (
-            <tr key={sponsor.id}>
-              <td><img src={`http://localhost:5173/upload/Sponsor_Bilder/${sponsor.img}`} alt="Sponsor" /></td>
-              <td><a href={sponsor.link} target="_blank" rel="noopener noreferrer">{sponsor.link}</a></td>
-              <td>{sponsor.type}</td>
-              <td>
-                <button>Edit</button>
-                <button onClick={() => handleDelete(sponsor.id)}>Delete</button>
-              </td>
-            </tr>
+            <Table.Row key={sponsor.id}>
+              <Table.Cell><img src={`http://localhost:5173/upload/Sponsor_Bilder/${sponsor.img}`} alt="Sponsor"  className="max-w-[250px] max-h-[250px]"/></Table.Cell>
+              <Table.Cell><a href={sponsor.link} target="_blank" rel="noopener noreferrer">{sponsor.link}</a></Table.Cell>
+              <Table.Cell>{sponsor.type}</Table.Cell>
+              <Table.Cell>
+                <Button color="failure" size="xs" onClick={() => handleDelete(sponsor.id)}>Delete</Button>
+              </Table.Cell>
+            </Table.Row>
           ))}
-        </tbody>
-      </table>
+        </Table.Body>
+      </Table>
 
-      <h2>Add New Sponsor</h2>
+      <h2 className='font-bold text-3xl mt-5'>Add New Sponsor</h2>
+
+      <div className="max-w mt-5 flex items-center jusitfy-center space-x-4" id="addSponsor">
 
       <div className="max-w-md mt-5" id="fileUpload">
       <div className="mb-2 block">
@@ -152,8 +151,10 @@ const Sponsor_Edit = () => {
       </Select>
     </div>
 
-      <Button className="mt-4" color="dark" onClick={handleAddSponsor}>Add Sponsor</Button>
+      <Button className="mt-12" color="dark" onClick={handleAddSponsor}>Add Sponsor</Button>
+      </div>
     </div>
+    
   );
 };
 
