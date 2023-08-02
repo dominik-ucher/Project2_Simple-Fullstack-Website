@@ -10,6 +10,7 @@ import homepagemenuRoutes from './routes/homepage_menu.js'
 import sideRoutes from './routes/sider.js'
 import sidebarRoutes from './routes/sidebar.js'
 import sponsorRoutes from './routes/sponsor.js'
+import homepagepicRoutes from './routes/homepage_pic.js'
 
 const app = express()
 
@@ -79,6 +80,20 @@ const file = req.file;
 res.status(200).json(file.filename);
 });
 
+const homepagepicStorage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, '../client/upload/Homepage_Bilder');
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + file.originalname);
+  },
+});
+const homepagepicUpload = multer({ storage: homepagepicStorage });
+app.post('/api/upload_homepagepicbilde', homepagepicUpload.single('file'), function (req, res) {
+const file = req.file;
+res.status(200).json(file.filename);
+});
+
 app.use("/api/auth", authRoutes)
 app.use("/api/users", userRoutes)
 app.use("/api/nyheter", nyheterRoutes)
@@ -87,6 +102,7 @@ app.use("/api/homepage_menu", homepagemenuRoutes)
 app.use("/api/sider", sideRoutes)
 app.use("/api/sidebar", sidebarRoutes)
 app.use("/api/sponsor", sponsorRoutes)
+app.use("/api/homepagepic", homepagepicRoutes)
 
 app.listen(8800,()=>{
     console.log("Connected!")

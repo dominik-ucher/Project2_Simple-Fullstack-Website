@@ -32,7 +32,7 @@ const Contact = () => {
             <Label htmlFor="countries" value="Select your country"/>
             </div>
             <Select id="kontakt" required >
-            <option>Leder</option><option>Sportslig Leder</option><option>Drift</option><option>Kasserer</option>
+            <option value={"leder@trondfotball.no"}>Leder</option><option value={"su@trondfotball.no"}>Sportslig Leder</option><option value={"drift@trondfotball.no"}>Drift</option><option value={"arew@trondfotball.no"}>Kasserer</option>
             </Select>
             </div>
 

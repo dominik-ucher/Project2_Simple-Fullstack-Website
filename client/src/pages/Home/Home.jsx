@@ -36,6 +36,7 @@ const Home = () => {
 
   const [nyheter, setNyheter] = useState([]);
   const [menu, setMenu] = useState([]);
+  const [mainpic, setMainpic] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -61,6 +62,18 @@ const Home = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get(`http://localhost:8800/api/homepagepic/`);
+        setMainpic(res.data[0] || { id: null, img: '' });
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, []);
+
   const getText = (html) =>{
     const doc = new DOMParser().parseFromString(html, "text/html")
     return doc.body.textContent
@@ -69,10 +82,14 @@ const Home = () => {
     return(
 
         <>
+
         <img
-        className="object-cover h-auto w-1024"
-        src="https://scontent.fosl3-2.fna.fbcdn.net/v/t39.30808-6/342891160_127035133686987_4188360982766614032_n.jpg?_nc_cat=104&cb=99be929b-3346023f&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=1p9q7BNAOtIAX9_8LOq&_nc_ht=scontent.fosl3-2.fna&oh=00_AfB_YN1eMWEmd-kCIspubdMku2xSN17IVSljBfbT7AKfxQ&oe=64AA1AE7"
-        alt="image description" /><div className="relative w-12/14 mx-auto p-4 bg-gray-800 text-white rounded-xl justify-center mt-3">
+        className="object-cover h-auto w-full"
+        key={mainpic.id}
+        src={`../upload/Homepage_Bilder/${mainpic.img}`}
+        alt="image description" />
+        <div className="relative w-12/14 mx-auto p-4 bg-gray-800 text-white rounded-xl justify-center mt-3">
+
           <p className="text-lg justify-center flex items-center">Velkommen til Idrettslaget Trond</p>
           <p className="text-ls mt-2 justify-center flex items-center">Artig-Inkluderende-Utviklende</p>
         </div>

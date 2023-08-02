@@ -51,6 +51,7 @@ const Admin = () => {
                 </p>
             </Card>
             </Link>
+            <Link to="http://localhost:5173/homepagepic_edit">
             <Card className="max-w-sm mt-5" href="#">
                 <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                 <p>Rediger Forside Bilde</p>
@@ -59,6 +60,7 @@ const Admin = () => {
                 <p>Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
                 </p>
             </Card>
+            </Link>
             <Link to="http://localhost:5173/user_edit">
             <Card className="max-w-sm mt-5" href="#">
                 <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -102,14 +104,6 @@ const Admin = () => {
                     </p>
                 </Card>
                 </Link>
-                <Card className="max-w-sm mt-5" href="#">
-                    <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    <p>Rediger Footer</p>
-                    </h5>
-                    <p className="font-normal text-gray-700 dark:text-gray-400">
-                    <p>Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                    </p>
-                </Card>
                 <Link to="http://localhost:5173/sponsor_edit">
                 <Card className="max-w-sm mt-5" href="#">
                     <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
