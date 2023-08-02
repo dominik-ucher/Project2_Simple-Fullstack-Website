@@ -9,6 +9,7 @@ import navbarRoutes from './routes/navbar.js'
 import homepagemenuRoutes from './routes/homepage_menu.js'
 import sideRoutes from './routes/sider.js'
 import sidebarRoutes from './routes/sidebar.js'
+import sponsorRoutes from './routes/sponsor.js'
 
 const app = express()
 
@@ -63,6 +64,21 @@ const file = req.file;
 res.status(200).json(file.filename);
 });
 
+
+const sponsorStorage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, '../client/upload/Sponsor_Bilder');
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + file.originalname);
+  },
+});
+const sponsorUpload = multer({ storage: sponsorStorage });
+app.post('/api/upload_sponsorbilde', sponsorUpload.single('file'), function (req, res) {
+const file = req.file;
+res.status(200).json(file.filename);
+});
+
 app.use("/api/auth", authRoutes)
 app.use("/api/users", userRoutes)
 app.use("/api/nyheter", nyheterRoutes)
@@ -70,6 +86,7 @@ app.use("/api/navbar", navbarRoutes)
 app.use("/api/homepage_menu", homepagemenuRoutes)
 app.use("/api/sider", sideRoutes)
 app.use("/api/sidebar", sidebarRoutes)
+app.use("/api/sponsor", sponsorRoutes)
 
 app.listen(8800,()=>{
     console.log("Connected!")
