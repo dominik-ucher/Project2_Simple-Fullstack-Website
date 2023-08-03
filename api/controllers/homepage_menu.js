@@ -52,12 +52,26 @@ export const deletePic = (req, res) => {
     if (err) return res.status(403).json("Token is not valid!");
 
     const picId = req.params.id;
-    const q = "DELETE FROM homepagemenu WHERE `id` = ?";
 
-    db.query(q, [picId], (err, data) => {
-      if (err) return res.status(403).json("You can delete only if logged in");
+    const getImageFilenameQuery = "SELECT img FROM homepagemenu WHERE id = ?";
+    db.query(getImageFilenameQuery, [picId], (err, result) => {
+      if (err) return res.status(500).json(err);
 
-      return res.json("Page has been deleted!");
+      const imageFilename = result[0].img;
+
+      // Delete the image file from storage
+      const imagePath = `../client/upload/Homepage_Bilder/${imageFilename}`;
+      fs.unlink(imagePath, (unlinkErr) => {
+        if (unlinkErr) console.error("Error deleting image:", unlinkErr);
+
+        // Proceed to delete the sponsor record from the database
+        const deleteQuery = "DELETE FROM homepagemenu WHERE id = ?";
+        db.query(deleteQuery, [picId], (deleteErr, data) => {
+          if (deleteErr) return res.status(403).json("You can delete only your pic!");
+
+          return res.json("Image have been deleted!");
+        });
+      });
     });
   });
 };

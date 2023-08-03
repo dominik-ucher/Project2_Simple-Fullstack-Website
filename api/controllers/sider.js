@@ -74,14 +74,26 @@ export const updateSide = (req, res) => {
     if (err) return res.status(403).json("Token is not valid!");
 
     const sideId = req.params.id;
-    const q =
-      "UPDATE sider SET `title`=?,`desc`=?,`img`=? , `sidebar_id`=? WHERE `id` = ?";
 
-    const values = [req.body.title, req.body.desc, req.body.img, req.body.sidebar_id];
-
-    db.query(q, [...values, sideId], (err, data) => {
-      if (err) return res.status(500).json(err);
-      return res.json("Sider has been updated.");
-    });
+    const getImageFilenameQuery = "SELECT img FROM sider WHERE id = ?";
+      db.query(getImageFilenameQuery, [sideId], (err, result) => {
+        if (err) return res.status(500).json(err);
+  
+        const imageFilename = result[0].img;
+  
+        // Delete the image file from storage
+        const imagePath = `../client/upload/Sider/Sider_Bilder/${imageFilename}`;
+        fs.unlink(imagePath, (unlinkErr) => {
+          if (unlinkErr) console.error("Error deleting image:", unlinkErr);
+  
+          // Proceed to delete the sponsor record from the database
+          const deleteQuery = "DELETE FROM sider WHERE id = ?";
+          db.query(deleteQuery, [sideId], (deleteErr, data) => {
+            if (deleteErr) return res.status(403).json("You can delete only your side!");
+  
+            return res.json("Side have been deleted!");
+          });
+        });
+      });
   });
 };

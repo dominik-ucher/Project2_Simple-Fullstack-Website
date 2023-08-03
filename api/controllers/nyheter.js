@@ -55,13 +55,27 @@ export const deleteNyheter = (req, res) => {
     if (err) return res.status(403).json("Token is not valid!");
 
     const nyhetId = req.params.id;
-    const q = "DELETE FROM nyheter WHERE `id` = ?";
 
-    db.query(q, [nyhetId], (err, data) => {
-      if (err) return res.status(403).json("You can delete only your news!");
-
-      return res.json("News has been deleted!");
-    });
+    const getImageFilenameQuery = "SELECT img FROM nyheter WHERE id = ?";
+      db.query(getImageFilenameQuery, [nyhetId], (err, result) => {
+        if (err) return res.status(500).json(err);
+  
+        const imageFilename = result[0].img;
+  
+        // Delete the image file from storage
+        const imagePath = `../client/upload/Nyheter/Nyheter_Bilder/${imageFilename}`;
+        fs.unlink(imagePath, (unlinkErr) => {
+          if (unlinkErr) console.error("Error deleting image:", unlinkErr);
+  
+          // Proceed to delete the sponsor record from the database
+          const deleteQuery = "DELETE FROM nyheter WHERE id = ?";
+          db.query(deleteQuery, [nyhetId], (deleteErr, data) => {
+            if (deleteErr) return res.status(403).json("You can delete only your nyhet!");
+  
+            return res.json("Nyhet have been deleted!");
+          });
+        });
+      });
   });
 };
 
