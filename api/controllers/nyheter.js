@@ -1,5 +1,6 @@
 import { db } from "../db.js";
 import jwt from "jsonwebtoken";
+import fs from "fs"
 
 export const getNyheter = (req, res) => {
   const q = "SELECT * FROM nyheter ORDER BY date DESC";

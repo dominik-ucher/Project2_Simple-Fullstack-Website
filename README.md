@@ -50,6 +50,7 @@
         X. yarn add multer
         XI. yarn add js-cookie (IN CLIENT)
         XII. yarn add react-dropzone (IN CLIENT)
+        XIII. yarn add fs
         
 
 # Whats Mising

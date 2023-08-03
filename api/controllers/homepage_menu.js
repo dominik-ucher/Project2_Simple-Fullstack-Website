@@ -1,5 +1,6 @@
 import { db } from "../db.js";
 import jwt from "jsonwebtoken";
+import fs from "fs"
 
 export const getPics = (req, res) => {
     const q = "SELECT * FROM homepagemenu";
