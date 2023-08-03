@@ -96,7 +96,7 @@ const Home = () => {
         <div className="grid grid-cols-10 gap-4">
           <div className="col-span-10 md:col-span-7 bg-white-200 px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {nyheter.map((nyheter,index) => (
+            {nyheter.slice(0,6).map((nyheter,index) => (
                 <Link to={`/nyheter/${nyheter.id}`}>
                 <div key={nyheter.id}>
                 <Card className="max-w-sm mt-10" href="#">
@@ -109,9 +109,10 @@ const Home = () => {
                 </Card>
                 </div>
                 </Link>
-            ))};
+            ))}
 
               </div>
+              <Link to={"http://localhost:5173/news/"} className='text-blue-500 hover:underline hover:cursor-pointer hover:font-semibold mt-10 flex justify-center text-xl'>For flere nyheter</Link>
           </div>
           <div className="col-span-10 md:col-span-3 bg-white-300">
             {/* Right Column */}
