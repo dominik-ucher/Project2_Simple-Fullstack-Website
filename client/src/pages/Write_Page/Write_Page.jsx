@@ -1,11 +1,12 @@
 // Write_Page.js
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Label, TextInput, FileInput, Button, Select } from 'flowbite-react';
 import 'react-quill/dist/quill.snow.css';
 import ReactQuill from 'react-quill';
 import moment from 'moment';
 import axios from 'axios';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
+import { AuthContext } from '../../context/authContext';
 
 const Write_Page = () => {
   const state = useLocation().state;
@@ -16,6 +17,13 @@ const Write_Page = () => {
   const [selectedSidebarId, setSelectedSidebarId] = useState(null);
   const [sidebarMenus, setSidebarMenus] = useState([]);
   const navigate = useNavigate();
+  const { currentUser } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (!currentUser) {
+      navigate('/unauthorized_401');
+    }
+  }, [currentUser, navigate]);
 
   useEffect(() => {
     // Fetch the sidebar menu items from the backend

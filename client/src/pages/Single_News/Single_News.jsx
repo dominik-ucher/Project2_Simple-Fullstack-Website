@@ -4,7 +4,7 @@ import deleteicon from '../../img/delete.png'
 import Logo from '../../img/logo.png'
 import { Link, useLocation, useNavigate } from "react-router-dom"
 import  Sidebar  from '../../components/Sidebar/Sidebar.jsx'
-import { Card } from 'flowbite-react';
+import { Card, Button } from 'flowbite-react';
 import axios from 'axios';
 import moment from 'moment'
 import { useContext } from 'react';
@@ -15,13 +15,23 @@ const Single_News = () => {
 
 
   const [nyhet, setNyhet] = useState({});
-
   const location = useLocation();
   const navigate = useNavigate();
-
   const nyhetId = location.pathname.split("/")[2];
-
   const { currentUser } = useContext(AuthContext);
+  const [nyheter, setNyheter] = useState([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get('http://localhost:8800/api/nyheter/');
+        setNyheter(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -48,34 +58,6 @@ const Single_News = () => {
     const doc = new DOMParser().parseFromString(html, "text/html")
     return doc.body.textContent
   }
-
-
-  const posts = [
-    {
-      id: 1,
-      title: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
-      desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. A possimus excepturi aliquid nihil cumque ipsam facere aperiam at! Ea dolorem ratione sit debitis deserunt repellendus numquam ab vel perspiciatis corporis!Lorem, ipsum dolor sit amet consectetur adipisicing elit. A possimus excepturi aliquid nihil cumque ipsam facere aperiam at! Ea dolorem ratione sit debitis deserunt repellendus numquam ab vel perspiciatis corporis!",
-      img: "https://images.pexels.com/photos/7008010/pexels-photo-7008010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    },
-    {
-      id: 2,
-      title: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
-      desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. A possimus excepturi aliquid nihil cumque ipsam facere aperiam at! Ea dolorem ratione sit debitis deserunt repellendus numquam ab vel perspiciatis corporis!",
-      img: "https://images.pexels.com/photos/6489663/pexels-photo-6489663.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    },
-    {
-      id: 3,
-      title: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
-      desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. A possimus excepturi aliquid nihil cumque ipsam facere aperiam at! Ea dolorem ratione sit debitis deserunt repellendus numquam ab vel perspiciatis corporis!",
-      img: "https://images.pexels.com/photos/4230630/pexels-photo-4230630.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    },
-    {
-      id: 4,
-      title: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
-      desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. A possimus excepturi aliquid nihil cumque ipsam facere aperiam at! Ea dolorem ratione sit debitis deserunt repellendus numquam ab vel perspiciatis corporis!",
-      img: "https://images.pexels.com/photos/6157049/pexels-photo-6157049.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    },
-  ];
 
 
     return(
@@ -111,20 +93,27 @@ const Single_News = () => {
         </div>
         </div>
         <div className="col-span-10 md:col-span-3 bg-white-200">
-                {posts.map((posts,index) => (
-                <Link to="">
-                <div key={posts.id}>
-                <Card className="max-w-sm mt-10" href="#">
-                <img className="object-cover h-48 w-96" src={posts.img} alt="" />
-                <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                <p className='line-clamp-3'>{posts.title}</p>
-                </h5>
-                <p className="line-clamp-3 font-normal text-gray-700 dark:text-gray-400">
-                <p>{posts.desc}</p>
-                </p>
-                </Card>
+          <h1 className='text-2xl flex justify-center font-bold mt-6'>Andre Nyheter</h1>
+          {nyheter.slice(0, 4).map((nyhet1, index) => (
+              <Link to={`/nyheter/${nyhet1.id}`} key={nyhet1.id}>
+                <div>
+                  <Card className="max-w-sm mt-10" href="#">
+                    <img
+                      className="object-cover h-48 w-96"
+                      src={`../upload/Nyheter/Nyheter_Bilder/${nyhet1.img}`}
+                      alt=""
+                    />
+                    <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                      <p className='line-clamp-3'>{nyhet1.title}</p>
+                    </h5>
+                    <p
+                      className="line-clamp-3 font-normal text-gray-700 dark:text-gray-400"
+                      dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(nyhet1.desc) }}
+                    ></p>
+                    <Button gradientDuoTone='redToYellow' outline className="flex"><h2>Les mer</h2></Button>
+                  </Card>
                 </div>
-                </Link>
+              </Link>
             ))}
         </div>
         </div>

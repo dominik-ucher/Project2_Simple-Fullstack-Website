@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import editicon from '../../img/edit.png'
 import deleteicon from '../../img/delete.png'
 import Logo from '../../img/logo.png'
@@ -10,6 +10,7 @@ import 'react-quill/dist/quill.snow.css'
 import ReactQuill from 'react-quill'
 import moment from 'moment'
 import axios from 'axios'
+import { AuthContext } from '../../context/authContext';
 
 const Write_News = () => {
 
@@ -18,15 +19,23 @@ const Write_News = () => {
     const [value, setValue] = useState(state?.desc || "");
     const [file, setFile] = useState(null);
     const [fileUrl, setFileUrl] = useState(null);
+    const { currentUser } = useContext(AuthContext);
 
     const navigate = useNavigate()
+
+    useEffect(() => {
+        if (!currentUser) {
+          navigate('/unauthorized_401');
+        }
+      }, [currentUser, navigate]);
+
 
     const upload = async () => {
         try {
         const formData = new FormData();
         formData.append("file", file);
         const res = await axios.post("http://localhost:8800/api/upload_nyhetbilde", formData);
-        return res.data; // RETURNERER NULL SOM VERDI?
+        return res.data; 
         } catch (err) {
         console.log(err);
         }
