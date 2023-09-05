@@ -10,17 +10,17 @@
     <!-- b. Lage CSS med en fargekode som kan brukes til alle logoer -->
 
 2. MySQL database
-    a. Lage en for Nyheter
+    <!-- a. Lage en for Nyheter
     b. Lage en for NavBar
     c. Lage en for Sider
-    d. Lage en for Sponsorer
+    d. Lage en for Sponsorer -->
 
 3. Backend Development
-    a. Koble til Register og Login med cookies og Authentication
+    <!-- a. Koble til Register og Login med cookies og Authentication
     b. Koble til Nyheter
     c. Koble til Sider
     d. Koble til Sponsorer
-    e. Koble til NavBar
+    e. Koble til NavBar -->
 
 # What has been done
 1. Frontend Development
@@ -55,15 +55,15 @@
 
 # Whats Mising
 <!-- - Change homepage image -->
-<!-- - Change homepage sidemenu  --> Working, but fix bug that you cant edit the first row and make nicer
+<!-- - Change homepage sidemenu  --> Working, but fix bug that you cant edit the first row 
 <!-- - Change Sidebar -->
-<!-- - Change Navbar --> Working, but need to fix Add Link button and make nicer
+<!-- - Change Navbar --> Working, but need to fix Add Link button 
 <!-- - Change Footer -->
 <!-- - Add, delete and edit pages -->
 <!-- - Add, edit and delete user --> 
 <!-- - Add Sponsors -->
 <!-- - Nyhet side  -->
 - Add "Varsler"
-- Make it safer
-- Edit Contact page
+<!-- - Make it safer -->
+- Contact page
 - Teknisk Gjeld

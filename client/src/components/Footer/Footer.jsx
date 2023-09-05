@@ -45,9 +45,9 @@ const FooterTemp = () => {
         <Footer.Divider />
         <Footer.Copyright
           className='copyright_1'
-          by="Dominik"
+          by="Idrettslaget Trond"
           href="#"
-          year={2022}
+          year={2024}
         />
       </div>
     </Footer>
