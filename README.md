@@ -63,7 +63,13 @@
 <!-- - Add, edit and delete user --> 
 <!-- - Add Sponsors -->
 <!-- - Nyhet side  -->
-- Add "Varsler"
 <!-- - Make it safer -->
-- Contact page
+- Add "Varsler"
 - Teknisk Gjeld
+
+- Contact page
+<!-- - Add file --> Working for sider but not yet nyheter
+- Fix URL
+- Fix Sidebar menu select order on write page
+- Make messages appear, like eror and etc.
+- New rich text editor with tables and etc.

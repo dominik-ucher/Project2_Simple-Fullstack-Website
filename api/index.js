@@ -65,6 +65,20 @@ const file = req.file;
 res.status(200).json(file.filename);
 });
 
+const siderfileStorage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, '../client/upload/Sider/Sider_Filer');
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + '__' + file.originalname);
+  },
+});
+const siderfileUpload = multer({ storage: siderfileStorage });
+app.post('/api/upload_sidefile', siderfileUpload.single('file'), function (req, res) {
+const file = req.file;
+res.status(200).json(file.filename);
+});
+
 
 const sponsorStorage = multer.diskStorage({
   destination: function (req, file, cb) {
