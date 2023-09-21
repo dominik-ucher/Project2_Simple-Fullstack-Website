@@ -97,7 +97,7 @@ const Single_News = () => {
           {nyheter.slice(0, 4).map((nyhet1, index) => (
               <Link to={`/nyheter/${nyhet1.id}`} key={nyhet1.id}>
                 <div>
-                  <Card className="max-w-sm mt-10" href="#">
+                  <Card className="max-w-sm mt-10">
                     <img
                       className="object-cover h-48 w-96"
                       src={`../upload/Nyheter/Nyheter_Bilder/${nyhet1.img}`}

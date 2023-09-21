@@ -99,7 +99,7 @@ const Home = () => {
             {nyheter.slice(0,6).map((nyheter,index) => (
                 <Link to={`/nyheter/${nyheter.id}`}>
                 <div key={nyheter.id}>
-                <Card className="max-w-sm mt-10" href="#">
+                <Card className="max-w-sm mt-10 hover:bg-gray-200">
                 <img className="object-cover h-48 w-96" src={`../upload/Nyheter/Nyheter_Bilder/${nyheter.img}`} alt="" />
                 <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                 <p className='line-clamp-3'>{nyheter.title}</p>

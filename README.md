@@ -67,7 +67,7 @@
 - Add "Varsler"
 - Teknisk Gjeld
 
-- Contact page
+<!-- - Contact page -->
 <!-- - Add file --> Working for sider but not yet nyheter
 - Fix URL
 - Fix Sidebar menu select order on write page
