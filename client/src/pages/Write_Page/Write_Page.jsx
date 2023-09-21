@@ -102,6 +102,17 @@ const Write_Page = () => {
       console.log(err);
     }
   };
+
+  const modules = {
+    toolbar: [
+      [{ 'header': '1' }, { 'header': '2' }, { 'font': [] }],
+      ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+      [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+      ['link', 'image'],
+      ['clean'],
+      ['table'], // Enable the table module
+    ],
+  };
   
 
   return (
@@ -130,7 +141,7 @@ const Write_Page = () => {
         </div>
 
         <div className='editorContainer h-60 max-h-100 overflow-y-scroll mt-8'>
-          <ReactQuill className='mt-5 px-20 h-full' theme='snow' value={value} onChange={setValue} />
+          <ReactQuill className='mt-5 px-20 h-full' theme='snow' modules={modules} value={value} onChange={setValue} />
         </div>
 
         <div className='max-w-md px-20 mt-5' id='fileUpload'>
