@@ -7,8 +7,9 @@ import moment from 'moment';
 import axios from 'axios';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { AuthContext } from '../../context/authContext';
-import 'quill-better-table/dist/quill-better-table.css'; // Import Quill Better Table CSS
-import QuillBetterTable from 'quill-better-table'; // Import Quill Better Table module
+import 'quill-better-table/dist/quill-better-table.css';
+
+
 
 const Write_Page = () => {
   const state = useLocation().state;
@@ -112,7 +113,7 @@ const Write_Page = () => {
       [{ 'list': 'ordered' }, { 'list': 'bullet' }],
       ['link', 'image'],
       ['clean'],
-      [{'table': QuillBetterTable.table}], // Enable the table module
+      ['table'], // Enable the table module
     ],
   };
   
