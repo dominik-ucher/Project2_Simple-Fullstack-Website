@@ -7,7 +7,8 @@ import moment from 'moment';
 import axios from 'axios';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { AuthContext } from '../../context/authContext';
-import 'quill-better-table/dist/quill-better-table.css';
+import 'quill-better-table/dist/quill-better-table.css'; // Import the table plugin CSS
+import 'quill-better-table'; // Import the table plugin itself
 
 
 
