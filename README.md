@@ -55,9 +55,9 @@
 
 # Whats Mising
 <!-- - Change homepage image -->
-<!-- - Change homepage sidemenu  --> Working, but fix bug that you cant edit the first row 
+<!-- - Change homepage sidemenu  --> 
 <!-- - Change Sidebar -->
-<!-- - Change Navbar --> Working, but need to fix Add Link button 
+<!-- - Change Navbar --> 
 <!-- - Change Footer -->
 <!-- - Add, delete and edit pages -->
 <!-- - Add, edit and delete user --> 

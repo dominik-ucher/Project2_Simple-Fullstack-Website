@@ -132,7 +132,7 @@ const Homepage_Menu = () => {
                 <Dropzone onDrop={onDrop} index={index} /> {/* Pass onDrop function and index to Dropzone component */}
               </td>
               <td className="border px-4 py-2">
-                {!editingIndex || editingIndex !== index ? (
+                {editingIndex !== index ? (
                   <span>{pic.link}</span>
                 ) : (
                   <input
@@ -143,7 +143,7 @@ const Homepage_Menu = () => {
                 )}
               </td>
               <td className="border px-4 py-2">
-                {!editingIndex || editingIndex !== index ? (
+                {editingIndex !== index ? (
                   <button
                     className="px-2 py-1 bg-blue-500 text-white rounded-md mr-2"
                     onClick={() => setEditingIndex(index)}
