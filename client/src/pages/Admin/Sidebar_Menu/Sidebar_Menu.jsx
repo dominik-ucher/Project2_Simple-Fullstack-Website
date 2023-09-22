@@ -88,7 +88,7 @@ const Sidebar_Menu = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen pb-10 mt-20">
+    <div className="flex flex-col items-center justify-center h-screen pb-100 mt-20">
       <h1 className="text-center mt-8 text-2xl font-bold">Sidebar Menu</h1>
 
       {/* List of Menus */}

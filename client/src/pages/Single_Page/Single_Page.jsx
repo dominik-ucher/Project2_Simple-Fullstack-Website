@@ -80,7 +80,7 @@ const Single_Page = () => {
                 </div>
             </div>
             <h1 className='flex items-center justify-center mt-20 font-bold capitalize text-3xl'>{side.title}</h1>
-            <p className='text-black flex items-center justify-center mt-10 px-10' dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(side.desc),}}></p>
+            <p className='text-black flex flex-col mt-10 px-10' dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(side.desc),}}></p>
         </div>
         <a  className='text-black flex items-center mt-10 px-10 underline' href={side.file && `http://localhost:5173/upload/Sider/Sider_Filer/${side.file}`} target="_blank" rel="noopener noreferrer">{side.file && side.file.split('__')[1]}</a>
         </div>
