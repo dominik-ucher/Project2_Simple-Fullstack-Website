@@ -64,7 +64,7 @@ const Single_News = () => {
         <div className="grid grid-cols-10 gap-4">
         <div className="col-span-10 md:col-span-7 bg-white-200">
         <div className='single'>
-            <div className='content'>
+            <div className='content flex justify-center'> {/* LA TIL FLEX OG JUSTIFY-CENTER HER. KAN BYTTES ETTERPÅ */}
                 <img 
                 className='w-100 h-auto mt-4 px-4'
                 src={nyhet.img && `http://localhost:5173/upload/Nyheter/Nyheter_Bilder/${nyhet.img}`} 
@@ -89,12 +89,12 @@ const Single_News = () => {
                 </div>
             </div>
             <h1 className='flex items-center justify-center mt-20 font-bold capitalize text-3xl'>{nyhet.title}</h1>
-            <p className='text-black flex items-center justify-center mt-10 px-10' dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(nyhet.desc),}}></p>
+            <p className='text-black flex flex-col mt-10 px-10' dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(nyhet.desc),}}></p>
         </div>
         </div>
         <div className="col-span-10 md:col-span-3 bg-white-200">
           <h1 className='text-2xl flex justify-center font-bold mt-6'>Andre Nyheter</h1>
-          {nyheter.slice(0, 4).map((nyhet1, index) => (
+          {nyheter.slice(1, 5).map((nyhet1, index) => (
               <Link to={`/nyheter/${nyhet1.id}`} key={nyhet1.id}>
                 <div>
                   <Card className="max-w-sm mt-10">
