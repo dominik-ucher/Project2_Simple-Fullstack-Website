@@ -5,7 +5,6 @@ import { AuthContext } from '../../../context/authContext';
 import { Card } from 'flowbite-react';
 import { Link } from 'react-router-dom';
 
-
 const Navbar_Edit = () => {
   const navigate = useNavigate();
   const { currentUser } = useContext(AuthContext);
@@ -25,7 +24,7 @@ const Navbar_Edit = () => {
         const res = await axios.get(`http://localhost:8800/api/navbar/`, { withCredentials: true });
         setLinks(res.data);
         // Initialize editedLinks with the same data as links initially
-        setEditedLinks([...res.data]);
+        setEditedLinks(res.data.map((link) => ({ ...link, editing: false })));
       } catch (err) {
         console.log(err);
       }
@@ -42,16 +41,23 @@ const Navbar_Edit = () => {
 
   const handleSave = async (index) => {
     try {
-      // Update the link in the MySQL database
-      await axios.put(`http://localhost:8800/api/navbar/${links[index].id}`, {
-        name: editedLinks[index].name,
-        link: editedLinks[index].link,
-      }, { withCredentials: true });
+      const linkToSave = editedLinks[index];
+
+      if (linkToSave.id) {
+        // If it's an existing link, update it in the MySQL database
+        await axios.put(`http://localhost:8800/api/navbar/${linkToSave.id}`, {
+          name: linkToSave.name,
+          link: linkToSave.link,
+        }, { withCredentials: true });
+      } else {
+        // If it's a new link, create it in the MySQL database
+        const res = await axios.post('http://localhost:8800/api/navbar/', linkToSave, { withCredentials: true });
+        linkToSave.id = res.data.id;
+      }
 
       // Update the original links state with the edited data
       const updatedLinks = [...links];
-      updatedLinks[index].name = editedLinks[index].name;
-      updatedLinks[index].link = editedLinks[index].link;
+      updatedLinks[index] = { ...linkToSave };
       setLinks(updatedLinks);
 
       // Set the editing state back to false
@@ -66,7 +72,11 @@ const Navbar_Edit = () => {
   const handleDelete = async (index) => {
     try {
       // Delete the link from the MySQL database
-      await axios.delete(`http://localhost:8800/api/navbar/${links[index].id}`, { withCredentials: true });
+      const linkToDelete = editedLinks[index];
+
+      if (linkToDelete.id) {
+        await axios.delete(`http://localhost:8800/api/navbar/${linkToDelete.id}`, { withCredentials: true });
+      }
 
       // Remove the link from the original links state
       const updatedLinks = [...links];
@@ -81,18 +91,10 @@ const Navbar_Edit = () => {
     }
   };
 
-  const handleAddLink = async () => {
-    try {
-      const newLink = { name: "", link: "" }; // You can set default values here if needed
-      const res = await axios.post('http://localhost:8800/api/navbar/', newLink, { withCredentials: true });
-
-      // After successful creation, update the state with the new link from the response
-      setLinks((prevLinks) => [...prevLinks, res.data]);
-      setEditedLinks((prevLinks) => [...prevLinks, { ...res.data, editing: true }]);
-      window.location.reload();
-    } catch (err) {
-      console.log(err);
-    }
+  const handleAddLink = () => {
+    // Create a new empty link for editing
+    const newLink = { name: "", link: "", editing: true };
+    setEditedLinks((prevLinks) => [...prevLinks, newLink]);
   };
 
   return (
@@ -168,12 +170,14 @@ const Navbar_Edit = () => {
         </tbody>
       </table>
 
+      <div className='flex justify-center'>
       <button
         className="px-2 py-1 bg-green-500 text-white rounded-md mt-4"
         onClick={handleAddLink}
       >
         Add New Link
       </button>
+      </div>
     </>
   );
 };
