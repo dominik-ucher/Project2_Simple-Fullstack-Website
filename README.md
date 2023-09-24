@@ -69,7 +69,7 @@
 
 <!-- - Contact page -->
 <!-- - Add file --> Working for sider but not yet nyheter
-- Fix URL
+<!-- - Fix URL -->
 - Fix Sidebar menu select order on write page
 - Make messages appear, like eror and etc.
 - New rich text editor with tables and etc.

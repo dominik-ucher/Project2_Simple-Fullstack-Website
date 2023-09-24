@@ -22,6 +22,13 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Check if any of the input fields are empty
+    if (!inputs.username || !inputs.email || !inputs.password) {
+      setError("Please fill in all fields.");
+      return;
+    }
+
     try {
       await axios.post("http://localhost:8800/api/auth/register", inputs);
       navigate("/login");
@@ -31,81 +38,80 @@ const Register = () => {
   };
 
   const navigate_2 = useNavigate();
-    const { currentUser } = useContext(AuthContext);
+  const { currentUser } = useContext(AuthContext);
 
-    useEffect(()=>{
-        if (!currentUser){
-            navigate('/unauthorized_401');
-        }
-    }, [currentUser, navigate_2]);
+  useEffect(() => {
+    if (!currentUser) {
+      navigate('/unauthorized_401');
+    }
+  }, [currentUser, navigate_2]);
 
-
-    return(
-      <div className="flex justify-center items-center h-screen">
-        <img className="w-auto h-40 p-5" src={Logo} alt=""/>
+  return (
+    <div className="flex justify-center items-center h-screen">
+      <img className="w-auto h-40 p-5" src={Logo} alt="" />
       <div className="bg-gray-200 p-6 rounded-md shadow-md">
-      <h2 className="flex justify-center items-center text-2xl font-bold mb-4">Register</h2>
-      <form className="flex max-w-md flex-col gap-4">
-      <div>
-        <div className="mb-2 block">
-          <Label
-            htmlFor="name2"
-            value="Your name"
-          />
-        </div>
-        <TextInput
-          id="username"
-          placeholder="Name"
-          required
-          shadow
-          type="text"
-          name = "username"
-          onChange={handleChange}
-        />
+        <h2 className="flex justify-center items-center text-2xl font-bold mb-4">Register</h2>
+        <form className="flex max-w-md flex-col gap-4">
+          <div>
+            <div className="mb-2 block">
+              <Label
+                htmlFor="name2"
+                value="Your name"
+              />
+            </div>
+            <TextInput
+              id="username"
+              placeholder="Name"
+              required
+              shadow
+              type="text"
+              name="username"
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <div className="mb-2 block">
+              <Label
+                htmlFor="email2"
+                value="Your email"
+              />
+            </div>
+            <TextInput
+              id="email"
+              placeholder="name@flowbite.com"
+              required
+              shadow
+              type="email"
+              name="email"
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <div className="mb-2 block">
+              <Label
+                htmlFor="password2"
+                value="Your password"
+              />
+            </div>
+            <TextInput
+              id="password"
+              required
+              shadow
+              type="password"
+              name="password"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="flex items-center gap-2">
+          </div>
+          <Button type="submit" onClick={handleSubmit}>
+            Register new account
+          </Button>
+          {err && <p className='text-red-500 font-bold flex jusitfy-center items-center'>{err}</p>}
+        </form>
       </div>
-      <div>
-        <div className="mb-2 block">
-          <Label
-            htmlFor="email2"
-            value="Your email"
-          />
-        </div>
-        <TextInput
-          id="email"
-          placeholder="name@flowbite.com"
-          required
-          shadow
-          type="email"
-          name="email"
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <div className="mb-2 block">
-          <Label
-            htmlFor="password2"
-            value="Your password"
-          />
-        </div>
-        <TextInput
-          id="password"
-          required
-          shadow
-          type="password"
-          name="password"
-          onChange={handleChange}
-        />
-      </div>
-      <div className="flex items-center gap-2">
-      </div>
-      <Button type="submit" onClick={handleSubmit}>
-        Register new account
-      </Button>
-      {err && <p>{err}</p>}
-    </form>
     </div>
-    </div>
-    )
+  )
 }
 
-export default Register
+export default Register;
