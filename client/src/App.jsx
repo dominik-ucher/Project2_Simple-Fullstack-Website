@@ -47,7 +47,7 @@ const router = createBrowserRouter([
         element:<Home/>,
       },
       {
-        path:"/contact",
+        path:"/kontakt",
         element:<Contact/>,
       },
       {
@@ -71,7 +71,7 @@ const router = createBrowserRouter([
         element:<Admin/>,
       },
       {
-        path:"/news",
+        path:"/nyheter",
         element:<News_Page/>,
       },
       {

@@ -179,11 +179,6 @@ const Write_Page = () => {
           </Select>
         </div>
 
-        {/* <div className='mb-2 block mt-5 px-20'>
-          <Label htmlFor='base' value='Add a new main page' />
-        </div>
-        <TextInput className='px-20' id='base' sizing='md' type='text' /> */}
-
         <div className='mt-5 px-20'>
           <Button color='dark' onClick={handleClick}>
             Publish
