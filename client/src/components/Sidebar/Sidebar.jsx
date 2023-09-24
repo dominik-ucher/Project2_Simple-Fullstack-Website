@@ -86,7 +86,7 @@ const SidebarComponent = () => {
                     className={`flex items-center gap-2 pl-2 mt-2 cursor-pointer text-base ${
                       location.pathname.includes(`/side/${page.id}`) ? 'font-bold' : ''
                     }`}
-                    onClick={() => navigate(`/side/${page.id}`)}
+                    onClick={() => navigate(`/side/${page.id}_${page.title}`)}
                   >
                     <img src={articleicon} alt="Article Icon" className="w-5 h-5" />
                     <span>{page.title}</span>

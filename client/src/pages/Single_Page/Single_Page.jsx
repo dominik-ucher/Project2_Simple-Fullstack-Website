@@ -19,7 +19,7 @@ const Single_Page = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const sideId = location.pathname.split("/")[2];
+  const sideId = location.pathname.split("/")[2].split("_")[0];
 
   const { currentUser } = useContext(AuthContext);
 
