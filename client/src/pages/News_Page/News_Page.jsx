@@ -53,7 +53,7 @@ const News_Page = () => {
         <div className="col-span-10 md:col-span-7 bg-white-200 px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {nyheter.slice(startIndex, endIndex).map((nyhet, index) => (
-              <Link to={`/nyheter/${nyhet.id}`} key={nyhet.id}>
+              <Link to={`/nyheter/${nyhet.id}_${nyhet.title}`} key={nyhet.id}>
                 <div>
                   <Card className="max-w-sm mt-10 hover:bg-gray-200">
                     <img

@@ -17,7 +17,7 @@ const Single_News = () => {
   const [nyhet, setNyhet] = useState({});
   const location = useLocation();
   const navigate = useNavigate();
-  const nyhetId = location.pathname.split("/")[2];
+  const nyhetId = location.pathname.split("/")[2].split("_")[0];
   const { currentUser } = useContext(AuthContext);
   const [nyheter, setNyheter] = useState([])
 
@@ -95,7 +95,7 @@ const Single_News = () => {
         <div className="col-span-10 md:col-span-3 bg-white-200">
           <h1 className='text-2xl flex justify-center font-bold mt-6'>Andre Nyheter</h1>
           {nyheter.slice(1, 5).map((nyhet1, index) => (
-              <Link to={`/nyheter/${nyhet1.id}`} key={nyhet1.id}>
+              <Link to={`/nyheter/${nyhet1.id}_${nyhet1.title}`} key={nyhet1.id}>
                 <div>
                   <Card className="max-w-sm mt-10">
                     <img

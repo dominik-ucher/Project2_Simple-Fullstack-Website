@@ -97,7 +97,7 @@ const Home = () => {
           <div className="col-span-10 md:col-span-7 bg-white-200 px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {nyheter.slice(0,6).map((nyheter,index) => (
-                <Link to={`/nyheter/${nyheter.id}`}>
+                <Link to={`/nyheter/${nyheter.id}_${nyheter.title}`}>
                 <div key={nyheter.id}>
                 <Card className="max-w-sm mt-10 hover:bg-gray-200">
                 <img className="object-cover h-48 w-96" src={`../upload/Nyheter/Nyheter_Bilder/${nyheter.img}`} alt="" />
