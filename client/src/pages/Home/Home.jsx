@@ -85,7 +85,7 @@ const Home = () => {
             ))}
 
               </div>
-              <Link to={"http://localhost:5173/news/"} className='text-blue-500 hover:underline hover:cursor-pointer hover:font-semibold mt-10 flex justify-center text-xl'>For flere nyheter</Link>
+              <Link to={"http://localhost:5173/nyheter/"} className='text-blue-500 hover:underline hover:cursor-pointer hover:font-semibold mt-10 flex justify-center text-xl'>For flere nyheter</Link>
           </div>
           <div className="col-span-10 md:col-span-3 bg-white-300">
             {/* Right Column */}
