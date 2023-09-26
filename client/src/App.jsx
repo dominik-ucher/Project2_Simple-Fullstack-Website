@@ -28,7 +28,7 @@ import Homepage_Pic from "../src/pages/Admin/Homepage_Pic/Homepage_Pic";
 const Layout = () =>{
   return (
     <>
-    <div className="bg-gray-100">
+    <div className="bg-cover bg-no-repeat bg-fixed bg-center h-full" style={{backgroundImage: 'url("/src/img/test.png")'}}>
     <Navbar />
     <Outlet />
     <Footer />

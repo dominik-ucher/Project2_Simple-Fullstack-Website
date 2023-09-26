@@ -2,9 +2,9 @@ import nodemailer from 'nodemailer';
 
 // Configure Nodemailer transporter
 const transporter = nodemailer.createTransport({
-  service: 'Outlook', // e.g., 'Gmail', 'Yahoo', etc.
+  service: 'gmail', // e.g., 'Gmail', 'Yahoo', etc.
   auth: {
-    user: 'dominikucher@hotmail.com',
+    user: 'gmail',
     pass: 'Password', //HUSK Å SKRIVE PASSORD HER NÅR FERDIG
   },
 });
