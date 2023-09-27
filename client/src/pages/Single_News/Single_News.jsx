@@ -10,6 +10,7 @@ import moment from 'moment'
 import { useContext } from 'react';
 import { AuthContext } from '../../context/authContext'
 import DOMPurify from "dompurify";
+import './Single_News.css'
 
 const Single_News = () => {
 
@@ -89,7 +90,9 @@ const Single_News = () => {
                 </div>
             </div>
             <h1 className='flex items-center justify-center mt-20 font-bold capitalize text-3xl'>{nyhet.title}</h1>
-            <p className='text-black flex flex-col mt-10 px-10' dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(nyhet.desc),}}></p>
+            <div className="text-black flex flex-col mt-10 px-10 my-special-content">
+              <p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(nyhet.desc) }}></p>
+            </div>
         </div>
         </div>
         <div className="col-span-10 md:col-span-3 bg-white-200">

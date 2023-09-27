@@ -69,12 +69,21 @@ const Write_News = () => {
 
     const modules = {
         toolbar: [
-          [{ 'header': '1' }, { 'header': '2' }, { 'font': [] }],
-          ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-          [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-          ['link', 'image'],
-          ['clean'],
-          ['table'], // Enable the table module
+          ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+          ['blockquote', 'code-block'],
+        
+          [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+          [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+          [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+          [{ 'direction': 'rtl' }],                         // text direction
+        
+          [{ 'header': [1, 2, 3, 4, false] }],
+        
+          [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+          [{ 'font': [] }],
+          [{ 'align': [] }],
+        
+          ['clean'] 
         ],
       };
 
@@ -107,8 +116,8 @@ const Write_News = () => {
                     <Label htmlFor="file" className='file' value={`Currently selected image: ${file ? file.name : (state?.img || '')}`} />
                     </div>
                     
-                    <div className="editorContainer h-60 max-h-100 overflow-y-scroll mt-8">
-                        <ReactQuill className="mt-5 px-20 h-full" theme="snow" modules={modules} value={value} onChange={setValue} />
+                    <div className="editorContainer h-60 h-screen mt-8">
+                        <ReactQuill className="mt-5 px-20 h-3/4" theme="snow" modules={modules} value={value} onChange={setValue} />
                     </div>
                     
                     <div className='mt-5 px-20'>

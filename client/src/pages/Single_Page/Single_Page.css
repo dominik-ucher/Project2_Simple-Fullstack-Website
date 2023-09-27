@@ -1,0 +1,65 @@
+/* Custom CSS for ol and li */
+.my-special-content ol {
+    /* Your custom styles for ol here */
+    list-style-type: decimal;
+    margin-left: 1.5rem;
+    /* Add any other styles you need */
+  }
+  
+  .my-special-content li {
+    /* Your custom styles for li here */
+    margin-bottom: 0.5rem;
+    /* Add any other styles you need */
+  }
+  
+  /* Custom CSS for blockquote */
+  .my-special-content blockquote {
+    /* Your custom styles for blockquote here */
+    border-left: 2px solid #333;
+    padding-left: 1rem;
+    /* Add any other styles you need */
+  }
+  
+  /* Custom CSS for h1 and h2 */
+  .my-special-content h1 {
+    /* Your custom styles for h1 here */
+    font-size: 2.5rem;
+    font-weight: bold;
+    /* Add any other styles you need */
+  }
+  
+  .my-special-content h2 {
+    /* Your custom styles for h2 here */
+    font-size: 2rem;
+    font-weight: bold;
+    /* Add any other styles you need */
+  }
+
+  .my-special-content h3 {
+    /* Your custom styles for h2 here */
+    font-size: 1.5rem;
+    font-weight: bold;
+    /* Add any other styles you need */
+  }
+
+  .my-special-content h4 {
+    /* Your custom styles for h2 here */
+    font-size: 1rem;
+    font-weight: bold;
+    /* Add any other styles you need */
+  }
+
+  /* Custom CSS for ul and li */
+.my-special-content ul {
+    /* Your custom styles for ul here */
+    list-style-type: disc; /* Change the bullet style if needed */
+    margin-left: 1.5rem;
+    /* Add any other styles you need */
+  }
+  
+  .my-special-content ul li {
+    /* Your custom styles for li within ul here */
+    margin-bottom: 0.5rem;
+    /* Add any other styles you need */
+  }
+  
