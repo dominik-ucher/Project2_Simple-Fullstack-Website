@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import fs from "fs"
 
 export const getSider = (req, res) => {
-  const q = "SELECT * FROM sider ORDER BY date DESC";
+  const q = "SELECT * FROM sider ORDER BY date ASC";
 
   db.query(q, [], (err, data) => {
     if (err) return res.status(500).send(err);
