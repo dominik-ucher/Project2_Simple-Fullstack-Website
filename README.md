@@ -67,9 +67,8 @@
 - Add "Varsler"
 - Teknisk Gjeld
 
-<!-- - Contact page -->
-<!-- - Add file --> Working for sider but not yet nyheter
-<!-- - Fix URL -->
-- Fix Sidebar menu select order on write page
-- Make messages appear, like eror and etc.
-- New rich text editor with tables and etc.
+Things to fix before publishing
+- Contact Page
+- Rich text editor
+- Page with Google Calender/Baneplan
+- Make a page with contact information
