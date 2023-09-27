@@ -112,9 +112,7 @@ const Write_Page = () => {
       [{ 'header': '1' }, { 'header': '2' }, { 'font': [] }],
       ['bold', 'italic', 'underline', 'strike', 'blockquote'],
       [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-      ['link', 'image'],
       ['clean'],
-      ['table'], // Enable the table module
     ],
   };
   
