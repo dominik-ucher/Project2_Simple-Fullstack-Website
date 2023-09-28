@@ -64,13 +64,13 @@
 <!-- - Add Sponsors -->
 <!-- - Nyhet side  -->
 <!-- - Make it safer -->
-- Add "Varsler"
-- Teknisk Gjeld
+<!-- - Add "Varsler" -->
+<!-- - Teknisk Gjeld -->
 
 Things to fix before publishing
 - Contact Page
 <!-- - Rich text editor -->
-- Page with Google Calender/Baneplan
+<!-- - Page with Google Calender/Baneplan -->
 - Make a page with contact information
-- Upload several files to pages at once
+<!-- - Upload several files to pages at once --> TAR SEINERE HVIS DET ER BEHOV
 - Make proxy

@@ -63,8 +63,8 @@ const Home = () => {
         alt="image description" />
         <div className="relative w-12/14 mx-auto p-4 bg-gray-800 text-white rounded-xl justify-center mt-3">
 
-          <p className="text-lg justify-center flex items-center">Velkommen til Idrettslaget Trond</p>
-          <p className="text-ls mt-2 justify-center flex items-center">Artig-Inkluderende-Utviklende</p>
+          <p className="text-2xl justify-center flex items-center">Velkommen til Idrettslaget Trond</p>
+          <p className="text-lg mt-2 justify-center flex items-center">Artig-Inkluderende-Utviklende</p>
         </div>
         <div className="grid grid-cols-10 gap-4">
           <div className="col-span-10 md:col-span-7 bg-white-200 px-4">

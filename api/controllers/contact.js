@@ -2,10 +2,10 @@ import nodemailer from 'nodemailer';
 
 // Configure Nodemailer transporter
 const transporter = nodemailer.createTransport({
-  service: 'gmail', // e.g., 'Gmail', 'Yahoo', etc.
+  service: 'Gmail', // e.g., 'Gmail', 'Yahoo', etc.
   auth: {
-    user: 'gmail',
-    pass: 'Password', //HUSK Å SKRIVE PASSORD HER NÅR FERDIG
+    user: 'overordnet@trondfotball.no',
+    pass: 'Passord', //HUSK Å SKRIVE PASSORD HER NÅR FERDIG
   },
 });
 
