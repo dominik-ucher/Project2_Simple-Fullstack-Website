@@ -69,7 +69,7 @@
 
 Things to fix before publishing
 - Contact Page
-- Rich text editor
+<!-- - Rich text editor -->
 - Page with Google Calender/Baneplan
 - Make a page with contact information
 - Upload several files to pages at once
