@@ -25,7 +25,7 @@ const Single_News = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get('http://localhost:8800/api/nyheter/');
+        const res = await axios.get('/api/nyheter/');
         setNyheter(res.data);
       } catch (err) {
         console.log(err);
@@ -37,7 +37,7 @@ const Single_News = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`http://localhost:8800/api/nyheter/${nyhetId}`,{withCredentials: true,});
+        const res = await axios.get(`/api/nyheter/${nyhetId}`,{withCredentials: true,});
         setNyhet(res.data);
       } catch (err) {
         console.log(err);
@@ -48,7 +48,7 @@ const Single_News = () => {
 
   const handleDelete = async ()=>{
     try {
-      await axios.delete(`http://localhost:8800/api/nyheter/${nyhetId}`,{withCredentials: true,});
+      await axios.delete(`/api/nyheter/${nyhetId}`,{withCredentials: true,});
       navigate("/")
     } catch (err) {
       console.log(err);

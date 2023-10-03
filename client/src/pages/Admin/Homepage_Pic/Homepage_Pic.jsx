@@ -17,7 +17,7 @@ const Homepage_Pic = () => {
   const [homepagepic, setHomepagepic] = useState({});
 
   useEffect(() => {
-    axios.get('http://localhost:8800/api/homepagepic', { withCredentials: true })
+    axios.get('/api/homepagepic', { withCredentials: true })
       .then(response => setHomepagepic(response.data[0] || { id: null, img: '' }))
       .catch(error => console.error(error));
   }, []);
@@ -31,12 +31,12 @@ const Homepage_Pic = () => {
     try {
       // Delete the old image
       if (homepagepic.img && homepagepic.id) {
-        await axios.delete(`http://localhost:8800/api/homepagepic/${homepagepic.id}`, { withCredentials: true });
+        await axios.delete(`/api/homepagepic/${homepagepic.id}`, { withCredentials: true });
       }
   
       // Upload the new image
       const response = await axios.post(
-        'http://localhost:8800/api/upload_homepagepicbilde',
+        '/api/upload_homepagepicbilde',
         formData,
         {
           headers: {
@@ -49,7 +49,7 @@ const Homepage_Pic = () => {
   
       // Add a new picture record to the database using POST request
       await axios.post(
-        'http://localhost:8800/api/homepagepic',
+        '/api/homepagepic',
         { img: newImageFilename },
         { withCredentials: true }
       );

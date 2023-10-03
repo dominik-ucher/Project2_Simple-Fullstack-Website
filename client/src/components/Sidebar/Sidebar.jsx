@@ -16,7 +16,7 @@ const SidebarComponent = () => {
   useEffect(() => {
     // Fetch the sidebar menu items from the backend
     axios
-      .get('http://localhost:8800/api/sidebar/menus')
+      .get('/api/sidebar/menus')
       .then((response) => {
         setSidebarMenus(response.data);
       })
@@ -28,7 +28,7 @@ const SidebarComponent = () => {
   useEffect(() => {
     // Fetch all pages
     axios
-      .get('http://localhost:8800/api/sider/')
+      .get('/api/sider/')
       .then((response) => {
         setPages(response.data);
       })

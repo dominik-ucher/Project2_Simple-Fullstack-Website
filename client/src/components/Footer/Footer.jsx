@@ -10,7 +10,7 @@ const FooterTemp = () => {
   const [hovedsponsors, setHovedsponsors] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:8800/api/sponsor').then((response) => {
+    axios.get('/api/sponsor').then((response) => {
       const sponsors = response.data;
       const hovedSponsors = sponsors.filter((sponsor) => sponsor.type === 'Hoved');
   

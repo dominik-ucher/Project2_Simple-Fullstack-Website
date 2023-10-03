@@ -23,7 +23,7 @@ const Homepage_Menu = () => {
 
   const fetchData = async () => {
     try {
-      const res = await axios.get('http://localhost:8800/api/homepage_menu');
+      const res = await axios.get('/api/homepage_menu');
       setPics(res.data);
     } catch (err) {
       console.log(err);
@@ -41,7 +41,7 @@ const Homepage_Menu = () => {
     try {
       const { id, img, link } = pics[index];
       await axios.put(
-        `http://localhost:8800/api/homepage_menu/${id}`,
+        `/api/homepage_menu/${id}`,
         { img, link },
         { withCredentials: true }
       );
@@ -56,7 +56,7 @@ const Homepage_Menu = () => {
     try {
       const picId = pics[index].id;
       await axios.delete(
-        `http://localhost:8800/api/homepage_menu/${picId}`,
+        `/api/homepage_menu/${picId}`,
         { withCredentials: true }
       );
       fetchData();
@@ -69,7 +69,7 @@ const Homepage_Menu = () => {
     try {
       const newPic = { img: '', link: '' };
       await axios.post(
-        'http://localhost:8800/api/homepage_menu',
+        '/api/homepage_menu',
         newPic,
         { withCredentials: true }
       );
@@ -85,7 +85,7 @@ const Homepage_Menu = () => {
       const formData = new FormData();
       formData.append('file', file);
       const res = await axios.post(
-        'http://localhost:8800/api/upload_homepagemenubilde',
+        '/api/upload_homepagemenubilde',
         formData,
         { withCredentials: true }
       );

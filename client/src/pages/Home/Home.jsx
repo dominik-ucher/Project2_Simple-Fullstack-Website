@@ -14,7 +14,7 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`http://localhost:8800/api/nyheter/`);
+        const res = await axios.get(`/api/nyheter/`);
         setNyheter(res.data);
       } catch (err) {
         console.log(err);
@@ -26,7 +26,7 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`http://localhost:8800/api/homepage_menu/`);
+        const res = await axios.get(`/api/homepage_menu/`);
         setMenu(res.data);
       } catch (err) {
         console.log(err);
@@ -38,7 +38,7 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`http://localhost:8800/api/homepagepic/`);
+        const res = await axios.get(`/api/homepagepic/`);
         setMainpic(res.data[0] || { id: null, img: '' });
       } catch (err) {
         console.log(err);

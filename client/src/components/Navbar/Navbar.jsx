@@ -22,7 +22,7 @@ export default function DefaultNavbar() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`http://localhost:8800/api/navbar/`);
+        const res = await axios.get(`/api/navbar/`);
         setLinks(res.data);
       } catch (err) {
         console.log(err);

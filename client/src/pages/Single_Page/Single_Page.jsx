@@ -27,7 +27,7 @@ const Single_Page = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`http://localhost:8800/api/sider/${sideId}`,{withCredentials: true,});
+        const res = await axios.get(`/api/sider/${sideId}`,{withCredentials: true,});
         setSide(res.data);
       } catch (err) {
         console.log(err);
@@ -38,7 +38,7 @@ const Single_Page = () => {
 
   const handleDelete = async ()=>{
     try {
-      await axios.delete(`http://localhost:8800/api/sider/${sideId}`,{withCredentials: true,});
+      await axios.delete(`/api/sider/${sideId}`,{withCredentials: true,});
       navigate("/")
     } catch (err) {
       console.log(err);

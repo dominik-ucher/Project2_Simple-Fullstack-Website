@@ -22,7 +22,7 @@ const Sponsor_Edit = () => {
   });
 
   useEffect(() => {
-    axios.get('http://localhost:8800/api/sponsor', { withCredentials: true }) // Add withCredentials
+    axios.get('/api/sponsor', { withCredentials: true }) // Add withCredentials
       .then(response => setSponsors(response.data))
       .catch(error => console.error(error));
   }, []);
@@ -54,9 +54,9 @@ const Sponsor_Edit = () => {
     formData.append('link', newSponsor.link);
     formData.append('type', newSponsor.type);
 
-    axios.post('http://localhost:8800/api/upload_sponsorbilde', formData, { withCredentials: true }) // Add withCredentials
+    axios.post('/api/upload_sponsorbilde', formData, { withCredentials: true }) // Add withCredentials
       .then(response => {
-        return axios.post('http://localhost:8800/api/sponsor', {
+        return axios.post('/api/sponsor', {
           img: response.data,
           link: newSponsor.link,
           type: newSponsor.type,
@@ -75,7 +75,7 @@ const Sponsor_Edit = () => {
   };
 
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:8800/api/sponsor/${id}`, { withCredentials: true }) // Add withCredentials
+    axios.delete(`/api/sponsor/${id}`, { withCredentials: true }) // Add withCredentials
       .then(() => {
         setSponsors(sponsors.filter(sponsor => sponsor.id !== id));
       })

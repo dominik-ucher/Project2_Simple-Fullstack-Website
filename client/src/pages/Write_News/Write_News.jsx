@@ -34,7 +34,7 @@ const Write_News = () => {
         try {
         const formData = new FormData();
         formData.append("file", file);
-        const res = await axios.post("http://localhost:8800/api/upload_nyhetbilde", formData);
+        const res = await axios.post("/api/upload_nyhetbilde", formData);
         return res.data; 
         } catch (err) {
         console.log(err);
@@ -50,12 +50,12 @@ const Write_News = () => {
 
         try {
         state
-            ? await axios.put(`http://localhost:8800/api/nyheter/${state.id}`, {
+            ? await axios.put(`/api/nyheter/${state.id}`, {
                 title,
                 desc: value,
                 img: file ? imgUrl : state.img , //imgURL BLIR NULL
             },{withCredentials: true,})
-            : await axios.post(`http://localhost:8800/api/nyheter/`, {
+            : await axios.post(`/api/nyheter/`, {
                 title,
                 desc: value,
                 img: file ? imgUrl : "",

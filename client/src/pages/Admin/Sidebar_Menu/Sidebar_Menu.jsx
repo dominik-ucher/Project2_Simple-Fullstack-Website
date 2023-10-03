@@ -21,7 +21,7 @@ const Sidebar_Menu = () => {
   useEffect(() => {
     // Fetch the sidebar menu items from the backend
     axios
-      .get('http://localhost:8800/api/sidebar/menus')
+      .get('/api/sidebar/menus')
       .then((response) => {
         setSidebarMenus(response.data);
       })
@@ -34,7 +34,7 @@ const Sidebar_Menu = () => {
     e.preventDefault();
     try {
       await axios.post(
-        'http://localhost:8800/api/sidebar/menus/',
+        '/api/sidebar/menus/',
         {
           name: menuname,
           parent_id: selectedSidebarId,
@@ -52,7 +52,7 @@ const Sidebar_Menu = () => {
 
   const handleDeleteMenu = async (menuId) => {
     try {
-      await axios.delete(`http://localhost:8800/api/sidebar/menus/${menuId}`, {
+      await axios.delete(`/api/sidebar/menus/${menuId}`, {
         withCredentials: true,
       });
       // After successful deletion, refresh the list of menus
@@ -64,7 +64,7 @@ const Sidebar_Menu = () => {
 
   const fetchMenus = () => {
     axios
-      .get('http://localhost:8800/api/sidebar/menus')
+      .get('/api/sidebar/menus')
       .then((response) => {
         setSidebarMenus(response.data);
       })

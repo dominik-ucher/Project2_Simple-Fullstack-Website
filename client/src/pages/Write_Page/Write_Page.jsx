@@ -34,7 +34,7 @@ const Write_Page = () => {
   useEffect(() => {
     // Fetch the sidebar menu items from the backend
     axios
-      .get('http://localhost:8800/api/sidebar/menus')
+      .get('/api/sidebar/menus')
       .then((response) => {
         setSidebarMenus(response.data);
       })
@@ -47,7 +47,7 @@ const Write_Page = () => {
     try {
       const formData = new FormData();
       formData.append('file', image);
-      const res = await axios.post('http://localhost:8800/api/upload_sidebilde', formData);
+      const res = await axios.post('/api/upload_sidebilde', formData);
       return res.data;
     } catch (err) {
       console.log(err);
@@ -58,7 +58,7 @@ const Write_Page = () => {
     try {
       const formData = new FormData();
       formData.append('file', file);
-      const res = await axios.post('http://localhost:8800/api/upload_sidefile', formData);
+      const res = await axios.post('/api/upload_sidefile', formData);
       return res.data;
     } catch (err) {
       console.log(err);
@@ -79,7 +79,7 @@ const Write_Page = () => {
     try {
       state
         ? await axios.put(
-            `http://localhost:8800/api/sider/${state.id}`,
+            `/api/sider/${state.id}`,
             {
               title,
               desc: value,
@@ -90,7 +90,7 @@ const Write_Page = () => {
             { withCredentials: true }
           )
         : await axios.post(
-            'http://localhost:8800/api/sider/',
+            '/api/sider/',
             {
               title,
               desc: value,

@@ -21,7 +21,7 @@ const Navbar_Edit = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`http://localhost:8800/api/navbar/`, { withCredentials: true });
+        const res = await axios.get(`/api/navbar/`, { withCredentials: true });
         setLinks(res.data);
         // Initialize editedLinks with the same data as links initially
         setEditedLinks(res.data.map((link) => ({ ...link, editing: false })));
@@ -45,13 +45,13 @@ const Navbar_Edit = () => {
 
       if (linkToSave.id) {
         // If it's an existing link, update it in the MySQL database
-        await axios.put(`http://localhost:8800/api/navbar/${linkToSave.id}`, {
+        await axios.put(`/api/navbar/${linkToSave.id}`, {
           name: linkToSave.name,
           link: linkToSave.link,
         }, { withCredentials: true });
       } else {
         // If it's a new link, create it in the MySQL database
-        const res = await axios.post('http://localhost:8800/api/navbar/', linkToSave, { withCredentials: true });
+        const res = await axios.post('/api/navbar/', linkToSave, { withCredentials: true });
         linkToSave.id = res.data.id;
       }
 
@@ -75,7 +75,7 @@ const Navbar_Edit = () => {
       const linkToDelete = editedLinks[index];
 
       if (linkToDelete.id) {
-        await axios.delete(`http://localhost:8800/api/navbar/${linkToDelete.id}`, { withCredentials: true });
+        await axios.delete(`/api/navbar/${linkToDelete.id}`, { withCredentials: true });
       }
 
       // Remove the link from the original links state

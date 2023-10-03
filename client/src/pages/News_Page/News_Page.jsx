@@ -13,7 +13,7 @@ const News_Page = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get('http://localhost:8800/api/nyheter/');
+        const res = await axios.get('/api/nyheter/');
         setNyheter(res.data);
       } catch (err) {
         console.log(err);
@@ -25,7 +25,7 @@ const News_Page = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get('http://localhost:8800/api/homepagepic/');
+        const res = await axios.get('/api/homepagepic/');
         setMainpic(res.data[0] || { id: null, img: '' });
       } catch (err) {
         console.log(err);

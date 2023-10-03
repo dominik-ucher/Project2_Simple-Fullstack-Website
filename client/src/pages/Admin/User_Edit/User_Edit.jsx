@@ -19,7 +19,7 @@ const User_Edit = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get('http://localhost:8800/api/users');
+        const res = await axios.get('/api/users');
         setUsers(res.data);
         // Initialize editedUsers with the same data as users initially
         setEditedUsers([...res.data]);
@@ -40,7 +40,7 @@ const User_Edit = () => {
   const handleSave = async (index) => {
     try {
       // Update the user in the MySQL database
-      await axios.put(`http://localhost:8800/api/users/${users[index].id}`, {
+      await axios.put(`/api/users/${users[index].id}`, {
         username: editedUsers[index].username,
         email: editedUsers[index].email,
       }, { withCredentials: true });
@@ -62,7 +62,7 @@ const User_Edit = () => {
 
   const handleDeleteUser = async (userId) => {
     try {
-      await axios.delete(`http://localhost:8800/api/users/${userId}`, { withCredentials: true });
+      await axios.delete(`/api/users/${userId}`, { withCredentials: true });
 
       // Remove the deleted user from the state
       setUsers((prevUsers) => prevUsers.filter((user) => user.id !== userId));

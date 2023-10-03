@@ -30,7 +30,7 @@ const Register = () => {
     }
 
     try {
-      await axios.post("http://localhost:8800/api/auth/register", inputs);
+      await axios.post("/api/auth/register", inputs);
       navigate("/login");
     } catch (err) {
       setError(err.response.data);

@@ -18,7 +18,7 @@ const Single_Page = () => {
     const [bronsesponsors, setBronsesponsors] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:8800/api/sponsor').then((response) => {
+        axios.get('/api/sponsor').then((response) => {
           const sponsors = response.data;
           const hovedSponsors = sponsors.filter((sponsor) => sponsor.type === 'Hoved');
           const gullSponsors = sponsors.filter((sponsor) => sponsor.type === 'Gull');

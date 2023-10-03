@@ -73,4 +73,4 @@ Things to fix before publishing
 <!-- - Page with Google Calender/Baneplan -->
 - Make a page with contact information
 <!-- - Upload several files to pages at once --> TAR SEINERE HVIS DET ER BEHOV
-- Make proxy
+<!-- - Make proxy -->
