@@ -128,7 +128,7 @@ const Homepage_Menu = () => {
           {pics.map((pic, index) => (
             <tr key={index}>
               <td className="border px-4 py-2">
-                <img src={`http://localhost:5173/upload/HomepageMenu_Bilder/${pic.img}`} alt={`Image ${index}`} className="w-16 h-16" />
+                <img src={`/upload/HomepageMenu_Bilder/${pic.img}`} alt={`Image ${index}`} className="w-16 h-16" />
                 <Dropzone onDrop={onDrop} index={index} /> {/* Pass onDrop function and index to Dropzone component */}
               </td>
               <td className="border px-4 py-2">

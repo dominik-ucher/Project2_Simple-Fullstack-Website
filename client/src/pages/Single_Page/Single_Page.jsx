@@ -59,7 +59,7 @@ const Single_Page = () => {
             <div className='content'>
                 <img 
                 className='w-100 h-auto mt-4 px-4'
-                src={side.img && `http://localhost:5173/upload/Sider/Sider_Bilder/${side.img}`} 
+                src={side.img && `/upload/Sider/Sider_Bilder/${side.img}`} 
                 alt="" 
                 />
             </div>
@@ -86,7 +86,7 @@ const Single_Page = () => {
             </div>
 
         </div>
-        <a  className='text-black flex items-center mt-10 px-10 underline' href={side.file && `http://localhost:5173/upload/Sider/Sider_Filer/${side.file}`} target="_blank" rel="noopener noreferrer">{side.file && side.file.split('__')[1]}</a>
+        <a  className='text-black flex items-center mt-10 px-10 underline' href={side.file && `/upload/Sider/Sider_Filer/${side.file}`} target="_blank" rel="noopener noreferrer">{side.file && side.file.split('__')[1]}</a>
         </div>
         <div className="col-span-10 md:col-span-3 bg-white-200">
                 <Sidebar />

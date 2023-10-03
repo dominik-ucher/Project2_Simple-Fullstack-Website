@@ -68,7 +68,7 @@ const Single_News = () => {
             <div className='content flex justify-center'> {/* LA TIL FLEX OG JUSTIFY-CENTER HER. KAN BYTTES ETTERPÅ */}
                 <img 
                 className='w-100 h-auto mt-4 px-4'
-                src={nyhet.img && `http://localhost:5173/upload/Nyheter/Nyheter_Bilder/${nyhet.img}`} 
+                src={nyhet.img && `/upload/Nyheter/Nyheter_Bilder/${nyhet.img}`} 
                 alt="" 
                 />
             </div>

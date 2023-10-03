@@ -92,7 +92,7 @@ const Write_News = () => {
             <div className="content max-w-3xl mx-auto px-4">
                     <img 
                     className='w-100 h-auto mt-4 px-4'
-                    src={fileUrl || `http://localhost:5173/upload/Nyheter/Nyheter_Bilder/${state?.img}`} 
+                    src={fileUrl || `/upload/Nyheter/Nyheter_Bilder/${state?.img}`} 
                     alt="" 
                     />
                     <div className="mb-2 block mt-10 px-20">

@@ -95,7 +95,7 @@ const Sponsor_Edit = () => {
         <Table.Body>
           {sponsors.map(sponsor => (
             <Table.Row key={sponsor.id}>
-              <Table.Cell><img src={`http://localhost:5173/upload/Sponsor_Bilder/${sponsor.img}`} alt="Sponsor"  className="max-w-[250px] max-h-[250px]"/></Table.Cell>
+              <Table.Cell><img src={`/upload/Sponsor_Bilder/${sponsor.img}`} alt="Sponsor"  className="max-w-[250px] max-h-[250px]"/></Table.Cell>
               <Table.Cell><a href={sponsor.link} target="_blank" rel="noopener noreferrer">{sponsor.link}</a></Table.Cell>
               <Table.Cell>{sponsor.type}</Table.Cell>
               <Table.Cell>

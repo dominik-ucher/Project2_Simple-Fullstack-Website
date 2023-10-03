@@ -31,7 +31,7 @@ const Admin = () => {
                 </p>
             </Card>
             </Link>
-            <Link to ="http://localhost:5173/write_news">
+            <Link to ="/write_news">
             <Card className="max-w-sm mt-5 hover:bg-gray-200">
                 <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                 <p>Legg til ny nyhet</p>
@@ -41,7 +41,7 @@ const Admin = () => {
                 </p>
             </Card>
             </Link>
-            <Link to="http://localhost:5173/navbar_edit">
+            <Link to="/navbar_edit">
             <Card className="max-w-sm mt-5 hover:bg-gray-200" >
                 <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                 <p>Rediger NavBar</p>
@@ -51,7 +51,7 @@ const Admin = () => {
                 </p>
             </Card>
             </Link>
-            <Link to="http://localhost:5173/homepagepic_edit">
+            <Link to="/homepagepic_edit">
             <Card className="max-w-sm mt-5 hover:bg-gray-200" >
                 <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                 <p>Rediger Forside Bilde</p>
@@ -61,7 +61,7 @@ const Admin = () => {
                 </p>
             </Card>
             </Link>
-            <Link to="http://localhost:5173/user_edit">
+            <Link to="/user_edit">
             <Card className="max-w-sm mt-5 hover:bg-gray-200" >
                 <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                 <p>Rediger brukere</p>
@@ -74,7 +74,7 @@ const Admin = () => {
                     
             </div>
             <div className="col-span-10 md:col-span-5 bg-white-200 flex flex-col items-front mt-20">
-                <Link to="http://localhost:5173/write_page">
+                <Link to="/write_page">
                 <Card className="max-w-sm hover:bg-gray-200" >
                     <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                     <p>Legg til ny side</p>
@@ -84,7 +84,7 @@ const Admin = () => {
                     </p>
                 </Card>
                 </Link>
-                <Link to="http://localhost:5173/homepagemenu_edit">
+                <Link to="/homepagemenu_edit">
                 <Card className="max-w-sm mt-5 hover:bg-gray-200" >
                     <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                     <p>Redigere forside meny</p>
@@ -94,7 +94,7 @@ const Admin = () => {
                     </p>
                 </Card>
                 </Link>
-                <Link to="http://localhost:5173/sponsor_edit">
+                <Link to="/sponsor_edit">
                 <Card className="max-w-sm mt-5 hover:bg-gray-200" >
                     <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                     <p>Rediger/Legg til Sponsor</p>
@@ -112,7 +112,7 @@ const Admin = () => {
                     <p>Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
                     </p>
                 </Card>
-                <Link to="http://localhost:5173/sidebarmenu_edit">
+                <Link to="/sidebarmenu_edit">
                 <Card className="max-w-sm mt-5 hover:bg-gray-200">
                     <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                     <p>Rediger Sidebar</p>
