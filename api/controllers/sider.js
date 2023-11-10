@@ -59,26 +59,35 @@ export const deleteSide = (req, res) => {
 
     const sideId = req.params.id;
 
-    const getImageFilenameQuery = "SELECT img FROM sider WHERE id = ?";
-      db.query(getImageFilenameQuery, [sideId], (err, result) => {
-        if (err) return res.status(500).json(err);
-  
-        const imageFilename = result[0].img;
-  
-        // Delete the image file from storage
-        const imagePath = `../client/upload/Sider/Sider_Bilder/${imageFilename}`;
-        fs.unlink(imagePath, (unlinkErr) => {
-          if (unlinkErr) console.error("Error deleting image:", unlinkErr);
-  
-          // Proceed to delete the sponsor record from the database
-          const deleteQuery = "DELETE FROM sider WHERE id = ?";
-          db.query(deleteQuery, [sideId], (deleteErr, data) => {
-            if (deleteErr) return res.status(403).json("You can delete only your side!");
-  
-            return res.json("Side have been deleted!");
+    const getSideDataQuery = "SELECT img, file FROM sider WHERE id = ?";
+    db.query(getSideDataQuery, [sideId], (err, result) => {
+      if (err) return res.status(500).json(err);
+
+      const imageFilename = result[0].img;
+      const fileNames = result[0].file ? result[0].file.split(',') : [];
+
+      // Delete the image file from storage
+      const imagePath = `../client/upload/Sider/Sider_Bilder/${imageFilename}`;
+      fs.unlink(imagePath, (unlinkImageErr) => {
+        if (unlinkImageErr) console.error("Error deleting image:", unlinkImageErr);
+
+        // Delete each file associated with the side from storage
+        fileNames.forEach((fileName) => {
+          const filePath = `../client/upload/Sider/Sider_Filer/${fileName}`;
+          fs.unlink(filePath, (unlinkFileErr) => {
+            if (unlinkFileErr) console.error("Error deleting file:", unlinkFileErr);
           });
         });
+
+        // Proceed to delete the side record from the database
+        const deleteQuery = "DELETE FROM sider WHERE id = ?";
+        db.query(deleteQuery, [sideId], (deleteErr, data) => {
+          if (deleteErr) return res.status(403).json("You can delete only your side!");
+
+          return res.json("Side has been deleted!");
+        });
       });
+    });
   });
 };
 
