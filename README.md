@@ -68,9 +68,9 @@
 <!-- - Teknisk Gjeld -->
 
 Things to fix before publishing
+- Reverse back to old commit, one before files
 - Contact Page
-<!-- - Rich text editor -->
-<!-- - Page with Google Calender/Baneplan -->
-- Make a page with contact information
-<!-- - Upload several files to pages at once --> TAR SEINERE HVIS DET ER BEHOV
-<!-- - Make proxy -->
+- Page with contact info
+- Upload several files at once
+- Pages without menuid show as main
+- Show page with contact info and baneplan under respected menu
