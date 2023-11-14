@@ -18,8 +18,8 @@ const Write_Page = () => {
   const [value, setValue] = useState(state?.desc || '');
   const [image, setImage] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
-  const [files, setFiles] = useState([]);
-  const [fileUrls, setFileUrls] = useState([]);
+  const [file, setFile] = useState(null);
+  const [fileUrl, setFileUrl] = useState(null);
   const [selectedSidebarId, setSelectedSidebarId] = useState(null);
   const [sidebarMenus, setSidebarMenus] = useState([]);
   const navigate = useNavigate();
@@ -43,16 +43,6 @@ const Write_Page = () => {
       });
   }, []);
 
-  const handleDeleteFile = (index) => {
-    const updatedFiles = [...files];
-    updatedFiles.splice(index, 1);
-    setFiles(updatedFiles);
-
-    const updatedFileUrls = [...fileUrls];
-    updatedFileUrls.splice(index, 1);
-    setFileUrls(updatedFileUrls);
-  };
-
   const uploadimg = async () => {
     try {
       const formData = new FormData();
@@ -66,14 +56,10 @@ const Write_Page = () => {
 
   const uploadfile = async () => {
     try {
-      const fileUrls = await Promise.all(files.map(async (file) => {
-        const formData = new FormData();
-        formData.append('file', file);
-        const res = await axios.post('/api/upload_sidefile', formData);
-        return res.data;
-      }));
-
-      return fileUrls.join(','); // Join file URLs into a single string
+      const formData = new FormData();
+      formData.append('file', file);
+      const res = await axios.post('/api/upload_sidefile', formData);
+      return res.data;
     } catch (err) {
       console.log(err);
     }
@@ -86,7 +72,7 @@ const Write_Page = () => {
     if (image) {
       imgUrl = await uploadimg();
     }
-    if (files.length > 0) {
+    if (file) {
       fileUrl = await uploadfile();
     }
 
@@ -98,7 +84,7 @@ const Write_Page = () => {
               title,
               desc: value,
               img: image ? imgUrl : state.img,
-              file: fileUrl || '',
+              file: file ? fileUrl : state.file,
               sidebar_id: selectedSidebarId,
             },
             { withCredentials: true }
@@ -173,27 +159,19 @@ const Write_Page = () => {
 
         <div className='max-w-md px-20 mt-5' id='fileUpload'>
           <div className='mb-2 block'>
-            <Label htmlFor='file' className='file' value='Upload Files' />
+            <Label htmlFor='file' className='file' value='Upload File' />
           </div>
           <FileInput
-            helperText='Upload files'
+            helperText='Upload a file'
             id='file'
             type='file'
-            multiple
             onChange={(e) => {
-              const selectedFiles = e.target.files;
-              const newFiles = Array.from(selectedFiles).filter(file => !files.includes(file));
-              setFiles([...files, ...newFiles]);
-              const newUrls = newFiles.map(file => URL.createObjectURL(file));
-              setFileUrls([...fileUrls, ...newUrls]);
+              const selectedFile = e.target.files[0];
+              setFile(selectedFile);
+              setFileUrl(URL.createObjectURL(selectedFile));
             }}
           />
-          {fileUrls.map((url, index) => (
-            <div key={index} className="uploaded-file">
-              <span>{files[index].name}</span>
-              <button onClick={() => handleDeleteFile(index)}>Delete</button>
-            </div>
-          ))}
+          <Label htmlFor='file' className='file' value={`Currently selected file: ${file ? file.name : state?.file || ''}`} />
         </div>
 
         <div className='max-w-md mt-10 px-20 mb-2' id='select'>

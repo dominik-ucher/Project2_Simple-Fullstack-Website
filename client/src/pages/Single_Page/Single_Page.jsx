@@ -50,27 +50,6 @@ const Single_Page = () => {
     return doc.body.textContent
   }
 
-  const renderFileLinks = () => {
-    if (side.file) {
-      const filesArray = side.file.split(','); // Split the file string into an array
-      return filesArray.map((fileName, index) => {
-        const displayName = fileName.split('__')[1];
-        return (
-          <a
-            key={index}
-            className='text-black flex items-center mt-2 px-10 underline'
-            href={`/upload/Sider/Sider_Filer/${fileName}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {displayName}
-          </a>
-        );
-      });
-    }
-    return null;
-  };
-
 
 
     return(
@@ -107,9 +86,7 @@ const Single_Page = () => {
             </div>
 
         </div>
-        <div className='mt-10 '>
-        {renderFileLinks()}
-        </div>
+        <a  className='text-black flex items-center mt-10 px-10 underline' href={side.file && `/upload/Sider/Sider_Filer/${side.file}`} target="_blank" rel="noopener noreferrer">{side.file && side.file.split('__')[1]}</a>
         </div>
         <div className="col-span-10 md:col-span-3 bg-white-200">
                 <Sidebar />
