@@ -129,11 +129,11 @@ const Sidebar_Menu = () => {
           </div>
           <Select id="sidebar" required onChange={(e) => setSelectedSidebarId(e.target.value)}>
             <option value={null}>None</option>
-            {sidebarMenus && sidebarMenus.map((menu) => (
-              <option value={menu.id} key={menu.id}>
-                {menu.name}
-              </option>
-            ))}
+            {Array.isArray(sidebarMenus) && sidebarMenus.length > 0 ? (
+                renderMenuItems(sidebarMenus)
+              ) : (
+                <div>No menus available</div>
+              )}
           </Select>
         </div>
 
