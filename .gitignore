@@ -2,7 +2,7 @@
 client/.env
 
 # Ignore contact file with password
-# api/controllers/contact.js
+api/controllers/contact.js
 
 # Ignore db file with password
 api/db.js
