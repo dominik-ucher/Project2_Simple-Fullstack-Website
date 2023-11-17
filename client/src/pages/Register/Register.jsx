@@ -41,11 +41,11 @@ const Register = () => {
   const navigate_2 = useNavigate();
   const { currentUser } = useContext(AuthContext);
 
-  // useEffect(() => {
-  //   if (!currentUser) {
-  //     navigate('/unauthorized_401');
-  //   }
-  // }, [currentUser, navigate_2]);
+  useEffect(() => {
+    if (!currentUser) {
+      navigate('/unauthorized_401');
+    }
+  }, [currentUser, navigate_2]);
 
   return (
     <div className="flex justify-center items-center h-screen">
