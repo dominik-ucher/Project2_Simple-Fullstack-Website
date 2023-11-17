@@ -16,6 +16,7 @@ const Single_Page = () => {
 
 
   const [side, setSide] = useState({});
+  const [files, setFiles] = useState([]);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -23,6 +24,22 @@ const Single_Page = () => {
   const sideId = location.pathname.split("/")[2].split("_")[0];
 
   const { currentUser } = useContext(AuthContext);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get(`/api/sider/${sideId}`, { withCredentials: true });
+        setSide(res.data);
+
+        // Fetch associated files for the side
+        const filesRes = await axios.get(`/api/siderfiler/${sideId}`, { withCredentials: true });
+        setFiles(filesRes.data); // Assuming the response contains an array of files
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, [sideId]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -86,7 +103,26 @@ const Single_Page = () => {
             </div>
 
         </div>
-        <a  className='text-black flex items-center mt-10 px-10 underline' href={side.file && `/upload/Sider/Sider_Filer/${side.file}`} target="_blank" rel="noopener noreferrer">{side.file && side.file.split('__')[1]}</a>
+        {/* Display uploaded files */}
+        <div>
+        {files.map((file) => {
+          // Split the file name by '__' and take the second part
+          const fileNameParts = file.filnavn.split('__');
+          const displayedFileName = fileNameParts.length > 1 ? fileNameParts[1] : file.filnavn;
+
+          return (
+            <a
+              key={file.id} // Assuming file.id exists
+              className='text-black flex items-center mt-2 px-10 underline'
+              href={`/upload/Sider/Sider_Filer/${file.filnavn}`} // Update with correct file URL
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {displayedFileName} {/* Display the part after '__' in the file name */}
+            </a>
+          );
+        })}
+      </div>
         </div>
         <div className="col-span-10 md:col-span-3 bg-white-200">
                 <Sidebar />

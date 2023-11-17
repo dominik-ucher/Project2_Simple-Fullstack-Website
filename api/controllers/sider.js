@@ -14,7 +14,7 @@ export const getSider = (req, res) => {
 
 export const getSide = (req, res) => {
   const q =
-  "SELECT sider.id, `username`, `title`, `desc`, `img`, `file`, `date`, `sidebar_id` FROM users JOIN sider ON users.id = sider.uid WHERE sider.id= ?";
+  "SELECT sider.id, `username`, `title`, `desc`, `img`, `date`, `sidebar_id` FROM users JOIN sider ON users.id = sider.uid WHERE sider.id= ?";
 
   db.query(q, [req.params.id], (err, data) => {
     if (err) return res.status(500).json(err);
@@ -31,13 +31,12 @@ export const addSide = (req, res) => {
     if (err) return res.status(403).json("Token is not valid!");
 
     const q =
-      "INSERT INTO sider(`title`, `desc`, `img`, `file`, `date`,`uid`, `sidebar_id`) VALUES (?)";
+      "INSERT INTO sider(`title`, `desc`, `img`, `date`,`uid`, `sidebar_id`) VALUES (?)";
 
     const values = [
       req.body.title,
       req.body.desc,
       req.body.img,
-      req.body.file,
       req.body.date,
       userInfo.id,
       req.body.sidebar_id,
@@ -91,9 +90,9 @@ export const updateSide = (req, res) => {
 
     const sideId = req.params.id;
     const q =
-      "UPDATE sider SET `title`=?,`desc`=?,`img`=?,`file`=? WHERE `id` = ?";
+      "UPDATE sider SET `title`=?,`desc`=?,`img`=? WHERE `id` = ?";
 
-    const values = [req.body.title, req.body.desc, req.body.img, req.body.file];
+    const values = [req.body.title, req.body.desc, req.body.img];
 
     db.query(q, [...values, sideId], (err, data) => {
       if (err) return res.status(500).json(err);

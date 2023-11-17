@@ -68,9 +68,9 @@
 <!-- - Teknisk Gjeld -->
 
 Things to fix before publishing
-- Reverse back to old commit, one before files
+<!-- - Reverse back to old commit, one before files -->
 - Contact Page
 - Page with contact info
-- Upload several files at once
+<!-- - Upload several files at once -->
 - Pages without menuid show as main
 - Show page with contact info and baneplan under respected menu

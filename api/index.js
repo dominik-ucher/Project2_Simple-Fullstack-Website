@@ -12,6 +12,7 @@ import sidebarRoutes from './routes/sidebar.js'
 import sponsorRoutes from './routes/sponsor.js'
 import homepagepicRoutes from './routes/homepage_pic.js'
 import contactRoutes from './routes/contact.js'
+import siderfilerRoutes from './routes/sidefiler.js'
 
 const app = express()
 
@@ -119,6 +120,7 @@ app.use("/api/sidebar", sidebarRoutes)
 app.use("/api/sponsor", sponsorRoutes)
 app.use("/api/homepagepic", homepagepicRoutes)
 app.use("/api/contact", contactRoutes)
+app.use("/api/siderfiler", siderfilerRoutes)
 
 app.listen(8800,()=>{
     console.log("Connected!")
