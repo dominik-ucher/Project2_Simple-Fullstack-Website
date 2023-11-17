@@ -71,8 +71,8 @@ const Home = () => {
           <div className="col-span-10 md:col-span-7 bg-white-200 px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {nyheter && nyheter.slice(0,6).map((nyheter,index) => (
-                <Link to={`/nyheter/${nyheter.id}_${nyheter.title}`}>
-                <div key={nyheter.id}>
+                <Link key={nyheter.id} to={`/nyheter/${nyheter.id}_${nyheter.title}`}>
+                <div>
                 <Card className="max-w-sm mt-10 hover:bg-gray-200">
                 <img className="object-cover h-48 w-96" src={`../upload/Nyheter/Nyheter_Bilder/${nyheter.img}`} alt="" />
                 <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -108,7 +108,7 @@ const Home = () => {
                 {/* Content for the third row */}
                 <div className="col-span-2">
                 {menu && menu.map((menu,index) => (
-                  <Link to={menu.link}>
+                  <Link key={menu.id} to={menu.link}>
                   <img
                     className="object-cover rounded-lg mt-4"
                     src={`/upload/HomepageMenu_Bilder/${menu.img}`}
