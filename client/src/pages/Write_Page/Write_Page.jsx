@@ -191,9 +191,10 @@ const Write_Page = () => {
   {/* File upload section */}
   <div className='max-w-md px-20 mt-5' id='fileUpload'>
           <div className='mb-2 block'>
+            <div className='text-red-600'>You can only upload files after a page is Published. Will not work before.</div>
             <Label htmlFor='file' className='file' value='Upload File' />
           </div>
-          <input
+          <FileInput
             type='file'
             id='file'
             onChange={(e) => {
@@ -212,7 +213,7 @@ const Write_Page = () => {
           {files && files.map((uploadedFile) => (
             <div key={uploadedFile.id}>
               <span>{uploadedFile.filnavn}</span>
-              <button onClick={() => handleDelete(uploadedFile.id)}>Delete</button>
+              <Button color='failure' size='xs' onClick={() => handleDelete(uploadedFile.id)}>Delete</Button>
             </div>
           ))}
         </div>

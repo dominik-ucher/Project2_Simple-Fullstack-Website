@@ -70,10 +70,10 @@
 Things to fix before publishing
 <!-- - Reverse back to old commit, one before files -->
 <!-- - Contact Page -->
-- Page with contact info
 <!-- - Upload several files at once -->
 <!-- - Pages without menuid show as main -->
+<!-- - .map functions must be fixed -->
 - Show page with contact info and baneplan under respected menu
-- .map functions must be fixed
+- Page with contact info
 - .env file
 - Fix proxy

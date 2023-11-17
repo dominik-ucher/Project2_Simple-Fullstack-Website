@@ -36,10 +36,8 @@ const FooterTemp = () => {
           ))}
           </div>
           <Footer.LinkGroup className='txt_1'>
-            <Link to="" className='px-2'>About</Link>
-            <Link to="" className='px-2'>Privacy and Policy</Link>
-            <Link to="" className='px-2'>Licensing</Link>
-            <Link to="/contact" className='px-2'>Contact</Link>
+            {/* <Link to="" className='px-2 hover:underline'>About</Link>
+            <Link to="/kontakt" className='hover:underline px-2'>Contact</Link> */}
           </Footer.LinkGroup>
         </div>
         <Footer.Divider />
