@@ -78,7 +78,7 @@ const Sidebar_Menu = () => {
     if (!Array.isArray(menus) || menus.length === 0) {
       return <div>No menus available</div>; // Return a message or component when menus are empty
     }
-  
+
     return menus
       .filter((menu) => menu && menu.parent_id === parentId)
       .map((menu) => (
@@ -94,8 +94,6 @@ const Sidebar_Menu = () => {
       ));
   };
   
-  
-
   return (
     <div className="flex flex-col items-center justify-center h-screen pb-100 mt-20">
       <h1 className="text-center mt-8 text-2xl font-bold">Sidebar Menu</h1>
@@ -103,7 +101,11 @@ const Sidebar_Menu = () => {
       {/* List of Menus */}
       <div className="mt-5">
         <h2 className="text-xl font-bold">Menus:</h2>
-        {renderMenuItems(sidebarMenus)}
+        {Array.isArray(sidebarMenus) && sidebarMenus.length > 0 ? (
+          renderMenuItems(sidebarMenus)
+        ) : (
+          <div>No menus available</div>
+        )}
       </div>
 
       <form className="flex flex-col gap-4 mt-5" onSubmit={handleSubmit}>
