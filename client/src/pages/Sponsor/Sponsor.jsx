@@ -39,7 +39,7 @@ const Single_Page = () => {
       <div className="col-span-10 md:col-span-7 bg-white-200">
         <h1 className='font-bold text-3xl flex justify-center mt-10'>Våre sponsorer</h1>
         <div id='hovedsponsor' className='grid grid-cols-2 gap-4 mt-5 px-5'>
-          {hovedsponsors.map((sponsor) => (
+          {hovedsponsors && hovedsponsors.map((sponsor) => (
             <div key={sponsor.id}>
               <Link to={sponsor.link}>
                 <img src={`../../upload/Sponsor_Bilder/${sponsor.img}`} alt={sponsor.type} className='w-full rounded-xl' />
@@ -50,7 +50,7 @@ const Single_Page = () => {
 
 
         <div id='gullsponsor' className='grid grid-cols-3 gap-4 gap-4 mt-5 px-5'>
-          {gullsponsors.map((sponsor) => (
+          {gullsponsors && gullsponsors.map((sponsor) => (
             <div key={sponsor.id}>
               <Link to={sponsor.link}>
                 <img src={`../../upload/Sponsor_Bilder/${sponsor.img}`} alt={sponsor.type} className='w-full rounded-xl' />
@@ -61,7 +61,7 @@ const Single_Page = () => {
 
 
         <div id='solvsponsor' className='grid grid-cols-4 gap-4 gap-4 mt-5 px-5'>
-          {solvsponsors.map((sponsor) => (
+          {solvsponsors && solvsponsors.map((sponsor) => (
             <div key={sponsor.id}>
               <Link to={sponsor.link}>
                 <img src={`../../upload/Sponsor_Bilder/${sponsor.img}`} alt={sponsor.type} className='w-full rounded-xl' />
@@ -72,7 +72,7 @@ const Single_Page = () => {
 
 
         <div id='bronsesponsor' className='grid grid-cols-5 gap-4 gap-4 mt-5 px-5'>
-          {bronsesponsors.map((sponsor) => (
+          {bronsesponsors && bronsesponsors.map((sponsor) => (
             <div key={sponsor.id}>
               <Link to={sponsor.link}>
                 <img src={`../../upload/Sponsor_Bilder/${sponsor.img}`} alt={sponsor.type} className='w-full rounded-xl' />

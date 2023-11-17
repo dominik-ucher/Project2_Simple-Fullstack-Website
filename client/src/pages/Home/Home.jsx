@@ -69,7 +69,7 @@ const Home = () => {
         <div className="grid grid-cols-10 gap-4">
           <div className="col-span-10 md:col-span-7 bg-white-200 px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {nyheter.slice(0,6).map((nyheter,index) => (
+            {nyheter && nyheter.slice(0,6).map((nyheter,index) => (
                 <Link to={`/nyheter/${nyheter.id}_${nyheter.title}`}>
                 <div key={nyheter.id}>
                 <Card className="max-w-sm mt-10 hover:bg-gray-200">
@@ -106,7 +106,7 @@ const Home = () => {
                 {/* Third Row */}
                 {/* Content for the third row */}
                 <div className="col-span-2">
-                {menu.map((menu,index) => (
+                {menu && menu.map((menu,index) => (
                   <Link to={menu.link}>
                   <img
                     className="object-cover rounded-lg mt-4"

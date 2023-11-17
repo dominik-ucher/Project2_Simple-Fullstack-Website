@@ -27,7 +27,7 @@ const FooterTemp = () => {
       <div className="w-full text-center" >
         <div className="w-full justify-between sm:flex sm:items-center sm:justify-between">
           <div className='flex justify-end'>
-          {hovedsponsors.map((sponsor) => (
+          {hovedsponsors && hovedsponsors.map((sponsor) => (
             <div key={sponsor.id}>
               <Link to={sponsor.link}>
                 <Footer.Brand className="flex rounded-xl w-32 h-auto" src={`../../../upload/Sponsor_Bilder/${sponsor.img}`} alt="Logo" />

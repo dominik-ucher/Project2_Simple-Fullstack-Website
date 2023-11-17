@@ -209,7 +209,7 @@ const Write_Page = () => {
 
         {/* Display uploaded files */}
         <div>
-          {files.map((uploadedFile) => (
+          {files && files.map((uploadedFile) => (
             <div key={uploadedFile.id}>
               <span>{uploadedFile.filnavn}</span>
               <button onClick={() => handleDelete(uploadedFile.id)}>Delete</button>
@@ -229,7 +229,7 @@ const Write_Page = () => {
             value={selectedSidebarId}
           >
             <option value={null}>None</option>
-            {sidebarMenus.map((menu) => (
+            {sidebarMenus && sidebarMenus.map((menu) => (
               <option value={menu.id} key={menu.id}>
                 {menu.name}
               </option>

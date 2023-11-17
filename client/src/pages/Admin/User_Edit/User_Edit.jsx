@@ -85,7 +85,7 @@ const User_Edit = () => {
           </tr>
         </thead>
         <tbody>
-          {editedUsers.map((user, index) => (
+          {editedUsers && editedUsers.map((user, index) => (
             <tr key={user.id}>
               <td className="border px-4 py-2">
                 {user.editing ? (

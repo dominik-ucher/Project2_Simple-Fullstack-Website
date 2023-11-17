@@ -97,7 +97,7 @@ const Single_News = () => {
         </div>
         <div className="col-span-10 md:col-span-3 bg-white-200">
           <h1 className='text-2xl flex justify-center font-bold mt-6'>Andre Nyheter</h1>
-          {nyheter.slice(1, 5).map((nyhet1, index) => (
+          {nyheter && nyheter.slice(1, 5).map((nyhet1, index) => (
               <Link to={`/nyheter/${nyhet1.id}_${nyhet1.title}`} key={nyhet1.id}>
                 <div>
                   <Card className="max-w-sm mt-10">

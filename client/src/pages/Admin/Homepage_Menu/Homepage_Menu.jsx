@@ -125,7 +125,7 @@ const Homepage_Menu = () => {
           </tr>
         </thead>
         <tbody>
-          {pics.map((pic, index) => (
+          {pics && pics.map((pic, index) => (
             <tr key={index}>
               <td className="border px-4 py-2">
                 <img src={`/upload/HomepageMenu_Bilder/${pic.img}`} alt={`Image ${index}`} className="w-16 h-16" />

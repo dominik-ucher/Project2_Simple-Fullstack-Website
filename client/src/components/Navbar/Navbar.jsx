@@ -48,7 +48,7 @@ export default function DefaultNavbar() {
       </Navbar.Brand>
       <Navbar.Toggle />
       <Navbar.Collapse className='z-20 navbar-link px-10'>
-        {links.map((link, index)=> (
+        {links && links.map((link, index)=> (
           <Link key={link.id} className='text-md' to={link.link}>{link.name}</Link>
         ))}
         {currentUser && <Link to="/admin">Admin Side</Link>}

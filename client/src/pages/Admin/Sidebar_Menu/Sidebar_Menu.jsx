@@ -74,7 +74,7 @@ const Sidebar_Menu = () => {
   };
 
   const renderMenuItems = (menus, parentId = null, level = 0) => {
-    return menus
+    return menus && menus
       .filter((menu) => menu.parent_id === parentId)
       .map((menu) => (
         <div key={menu.id} className="pl-4">
@@ -118,7 +118,7 @@ const Sidebar_Menu = () => {
           </div>
           <Select id="sidebar" required onChange={(e) => setSelectedSidebarId(e.target.value)}>
             <option value={null}>None</option>
-            {sidebarMenus.map((menu) => (
+            {sidebarMenus && sidebarMenus.map((menu) => (
               <option value={menu.id} key={menu.id}>
                 {menu.name}
               </option>

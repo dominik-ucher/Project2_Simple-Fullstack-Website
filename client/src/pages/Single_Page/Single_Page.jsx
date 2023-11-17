@@ -105,7 +105,7 @@ const Single_Page = () => {
         </div>
         {/* Display uploaded files */}
         <div>
-        {files.map((file) => {
+        {files && files.map((file) => {
           // Split the file name by '__' and take the second part
           const fileNameParts = file.filnavn.split('__');
           const displayedFileName = fileNameParts.length > 1 ? fileNameParts[1] : file.filnavn;

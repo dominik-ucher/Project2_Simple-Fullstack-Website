@@ -24,7 +24,7 @@ const Navbar_Edit = () => {
         const res = await axios.get(`/api/navbar/`, { withCredentials: true });
         setLinks(res.data);
         // Initialize editedLinks with the same data as links initially
-        setEditedLinks(res.data.map((link) => ({ ...link, editing: false })));
+        setEditedLinks(res.data && res.data.map((link) => ({ ...link, editing: false })));
       } catch (err) {
         console.log(err);
       }
@@ -110,7 +110,7 @@ const Navbar_Edit = () => {
           </tr>
         </thead>
         <tbody>
-          {editedLinks.map((link, index) => (
+          {editedLinks && editedLinks.map((link, index) => (
             <tr key={link.id}>
               <td className="border px-4 py-2">
                 {link.editing ? (

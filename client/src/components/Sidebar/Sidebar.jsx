@@ -41,7 +41,7 @@ const SidebarComponent = () => {
   const renderPageList = () => {
     return (
       <div className="pl-8">
-        {pages
+        {pages && pages
           .filter((page) => !page.sidebar_id) // Filter pages without a sidebar ID
           .map((page) => (
             <div
@@ -69,7 +69,7 @@ const SidebarComponent = () => {
   const renderPagesForMenu = (menuId) => {
     return (
       <div className="pl-8">
-        {pages
+        {pages && pages
           .filter((page) => page.sidebar_id === menuId || (!page.sidebar_id && menuId === null))
           .map((page) => (
             <div
@@ -88,7 +88,7 @@ const SidebarComponent = () => {
   };
 
   const renderMenuItems = (menus, parentId = null) => {
-    return menus
+    return menus && menus
       .filter((menu) => menu.parent_id === parentId)
       .map((menu) => (
         <div key={menu.id} className="pl-4">
