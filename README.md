@@ -72,5 +72,5 @@ Things to fix before publishing
 - Contact Page
 - Page with contact info
 <!-- - Upload several files at once -->
-- Pages without menuid show as main
+<!-- - Pages without menuid show as main -->
 - Show page with contact info and baneplan under respected menu

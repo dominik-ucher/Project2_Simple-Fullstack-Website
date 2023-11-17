@@ -12,28 +12,20 @@ const SidebarComponent = () => {
   const [sidebarMenus, setSidebarMenus] = useState([]);
   const [pages, setPages] = useState([]);
   const [activeMenuId, setActiveMenuId] = useState(null);
+  const [dropdownOpen, setDropdownOpen] = useState({});
 
   useEffect(() => {
-    // Fetch the sidebar menu items from the backend
-    axios
-      .get('/api/sidebar/menus')
-      .then((response) => {
-        setSidebarMenus(response.data);
+    // Fetch the sidebar menu items and all pages from the backend
+    Promise.all([
+      axios.get('/api/sidebar/menus'),
+      axios.get('/api/sider/')
+    ])
+      .then(([sidebarResponse, pagesResponse]) => {
+        setSidebarMenus(sidebarResponse.data);
+        setPages(pagesResponse.data);
       })
       .catch((error) => {
-        console.error('Error fetching sidebar menu items:', error);
-      });
-  }, []);
-
-  useEffect(() => {
-    // Fetch all pages
-    axios
-      .get('/api/sider/')
-      .then((response) => {
-        setPages(response.data);
-      })
-      .catch((error) => {
-        console.error('Error fetching pages', error);
+        console.error('Error fetching data:', error);
       });
   }, []);
 
@@ -46,7 +38,26 @@ const SidebarComponent = () => {
     }
   }, [pages, location.pathname]);
 
-  const [dropdownOpen, setDropdownOpen] = useState({});
+  const renderPageList = () => {
+    return (
+      <div className="pl-8">
+        {pages
+          .filter((page) => !page.sidebar_id) // Filter pages without a sidebar ID
+          .map((page) => (
+            <div
+              key={page.id}
+              className={`flex items-center gap-2 pl-2 mt-2 cursor-pointer text-base ${
+                location.pathname.includes(`/side/${page.id}`) ? 'font-bold' : ''
+              }`}
+              onClick={() => navigate(`/side/${page.id}_${page.title}`)}
+            >
+              <img src={articleicon} alt="Article Icon" className="w-5 h-5" />
+              <span>{page.title}</span>
+            </div>
+          ))}
+      </div>
+    );
+  };
 
   const toggleDropdown = (menuId) => {
     setDropdownOpen((prevState) => ({
@@ -55,14 +66,35 @@ const SidebarComponent = () => {
     }));
   };
 
-  const renderMenuItems = (menus, parentId = null, level = 0) => {
+  const renderPagesForMenu = (menuId) => {
+    return (
+      <div className="pl-8">
+        {pages
+          .filter((page) => page.sidebar_id === menuId || (!page.sidebar_id && menuId === null))
+          .map((page) => (
+            <div
+              key={page.id}
+              className={`flex items-center gap-2 pl-2 mt-2 cursor-pointer text-base ${
+                location.pathname.includes(`/side/${page.id}`) ? 'font-bold' : ''
+              }`}
+              onClick={() => navigate(`/side/${page.id}_${page.title}`)}
+            >
+              <img src={articleicon} alt="Article Icon" className="w-5 h-5" />
+              <span>{page.title}</span>
+            </div>
+          ))}
+      </div>
+    );
+  };
+
+  const renderMenuItems = (menus, parentId = null) => {
     return menus
       .filter((menu) => menu.parent_id === parentId)
       .map((menu) => (
         <div key={menu.id} className="pl-4">
           <div
             className={`flex items-center gap-4 mt-2 p-2 cursor-pointer hover:bg-gray-100 rounded-lg ${
-              level === 0 ? 'text-xl font-bold' : 'text-base'
+              parentId === null ? 'text-xl font-bold' : 'text-base'
             }`}
             onClick={() => toggleDropdown(menu.id)}
           >
@@ -75,25 +107,7 @@ const SidebarComponent = () => {
             )}
           </div>
           {/* Render submenus inside the main menu dropdown */}
-          {dropdownOpen[menu.id] && (
-            <div className="pl-8">
-              {renderMenuItems(menus, menu.id, level + 1)}
-              {pages
-                .filter((page) => page.sidebar_id === menu.id)
-                .map((page) => (
-                  <div
-                    key={page.id}
-                    className={`flex items-center gap-2 pl-2 mt-2 cursor-pointer text-base ${
-                      location.pathname.includes(`/side/${page.id}`) ? 'font-bold' : ''
-                    }`}
-                    onClick={() => navigate(`/side/${page.id}_${page.title}`)}
-                  >
-                    <img src={articleicon} alt="Article Icon" className="w-5 h-5" />
-                    <span>{page.title}</span>
-                  </div>
-                ))}
-            </div>
-          )}
+          {dropdownOpen[menu.id] && renderPagesForMenu(menu.id)}
         </div>
       ));
   };
@@ -104,7 +118,11 @@ const SidebarComponent = () => {
         <h1 className="text-center mt-10 text-3xl font-bold">Meny</h1>
 
         {/* List of Menus */}
-        <div className="mt-10 text-lg w-full px-5">{renderMenuItems(sidebarMenus)}</div>
+        <div className="mt-10 text-lg w-full px-5">
+          {renderMenuItems(sidebarMenus)}
+          {/* Render pages without sidebar_id */}
+          {renderPageList()}
+        </div>
       </div>
     </div>
   );
