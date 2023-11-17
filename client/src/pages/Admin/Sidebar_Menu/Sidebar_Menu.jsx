@@ -76,7 +76,7 @@ const Sidebar_Menu = () => {
 
   const renderMenuItems = (menus, parentId = null, level = 0) => {
     if (!Array.isArray(menus) || menus.length === 0) {
-      return <div>No menus in database</div>; // Return a message or component when menus are empty
+      return <div>No menus available</div>; // Return a message or component when menus are empty
     }
   
     return menus
@@ -93,6 +93,7 @@ const Sidebar_Menu = () => {
         </div>
       ));
   };
+  
   
 
   return (
