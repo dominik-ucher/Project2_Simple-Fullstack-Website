@@ -1,26 +1,4 @@
- IL Trond sin hjemmeside
-
-# Planen til nettsiden 
-1. Frontend Development
-    a. Lage nettside med frontend
-        <!-- I. Lage en hovedside -->
-        <!-- II. Lage en vanlig side vanlig side med Skrive-boks -->
-        <!-- III. Lage en kontakt side -->
-        <!-- IV. Lage en Register og Login side -->
-    <!-- b. Lage CSS med en fargekode som kan brukes til alle logoer -->
-
-2. MySQL database
-    <!-- a. Lage en for Nyheter
-    b. Lage en for NavBar
-    c. Lage en for Sider
-    d. Lage en for Sponsorer -->
-
-3. Backend Development
-    <!-- a. Koble til Register og Login med cookies og Authentication
-    b. Koble til Nyheter
-    c. Koble til Sider
-    d. Koble til Sponsorer
-    e. Koble til NavBar -->
+## IL Trond sin hjemmeside
 
 # What has been done
 1. Frontend Development
@@ -51,23 +29,8 @@
         XI. yarn add js-cookie (IN CLIENT)
         XII. yarn add react-dropzone (IN CLIENT)
         XIII. yarn add fs
-        
 
-# Whats Mising
-<!-- - Change homepage image -->
-<!-- - Change homepage sidemenu  --> 
-<!-- - Change Sidebar -->
-<!-- - Change Navbar --> 
-<!-- - Change Footer -->
-<!-- - Add, delete and edit pages -->
-<!-- - Add, edit and delete user --> 
-<!-- - Add Sponsors -->
-<!-- - Nyhet side  -->
-<!-- - Make it safer -->
-<!-- - Add "Varsler" -->
-<!-- - Teknisk Gjeld -->
-
-Things to fix before publishing
+# Things to fix before publishing
 <!-- - Reverse back to old commit, one before files -->
 <!-- - Contact Page -->
 <!-- - Upload several files at once -->
@@ -79,7 +42,7 @@ Things to fix before publishing
 - Fix proxy
 
 
-How to use VPS
+## How to use VPS
 1. Update website
 - Commit changes to main on GIT. Go onto VPS and "git pull origin main"
 - npx yarn build in client
