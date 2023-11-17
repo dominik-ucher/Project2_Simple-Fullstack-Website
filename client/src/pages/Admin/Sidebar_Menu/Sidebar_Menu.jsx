@@ -75,13 +75,19 @@ const Sidebar_Menu = () => {
   };
 
   const renderMenuItems = (menus, parentId = null, level = 0) => {
-    return menus && menus
+    if (!Array.isArray(menus)) {
+      return null; // Return an empty element or a loading indicator if menus is not an array
+    }
+  
+    return menus
       .filter((menu) => menu && menu.parent_id === parentId)
       .map((menu) => (
         <div key={menu.id} className="pl-4">
           <div className="flex items-center gap-4">
             <span>{`${'-'.repeat(level)} ${menu.name}`}</span>
-            <Button className="mt-4" size="xs" color="failure" onClick={() => handleDeleteMenu(menu.id)}>Delete</Button>
+            <Button className="mt-4" size="xs" color="failure" onClick={() => handleDeleteMenu(menu.id)}>
+              Delete
+            </Button>
           </div>
           {renderMenuItems(menus, menu.id, level + 1)}
         </div>
