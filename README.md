@@ -69,7 +69,7 @@
 
 Things to fix before publishing
 <!-- - Reverse back to old commit, one before files -->
-- Contact Page
+<!-- - Contact Page -->
 - Page with contact info
 <!-- - Upload several files at once -->
 <!-- - Pages without menuid show as main -->

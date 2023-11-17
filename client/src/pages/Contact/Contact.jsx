@@ -8,9 +8,10 @@ const Contact = () => {
     name: '',
     email: '',
     subject: '',
-    selectedOption: 'leder@trondfotball.no', // Default selected option
+    selectedOption: 'leder@trondfotball.no',
     message: '',
   });
+  const [isSent, setIsSent] = useState(false);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -31,7 +32,14 @@ const Contact = () => {
 
       if (response.ok) {
         // Handle success, e.g., show a success message
-        console.log('Email sent successfully');
+        setIsSent(true);
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          selectedOption: 'leder@trondfotball.no',
+          message: '',
+        });
       } else {
         // Handle failure, e.g., show an error message
         console.error('Failed to send email');
@@ -80,7 +88,6 @@ const Contact = () => {
 
           <div className="mb-2 block mt-4 px-4">
             <Label htmlFor="subject" value="Subject" />
-          </div>
           <TextInput
             id="subject"
             name="subject"
@@ -89,6 +96,7 @@ const Contact = () => {
             value={formData.subject}
             onChange={handleInputChange}
           />
+          </div>
 
           <div className="mt-4 px-4" id="select">
             <div className="mb-2 block">
@@ -102,6 +110,7 @@ const Contact = () => {
               required
             >
               <option value="leder@trondfotball.no">Leder</option>
+              <option value="styreleder@trondfotball.no">Styreleder</option>
               <option value="su@trondfotball.no">Sportslig Leder</option>
               <option value="drift@trondfotball.no">Drift</option>
               <option value="arew@trondfotball.no">Kasserer</option>
@@ -127,6 +136,9 @@ const Contact = () => {
             <Button className="px-4" color="dark" pill type="submit">
               <p>Send</p>
             </Button>
+            {isSent && (
+              <div className="text-green-500">Email Sent</div>
+            )}
           </div>
         </form>
       </div>

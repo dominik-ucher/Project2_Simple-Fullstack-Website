@@ -5,7 +5,7 @@ const transporter = nodemailer.createTransport({
   service: 'Gmail', // e.g., 'Gmail', 'Yahoo', etc.
   auth: {
     user: 'overordnet@trondfotball.no',
-    pass: 'Passord', //HUSK Å SKRIVE PASSORD HER NÅR FERDIG
+    pass: 'mmuo ubcp emmz auea', //HUSK Å SKRIVE PASSORD HER NÅR FERDIG
   },
 });
 
@@ -16,8 +16,9 @@ const sendEmail = (req, res) => {
   const mailOptions = {
     from: email,
     to: selectedOption, // The recipient's email address based on the selected option
-    subject: `Contact Form Submission from ${name} - ${subject}`,
-    text: message,
+    subject: `Contact Form Submission - ${subject}`,
+    text: `This is a message sent from Contact form on IL Trond website.\nHit "reply" to reply to sender.\n\n${message}`,
+    replyTo: `${name} <${email}>`,
   };
 
   transporter.sendMail(mailOptions, (error, info) => {
