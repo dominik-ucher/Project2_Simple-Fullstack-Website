@@ -38,11 +38,15 @@ const Write_Page = () => {
       .get('/api/sidebar/menus')
       .then((response) => {
         setSidebarMenus(response.data);
+        // Set the selected menu if it exists in the state
+        if (state?.sidebar_id) {
+          setSelectedSidebarId(state.sidebar_id);
+        }
       })
       .catch((error) => {
         console.error('Error fetching sidebar menu items:', error);
       });
-  }, []);
+  }, [state]);
 
   const uploadimg = async () => {
     try {
@@ -218,7 +222,12 @@ const Write_Page = () => {
           <div className='mb-2 block'>
             <Label htmlFor='sidebar' value='Select Sidebar Menu' />
           </div>
-          <Select id='sidebar' required onChange={(e) => setSelectedSidebarId(e.target.value)}>
+          <Select
+            id='sidebar'
+            required
+            onChange={(e) => setSelectedSidebarId(e.target.value)}
+            value={selectedSidebarId}
+          >
             <option value={null}>None</option>
             {sidebarMenus.map((menu) => (
               <option value={menu.id} key={menu.id}>
@@ -227,6 +236,7 @@ const Write_Page = () => {
             ))}
           </Select>
         </div>
+
 
         <div className='mt-5 px-20'>
           <Button color='dark' onClick={handleClick}>
