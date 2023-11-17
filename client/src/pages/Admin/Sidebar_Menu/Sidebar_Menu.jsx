@@ -76,7 +76,7 @@ const Sidebar_Menu = () => {
 
   const renderMenuItems = (menus, parentId = null, level = 0) => {
     return menus && menus
-      .filter((menu) => menu.parent_id === parentId)
+      .filter((menu) => menu && menu.parent_id === parentId)
       .map((menu) => (
         <div key={menu.id} className="pl-4">
           <div className="flex items-center gap-4">
