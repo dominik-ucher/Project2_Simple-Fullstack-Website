@@ -13,6 +13,7 @@ import 'quill-better-table'; // Import the table plugin itself
 
 
 const Write_Page = () => {
+  const axiosInstance = axios.create({baseURL: import.meta.env.VITE_REACT_APP_API_URL,});
   const state = useLocation().state;
   const [title, setTitle] = useState(state?.title || '');
   const [value, setValue] = useState(state?.desc || '');
@@ -52,7 +53,7 @@ const Write_Page = () => {
     try {
       const formData = new FormData();
       formData.append('file', image);
-      const res = await axios.post('/api/upload_sidebilde', formData);
+      const res = await axiosInstance.post('/api/upload_sidebilde', formData);
       return res.data;
     } catch (err) {
       console.log(err);
@@ -69,7 +70,7 @@ const Write_Page = () => {
 
     try {
       state
-        ? await axios.put(
+        ? await axiosInstance.put(
             `/api/sider/${state.id}`,
             {
               title,
@@ -79,7 +80,7 @@ const Write_Page = () => {
             },
             { withCredentials: true }
           )
-        : await axios.post(
+        : await axiosInstance.post(
             '/api/sider/',
             {
               title,
@@ -118,7 +119,7 @@ const Write_Page = () => {
 
   const fetchFiles = async () => {
     try {
-      const response = await axios.get(`/api/siderfiler/${state.id}`);
+      const response = await axiosInstance.get(`/api/siderfiler/${state.id}`);
       setFiles(response.data); // Assuming backend responds with an array of files
     } catch (err) {
       console.error('Error fetching files:', err);
@@ -138,8 +139,8 @@ const Write_Page = () => {
         const formData = new FormData();
         formData.append('file', file);
   
-        const res = await axios.post('/api/upload_sidefile', formData);
-        await axios.post('/api/siderfiler/', { filnavn: res.data, side_id: state.id }, { withCredentials: true });
+        const res = await axiosInstance.post('/api/upload_sidefile', formData);
+        await axiosInstance.post('/api/siderfiler/', { filnavn: res.data, side_id: state.id }, { withCredentials: true });
         await fetchFiles(); // Update file list immediately after upload
         setFile(null); // Reset file state after upload
       }
@@ -151,7 +152,7 @@ const Write_Page = () => {
   
   const handleDelete = async (fileId) => {
     try {
-      await axios.delete(`/api/siderfiler/${fileId}`);
+      await axiosInstance.delete(`/api/siderfiler/${fileId}`);
       await fetchFiles(); // Update files immediately after deletion
     } catch (err) {
       console.error('Error deleting file:', err);

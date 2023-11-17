@@ -14,7 +14,7 @@ import './Single_News.css'
 
 const Single_News = () => {
 
-
+  const axiosInstance = axios.create({baseURL: import.meta.env.VITE_REACT_APP_API_URL,});
   const [nyhet, setNyhet] = useState({});
   const location = useLocation();
   const navigate = useNavigate();
@@ -25,7 +25,7 @@ const Single_News = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get('/api/nyheter/');
+        const res = await axiosInstance.get('/api/nyheter/');
         setNyheter(res.data);
       } catch (err) {
         console.log(err);
@@ -37,7 +37,7 @@ const Single_News = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`/api/nyheter/${nyhetId}`,{withCredentials: true,});
+        const res = await axiosInstance.get(`/api/nyheter/${nyhetId}`,{withCredentials: true,});
         setNyhet(res.data);
       } catch (err) {
         console.log(err);
@@ -48,7 +48,7 @@ const Single_News = () => {
 
   const handleDelete = async ()=>{
     try {
-      await axios.delete(`/api/nyheter/${nyhetId}`,{withCredentials: true,});
+      await axiosInstance.delete(`/api/nyheter/${nyhetId}`,{withCredentials: true,});
       navigate("/")
     } catch (err) {
       console.log(err);

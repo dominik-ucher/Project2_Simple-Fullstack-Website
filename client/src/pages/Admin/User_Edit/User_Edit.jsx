@@ -5,6 +5,7 @@ import { Card } from 'flowbite-react';
 import { useNavigate } from 'react-router-dom'
 
 const User_Edit = () => {
+  const axiosInstance = axios.create({baseURL: import.meta.env.VITE_REACT_APP_API_URL,});
   const { currentUser } = useContext(AuthContext);
   const [users, setUsers] = useState([]);
   const [editedUsers, setEditedUsers] = useState([]);
@@ -19,7 +20,7 @@ const User_Edit = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get('/api/users');
+        const res = await axiosInstance.get('/api/users');
         setUsers(res.data);
         // Initialize editedUsers with the same data as users initially
         setEditedUsers([...res.data]);
@@ -40,7 +41,7 @@ const User_Edit = () => {
   const handleSave = async (index) => {
     try {
       // Update the user in the MySQL database
-      await axios.put(`/api/users/${users[index].id}`, {
+      await axiosInstance.put(`/api/users/${users[index].id}`, {
         username: editedUsers[index].username,
         email: editedUsers[index].email,
       }, { withCredentials: true });
@@ -62,7 +63,7 @@ const User_Edit = () => {
 
   const handleDeleteUser = async (userId) => {
     try {
-      await axios.delete(`/api/users/${userId}`, { withCredentials: true });
+      await axiosInstance.delete(`/api/users/${userId}`, { withCredentials: true });
 
       // Remove the deleted user from the state
       setUsers((prevUsers) => prevUsers.filter((user) => user.id !== userId));

@@ -7,6 +7,7 @@ import menuicon from '../../img/menu.png';
 import articleicon from '../../img/article.png';
 
 const SidebarComponent = () => {
+  const axiosInstance = axios.create({baseURL: import.meta.env.VITE_REACT_APP_API_URL,});
   const navigate = useNavigate();
   const location = useLocation();
   const [sidebarMenus, setSidebarMenus] = useState([]);
@@ -17,8 +18,8 @@ const SidebarComponent = () => {
   useEffect(() => {
     // Fetch the sidebar menu items and all pages from the backend
     Promise.all([
-      axios.get('/api/sidebar/menus'),
-      axios.get('/api/sider/')
+      axiosInstance.get('/api/sidebar/menus'),
+      axiosInstance.get('/api/sider/')
     ])
       .then(([sidebarResponse, pagesResponse]) => {
         setSidebarMenus(sidebarResponse.data);

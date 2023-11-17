@@ -6,6 +6,7 @@ import { Card } from 'flowbite-react';
 import { Link } from 'react-router-dom';
 
 const Navbar_Edit = () => {
+  const axiosInstance = axios.create({baseURL: import.meta.env.VITE_REACT_APP_API_URL,});
   const navigate = useNavigate();
   const { currentUser } = useContext(AuthContext);
 
@@ -21,7 +22,7 @@ const Navbar_Edit = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`/api/navbar/`, { withCredentials: true });
+        const res = await axiosInstance.get(`/api/navbar/`, { withCredentials: true });
         setLinks(res.data);
         // Initialize editedLinks with the same data as links initially
         setEditedLinks(res.data && res.data.map((link) => ({ ...link, editing: false })));
@@ -45,13 +46,13 @@ const Navbar_Edit = () => {
 
       if (linkToSave.id) {
         // If it's an existing link, update it in the MySQL database
-        await axios.put(`/api/navbar/${linkToSave.id}`, {
+        await axiosInstance.put(`/api/navbar/${linkToSave.id}`, {
           name: linkToSave.name,
           link: linkToSave.link,
         }, { withCredentials: true });
       } else {
         // If it's a new link, create it in the MySQL database
-        const res = await axios.post('/api/navbar/', linkToSave, { withCredentials: true });
+        const res = await axiosInstance.post('/api/navbar/', linkToSave, { withCredentials: true });
         linkToSave.id = res.data.id;
       }
 
@@ -75,7 +76,7 @@ const Navbar_Edit = () => {
       const linkToDelete = editedLinks[index];
 
       if (linkToDelete.id) {
-        await axios.delete(`/api/navbar/${linkToDelete.id}`, { withCredentials: true });
+        await axiosInstance.delete(`/api/navbar/${linkToDelete.id}`, { withCredentials: true });
       }
 
       // Remove the link from the original links state

@@ -2,6 +2,7 @@ import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 
 export const AuthContext = createContext();
+const axiosInstance = axios.create({baseURL: import.meta.env.VITE_REACT_APP_API_URL,});
 
 export const AuthContexProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(
@@ -9,14 +10,14 @@ export const AuthContexProvider = ({ children }) => {
   );
 
   const login = async (inputs) => {
-    const res = await axios.post("/api/auth/login", inputs,{
+    const res = await axiosInstance.post("/api/auth/login", inputs,{
       withCredentials: true,
     });
     setCurrentUser(res.data);
   };
 
   const logout = async (inputs) => {
-    await axios.post("/api/auth/logout",{},{
+    await axiosInstance.post("/api/auth/logout",{},{
       withCredentials:true,
     });
     setCurrentUser(null);

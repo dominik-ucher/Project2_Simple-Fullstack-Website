@@ -5,6 +5,7 @@ import axios from 'axios';
 import DOMPurify from 'dompurify';
 
 const News_Page = () => {
+  const axiosInstance = axios.create({baseURL: import.meta.env.VITE_REACT_APP_API_URL,});
   const [nyheter, setNyheter] = useState([]);
   const [mainpic, setMainpic] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -13,7 +14,7 @@ const News_Page = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get('/api/nyheter/');
+        const res = await axiosInstance.get('/api/nyheter/');
         setNyheter(res.data);
       } catch (err) {
         console.log(err);
@@ -25,7 +26,7 @@ const News_Page = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get('/api/homepagepic/');
+        const res = await axiosInstance.get('/api/homepagepic/');
         setMainpic(res.data[0] || { id: null, img: '' });
       } catch (err) {
         console.log(err);

@@ -7,10 +7,11 @@ import { Link } from 'react-router-dom';
 import axios from 'axios'
 
 const FooterTemp = () => {
+  const axiosInstance = axios.create({baseURL: import.meta.env.VITE_REACT_APP_API_URL,});
   const [hovedsponsors, setHovedsponsors] = useState([]);
 
   useEffect(() => {
-    axios.get('/api/sponsor').then((response) => {
+    axiosInstance.get('/api/sponsor').then((response) => {
       const sponsors = response.data;
       const hovedSponsors = sponsors.filter((sponsor) => sponsor.type === 'Hoved');
   

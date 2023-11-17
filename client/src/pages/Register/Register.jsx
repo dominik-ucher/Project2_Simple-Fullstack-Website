@@ -7,6 +7,7 @@ import { Button, Label, TextInput } from 'flowbite-react';
 import { AuthContext } from '../../context/authContext';
 
 const Register = () => {
+  const axiosInstance = axios.create({baseURL: import.meta.env.VITE_REACT_APP_API_URL,});
   const [inputs, setInputs] = useState({
     username: "",
     email: "",
@@ -30,7 +31,7 @@ const Register = () => {
     }
 
     try {
-      await axios.post("/api/auth/register", inputs);
+      await axiosInstance.post("/api/auth/register", inputs);
       navigate("/login");
     } catch (err) {
       setError(err.response.data);

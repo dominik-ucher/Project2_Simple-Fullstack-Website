@@ -13,6 +13,7 @@ import axios from 'axios'
 import { AuthContext } from '../../context/authContext';
 
 const Write_News = () => {
+    const axiosInstance = axios.create({baseURL: import.meta.env.VITE_REACT_APP_API_URL,});
 
     const state = useLocation().state;
     const [title, setTitle] = useState(state?.title || "");
@@ -34,7 +35,7 @@ const Write_News = () => {
         try {
         const formData = new FormData();
         formData.append("file", file);
-        const res = await axios.post("/api/upload_nyhetbilde", formData);
+        const res = await axiosInstance.post("/api/upload_nyhetbilde", formData);
         return res.data; 
         } catch (err) {
         console.log(err);
@@ -50,12 +51,12 @@ const Write_News = () => {
 
         try {
         state
-            ? await axios.put(`/api/nyheter/${state.id}`, {
+            ? await axiosInstance.put(`/api/nyheter/${state.id}`, {
                 title,
                 desc: value,
                 img: file ? imgUrl : state.img , //imgURL BLIR NULL
             },{withCredentials: true,})
-            : await axios.post(`/api/nyheter/`, {
+            : await axiosInstance.post(`/api/nyheter/`, {
                 title,
                 desc: value,
                 img: file ? imgUrl : "",

@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import Sidebar from '../../../components/Sidebar/Sidebar';
 
 const Sidebar_Menu = () => {
+  const axiosInstance = axios.create({baseURL: import.meta.env.VITE_REACT_APP_API_URL,});
   const { currentUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const [menuname, setMenuname] = useState('');
@@ -33,7 +34,7 @@ const Sidebar_Menu = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(
+      await axiosInstance.post(
         '/api/sidebar/menus/',
         {
           name: menuname,
@@ -52,7 +53,7 @@ const Sidebar_Menu = () => {
 
   const handleDeleteMenu = async (menuId) => {
     try {
-      await axios.delete(`/api/sidebar/menus/${menuId}`, {
+      await axiosInstance.delete(`/api/sidebar/menus/${menuId}`, {
         withCredentials: true,
       });
       // After successful deletion, refresh the list of menus

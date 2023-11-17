@@ -6,6 +6,7 @@ import axios from 'axios'
 import DOMPurify from 'dompurify';
 
 const Home = () => {
+  const axiosInstance = axios.create({baseURL: import.meta.env.VITE_REACT_APP_API_URL,});
 
   const [nyheter, setNyheter] = useState([]);
   const [menu, setMenu] = useState([]);
@@ -14,7 +15,7 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`/api/nyheter/`);
+        const res = await axiosInstance.get(`/api/nyheter/`);
         setNyheter(res.data);
       } catch (err) {
         console.log(err);
@@ -26,7 +27,7 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`/api/homepage_menu/`);
+        const res = await axiosInstance.get(`/api/homepage_menu/`);
         setMenu(res.data);
       } catch (err) {
         console.log(err);
@@ -38,7 +39,7 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`/api/homepagepic/`);
+        const res = await axiosInstance.get(`/api/homepagepic/`);
         setMainpic(res.data[0] || { id: null, img: '' });
       } catch (err) {
         console.log(err);

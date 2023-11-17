@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button, FileInput, Label, Select, Table, TextInput } from 'flowbite-react';
 
 const Sponsor_Edit = () => {
+  const axiosInstance = axios.create({baseURL: import.meta.env.VITE_REACT_APP_API_URL,});
   const { currentUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -22,7 +23,7 @@ const Sponsor_Edit = () => {
   });
 
   useEffect(() => {
-    axios.get('/api/sponsor', { withCredentials: true }) // Add withCredentials
+    axiosInstance.get('/api/sponsor', { withCredentials: true }) // Add withCredentials
       .then(response => setSponsors(response.data))
       .catch(error => console.error(error));
   }, []);
@@ -54,9 +55,9 @@ const Sponsor_Edit = () => {
     formData.append('link', newSponsor.link);
     formData.append('type', newSponsor.type);
 
-    axios.post('/api/upload_sponsorbilde', formData, { withCredentials: true }) // Add withCredentials
+    axiosInstance.post('/api/upload_sponsorbilde', formData, { withCredentials: true }) // Add withCredentials
       .then(response => {
-        return axios.post('/api/sponsor', {
+        return axiosInstance.post('/api/sponsor', {
           img: response.data,
           link: newSponsor.link,
           type: newSponsor.type,
@@ -75,7 +76,7 @@ const Sponsor_Edit = () => {
   };
 
   const handleDelete = (id) => {
-    axios.delete(`/api/sponsor/${id}`, { withCredentials: true }) // Add withCredentials
+    axiosInstance.delete(`/api/sponsor/${id}`, { withCredentials: true }) // Add withCredentials
       .then(() => {
         setSponsors(sponsors.filter(sponsor => sponsor.id !== id));
       })

@@ -8,6 +8,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios'
 
 export default function DefaultNavbar() {
+  const axiosInstance = axios.create({baseURL: import.meta.env.VITE_REACT_APP_API_URL,});
 
   const {currentUser, logout} = useContext(AuthContext);
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ export default function DefaultNavbar() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`/api/navbar/`);
+        const res = await axiosInstance.get(`/api/navbar/`);
         setLinks(res.data);
       } catch (err) {
         console.log(err);

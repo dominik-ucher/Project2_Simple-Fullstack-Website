@@ -6,6 +6,7 @@ import { useDropzone } from 'react-dropzone';
 import { useNavigate } from 'react-router-dom';
 
 const Homepage_Menu = () => {
+  const axiosInstance = axios.create({baseURL: import.meta.env.VITE_REACT_APP_API_URL,});
   const { currentUser } = useContext(AuthContext);
   const [pics, setPics] = useState([]);
   const [editingIndex, setEditingIndex] = useState(-1); // Initialize to -1
@@ -23,7 +24,7 @@ const Homepage_Menu = () => {
 
   const fetchData = async () => {
     try {
-      const res = await axios.get('/api/homepage_menu');
+      const res = await axiosInstance.get('/api/homepage_menu');
       setPics(res.data);
     } catch (err) {
       console.log(err);
@@ -40,7 +41,7 @@ const Homepage_Menu = () => {
   const handleSave = async (index) => {
     try {
       const { id, img, link } = pics[index];
-      await axios.put(
+      await axiosInstance.put(
         `/api/homepage_menu/${id}`,
         { img, link },
         { withCredentials: true }
@@ -55,7 +56,7 @@ const Homepage_Menu = () => {
   const handleDelete = async (index) => {
     try {
       const picId = pics[index].id;
-      await axios.delete(
+      await axiosInstance.delete(
         `/api/homepage_menu/${picId}`,
         { withCredentials: true }
       );
@@ -68,7 +69,7 @@ const Homepage_Menu = () => {
   const handleAdd = async () => {
     try {
       const newPic = { img: '', link: '' };
-      await axios.post(
+      await axiosInstance.post(
         '/api/homepage_menu',
         newPic,
         { withCredentials: true }
@@ -84,7 +85,7 @@ const Homepage_Menu = () => {
       const file = acceptedFiles[0];
       const formData = new FormData();
       formData.append('file', file);
-      const res = await axios.post(
+      const res = await axiosInstance.post(
         '/api/upload_homepagemenubilde',
         formData,
         { withCredentials: true }

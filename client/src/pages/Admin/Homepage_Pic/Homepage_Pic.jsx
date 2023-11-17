@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button, FileInput, Label } from 'flowbite-react';
 
 const Homepage_Pic = () => {
+  const axiosInstance = axios.create({baseURL: import.meta.env.VITE_REACT_APP_API_URL,});
   const { currentUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -17,7 +18,7 @@ const Homepage_Pic = () => {
   const [homepagepic, setHomepagepic] = useState({});
 
   useEffect(() => {
-    axios.get('/api/homepagepic', { withCredentials: true })
+    axiosInstance.get('/api/homepagepic', { withCredentials: true })
       .then(response => setHomepagepic(response.data[0] || { id: null, img: '' }))
       .catch(error => console.error(error));
   }, []);
@@ -31,11 +32,11 @@ const Homepage_Pic = () => {
     try {
       // Delete the old image
       if (homepagepic.img && homepagepic.id) {
-        await axios.delete(`/api/homepagepic/${homepagepic.id}`, { withCredentials: true });
+        await axiosInstance.delete(`/api/homepagepic/${homepagepic.id}`, { withCredentials: true });
       }
   
       // Upload the new image
-      const response = await axios.post(
+      const response = await axiosInstance.post(
         '/api/upload_homepagepicbilde',
         formData,
         {
@@ -48,7 +49,7 @@ const Homepage_Pic = () => {
       const newImageFilename = response.data;
   
       // Add a new picture record to the database using POST request
-      await axios.post(
+      await axiosInstance.post(
         '/api/homepagepic',
         { img: newImageFilename },
         { withCredentials: true }

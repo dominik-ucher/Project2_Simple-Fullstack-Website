@@ -14,7 +14,7 @@ import './Single_Page.css'
 
 const Single_Page = () => {
 
-
+  const axiosInstance = axios.create({baseURL: import.meta.env.VITE_REACT_APP_API_URL,});
   const [side, setSide] = useState({});
   const [files, setFiles] = useState([]);
 
@@ -28,11 +28,11 @@ const Single_Page = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`/api/sider/${sideId}`, { withCredentials: true });
+        const res = await axiosInstance.get(`/api/sider/${sideId}`, { withCredentials: true });
         setSide(res.data);
 
         // Fetch associated files for the side
-        const filesRes = await axios.get(`/api/siderfiler/${sideId}`, { withCredentials: true });
+        const filesRes = await axiosInstance.get(`/api/siderfiler/${sideId}`, { withCredentials: true });
         setFiles(filesRes.data); // Assuming the response contains an array of files
       } catch (err) {
         console.log(err);
@@ -44,7 +44,7 @@ const Single_Page = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`/api/sider/${sideId}`,{withCredentials: true,});
+        const res = await axiosInstance.get(`/api/sider/${sideId}`,{withCredentials: true,});
         setSide(res.data);
       } catch (err) {
         console.log(err);
@@ -55,7 +55,7 @@ const Single_Page = () => {
 
   const handleDelete = async ()=>{
     try {
-      await axios.delete(`/api/sider/${sideId}`,{withCredentials: true,});
+      await axiosInstance.delete(`/api/sider/${sideId}`,{withCredentials: true,});
       navigate("/")
     } catch (err) {
       console.log(err);
