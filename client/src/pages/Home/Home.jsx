@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { Button, Card } from 'flowbite-react';
 import axios from 'axios'
 import DOMPurify from 'dompurify';
-import './Home.css'
+
 
 const Home = () => {
   const axiosInstance = axios.create({baseURL: import.meta.env.VITE_REACT_APP_API_URL,});
@@ -79,7 +79,10 @@ const Home = () => {
                 <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                 <p className='line-clamp-3'>{nyheter.title}</p>
                 </h5>
-                <p className="line-clamp-3 font-normal text-gray-700 dark:text-gray-400"  dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(nyheter.desc),}}></p>
+                <p className="line-clamp-3 overflow-hidden h-18 md:h-auto text-gray-700 dark:text-gray-400">
+                  {nyheter.desc}
+                </p>
+
                 <Button gradientDuoTone='redToYellow' outline className="flex"><h2>Les mer</h2></Button>
                 </Card>
                 </div>
