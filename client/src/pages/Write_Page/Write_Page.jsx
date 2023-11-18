@@ -98,21 +98,18 @@ const Write_Page = () => {
 
   const modules = {
     toolbar: [
-      ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+      ['bold', 'italic', 'underline', 'strike'],
       ['blockquote', 'code-block'],
-    
-      [{ 'header': 1 }, { 'header': 2 }],               // custom button values
-      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-      [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
-      [{ 'direction': 'rtl' }],                         // text direction
-    
+      [{ 'header': 1 }, { 'header': 2 }],
+      [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+      [{ 'script': 'sub' }, { 'script': 'super' }],
+      [{ 'direction': 'rtl' }],
       [{ 'header': [1, 2, 3, 4, false] }],
-    
-      [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+      [{ 'color': [] }, { 'background': [] }],
       [{ 'font': [] }],
       [{ 'align': [] }],
-    
-      ['clean'] 
+      [{ 'link': 'link' }], // Include the link option in the toolbar
+      ['clean'],
     ],
   };
 
