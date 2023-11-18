@@ -80,8 +80,8 @@ const Home = () => {
                 <p className='line-clamp-3'>{nyheter.title}</p>
                 </h5>
                 <div className="overflow-hidden text-gray-700 dark:text-gray-400">
-  <div className="h-6 md:line-clamp-3" style={{ display: '-webkit-box', WebkitBoxOrient: 'vertical' }} dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(`<span>${nyheter.desc}</span>`) }}></div>
-</div>
+                  <div className="h-10" style={{ display: '-webkit-box', WebkitBoxOrient: 'vertical' }} dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(`<span>${nyheter.desc}</span>`) }}></div>
+                </div>
 
                 <Button gradientDuoTone='redToYellow' outline className="flex"><h2>Les mer</h2></Button>
                 </Card>
