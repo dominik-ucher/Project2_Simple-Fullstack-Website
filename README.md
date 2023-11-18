@@ -49,3 +49,4 @@
 - rm -rf /var/www/iltrond/client/index.html
 - rm -rf /var/www/iltrond/client/assets
 - cp -r dist/* /var/www/iltrond/client
+- systemctl reload nginx

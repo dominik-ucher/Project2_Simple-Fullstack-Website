@@ -75,29 +75,19 @@ const Sidebar_Menu = () => {
   };
 
   const renderMenuItems = (menus, parentId = null, level = 0) => {
-    if (!Array.isArray(menus) || menus.length === 0) {
-      return <div>No menus available</div>; // Return a message or component when menus are empty or not an array
-    }
-
-    const filteredMenus = menus.filter((menu) => menu && menu.parent_id === parentId);
-  
-    if (filteredMenus.length === 0) {
-      return <div>No menus available</div>; // Return if no matching menus found
-    }
-
-    return filteredMenus.map((menu) => (
-      <div key={menu.id} className="pl-4">
-        <div className="flex items-center gap-4">
-          <span>{`${'-'.repeat(level)} ${menu.name}`}</span>
-          <Button className="mt-4" size="xs" color="failure" onClick={() => handleDeleteMenu(menu.id)}>
-            Delete
-          </Button>
+    return menus && menus
+      .filter((menu) => menu.parent_id === parentId)
+      .map((menu) => (
+        <div key={menu.id} className="pl-4">
+          <div className="flex items-center gap-4">
+            <span>{`${'-'.repeat(level)} ${menu.name}`}</span>
+            <Button className="mt-4" size="xs" color="failure" onClick={() => handleDeleteMenu(menu.id)}>Delete</Button>
+          </div>
+          {renderMenuItems(menus, menu.id, level + 1)}
         </div>
-        {renderMenuItems(menus, menu.id, level + 1)}
-      </div>
-    ));
+      ));
   };
-  
+
   return (
     <div className="flex flex-col items-center justify-center h-screen pb-100 mt-20">
       <h1 className="text-center mt-8 text-2xl font-bold">Sidebar Menu</h1>
@@ -105,11 +95,7 @@ const Sidebar_Menu = () => {
       {/* List of Menus */}
       <div className="mt-5">
         <h2 className="text-xl font-bold">Menus:</h2>
-        {Array.isArray(sidebarMenus) && sidebarMenus.length > 0 ? (
-          renderMenuItems(sidebarMenus)
-        ) : (
-          <div>No menus available</div>
-        )}
+        {renderMenuItems(sidebarMenus)}
       </div>
 
       <form className="flex flex-col gap-4 mt-5" onSubmit={handleSubmit}>
@@ -133,11 +119,11 @@ const Sidebar_Menu = () => {
           </div>
           <Select id="sidebar" required onChange={(e) => setSelectedSidebarId(e.target.value)}>
             <option value={null}>None</option>
-            {Array.isArray(sidebarMenus) && sidebarMenus.length > 0 ? (
-                renderMenuItems(sidebarMenus)
-              ) : (
-                <div>No menus available</div>
-              )}
+            {sidebarMenus && sidebarMenus.map((menu) => (
+              <option value={menu.id} key={menu.id}>
+                {menu.name}
+              </option>
+            ))}
           </Select>
         </div>
 
