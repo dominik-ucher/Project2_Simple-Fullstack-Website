@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { Label, TextInput, Select, Textarea, Button } from 'flowbite-react';
 import { HiMail } from 'react-icons/hi';
 import Logo from '../../img/logo.png';
+import axios from 'axios';
 
 const Contact = () => {
+  const axiosInstance = axios.create({baseURL: import.meta.env.VITE_REACT_APP_API_URL,});
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -20,19 +22,17 @@ const Contact = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+  
     try {
-      const response = await fetch('/api/contact/send-email', {
-        method: 'POST',
+      const response = await axiosInstance.post('/api/contact/send-email', formData, {
+        withCredentials: true,
         headers: {
           'Content-Type': 'application/json',
         },
-        withCredentials: true,
-        body: JSON.stringify(formData),
       });
-
-      if (response.ok) {
-        // Handle success, e.g., show a success message
+  
+      if (response.status === 200) {
+        // Handle success
         setIsSent(true);
         setFormData({
           name: '',
@@ -42,7 +42,7 @@ const Contact = () => {
           message: '',
         });
       } else {
-        // Handle failure, e.g., show an error message
+        // Handle failure
         console.error('Failed to send email');
       }
     } catch (error) {
