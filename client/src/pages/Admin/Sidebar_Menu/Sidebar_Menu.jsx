@@ -76,22 +76,26 @@ const Sidebar_Menu = () => {
 
   const renderMenuItems = (menus, parentId = null, level = 0) => {
     if (!Array.isArray(menus) || menus.length === 0) {
-      return <div>No menus available</div>; // Return a message or component when menus are empty
+      return <div>No menus available</div>; // Return a message or component when menus are empty or not an array
     }
 
-    return menus
-      .filter((menu) => menu && menu.parent_id === parentId)
-      .map((menu) => (
-        <div key={menu.id} className="pl-4">
-          <div className="flex items-center gap-4">
-            <span>{`${'-'.repeat(level)} ${menu.name}`}</span>
-            <Button className="mt-4" size="xs" color="failure" onClick={() => handleDeleteMenu(menu.id)}>
-              Delete
-            </Button>
-          </div>
-          {renderMenuItems(menus, menu.id, level + 1)}
+    const filteredMenus = menus.filter((menu) => menu && menu.parent_id === parentId);
+  
+    if (filteredMenus.length === 0) {
+      return <div>No menus available</div>; // Return if no matching menus found
+    }
+
+    return filteredMenus.map((menu) => (
+      <div key={menu.id} className="pl-4">
+        <div className="flex items-center gap-4">
+          <span>{`${'-'.repeat(level)} ${menu.name}`}</span>
+          <Button className="mt-4" size="xs" color="failure" onClick={() => handleDeleteMenu(menu.id)}>
+            Delete
+          </Button>
         </div>
-      ));
+        {renderMenuItems(menus, menu.id, level + 1)}
+      </div>
+    ));
   };
   
   return (
