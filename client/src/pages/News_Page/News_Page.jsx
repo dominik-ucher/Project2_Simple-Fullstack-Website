@@ -65,10 +65,9 @@ const News_Page = () => {
                     <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                       <p className='line-clamp-3'>{nyhet.title}</p>
                     </h5>
-                    <p
-                      className="line-clamp-3 font-normal text-gray-700 dark:text-gray-400"
-                      dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(nyhet.desc) }}
-                    ></p>
+                    <div className="overflow-hidden text-gray-700 dark:text-gray-400">
+                      <div className="h-10" style={{ display: '-webkit-box', WebkitBoxOrient: 'vertical' }} dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(`<span>${nyhet.desc}</span>`) }}></div>
+                    </div>
                     <Button gradientDuoTone='redToYellow' outline className="flex"><h2>Les mer</h2></Button>
                   </Card>
                 </div>

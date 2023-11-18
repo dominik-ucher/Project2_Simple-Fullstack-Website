@@ -91,7 +91,7 @@ const Single_News = () => {
             </div>
             <h1 className='flex items-center justify-center mt-20 font-bold capitalize text-3xl'>{nyhet.title}</h1>
             <div className="text-black flex flex-col mt-10 px-10 my-special-content">
-              <p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(nyhet.desc) }}></p>
+              <p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(nyhet.desc).replace(/<a/g, '<a class="text-blue-500 underline"') }}></p>
             </div>
         </div>
         </div>
@@ -109,10 +109,9 @@ const Single_News = () => {
                     <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                       <p className='line-clamp-3'>{nyhet1.title}</p>
                     </h5>
-                    <p
-                      className="line-clamp-3 font-normal text-gray-700 dark:text-gray-400"
-                      dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(nyhet1.desc).replace(/<a/g, '<a class="text-blue-500 underline"') }}
-                    ></p>
+                    <div className="overflow-hidden text-gray-700 dark:text-gray-400">
+                      <div className="h-10" style={{ display: '-webkit-box', WebkitBoxOrient: 'vertical' }} dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(`<span>${nyhet1.desc}</span>`) }}></div>
+                    </div>
                     <Button gradientDuoTone='redToYellow' outline className="flex"><h2>Les mer</h2></Button>
                   </Card>
                 </div>
