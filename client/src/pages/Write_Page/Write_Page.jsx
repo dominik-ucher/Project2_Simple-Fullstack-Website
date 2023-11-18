@@ -233,7 +233,7 @@ const Write_Page = () => {
             <option value={null}>None</option>
             {sidebarMenus && sidebarMenus.map((menu) => (
               <option value={menu.id} key={menu.id}>
-                <p>{menu.name}</p>
+                {menu.name}
               </option>
             ))}
           </Select>
