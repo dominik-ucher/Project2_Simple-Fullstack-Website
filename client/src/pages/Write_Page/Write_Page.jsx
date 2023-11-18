@@ -42,7 +42,7 @@ const Write_Page = () => {
 
   useEffect(() => {
     // Fetch the sidebar menu items from the backend
-    axios
+    axiosInstance
       .get('/api/sidebar/menus')
       .then((response) => {
         setSidebarMenus(response.data);
