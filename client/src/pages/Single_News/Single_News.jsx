@@ -111,7 +111,7 @@ const Single_News = () => {
                     </h5>
                     <p
                       className="line-clamp-3 font-normal text-gray-700 dark:text-gray-400"
-                      dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(nyhet1.desc) }}
+                      dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(nyhet1.desc).replace(/<a/g, '<a class="text-blue-500 underline"') }}
                     ></p>
                     <Button gradientDuoTone='redToYellow' outline className="flex"><h2>Les mer</h2></Button>
                   </Card>

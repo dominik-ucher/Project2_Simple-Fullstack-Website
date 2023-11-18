@@ -99,7 +99,7 @@ const Single_Page = () => {
             </div>
             <h1 className='flex items-center justify-center mt-20 font-bold capitalize text-3xl'>{side.title}</h1>
             <div className="text-black flex flex-col mt-10 px-10 my-special-content">
-              <p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(side.desc) }}></p>
+              <p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(side.desc).replace(/<a/g, '<a class="text-blue-500 underline"') }}></p>
             </div>
 
         </div>
