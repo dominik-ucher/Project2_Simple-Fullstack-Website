@@ -100,7 +100,7 @@ const SidebarComponent = () => {
             onClick={() => toggleDropdown(menu.id)}
           >
             <img src={menuicon} alt="Menu Icon" className="w-5 h-5" />
-            <span className="text-base">{menu.name}</span>
+            <span className="text-base font-bold">{menu.name}</span>
             {dropdownOpen[menu.id] ? (
               <BiChevronUp className="text-gray-500" />
             ) : (
@@ -108,7 +108,14 @@ const SidebarComponent = () => {
             )}
           </div>
           {/* Render submenus inside the main menu dropdown */}
-          {dropdownOpen[menu.id] && renderPagesForMenu(menu.id)}
+          {dropdownOpen[menu.id] && (
+            <div className="pl-4">
+              {/* Render pages associated with the current menu as submenus */}
+              {renderPagesForMenu(menu.id)}
+              {/* Recursively render submenus for the current menu */}
+              {renderMenuItems(menus, menu.id)}
+            </div>
+          )}
         </div>
       ));
   };
