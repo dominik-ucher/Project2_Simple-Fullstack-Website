@@ -23,52 +23,53 @@ const Admin = () => {
         <div className="grid grid-cols-10 gap-4">
             <div className="col-span-10 md:col-span-5 bg-white-200 flex flex-col items-center mt-20">
             <Link to="/register">
-            <Card className="max-w-sm hover:bg-gray-200" >
+            <Card className="max-w-sm hover:bg-gray-200" style={{ minWidth: "385px", minHeight: "170px" }} >
                 <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                 <p>Legg til ny bruker</p>
                 </h5>
                 <p className="font-normal text-gray-700 dark:text-gray-400">
-                <p>Klikk her for å komme til registrer siden og legge til ny bruker</p>
+                <p>For å legge til nye brukere på nettsiden.</p>
                 </p>
             </Card>
             </Link>
             <Link to ="/write_news">
-            <Card className="max-w-sm mt-5 hover:bg-gray-200">
+            <Card className="max-w-sm mt-5 hover:bg-gray-200" style={{ minWidth: "385px", minHeight: "170px" }}>
                 <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                 <p>Legg til ny nyhet</p>
                 </h5>
                 <p className="font-normal text-gray-700 dark:text-gray-400">
-                <p>Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                <p>For å legge til nye nyheter.</p>
+                <p>OBS! Filer kan ikke legges til enda på nyhetene. Oppdatering jobbes med.</p>
                 </p>
             </Card>
             </Link>
             <Link to="/navbar_edit">
-            <Card className="max-w-sm mt-5 hover:bg-gray-200" >
+            <Card className="max-w-sm mt-5 hover:bg-gray-200" style={{ minWidth: "385px", minHeight: "170px" }}>
                 <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                 <p>Rediger NavBar</p>
                 </h5>
                 <p className="font-normal text-gray-700 dark:text-gray-400">
-                <p>Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                <p>For å redigere menyen øverst på siden (Navigation Bar).</p>
                 </p>
             </Card>
             </Link>
             <Link to="/homepagepic_edit">
-            <Card className="max-w-sm mt-5 hover:bg-gray-200" >
+            <Card className="max-w-sm mt-5 hover:bg-gray-200" style={{ minWidth: "385px", minHeight: "170px" }}>
                 <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                 <p>Rediger Forside Bilde</p>
                 </h5>
                 <p className="font-normal text-gray-700 dark:text-gray-400">
-                <p>Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                <p>For å redigere det store bildet som ses på forsiden.</p>
                 </p>
             </Card>
             </Link>
             <Link to="/user_edit">
-            <Card className="max-w-sm mt-5 hover:bg-gray-200" >
+            <Card className="max-w-sm mt-5 hover:bg-gray-200" style={{ minWidth: "385px", minHeight: "170px" }}>
                 <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                 <p>Rediger brukere</p>
                 </h5>
                 <p className="font-normal text-gray-700 dark:text-gray-400">
-                <p>Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                <p>Oversikt over alle brukere. Kan redigere og slette brukere.</p>
                 </p>
             </Card>
             </Link>
@@ -76,50 +77,50 @@ const Admin = () => {
             </div>
             <div className="col-span-10 md:col-span-5 bg-white-200 flex flex-col items-center mt-20">
                 <Link to="/write_page">
-                <Card className="max-w-sm hover:bg-gray-200" >
+                <Card className="max-w-sm hover:bg-gray-200" style={{ minWidth: "385px", minHeight: "170px" }}>
                     <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                     <p>Legg til ny side</p>
                     </h5>
                     <p className="font-normal text-gray-700 dark:text-gray-400">
-                    <p>Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                    <p>For å legge til en nye sider</p>
                     </p>
                 </Card>
                 </Link>
                 <Link to="/homepagemenu_edit">
-                <Card className="max-w-sm mt-5 hover:bg-gray-200" >
+                <Card className="max-w-sm mt-5 hover:bg-gray-200" style={{ minWidth: "385px", minHeight: "170px" }}>
                     <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                     <p>Redigere forside meny</p>
                     </h5>
                     <p className="font-normal text-gray-700 dark:text-gray-400">
-                    <p>Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                    <p>Oversikt over menyene på Forsiden. Kan legges til, redigeres eller slettes.</p>
                     </p>
                 </Card>
                 </Link>
                 <Link to="/sponsor_edit">
-                <Card className="max-w-sm mt-5 hover:bg-gray-200" >
+                <Card className="max-w-sm mt-5 hover:bg-gray-200" style={{ minWidth: "385px", minHeight: "170px" }}>
                     <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    <p>Rediger/Legg til Sponsor</p>
+                    <p>Rediger Sponsorer</p>
                     </h5>
                     <p className="font-normal text-gray-700 dark:text-gray-400">
-                    <p>Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                    <p>Oversikt over alle sponsorene. Kan legges til eller slettes</p>
                     </p>
                 </Card>
                 </Link>
-                <Card className="max-w-sm mt-5 hover:bg-gray-200" >
+                <Card className="max-w-sm mt-5 hover:bg-gray-200" style={{ minWidth: "385px", minHeight: "170px" }}>
                     <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                     <p>Legg ut varsel (IKKE I BRUK)</p>
                     </h5>
                     <p className="font-normal text-gray-700 dark:text-gray-400">
-                    <p>Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                    <p>Kommer snart</p>
                     </p>
                 </Card>
                 <Link to="/sidebarmenu_edit">
-                <Card className="max-w-sm mt-5 hover:bg-gray-200">
+                <Card className="max-w-sm mt-5 hover:bg-gray-200" style={{ minWidth: "385px", minHeight: "170px" }}>
                     <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    <p>Rediger Sidebar</p>
+                    <p>Rediger Meny</p>
                     </h5>
                     <p className="font-normal text-gray-700 dark:text-gray-400">
-                    <p>Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                    <p>Redigere Side Menyen. Legges til eller slette faner.</p>
                     </p>
                 </Card>
                 </Link>
