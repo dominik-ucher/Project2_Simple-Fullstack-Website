@@ -26,7 +26,14 @@ const Write_Page = () => {
   const [file, setFile] = useState(null);
   const [files, setFiles] = useState([]);
 
-
+  useEffect(() => {
+    console.log('Sidebar Menus:', sidebarMenus);
+  }, [sidebarMenus]);
+  
+  useEffect(() => {
+    console.log('Files:', files);
+  }, [files]);
+  
   useEffect(() => {
     if (!currentUser) {
       navigate('/unauthorized_401');
