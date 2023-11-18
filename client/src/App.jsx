@@ -29,7 +29,7 @@ import Baneplan_Page from "./pages/Baneplan_Page/Baneplan_Page";
 const Layout = () =>{
   return (
     <>
-    <div className="bg-cover bg-no-repeat bg-fixed bg-center h-full" style={{backgroundImage: 'url("/src/img/test.png")'}}>
+    <div className="bg-cover bg-no-repeat bg-fixed bg-center h-full" style={{backgroundImage: 'url("https://uchertech.com/upload/background/background.png")'}}>
     <Navbar />
     <Outlet />
     <Footer />
