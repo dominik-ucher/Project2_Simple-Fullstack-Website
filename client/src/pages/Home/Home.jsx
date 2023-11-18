@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { Button, Card } from 'flowbite-react';
 import axios from 'axios'
 import DOMPurify from 'dompurify';
+import './Home.css'
 
 const Home = () => {
   const axiosInstance = axios.create({baseURL: import.meta.env.VITE_REACT_APP_API_URL,});
