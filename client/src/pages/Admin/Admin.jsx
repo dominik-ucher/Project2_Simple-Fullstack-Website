@@ -20,8 +20,8 @@ const Admin = () => {
     return(
         <><div className='font-bold flex items-center justify-center text-4xl mt-10'>Velkommen til Admin Side</div>
         <div className='text-red-600 flex items-center justify-center text-lg mt-10'>Hvis du finner en feil, eller har forslag til forbedringer send e-post til dominikucher@hotmail.com</div>
-        <div className="grid grid-cols-10 gap-4 ">
-            <div className="col-span-10 md:col-span-5 bg-white-200 flex flex-col items-end mt-20">
+        <div className="grid grid-cols-10 gap-4">
+            <div className="col-span-10 md:col-span-5 bg-white-200 flex flex-col items-center mt-20">
             <Link to="/register">
             <Card className="max-w-sm hover:bg-gray-200" >
                 <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -74,7 +74,7 @@ const Admin = () => {
             </Link>
                     
             </div>
-            <div className="col-span-10 md:col-span-5 bg-white-200 flex flex-col items-front mt-20">
+            <div className="col-span-10 md:col-span-5 bg-white-200 flex flex-col items-center mt-20">
                 <Link to="/write_page">
                 <Card className="max-w-sm hover:bg-gray-200" >
                     <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">

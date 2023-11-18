@@ -105,6 +105,10 @@ const Single_Page = () => {
         </div>
         {/* Display uploaded files */}
         <div>
+        {files && files.length > 0 && (
+          <h1 className='underline font-bold text-xl px-10 mt-16'>Vedlegg</h1>
+        )}
+
         {files && files.map((file) => {
           // Split the file name by '__' and take the second part
           const fileNameParts = file.filnavn.split('__');

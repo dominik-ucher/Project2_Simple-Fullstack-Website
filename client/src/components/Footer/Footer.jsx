@@ -45,7 +45,7 @@ const FooterTemp = () => {
         <Footer.Copyright
           className='copyright_1'
           by="Idrettslaget Trond"
-          href="#"
+          href="/"
           year={2024}
         />
       </div>
