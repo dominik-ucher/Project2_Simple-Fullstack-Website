@@ -59,27 +59,64 @@ const Home = () => {
 
         <>
         <FadeIn transitionDuration={1500}>
-        <div className='p-6 px-10'>
-          <div className='relative'>
-            <img
-              className="object-cover h-auto w-full rounded-3xl"
-              key={mainpic.id}
-              src={`../upload/Homepage_Bilder/${mainpic.img}`}
-              alt="image description"
-            />
-            <div className="absolute bottom-0 left-0 right-0 bg-gray-800 bg-opacity-75 text-white text-center p-4 rounded-3xl">
-              <p className="text-2xl font-bold">Velkommen til Idrettslaget Trond</p>
-              <p className="text-lg mt-2 font-bold">Artig-Inkluderende-Utviklende</p>
+          <div className='p-6'>
+            <div className='relative'>
+              <img
+                className="object-cover h-auto w-full rounded-3xl"
+                key={mainpic.id}
+                src={`../upload/Homepage_Bilder/${mainpic.img}`}
+                alt="image description"
+              />
+              <div className="absolute inset-0 bg-gray-800 bg-opacity-75 text-white text-center p-4 rounded-3xl flex flex-col justify-center items-center">
+                <p className="text-4xl font-bold sm:text-center lg:text-left">Velkommen til Idrettslaget Trond</p>
+                <p className="text-2xl mt-2 font-bold sm:text-center lg:text-left">Artig-Inkluderende-Utviklende</p>
+                
+                {/* Arrow image */}
+                <div className="absolute flex justify-center bottom-0 left-0 right-0 mb-4">
+                  <img
+                    src="../../../src/img/arrow.png" // Replace with your arrow image path
+                    alt="Arrow"
+                    className="h-16 w-auto animate-bounce rounded-full" // Adjust the height and width as needed
+                  />
+                </div>
+              </div>
             </div>
           </div>
-        </div>
         </FadeIn>
 
-        <div className="relative w-12/14 mx-auto p-4 bg-gray-400 text-white justify-center">
-
-          <p className="text-2xl justify-center flex items-center text-black font-bold">Velkommen til Idrettslaget Trond</p>
-          <p className="text-lg mt-2 justify-center flex items-center text-black font-bold">Artig-Inkluderende-Utviklende</p>
+        <div className='grid grid-cols-2 md:grid-cols-4 gap-6 p-10'>
+          {nyheter && nyheter.slice(0,8).map((nyhet, index) => (
+              <div className="flex flex-col items-center text-lg text-black font-bold hover:text-yellow-300">
+                <Link key={nyhet.id} to={`/nyheter/${nyhet.id}_${nyhet.title}`}>
+                <div className="relative overflow-hidden transform transition-all duration-300 rounded-lg hover:scale-105">
+                <img
+                  className="object-cover h-48 w-96 rounded-3xl"
+                  src={`../upload/Nyheter/Nyheter_Bilder/${nyhet.img}`}
+                  alt=""
+                />
+                </div>
+                <p className='line-clamp-3 p-2'>{nyhet.title}</p>
+                </Link>
+              </div>
+            ))}
         </div>
+
+        <div className='bg-gray-900 p-6'>
+            <p className='flex justify-center font-bold text-3xl text-white'>Nyttig Informasjon</p>
+            <div className='grid grid-cols-2 gap-6'>
+              {menu && menu.map((menu,index) => (
+                    <Link key={menu.id} to={menu.link}>
+                    <div className='flex justify-center items-center mt-4 transform transition-all duration-300 rounded-lg hover:scale-105'>
+                    <img
+                      className="object-cover rounded-lg mt-4 h-48"
+                      src={`/upload/HomepageMenu_Bilder/${menu.img}`}
+                      alt="image description" />
+                    </div>
+                    </Link>
+                  ))}
+              </div>
+        </div>
+
 
         <div className="grid grid-cols-10 gap-4">
           <div className="col-span-10 md:col-span-7 bg-white-200 px-4">
