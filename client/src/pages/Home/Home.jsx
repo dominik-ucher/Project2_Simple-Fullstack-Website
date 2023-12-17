@@ -117,6 +117,18 @@ const Home = () => {
               </div>
         </div>
 
+        <div className='bg-yellow-300 p-6'>
+          <p className='flex justify-center font-bold text-3xl'>Utforsk</p>
+            <div className='grid grid-col-2 md:grid-col-4 gap-4'>
+                
+            </div>
+        </div>
+
+        <div className='p-6'>
+        <p className='flex justify-center font-bold text-3xl'>En stolt fotballklubb</p>
+
+        </div>
+
 
         <div className="grid grid-cols-10 gap-4">
           <div className="col-span-10 md:col-span-7 bg-white-200 px-4">
