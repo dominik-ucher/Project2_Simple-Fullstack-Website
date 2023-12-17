@@ -18,14 +18,14 @@ const app = express()
 
 app.use(express.json())
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: ['https://rosenborgbanen.no', 'https://www.rosenborgbanen.no'],
     credentials: true,
 }));
 app.use(cookieParser());
 
 const nyheterStorage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, '../client/upload/Nyheter/Nyheter_Bilder');
+      cb(null, '/var/www/iltrond/client/upload/Nyheter/Nyheter_Bilder');
     },
     filename: function (req, file, cb) {
       cb(null, Date.now() + file.originalname);
@@ -40,7 +40,7 @@ app.post('/api/upload_nyhetbilde', nyheterUpload.single('file'), function (req, 
 
 const homepageMenuStorage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, '../client/upload/HomepageMenu_Bilder');
+      cb(null, '/var/www/iltrond/client/upload/HomepageMenu_Bilder');
     },
     filename: function (req, file, cb) {
       cb(null, Date.now() + file.originalname);
@@ -55,7 +55,7 @@ app.post('/api/upload_homepagemenubilde', homepageMenuUpload.single('file'), fun
 
 const siderStorage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, '../client/upload/Sider/Sider_Bilder');
+    cb(null, '/var/www/iltrond/client/upload/Sider/Sider_Bilder');
   },
   filename: function (req, file, cb) {
     cb(null, Date.now() + file.originalname);
@@ -69,7 +69,7 @@ res.status(200).json(file.filename);
 
 const siderfileStorage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, '../client/upload/Sider/Sider_Filer');
+    cb(null, '/var/www/iltrond/client/upload/Sider/Sider_Filer');
   },
   filename: function (req, file, cb) {
     cb(null, Date.now() + '__' + file.originalname);
@@ -84,7 +84,7 @@ res.status(200).json(file.filename);
 
 const sponsorStorage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, '../client/upload/Sponsor_Bilder');
+    cb(null, '/var/www/iltrond/client/upload/Sponsor_Bilder');
   },
   filename: function (req, file, cb) {
     cb(null, Date.now() + file.originalname);
@@ -98,7 +98,7 @@ res.status(200).json(file.filename);
 
 const homepagepicStorage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, '../client/upload/Homepage_Bilder');
+    cb(null, '/var/www/iltrond/client/upload/Homepage_Bilder');
   },
   filename: function (req, file, cb) {
     cb(null, Date.now() + file.originalname);
