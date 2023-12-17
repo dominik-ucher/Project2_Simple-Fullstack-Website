@@ -6,3 +6,6 @@ api/controllers/contact.js
 
 # Ignore db file with password
 api/db.js
+
+#Ignore index.js backend file because of different file upload storage
+api/index.js
