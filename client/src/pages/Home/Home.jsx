@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { Button, Card } from 'flowbite-react';
 import axios from 'axios'
 import DOMPurify from 'dompurify';
+import FadeIn from 'react-fade-in';
 
 
 const Home = () => {
@@ -57,17 +58,29 @@ const Home = () => {
     return(
 
         <>
-
-        <img
-        className="object-cover h-auto w-full"
-        key={mainpic.id}
-        src={`../upload/Homepage_Bilder/${mainpic.img}`}
-        alt="image description" />
-        <div className="relative w-12/14 mx-auto p-4 bg-gray-800 text-white rounded-xl justify-center mt-3">
-
-          <p className="text-2xl justify-center flex items-center">Velkommen til Idrettslaget Trond</p>
-          <p className="text-lg mt-2 justify-center flex items-center">Artig-Inkluderende-Utviklende</p>
+        <FadeIn transitionDuration={1500}>
+        <div className='p-6 px-10'>
+          <div className='relative'>
+            <img
+              className="object-cover h-auto w-full rounded-3xl"
+              key={mainpic.id}
+              src={`../upload/Homepage_Bilder/${mainpic.img}`}
+              alt="image description"
+            />
+            <div className="absolute bottom-0 left-0 right-0 bg-gray-800 bg-opacity-75 text-white text-center p-4 rounded-3xl">
+              <p className="text-2xl font-bold">Velkommen til Idrettslaget Trond</p>
+              <p className="text-lg mt-2 font-bold">Artig-Inkluderende-Utviklende</p>
+            </div>
+          </div>
         </div>
+        </FadeIn>
+
+        <div className="relative w-12/14 mx-auto p-4 bg-gray-400 text-white justify-center">
+
+          <p className="text-2xl justify-center flex items-center text-black font-bold">Velkommen til Idrettslaget Trond</p>
+          <p className="text-lg mt-2 justify-center flex items-center text-black font-bold">Artig-Inkluderende-Utviklende</p>
+        </div>
+
         <div className="grid grid-cols-10 gap-4">
           <div className="col-span-10 md:col-span-7 bg-white-200 px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -92,6 +105,7 @@ const Home = () => {
               </div>
               <Link to={"/nyheter/"} className='text-blue-500 hover:underline hover:cursor-pointer hover:font-semibold mt-10 flex justify-center text-xl'>For flere nyheter</Link>
           </div>
+          
           <div className="col-span-10 md:col-span-3 bg-white-300">
             {/* Right Column */}
             <div className="p-4">
