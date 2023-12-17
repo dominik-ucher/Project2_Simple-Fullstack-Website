@@ -13,6 +13,18 @@ const Home = () => {
   const [nyheter, setNyheter] = useState([]);
   const [menu, setMenu] = useState([]);
   const [mainpic, setMainpic] = useState([]);
+  const [menus, setMenus] = useState([]);
+
+  useEffect(() => {
+    // Fetch menus and pages from your backend endpoint
+    axios.get('/api/sidebar/menupages')
+      .then(response => {
+        setMenus(response.data); // Assuming the response contains menus and pages data
+      })
+      .catch(error => {
+        console.error('Error fetching menus and pages:', error);
+      });
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -118,10 +130,24 @@ const Home = () => {
         </div>
 
         <div className='bg-yellow-300 p-6'>
-          <p className='flex justify-center font-bold text-3xl'>Utforsk</p>
-            <div className='grid grid-col-2 md:grid-col-4 gap-4'>
-                
-            </div>
+        <p className='flex justify-center font-bold text-3xl'>Utforsk</p>
+          <div className='grid grid-cols-1 md:grid-cols-4 gap-4'>
+            {menus.map(menu => (
+              <div key={menu.menuName} className='mb-4 mt-10'>
+                <p className='flex justify-center font-bold text-2xl'>{menu.menuName}</p>
+                <div>
+                  {menu.pages.map(page => (
+                    <div key={page.pageId} className='p-4'>
+                      <Link to={`/side/${page.pageid}_${page.pageTitle}`}>
+                      <p className='flex justify-center text-md hover:font-bold hover:underline'>{page.pageTitle}</p>
+                      </Link>
+                      {/* You can display other details of the page here */}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className='p-6'>

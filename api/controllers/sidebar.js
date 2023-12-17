@@ -102,3 +102,32 @@ export const deleteMenu = (req, res) => {
     });
   });
 };
+
+export const getMenusAndPages = (req, res) => {
+  const query = `
+    SELECT s1.id AS menu_id, s1.name AS menu_name, s2.id AS page_id, s2.title AS page_title
+    FROM sidebar_1 s1
+    LEFT JOIN sider s2 ON s1.id = s2.sidebar_id
+    ORDER BY s1.id, s2.id;
+  `;
+
+  db.query(query, [], (err, results) => {
+    if (err) return res.status(500).json(err);
+
+    const menus = {};
+    results.forEach((row) => {
+      const { menu_id, menu_name, page_id, page_title } = row;
+      if (!menus[menu_id]) {
+        menus[menu_id] = {
+          menuName: menu_name,
+          pages: [],
+        };
+      }
+      if (page_id) {
+        menus[menu_id].pages.push({ pageId: page_id, pageTitle: page_title });
+      }
+    });
+
+    return res.status(200).json(Object.values(menus));
+  });
+};
