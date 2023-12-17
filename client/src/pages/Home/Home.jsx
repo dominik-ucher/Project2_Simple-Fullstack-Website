@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Logo from '../../img/logo.png'
+import Bane from '../../img/Rosenborgbanen.jpg'
 import { Link } from 'react-router-dom'
 import { Button, Card } from 'flowbite-react';
 import axios from 'axios'
 import DOMPurify from 'dompurify';
 import FadeIn from 'react-fade-in';
+import { Progress } from 'flowbite-react';
+
 
 
 const Home = () => {
@@ -115,7 +118,7 @@ const Home = () => {
 
         <div className='bg-gray-900 p-6'>
             <p className='flex justify-center font-bold text-3xl text-white'>Nyttig Informasjon</p>
-            <div className='grid grid-cols-2 gap-6'>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
               {menu && menu.map((menu,index) => (
                     <Link key={menu.id} to={menu.link}>
                     <div className='flex justify-center items-center mt-4 transform transition-all duration-300 rounded-lg hover:scale-105'>
@@ -152,7 +155,14 @@ const Home = () => {
 
         <div className='p-6'>
         <p className='flex justify-center font-bold text-3xl'>En stolt fotballklubb</p>
-
+        <div className='grid grid-cols-2 gap-4'>
+          <div className='flex justify-center items-center'>
+            <img src={Bane} className='rounded-3xl' alt ="" />
+          </div>
+          <div>
+            Progress bars?
+          </div>
+        </div>
         </div>
 
 
