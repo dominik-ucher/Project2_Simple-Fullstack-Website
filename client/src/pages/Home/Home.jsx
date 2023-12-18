@@ -161,6 +161,7 @@ const Home = () => {
 
         <div className='p-6 bg-gray-800'>
           <p className='flex justify-center font-bold text-3xl text-white'>Snarveier</p>
+          <div className='flex justify-center mt-3'><div className='h-1 w-32 bg-white rounded-full' /></div>
           <div className='flex flex-col items-center gap-6 justify-center mt-10 md:flex-row md:gap-6'>
             <Button pill size="xl" color="warning">Om Trond</Button>
             <Button pill size="xl" color="warning">Fotball</Button>
@@ -169,6 +170,7 @@ const Home = () => {
             <Button pill size="xl" color="warning">Kontakt Oss</Button>
           </div>
           <p className='flex justify-center font-bold text-3xl text-white mt-10'>Eller bruk vår Meny</p>
+          <div className='flex justify-center mt-3'><div className='h-1 w-48 bg-white rounded-full' /></div>
           <div className='flex justify-center mt-10'>
             <div className='w-96'>
               <Sidebar />
@@ -199,6 +201,7 @@ const Home = () => {
 
         <div className='bg-gray-800 p-6'>
             <p className='flex justify-center font-bold text-3xl text-white'>Nyttig Informasjon</p>
+            <div className='flex justify-center mt-3'><div className='h-1 w-48 bg-white rounded-full' /></div>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
               {menu && menu.map((menu,index) => (
                     <Link key={menu.id} to={menu.link}>
@@ -215,6 +218,7 @@ const Home = () => {
 
         <div className='bg-yellow-300 p-6'>
         <p className='flex justify-center font-bold text-3xl'>Utforsk</p>
+        <div className='flex justify-center mt-3'><div className='h-1 w-32 bg-black rounded-full' /></div>
           <div className='grid grid-cols-1 md:grid-cols-4 gap-4'>
             {menus.map(menu => (
               <div key={menu.menuName} className='mb-4 mt-10'>
@@ -236,6 +240,7 @@ const Home = () => {
 
         <div className='p-6'>
         <p className='flex justify-center font-bold text-3xl'>En stolt fotballklubb</p>
+        <div className='flex justify-center mt-3'><div className='h-1 w-64 bg-black rounded-full' /></div>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mt-10'>
           <div className='flex justify-center items-center'>
             <img src={Bane} className='rounded-3xl' alt ="" />
