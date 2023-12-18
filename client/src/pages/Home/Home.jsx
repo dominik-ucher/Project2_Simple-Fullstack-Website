@@ -13,6 +13,7 @@ import man from '../../img/man.png'
 import volunteer from '../../img/volunteer.png'
 import team from '../../img/team.png'
 import referee from '../../img/referee.png'
+import arrow from '../../img/arrow.png'
 
 
 function ProgressBar({ name, progress, maxProgress, logo }) {
@@ -142,13 +143,13 @@ const Home = () => {
                 alt="image description"
               />
               <div className="absolute inset-0 bg-gray-800 bg-opacity-75 text-white text-center p-4 rounded-3xl flex flex-col justify-center items-center">
-                <p className="text-4xl font-bold sm:text-center lg:text-left">Velkommen til Idrettslaget Trond</p>
-                <p className="text-2xl mt-2 font-bold sm:text-center lg:text-left">Artig-Inkluderende-Utviklende</p>
+                <p className="text-xl md:text-4xl font-bold text-center">Velkommen til Idrettslaget Trond</p>
+                <p className="text-md md:text-2xl mt-2 font-bold text-center">Artig-Inkluderende-Utviklende</p>
                 
                 {/* Arrow image */}
                 <div className="absolute flex justify-center bottom-0 left-0 right-0 mb-4">
                   <img
-                    src="../../../src/img/arrow.png" // Replace with your arrow image path
+                    src={arrow} // Replace with your arrow image path
                     alt="Arrow"
                     className="h-16 w-auto animate-bounce rounded-full" // Adjust the height and width as needed
                   />
@@ -160,7 +161,7 @@ const Home = () => {
 
         <div className='p-6 bg-gray-800'>
           <p className='flex justify-center font-bold text-3xl text-white'>Snarveier</p>
-          <div className='flex gap-6 justify-center mt-10'>
+          <div className='flex flex-col items-center gap-6 justify-center mt-10 md:flex-row md:gap-6'>
             <Button pill size="xl" color="warning">Om Trond</Button>
             <Button pill size="xl" color="warning">Fotball</Button>
             <Button pill size="xl" color="warning">Allidrett</Button>
@@ -192,10 +193,11 @@ const Home = () => {
             ))}
         </div>
         <div className='flex justify-center'>
-            <Link to={"/nyheter/"} className='text-blue-500 hover:underline hover:cursor-pointer hover:font-semibold mb-5 text-xl'>Flere nyheter</Link>
+            {/* <Link to={"/nyheter/"} className='text-blue-500 hover:underline hover:cursor-pointer hover:font-semibold mb-5 text-xl'>Flere nyheter</Link> */}
+            <Button className="mb-5 font-bold" size="md" color="dark" pill>Flere Nyheter <img className='w-12 h-12 rounded-full p-2 -rotate-90' src={arrow} alt="" /></Button>
         </div>
 
-        <div className='bg-gray-900 p-6'>
+        <div className='bg-gray-800 p-6'>
             <p className='flex justify-center font-bold text-3xl text-white'>Nyttig Informasjon</p>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
               {menu && menu.map((menu,index) => (
