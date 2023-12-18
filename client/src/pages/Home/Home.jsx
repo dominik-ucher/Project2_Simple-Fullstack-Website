@@ -159,25 +159,6 @@ const Home = () => {
           </div>
         </FadeIn>
 
-        <div className='p-6 bg-gray-800'>
-          <p className='flex justify-center font-bold text-3xl text-white'>Snarveier</p>
-          <div className='flex justify-center mt-3'><div className='h-1 w-32 bg-white rounded-full' /></div>
-          <div className='flex flex-col items-center gap-6 justify-center mt-10 md:flex-row md:gap-6'>
-            <Button pill size="xl" color="warning">Om Trond</Button>
-            <Button pill size="xl" color="warning">Fotball</Button>
-            <Button pill size="xl" color="warning">Allidrett</Button>
-            <Button pill size="xl" color="warning">Klubbhuset</Button>
-            <Button pill size="xl" color="warning">Kontakt Oss</Button>
-          </div>
-          <p className='flex justify-center font-bold text-3xl text-white mt-10'>Eller bruk vår Meny</p>
-          <div className='flex justify-center mt-3'><div className='h-1 w-48 bg-white rounded-full' /></div>
-          <div className='flex justify-center mt-10'>
-            <div className='w-96'>
-              <Sidebar />
-            </div>
-          </div>
-        </div>
-
         <div className='grid grid-cols-2 md:grid-cols-4 gap-6 p-10'>
           {nyheter && nyheter.slice(0,8).map((nyhet, index) => (
               <div className="flex flex-col items-center text-lg text-black font-bold hover:text-yellow-300">
@@ -199,21 +180,23 @@ const Home = () => {
             <Button className="mb-5 font-bold" size="md" color="dark" pill>Flere Nyheter <img className='w-12 h-12 rounded-full p-2 -rotate-90' src={arrow} alt="" /></Button>
         </div>
 
-        <div className='bg-gray-800 p-6'>
-            <p className='flex justify-center font-bold text-3xl text-white'>Nyttig Informasjon</p>
-            <div className='flex justify-center mt-3'><div className='h-1 w-48 bg-white rounded-full' /></div>
-            <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
-              {menu && menu.map((menu,index) => (
-                    <Link key={menu.id} to={menu.link}>
-                    <div className='flex justify-center items-center mt-4 transform transition-all duration-300 rounded-lg hover:scale-105'>
-                    <img
-                      className="object-cover rounded-lg mt-4 h-48"
-                      src={`/upload/HomepageMenu_Bilder/${menu.img}`}
-                      alt="image description" />
-                    </div>
-                    </Link>
-                  ))}
-              </div>
+        <div className='p-6 bg-gray-800'>
+          <p className='flex justify-center font-bold text-3xl text-white'>Snarveier</p>
+          <div className='flex justify-center mt-3'><div className='h-1 w-32 bg-white rounded-full' /></div>
+          <div className='flex flex-col items-center gap-6 justify-center mt-10 md:flex-row md:gap-6'>
+            <Button pill size="xl" color="warning">Om Trond</Button>
+            <Button pill size="xl" color="warning">Fotball</Button>
+            <Button pill size="xl" color="warning">Allidrett</Button>
+            <Button pill size="xl" color="warning">Klubbhuset</Button>
+            <Button pill size="xl" color="warning">Kontakt Oss</Button>
+          </div>
+          <p className='flex justify-center font-bold text-3xl text-white mt-10'>Eller bruk vår Meny</p>
+          <div className='flex justify-center mt-3'><div className='h-1 w-48 bg-white rounded-full' /></div>
+          <div className='flex justify-center mt-10'>
+            <div className='w-96'>
+              <Sidebar />
+            </div>
+          </div>
         </div>
 
         <div className='bg-yellow-300 p-6'>
@@ -238,6 +221,23 @@ const Home = () => {
           </div>
         </div>
 
+        <div className='bg-gray-800 p-6'>
+            <p className='flex justify-center font-bold text-3xl text-white'>Nyttig Informasjon</p>
+            <div className='flex justify-center mt-3'><div className='h-1 w-48 bg-white rounded-full' /></div>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+              {menu && menu.map((menu,index) => (
+                    <Link key={menu.id} to={menu.link}>
+                    <div className='flex justify-center items-center mt-4 transform transition-all duration-300 rounded-lg hover:scale-105'>
+                    <img
+                      className="object-cover rounded-lg mt-4 h-48"
+                      src={`/upload/HomepageMenu_Bilder/${menu.img}`}
+                      alt="image description" />
+                    </div>
+                    </Link>
+                  ))}
+              </div>
+        </div>
+
         <div className='p-6'>
         <p className='flex justify-center font-bold text-3xl'>En stolt fotballklubb</p>
         <div className='flex justify-center mt-3'><div className='h-1 w-64 bg-black rounded-full' /></div>
@@ -260,7 +260,7 @@ const Home = () => {
         </div>
 
 
-        <div className="grid grid-cols-10 gap-4">
+        {/* <div className="grid grid-cols-10 gap-4">
           <div className="col-span-10 md:col-span-7 bg-white-200 px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {nyheter && nyheter.slice(0,6).map((nyheter,index) => (
@@ -286,23 +286,22 @@ const Home = () => {
           </div>
           
           <div className="col-span-10 md:col-span-3 bg-white-300">
-            {/* Right Column */}
+
             <div className="p-4">
               <div className="grid grid-cols-2 gap-4">
-                {/* First Row */}
+
                 <div className="col-span-2">
-                  {/* Content for the first row */}
+
                   <div className="relative w-12/14 mx-auto p-4 text-white rounded-xl justify-center mt-3 bg-blue-500 hover:bg-blue-900">
                     <Link to="https://www.facebook.com/iltrondfotball" className='pointer'><p className="text-lg justify-center flex items-center">Følg oss på Facebook</p></Link>
                   </div>
                 </div>
-                {/* Second Row */}
+
                 <div className="col-span-2">
-                  {/* Content for the second row */}
+
                   <h1 className="text-xl font-bold justify-center flex items-center">Nyttig Informasjon</h1>
                 </div>
-                {/* Third Row */}
-                {/* Content for the third row */}
+
                 <div className="col-span-2">
                 {menu && menu.map((menu,index) => (
                   <Link key={menu.id} to={menu.link}>
@@ -317,7 +316,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
         </>
       
 
