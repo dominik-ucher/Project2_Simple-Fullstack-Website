@@ -7,6 +7,7 @@ import axios from 'axios'
 import DOMPurify from 'dompurify';
 import FadeIn from 'react-fade-in';
 import { Progress } from 'flowbite-react';
+import Sidebar from '../../components/Sidebar/Sidebar.jsx'
 
 
 
@@ -99,6 +100,23 @@ const Home = () => {
           </div>
         </FadeIn>
 
+        <div className='p-6 bg-gray-800'>
+          <p className='flex justify-center font-bold text-3xl text-white'>Snarveier</p>
+          <div className='flex gap-6 justify-center mt-10'>
+            <Button pill size="xl" color="warning">Om Trond</Button>
+            <Button pill size="xl" color="warning">Fotball</Button>
+            <Button pill size="xl" color="warning">Allidrett</Button>
+            <Button pill size="xl" color="warning">Klubbhuset</Button>
+            <Button pill size="xl" color="warning">Kontakt Oss</Button>
+          </div>
+          <p className='flex justify-center font-bold text-3xl text-white mt-10'>Eller bruk vår Meny</p>
+          <div className='flex justify-center mt-10'>
+            <div className='w-96'>
+              <Sidebar />
+            </div>
+          </div>
+        </div>
+
         <div className='grid grid-cols-2 md:grid-cols-4 gap-6 p-10'>
           {nyheter && nyheter.slice(0,8).map((nyhet, index) => (
               <div className="flex flex-col items-center text-lg text-black font-bold hover:text-yellow-300">
@@ -155,7 +173,7 @@ const Home = () => {
 
         <div className='p-6'>
         <p className='flex justify-center font-bold text-3xl'>En stolt fotballklubb</p>
-        <div className='grid grid-cols-2 gap-4'>
+        <div className='grid grid-cols-2 gap-4 mt-10'>
           <div className='flex justify-center items-center'>
             <img src={Bane} className='rounded-3xl' alt ="" />
           </div>
