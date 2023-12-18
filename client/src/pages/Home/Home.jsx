@@ -6,8 +6,57 @@ import { Button, Card } from 'flowbite-react';
 import axios from 'axios'
 import DOMPurify from 'dompurify';
 import FadeIn from 'react-fade-in';
-import { Progress } from 'flowbite-react';
 import Sidebar from '../../components/Sidebar/Sidebar.jsx'
+import { useInView } from 'react-intersection-observer';
+import woman from '../../img/woman.png'
+import man from '../../img/man.png'
+import volunteer from '../../img/volunteer.png'
+import team from '../../img/team.png'
+import referee from '../../img/referee.png'
+
+
+function ProgressBar({ name, progress, maxProgress, logo }) {
+  const [barWidth, setBarWidth] = useState(0);
+  const { ref, inView } = useInView({ triggerOnce: true });
+
+  useEffect(() => {
+    let interval;
+    if (inView) {
+      const percentage = (progress / maxProgress) * 100;
+      interval = setInterval(() => {
+        if (barWidth < percentage) {
+          setBarWidth(prevWidth => prevWidth + 1);
+        } else {
+          clearInterval(interval);
+        }
+      }, 10); // Change the interval duration as needed
+    }
+    return () => clearInterval(interval);
+  }, [barWidth, inView, maxProgress, progress]);
+
+  return (
+    <div className='flex flex-col items-start mb-4' ref={ref}>
+      <p className='text-lg font-semibold mb-2'>{name}</p>
+      <div className='w-full h-12 bg-gray-200 rounded-full overflow-hidden flex items-center relative'>
+        <div
+          className='bg-gradient-to-r from-sky-500 to-indigo-500 h-full rounded-full transition-width relative'
+          style={{ width: `${barWidth > 100 ? 100 : barWidth}%` }}
+        >
+          <img
+            className='w-10 h-10 object-cover absolute rounded-full left-0 transform translate-x-1 translate-y-1'
+            src={logo}
+            alt={`Progress ${name}`}
+          />
+        </div>
+        <span className='px-2 flex items-center text-lg font-medium text-gray-700'>
+          {`${progress}`}
+        </span>
+      </div>
+    </div>
+  );
+}
+
+
 
 
 
@@ -18,6 +67,15 @@ const Home = () => {
   const [menu, setMenu] = useState([]);
   const [mainpic, setMainpic] = useState([]);
   const [menus, setMenus] = useState([]);
+
+  const progressBars = [
+    { name: 'Frivillige i klubben', progress: 239, maxProgress: 500, logo: volunteer },
+    { name: 'Herrespillere', progress: 330, maxProgress: 500, logo: man },
+    { name: 'Kvinnespillere', progress: 148, maxProgress: 300, logo: woman },
+    { name: 'Dommere', progress: 22, maxProgress: 50, logo: referee },
+    { name: 'Lag', progress: 27, maxProgress: 100, logo: team },
+    // Add more objects with different names, progresses, and logos as needed
+  ];
 
   useEffect(() => {
     // Fetch menus and pages from your backend endpoint
@@ -133,6 +191,9 @@ const Home = () => {
               </div>
             ))}
         </div>
+        <div className='flex justify-center'>
+            <Link to={"/nyheter/"} className='text-blue-500 hover:underline hover:cursor-pointer hover:font-semibold mb-5 text-xl'>Flere nyheter</Link>
+        </div>
 
         <div className='bg-gray-900 p-6'>
             <p className='flex justify-center font-bold text-3xl text-white'>Nyttig Informasjon</p>
@@ -173,12 +234,20 @@ const Home = () => {
 
         <div className='p-6'>
         <p className='flex justify-center font-bold text-3xl'>En stolt fotballklubb</p>
-        <div className='grid grid-cols-2 gap-4 mt-10'>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mt-10'>
           <div className='flex justify-center items-center'>
             <img src={Bane} className='rounded-3xl' alt ="" />
           </div>
           <div>
-            Progress bars?
+            {progressBars.map((bar, index) => (
+              <ProgressBar
+                key={index}
+                name={bar.name}
+                progress={bar.progress}
+                maxProgress={bar.maxProgress}
+                logo={bar.logo}
+              />
+            ))}
           </div>
         </div>
         </div>
