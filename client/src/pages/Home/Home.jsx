@@ -205,7 +205,7 @@ const Home = () => {
         <p className='flex justify-center font-bold text-3xl'>Utforsk</p>
         <div className='flex justify-center mt-3'><div className='h-1 w-32 bg-black rounded-full' /></div>
           <div className='grid grid-cols-1 md:grid-cols-4 gap-4'>
-            {menus.map(menu => (
+            {menus && menus.map(menu => (
               <div key={menu.menuName} className='mb-4 mt-10'>
                 <p className='flex justify-center font-bold text-2xl'>{menu.menuName}</p>
                 <div>
@@ -248,7 +248,7 @@ const Home = () => {
             <img src={Bane} className='rounded-3xl' alt ="" />
           </div>
           <div>
-            {progressBars.map((bar, index) => (
+            {progressBars && progressBars.map((bar, index) => (
               <ProgressBar
                 key={index}
                 name={bar.name}
