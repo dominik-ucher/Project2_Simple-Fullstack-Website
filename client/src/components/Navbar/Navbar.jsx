@@ -150,7 +150,7 @@ export default function DefaultNavbar() {
   }, []);
 
   return (
-    <>
+    <div className="main-container" style={{ overflowX:'hidden'}}>
     <div className='flex items-center bg-gray-800 h-auto w-screen border-b-2 border-yellow-300'>
       <div className='flex items-center p-4'>
         <button className='hover:border-2 rounded-2xl p-2' onClick={() => setSidebarOpen(!sidebarOpen)}><p>Toggle</p></button>
@@ -170,7 +170,7 @@ export default function DefaultNavbar() {
       </div>
     </div>
     
-      <div className='w-64 h-auto bg-gray-800 relative rounded-br-3xl border-r-2 border-b-2 border-yellow-300' style={{ position: 'absolute', zIndex: '9999', left: sidebarOpen ? '0' : '-100%', transition: 'left 1.0s ease-in-out' }}>
+      <div className='w-64 h-auto bg-gray-800 relative rounded-br-3xl border-r-2 border-b-2 border-yellow-300' style={{ position: 'absolute', zIndex: '9999', left: sidebarOpen ? '0' : '-100%', transition: 'left 1s ease-in-out' }}>
         <div>
           <div className='visible md:invisible md:h-0 h-auto flex flex-col jusitfy-center items-center bg-gray-700 border-b-2'>
             {links && links.map((link, index)=> (
@@ -184,7 +184,7 @@ export default function DefaultNavbar() {
         </div>
       </div>
 
-    </>
+    </div>
 
 
 
