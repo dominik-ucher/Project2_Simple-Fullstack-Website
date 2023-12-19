@@ -64,16 +64,17 @@ const Single_News = () => {
     return(
         <div className="grid grid-cols-10 gap-4">
         <div className="col-span-10 md:col-span-7 bg-white-200">
-        <div className='single'>
-            <div className='content flex justify-center'> {/* LA TIL FLEX OG JUSTIFY-CENTER HER. KAN BYTTES ETTERPÅ */}
+        <div className='single px-10'>
+        <h1 className='flex items-center justify-center mt-14 mb-14 font-bold capitalize text-3xl md:text-4xl'>{nyhet.title}</h1>
+            <div className='content flex justify-center '> {/* LA TIL FLEX OG JUSTIFY-CENTER HER. KAN BYTTES ETTERPÅ */}
                 <img 
-                className='w-100 h-auto mt-4 px-4'
+                className='rounded-3xl'
                 src={nyhet.img && `/upload/Nyheter/Nyheter_Bilder/${nyhet.img}`} 
                 alt="" 
                 />
             </div>
             <div className='user'>
-                <div className='edit flex items-center mt-4 px-4'>
+                <div className='edit flex items-center mt-4'>
                     <img className="rounded-full" src={Logo} alt="" style={{ width: '80px', height: '50px' }}/>
                     <div>
                     <h1 className='px-4'>{nyhet.username}</h1>
@@ -89,15 +90,28 @@ const Single_News = () => {
                     )}
                 </div>
             </div>
-            <h1 className='flex items-center justify-center mt-20 font-bold capitalize text-3xl'>{nyhet.title}</h1>
-            <div className="text-black flex flex-col mt-10 px-10 my-special-content">
+            <div className="text-black flex flex-col mt-10 my-special-content">
               <p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(nyhet.desc).replace(/<a/g, '<a class="text-blue-500 underline"') }}></p>
             </div>
         </div>
         </div>
         <div className="col-span-10 md:col-span-3 bg-white-200">
           <h1 className='text-2xl flex justify-center font-bold mt-6'>Andre Nyheter</h1>
-          {nyheter && nyheter.slice(1, 5).map((nyhet1, index) => (
+          {nyheter && nyheter.slice(0,4).map((nyhet, index) => (
+              <div className="flex flex-col items-center text-lg text-black font-bold hover:text-yellow-300 p-6">
+                <Link key={nyhet.id} to={`/nyheter/${nyhet.id}_${nyhet.title}`}>
+                <div className="relative overflow-hidden transform transition-all duration-300 rounded-lg hover:scale-105">
+                <img
+                  className="object-cover h-48 w-96 rounded-3xl"
+                  src={`../upload/Nyheter/Nyheter_Bilder/${nyhet.img}`}
+                  alt=""
+                />
+                </div>
+                <p className='line-clamp-3 p-2 flex justify-center'>{nyhet.title}</p>
+                </Link>
+              </div>
+            ))}
+          {/* {nyheter && nyheter.slice(1, 5).map((nyhet1, index) => (
               <Link to={`/nyheter/${nyhet1.id}_${nyhet1.title}`} key={nyhet1.id}>
                 <div>
                   <Card className="max-w-sm mt-10">
@@ -116,7 +130,7 @@ const Single_News = () => {
                   </Card>
                 </div>
               </Link>
-            ))}
+            ))} */}
         </div>
         </div>
     )
