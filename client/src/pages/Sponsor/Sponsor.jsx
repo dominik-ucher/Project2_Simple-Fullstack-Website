@@ -37,13 +37,13 @@ const Single_Page = () => {
 
     return(
         <div className="grid grid-cols-10 gap-4">
-      <div className="col-span-10 md:col-span-7 bg-white-200">
+      <div className="col-span-10 md:col-span-10 bg-white-200">
         <h1 className='font-bold text-3xl flex justify-center mt-10'>Våre sponsorer</h1>
         <div id='hovedsponsor' className='grid grid-cols-2 gap-4 mt-5 px-5'>
           {hovedsponsors && hovedsponsors.map((sponsor) => (
             <div key={sponsor.id}>
               <Link to={sponsor.link}>
-                <img src={`../../upload/Sponsor_Bilder/${sponsor.img}`} alt={sponsor.type} className='w-full rounded-xl' />
+                <img src={`../../upload/Sponsor_Bilder/${sponsor.img}`} alt={sponsor.type} className='w-full rounded-xl p-6' />
               </Link>
             </div>
           ))}
@@ -82,9 +82,9 @@ const Single_Page = () => {
           ))}
         </div>
       </div>
-      <div className="col-span-10 md:col-span-3 bg-white-200">
+      {/* <div className="col-span-10 md:col-span-3 bg-white-200">
         <Sidebar />
-      </div>
+      </div> */}
     </div>
 
     )

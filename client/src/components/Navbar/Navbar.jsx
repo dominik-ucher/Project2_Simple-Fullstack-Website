@@ -165,7 +165,7 @@ export default function DefaultNavbar() {
           <Link key={link.id} className='text-sm text-white p-2' to={link.link}>{link.name}</Link>
         ))}
         {currentUser && <Link className="text-sm text-white p-2" to="/admin">Admin Side</Link>}
-        {currentUser && <span className='font-bold underline text-sm text-white p-2'>Welcome {currentUser.username}</span>}
+        {currentUser && <span className='font-bold underline text-sm text-white p-2'>Hei, {currentUser.username}</span>}
         {currentUser && <Button color="warning" pill onClick={handleLogout}>Logout</Button>}
       </div>
     </div>

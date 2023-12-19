@@ -20,7 +20,28 @@ const FooterTemp = () => {
   }, []);
 
     return (
-      
+      // <>
+      // <div className='flex w-screen h-12 bg-gray-800'>
+      //   <div className='flex absolute left-0'>
+      //       Sponsor
+      //   </div>
+      //   <div className='flex absolute right-0'>
+      //     Tag
+      //     Tag
+      //     Tag
+      //   </div>
+      // </div>
+      //   <div className='w-screen h-1 bg-white' />
+      //   <div className='flex w-screen h-12 bg-gray-800'>
+      //   <div className='flex justify-center items-center'>
+      //       Sponsor
+      //   </div>
+      //   <div className='flex absolute right-0'>
+      //     Tag
+      //   </div>
+      // </div>
+      //   </>
+
 
 
     <div className="flex-grow mt-20">
@@ -41,14 +62,12 @@ const FooterTemp = () => {
             <Link to="" className='px-2 hover:underline'>Våre Sponsorer</Link>
             <Link to="" className='px-2 hover:underline'>Nyheter</Link>
             <Link to="/kontakt" className='hover:underline px-2'>Kontakt</Link>
+            <Link to="/kontakt" className='hover:underline px-2'><img className="w-10 h-auto" src={Logo} akt="" /></Link>
+            <Link to="/kontakt" className='hover:underline px-2'><img className="w-10 h-auto" src={Logo} akt="" /></Link>
+            <Link to="/kontakt" className='hover:underline px-2'><img className="w-10 h-auto" src={Logo} akt="" /></Link>
           </Footer.LinkGroup>
         </div>
         <Footer.Divider />
-        <Footer.LinkGroup className='txt_1 absolute right-0 px-8'>
-            <Link to="/kontakt" className='hover:underline px-2'><img className="w-10 h-auto" src={Logo} akt="" /></Link>
-            <Link to="/kontakt" className='hover:underline px-2'><img className="w-10 h-auto" src={Logo} akt="" /></Link>
-            <Link to="/kontakt" className='hover:underline px-2'><img className="w-10 h-auto" src={Logo} akt="" /></Link>
-          </Footer.LinkGroup>
         <Footer.Copyright
           className='copyright_1'
           by="Idrettslaget Trond"
