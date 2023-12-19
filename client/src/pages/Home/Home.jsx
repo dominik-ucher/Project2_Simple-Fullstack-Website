@@ -177,18 +177,20 @@ const Home = () => {
         </div>
         <div className='flex justify-center'>
             {/* <Link to={"/nyheter/"} className='text-blue-500 hover:underline hover:cursor-pointer hover:font-semibold mb-5 text-xl'>Flere nyheter</Link> */}
+            <Link to={"/nyheter"}>
             <Button className="mb-5 font-bold" size="md" color="dark" pill>Flere Nyheter <img className='w-12 h-12 rounded-full p-2 -rotate-90' src={arrow} alt="" /></Button>
+            </Link>
         </div>
 
         <div className='p-6 bg-gray-800'>
           <p className='flex justify-center font-bold text-3xl text-white'>Snarveier</p>
           <div className='flex justify-center mt-3'><div className='h-1 w-32 bg-white rounded-full' /></div>
           <div className='flex flex-col items-center gap-6 justify-center mt-10 md:flex-row md:gap-6'>
-            <Button pill size="xl" color="warning">Om Trond</Button>
-            <Button pill size="xl" color="warning">Fotball</Button>
-            <Button pill size="xl" color="warning">Allidrett</Button>
-            <Button pill size="xl" color="warning">Klubbhuset</Button>
-            <Button pill size="xl" color="warning">Kontakt Oss</Button>
+            <Link to={""}> <Button pill size="xl" color="warning">Om Trond</Button> </Link>
+            <Link to={""}> <Button pill size="xl" color="warning">Fotball</Button> </Link>
+            <Link to={""}> <Button pill size="xl" color="warning">Allidrett</Button> </Link>
+            <Link to={""}> <Button pill size="xl" color="warning">Klubbhuset</Button> </Link>
+            <Link to={""}> <Button pill size="xl" color="warning">Kontakt Oss</Button> </Link>
           </div>
           <p className='flex justify-center font-bold text-3xl text-white mt-10'>Eller bruk vår Meny</p>
           <div className='flex justify-center mt-3'><div className='h-1 w-48 bg-white rounded-full' /></div>
