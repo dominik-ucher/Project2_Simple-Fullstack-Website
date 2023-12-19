@@ -37,11 +37,18 @@ const FooterTemp = () => {
           ))}
           </div>
           <Footer.LinkGroup className='txt_1'>
-            {/* <Link to="" className='px-2 hover:underline'>About</Link>
-            <Link to="/kontakt" className='hover:underline px-2'>Contact</Link> */}
+            <Link to="" className='px-2 hover:underline'>Baneplan</Link>
+            <Link to="" className='px-2 hover:underline'>Våre Sponsorer</Link>
+            <Link to="" className='px-2 hover:underline'>Nyheter</Link>
+            <Link to="/kontakt" className='hover:underline px-2'>Kontakt</Link>
           </Footer.LinkGroup>
         </div>
         <Footer.Divider />
+        <Footer.LinkGroup className='txt_1 absolute right-0 px-8'>
+            <Link to="/kontakt" className='hover:underline px-2'><img className="w-10 h-auto" src={Logo} akt="" /></Link>
+            <Link to="/kontakt" className='hover:underline px-2'><img className="w-10 h-auto" src={Logo} akt="" /></Link>
+            <Link to="/kontakt" className='hover:underline px-2'><img className="w-10 h-auto" src={Logo} akt="" /></Link>
+          </Footer.LinkGroup>
         <Footer.Copyright
           className='copyright_1'
           by="Idrettslaget Trond"
