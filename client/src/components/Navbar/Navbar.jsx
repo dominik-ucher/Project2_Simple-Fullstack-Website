@@ -150,7 +150,7 @@ export default function DefaultNavbar() {
   }, []);
 
   return (
-    <div className="sticky top-0 z-50 bg-gray-800">
+    // <div className="sticky top-0 z-50 bg-gray-800">
     <div className="main-container" style={{ overflowX:'hidden'}}>
     <div className='flex items-center bg-gray-800 h-auto w-screen border-b-2 border-yellow-300'>
       <div className='flex items-center p-4'>
@@ -186,7 +186,7 @@ export default function DefaultNavbar() {
       </div>
 
     </div>
-    </div>
+    // </div>
 
 
 
