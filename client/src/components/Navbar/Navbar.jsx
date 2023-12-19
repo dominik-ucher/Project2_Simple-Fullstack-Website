@@ -21,6 +21,8 @@ export default function DefaultNavbar() {
   const [pages, setPages] = useState([]);
   const [activeMenuId, setActiveMenuId] = useState(null);
   const [dropdownOpen, setDropdownOpen] = useState({});
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
 
   useEffect(() => {
     // Fetch the sidebar menu items and all pages from the backend
@@ -151,7 +153,7 @@ export default function DefaultNavbar() {
     <>
     <div className='flex items-center bg-gray-800 h-auto w-screen border-b-2 border-yellow-300'>
       <div className='flex items-center p-4'>
-        <button className='hover:border-2 rounded-2xl p-2'><p>Toggle</p></button>
+        <button className='hover:border-2 rounded-2xl p-2' onClick={() => setSidebarOpen(!sidebarOpen)}><p>Toggle</p></button>
         <Link className="flex items-center" to="/">
         <img className="w-20" src={Logo} alt="" />
         <p className='font-bold text-white text-xl px-2'>Idrettslaget Trond</p>
@@ -168,7 +170,7 @@ export default function DefaultNavbar() {
       </div>
     </div>
     
-      <div className='w-64 h-auto bg-gray-800 relative rounded-br-3xl border-r-2 border-b-2 border-yellow-300' style={{ position: 'absolute', zIndex: '9999' }}>
+      <div className='w-64 h-auto bg-gray-800 relative rounded-br-3xl border-r-2 border-b-2 border-yellow-300' style={{ position: 'absolute', zIndex: '9999', left: sidebarOpen ? '0' : '-100%', transition: 'left 1.0s ease-in-out' }}>
         <div>
           <div className='visible md:invisible md:h-0 h-auto flex flex-col jusitfy-center items-center bg-gray-700 border-b-2'>
             {links && links.map((link, index)=> (
