@@ -70,12 +70,13 @@ const Single_Page = () => {
 
 
     return(
-        <div className="grid grid-cols-10 gap-4">
-        <div className="col-span-10 md:col-span-7 bg-white-200">
+        // <div className="grid grid-cols-10 gap-4">
+        <div className="bg-white-200 px-6 md:px-48">
         <div className='single'>
             <div className='content'>
+                <h1 className='flex items-center justify-center mt-14 mb-14 font-bold capitalize text-3xl md:text-5xl'>{side.title}</h1>
                 <img 
-                className='w-100 h-auto mt-4 px-4'
+                className='rounded-3xl '
                 src={side.img && `/upload/Sider/Sider_Bilder/${side.img}`} 
                 alt="" 
                 />
@@ -97,7 +98,6 @@ const Single_Page = () => {
                     )}
                 </div>
             </div>
-            <h1 className='flex items-center justify-center mt-20 font-bold capitalize text-3xl'>{side.title}</h1>
             <div className="text-black flex flex-col mt-10 px-10 my-special-content">
               <p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(side.desc).replace(/<a/g, '<a class="text-blue-500 underline"') }}></p>
             </div>
@@ -128,10 +128,10 @@ const Single_Page = () => {
         })}
       </div>
         </div>
-        <div className="col-span-10 md:col-span-3 bg-white-200">
-                <Sidebar />
-        </div>
-        </div>
+        // <div className="col-span-10 md:col-span-3 bg-white-200">
+        //         <Sidebar />
+        // </div>
+        // </div>
     )
 }
 
