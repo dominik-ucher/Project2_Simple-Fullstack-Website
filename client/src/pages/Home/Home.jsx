@@ -151,7 +151,7 @@ const Home = () => {
                   <img
                     src={arrow} // Replace with your arrow image path
                     alt="Arrow"
-                    className="h-16 w-auto animate-bounce rounded-full" // Adjust the height and width as needed
+                    className="h-6 md:h-16 w-auto animate-bounce rounded-full" // Adjust the height and width as needed
                   />
                 </div>
               </div>
