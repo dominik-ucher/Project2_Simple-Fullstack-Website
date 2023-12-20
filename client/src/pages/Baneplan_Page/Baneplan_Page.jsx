@@ -4,18 +4,12 @@ import Rosenborgbanenimg from '../../img/Rosenborgbanen.jpg'
 
 const Baneplan_Page = () => {
   return (
-    <div className="grid grid-cols-10 gap-4">
-      <div className="col-span-10 md:col-span-7 bg-white-200">
-            <img 
-                className='w-full h-auto mt-4 px-4'
-                src={Rosenborgbanenimg} 
-                alt="" 
-            />
-        <div className="px-10">
-          <h1 className="flex items-center justify-center mt-5 font-bold capitalize text-3xl">
+    // <div className="grid grid-cols-10 gap-4">
+      <div className="bg-white-200 px-6 md:px-48">
+      <h1 className="flex items-center justify-center mt-14 mb-10 font-bold capitalize text-3xl md:text-5xl">
             Baneplan på Rosenborgbanen
           </h1>
-          <div className='flex gap-10 justify-center mt-5'>
+          <div className='flex gap-10 justify-center mb-10'>
           <a href="#eleven" className="flex items-center justify-center text-2xl hover:pointer hover:text-blue-800 text-blue-500 underline">
             11-er bane
           </a>
@@ -27,6 +21,12 @@ const Baneplan_Page = () => {
           </a>
           </div>
 
+            <img 
+                className='rounded-3xl'
+                src={Rosenborgbanenimg} 
+                alt="" 
+            />
+        <div className="px-10">
           <div id="eleven">
             <iframe
               title="11-er"
@@ -67,10 +67,10 @@ const Baneplan_Page = () => {
           </div>
         </div>
       </div>
-      <div className="col-span-10 md:col-span-3 bg-white-200">
-        <Sidebar />
-      </div>
-    </div>
+      //  <div className="col-span-10 md:col-span-3 bg-white-200">
+      //   <Sidebar /> 
+      // </div>  
+    // </div>
   );
 };
 
