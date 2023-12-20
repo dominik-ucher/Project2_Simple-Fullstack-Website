@@ -209,7 +209,7 @@ const Home = () => {
               <div key={menu.menuName} className='mb-4 mt-10'>
                 <p className='flex justify-center font-bold text-2xl'>{menu.menuName}</p>
                 <div>
-                  {menu.pages && menu.pages.map(page => (
+                  {menu.pages && Array.isArray(menu.pages) && menu.pages.map(page => (
                     <div key={page.pageId} className='p-4'>
                       <Link to={`/side/${page.pageid}_${page.pageTitle}`}>
                       <p className='flex justify-center text-md hover:font-bold hover:underline'>{page.pageTitle}</p>
