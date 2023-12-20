@@ -211,7 +211,7 @@ const Home = () => {
                 <div>
                   {menu.pages && Array.isArray(menu.pages) && menu.pages.map(page => (
                     <div key={page.pageId} className='p-4'>
-                      <Link to={`/side/${page.pageid}_${page.pageTitle}`}>
+                      <Link to={`/side/${page.pageId}_${page.pageTitle}`}>
                         <p className='flex justify-center text-md hover:font-bold hover:underline'>{page.pageTitle}</p>
                       </Link>
                     </div>
