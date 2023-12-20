@@ -160,7 +160,7 @@ const Home = () => {
         </FadeIn>
 
         <div className='grid grid-cols-2 md:grid-cols-4 gap-6 p-10'>
-          {/* {nyheter && nyheter.slice(0,8).map((nyhet, index) => (
+          {nyheter && nyheter.slice(0,8).map((nyhet, index) => (
               <div className="flex flex-col items-center text-lg text-black font-bold hover:text-yellow-300">
                 <Link key={nyhet.id} to={`/nyheter/${nyhet.id}_${nyhet.title}`}>
                 <div className="relative overflow-hidden transform transition-all duration-300 rounded-lg hover:scale-105">
@@ -173,7 +173,7 @@ const Home = () => {
                 <p className='line-clamp-3 p-2'>{nyhet.title}</p>
                 </Link>
               </div>
-            ))} */}
+            ))}
         </div>
         <div className='flex justify-center'>
             {/* <Link to={"/nyheter/"} className='text-blue-500 hover:underline hover:cursor-pointer hover:font-semibold mb-5 text-xl'>Flere nyheter</Link> */}
@@ -205,7 +205,7 @@ const Home = () => {
         <p className='flex justify-center font-bold text-3xl'>Utforsk</p>
         <div className='flex justify-center mt-3'><div className='h-1 w-32 bg-black rounded-full' /></div>
           <div className='grid grid-cols-1 md:grid-cols-4 gap-4'>
-            {menus && menus.map(menu => (
+            {/* {menus && menus.map(menu => (
               <div key={menu.menuName} className='mb-4 mt-10'>
                 <p className='flex justify-center font-bold text-2xl'>{menu.menuName}</p>
                 <div>
@@ -214,12 +214,12 @@ const Home = () => {
                       <Link to={`/side/${page.pageid}_${page.pageTitle}`}>
                       <p className='flex justify-center text-md hover:font-bold hover:underline'>{page.pageTitle}</p>
                       </Link>
-                      {/* You can display other details of the page here */}
+                      
                     </div>
                   ))}
                 </div>
               </div>
-            ))}
+            ))} */}
           </div>
         </div>
 
