@@ -47,7 +47,7 @@ const FooterTemp = () => {
 
 
     <div className="flex-grow mt-20">
-    <Footer container className='footer_1'>
+    <Footer container className='footer_1' bgDark>
       <div className="w-full text-center" >
         <div className="w-full justify-between sm:flex sm:items-center sm:justify-between">
           <div className='flex justify-end'>
@@ -60,12 +60,12 @@ const FooterTemp = () => {
           ))}
           </div>
           <Footer.LinkGroup className='txt_1'>
-            <Link to="" className='px-2 hover:underline'>Baneplan</Link>
-            <Link to="" className='px-2 hover:underline'>Våre Sponsorer</Link>
-            <Link to="" className='px-2 hover:underline'>Nyheter</Link>
-            <Link to="/kontakt" className='hover:underline px-2'>Kontakt</Link>
-            <Link to="" className='hover:underline px-2'><FaFacebook color="white" className='w-6 h-auto'/></Link>
-            <Link to="" className='hover:underline px-2'><FaInstagram color="white" className='w-6 h-auto'/></Link>
+            <Link to="/treninger" className='px-2 hover:underline text-white'>Baneplan</Link>
+            <Link to="/sponsorer" className='px-2 hover:underline text-white'>Våre Sponsorer</Link>
+            <Link to="/nyheter" className='px-2 hover:underline text-white'>Nyheter</Link>
+            <Link to="/kontakt" className='hover:underline px-2 text-white'>Kontakt</Link>
+            <Link to="https://www.facebook.com/iltrondfotball" className='hover:underline px-2'><FaFacebook color="white" className='w-6 h-auto'/></Link>
+            <Link to="https://www.instagram.com/il_trondfotball/" className='hover:underline px-2'><FaInstagram color="white" className='w-6 h-auto'/></Link>
           </Footer.LinkGroup>
         </div>
         <Footer.Divider />

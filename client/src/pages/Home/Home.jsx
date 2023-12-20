@@ -184,11 +184,11 @@ const Home = () => {
           <p className='flex justify-center font-bold text-3xl text-white'>Snarveier</p>
           <div className='flex justify-center mt-3'><div className='h-1 w-32 bg-white rounded-full' /></div>
           <div className='flex flex-col items-center gap-6 justify-center mt-10 md:flex-row md:gap-6'>
-            <Link to={""}> <Button pill size="xl" color="warning">Om Trond</Button> </Link>
-            <Link to={""}> <Button pill size="xl" color="warning">Fotball</Button> </Link>
-            <Link to={""}> <Button pill size="xl" color="warning">Allidrett</Button> </Link>
-            <Link to={""}> <Button pill size="xl" color="warning">Klubbhuset</Button> </Link>
-            <Link to={""}> <Button pill size="xl" color="warning">Kontakt Oss</Button> </Link>
+            <Link to={"/treninger"}> <Button pill size="xl" color="warning">Baneplan</Button> </Link>
+            <Link to={"/side/77_Info%20Fotball"}> <Button pill size="xl" color="warning">Fotball</Button> </Link>
+            <Link to={"/side/88_Informasjon"}> <Button pill size="xl" color="warning">Allidrett</Button> </Link>
+            <Link to={"/side/90_Lån%20og%20Utleie"}> <Button pill size="xl" color="warning">Klubbhuset</Button> </Link>
+            <Link to={"/kontakt"}> <Button pill size="xl" color="warning">Kontakt Oss</Button> </Link>
           </div>
           <p className='flex justify-center font-bold text-3xl text-white mt-10'>Eller bruk vår Meny</p>
           <div className='flex justify-center mt-3'><div className='h-1 w-48 bg-white rounded-full' /></div>
