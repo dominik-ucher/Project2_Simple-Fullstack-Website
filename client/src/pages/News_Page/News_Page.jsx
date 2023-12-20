@@ -67,7 +67,7 @@ const News_Page = () => {
             </div>
           </div>
         </FadeIn>
-        <div className='invisible md:visibale h-1 w-screen rounded-full bg-gray-300 mt-2 px-12' />
+        <div className='invisible md:visible h-1 w-screen rounded-full bg-gray-300 mt-2 px-12' />
       <div className="grid grid-cols-3 md:gap-4">
         <div className="col-span-3 bg-white-200">
           <div className="grid grid-cols-2 md:grid-cols-3">
@@ -83,7 +83,7 @@ const News_Page = () => {
                 </div>
                 <p className='line-clamp-3 p-2 flex justify-center'>{nyhet.title}</p>
                 </Link>
-                <div className='invisible md:visibale h-1 w-96 rounded-full bg-gray-300 mt-4 px-12' />
+                <div className='invisible md:visible h-1 w-96 rounded-full bg-gray-300 mt-4 px-12' />
               </div>
             ))}
           </div>
