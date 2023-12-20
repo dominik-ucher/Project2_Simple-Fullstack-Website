@@ -67,6 +67,8 @@ const Home = () => {
   const [mainpic, setMainpic] = useState([]);
   const [menus, setMenus] = useState([]);
   console.log(menus)
+  console.log(menu)
+  console.log(nyheter)
   const progressBars = [
     { name: 'Frivillige i klubben', progress: 239, maxProgress: 500, logo: volunteer },
     { name: 'Herrespillere', progress: 330, maxProgress: 500, logo: man },
