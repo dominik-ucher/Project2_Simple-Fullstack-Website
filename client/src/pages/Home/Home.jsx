@@ -66,9 +66,7 @@ const Home = () => {
   const [menu, setMenu] = useState([]);
   const [mainpic, setMainpic] = useState([]);
   const [menus, setMenus] = useState([]);
-  console.log(menus)
-  console.log(menu)
-  console.log(nyheter)
+
   const progressBars = [
     { name: 'Frivillige i klubben', progress: 239, maxProgress: 500, logo: volunteer },
     { name: 'Herrespillere', progress: 330, maxProgress: 500, logo: man },
@@ -206,11 +204,11 @@ const Home = () => {
         <p className='flex justify-center font-bold text-3xl'>Utforsk</p>
         <div className='flex justify-center mt-3'><div className='h-1 w-32 bg-black rounded-full' /></div>
           <div className='grid grid-cols-1 md:grid-cols-4 gap-4'>
-          {Array.isArray(menus) && menus.map(menu => (
-              <div key={menu.menuName} className='mb-4 mt-10'>
-                <p className='flex justify-center font-bold text-2xl'>{menu.menuName}</p>
+          {Array.isArray(menus) && menus.map(menu1 => (
+              <div key={menu1.menuName} className='mb-4 mt-10'>
+                <p className='flex justify-center font-bold text-2xl'>{menu1.menuName}</p>
                 <div>
-                  {menu.pages && Array.isArray(menu.pages) && menu.pages.map(page => (
+                  {menu1.pages && Array.isArray(menu1.pages) && menu1.pages.map(page => (
                     <div key={page.pageId} className='p-4'>
                       <Link to={`/side/${page.pageId}_${page.pageTitle}`}>
                         <p className='flex justify-center text-md hover:font-bold hover:underline'>{page.pageTitle}</p>
