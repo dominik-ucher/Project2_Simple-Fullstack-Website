@@ -59,9 +59,6 @@ function ProgressBar({ name, progress, maxProgress, logo }) {
 }
 
 
-
-
-
 const Home = () => {
   const axiosInstance = axios.create({baseURL: import.meta.env.VITE_REACT_APP_API_URL,});
 
@@ -69,7 +66,7 @@ const Home = () => {
   const [menu, setMenu] = useState([]);
   const [mainpic, setMainpic] = useState([]);
   const [menus, setMenus] = useState([]);
-
+  console.log(menus)
   const progressBars = [
     { name: 'Frivillige i klubben', progress: 239, maxProgress: 500, logo: volunteer },
     { name: 'Herrespillere', progress: 330, maxProgress: 500, logo: man },
