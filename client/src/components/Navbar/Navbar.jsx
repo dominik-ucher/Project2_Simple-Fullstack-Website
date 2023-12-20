@@ -31,13 +31,25 @@ export default function DefaultNavbar() {
       axiosInstance.get('/api/sider/')
     ])
       .then(([sidebarResponse, pagesResponse]) => {
-        setSidebarMenus(sidebarResponse.data);
-        setPages(pagesResponse.data);
+        if (Array.isArray(sidebarResponse.data)) {
+          setSidebarMenus(sidebarResponse.data);
+        } else {
+          console.error('Sidebar data is not an array:', sidebarResponse.data);
+          // Handle this scenario accordingly, e.g., set a default value or handle the error state
+        }
+  
+        if (Array.isArray(pagesResponse.data)) {
+          setPages(pagesResponse.data);
+        } else {
+          console.error('Pages data is not an array:', pagesResponse.data);
+          // Handle this scenario accordingly, e.g., set a default value or handle the error state
+        }
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
       });
   }, []);
+  
 
   useEffect(() => {
     // Get the current article's menu and set its dropdown to open
