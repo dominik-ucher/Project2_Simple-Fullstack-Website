@@ -9,6 +9,9 @@ import axios from 'axios'
 import { BiChevronDown, BiChevronUp } from 'react-icons/bi';
 import menuicon from '../../img/menu.png';
 import articleicon from '../../img/article.png';
+import { BsLayoutSidebarInset } from "react-icons/bs";
+import { IoIosMenu } from "react-icons/io";
+import { MdOutlineArticle } from "react-icons/md";
 
 export default function DefaultNavbar() {
   const axiosInstance = axios.create({baseURL: import.meta.env.VITE_REACT_APP_API_URL,});
@@ -60,7 +63,7 @@ export default function DefaultNavbar() {
               }`}
               onClick={() => navigate(`/side/${page.id}_${page.title}`)}
             >
-              <img src={articleicon} alt="Article Icon" className="w-5 h-5" />
+              <MdOutlineArticle color="white" />
               <span>{page.title}</span>
             </div>
           ))}
@@ -88,7 +91,7 @@ export default function DefaultNavbar() {
               }`}
               onClick={() => navigate(`/side/${page.id}_${page.title}`)}
             >
-              <img src={articleicon} alt="Article Icon" className="w-5 h-5" />
+              <MdOutlineArticle color="white" className='h-4 w-auto'/>
               <span>{page.title}</span>
             </div>
           ))}
@@ -107,7 +110,7 @@ export default function DefaultNavbar() {
             }`}
             onClick={() => toggleDropdown(menu.id)}
           >
-            <img src={menuicon} alt="Menu Icon" className="w-5 h-5" />
+            <IoIosMenu color="white" />
             <span className="text-base font-bold text-md">{menu.name}</span>
             {dropdownOpen[menu.id] ? (
               <BiChevronUp className="text-gray-500" />
@@ -153,7 +156,7 @@ export default function DefaultNavbar() {
     <div className="main-container" style={{ overflowX:'hidden'}}>
     <div className='flex items-center bg-gray-800 h-auto w-screen border-b-2 border-yellow-300'>
       <div className='flex items-center p-4'>
-        <button className='hover:border-2 rounded-2xl p-2' onClick={() => setSidebarOpen(!sidebarOpen)}><p>Toggle</p></button>
+        <button className='hover:border-2 rounded-2xl p-2' onClick={() => setSidebarOpen(!sidebarOpen)}><p><BsLayoutSidebarInset className="h-6 w-auto" color="white"/></p></button>
         <Link className="flex items-center" to="/">
         <img className="w-20" src={Logo} alt="" />
         <p className='font-bold text-white text-xl px-2'>Idrettslaget Trond</p>

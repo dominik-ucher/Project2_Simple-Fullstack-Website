@@ -5,6 +5,8 @@ import Logo from '../../img/logo.png'
 import './Footer.css'
 import { Link } from 'react-router-dom';
 import axios from 'axios'
+import { FaFacebook } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
 
 const FooterTemp = () => {
   const axiosInstance = axios.create({baseURL: import.meta.env.VITE_REACT_APP_API_URL,});
@@ -62,9 +64,8 @@ const FooterTemp = () => {
             <Link to="" className='px-2 hover:underline'>Våre Sponsorer</Link>
             <Link to="" className='px-2 hover:underline'>Nyheter</Link>
             <Link to="/kontakt" className='hover:underline px-2'>Kontakt</Link>
-            <Link to="/kontakt" className='hover:underline px-2'><img className="w-10 h-auto" src={Logo} akt="" /></Link>
-            <Link to="/kontakt" className='hover:underline px-2'><img className="w-10 h-auto" src={Logo} akt="" /></Link>
-            <Link to="/kontakt" className='hover:underline px-2'><img className="w-10 h-auto" src={Logo} akt="" /></Link>
+            <Link to="" className='hover:underline px-2'><FaFacebook color="white" className='w-6 h-auto'/></Link>
+            <Link to="" className='hover:underline px-2'><FaInstagram color="white" className='w-6 h-auto'/></Link>
           </Footer.LinkGroup>
         </div>
         <Footer.Divider />
