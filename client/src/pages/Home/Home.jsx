@@ -129,6 +129,8 @@ const Home = () => {
     const doc = new DOMParser().parseFromString(html, "text/html")
     return doc.body.textContent
   }
+  console.log(menu.pages)
+  console.log(menus)
 
     return(
 
