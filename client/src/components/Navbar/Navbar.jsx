@@ -23,10 +23,6 @@ export default function DefaultNavbar() {
   const [dropdownOpen, setDropdownOpen] = useState({});
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  console.log('Pages:', pages); // Check if pages is an array
-  console.log('SidebarMenus:', sidebarMenus); // Check if sidebarMenus is an array
-
-
 
   useEffect(() => {
     Promise.all([
