@@ -23,20 +23,24 @@ export default function DefaultNavbar() {
   const [dropdownOpen, setDropdownOpen] = useState({});
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
+  console.log('Pages:', pages); // Check if pages is an array
+  console.log('SidebarMenus:', sidebarMenus); // Check if sidebarMenus is an array
 
-  // useEffect(() => {
-  //   Promise.all([
-  //     axiosInstance.get('/api/sidebar/menus'),
-  //     axiosInstance.get('/api/sider/')
-  //   ])
-  //     .then(([sidebarResponse, pagesResponse]) => {
-  //       setSidebarMenus(sidebarResponse.data);
-  //       setPages(pagesResponse.data);
-  //     })
-  //     .catch((error) => {
-  //       console.error('Error fetching data:', error);
-  //     });
-  // }, []);
+
+
+  useEffect(() => {
+    Promise.all([
+      axiosInstance.get('/api/sidebar/menus'),
+      axiosInstance.get('/api/sider/')
+    ])
+      .then(([sidebarResponse, pagesResponse]) => {
+        setSidebarMenus(sidebarResponse.data);
+        setPages(pagesResponse.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      });
+  }, []);
 
   useEffect(() => {
     // Get the current article's menu and set its dropdown to open
