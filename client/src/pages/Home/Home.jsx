@@ -81,6 +81,7 @@ const Home = () => {
     axios.get('/api/sidebar/menupages')
       .then(response => {
         setMenus(response.data); // Assuming the response contains menus and pages data
+        console.log('Menus:', response.data);
       })
       .catch(error => {
         console.error('Error fetching menus and pages:', error);
@@ -203,23 +204,22 @@ const Home = () => {
         <div className='bg-yellow-300 p-6'>
         <p className='flex justify-center font-bold text-3xl'>Utforsk</p>
         <div className='flex justify-center mt-3'><div className='h-1 w-32 bg-black rounded-full' /></div>
-        <div className='grid grid-cols-1 md:grid-cols-4 gap-4'>
-  {Array.isArray(menus) && menus.map(menu1 => (
-    <div key={menu1.menuName} className='mb-4 mt-10'>
-      <p className='flex justify-center font-bold text-2xl'>{menu1.menuName}</p>
-      <div>
-        {menu1.pages && Array.isArray(menu1.pages) && menu1.pages.map(page => (
-          <div key={page.pageId} className='p-4'>
-            <Link to={`/side/${page.pageId}_${page.pageTitle}`}>
-              <p className='flex justify-center text-md hover:font-bold hover:underline'>{page.pageTitle}</p>
-            </Link>
+          <div className='grid grid-cols-1 md:grid-cols-4 gap-4'>
+          {Array.isArray(menus) && menus.map(menu1 => (
+              <div key={menu1.menuName} className='mb-4 mt-10'>
+                <p className='flex justify-center font-bold text-2xl'>{menu1.menuName}</p>
+                <div>
+                  {menu1.pages && Array.isArray(menu1.pages) && menu1.pages.map(page => (
+                    <div key={page.pageId} className='p-4'>
+                      <Link to={`/side/${page.pageId}_${page.pageTitle}`}>
+                        <p className='flex justify-center text-md hover:font-bold hover:underline'>{page.pageTitle}</p>
+                      </Link>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-    </div>
-  ))}
-  {menus.length === 0 && <p>Loading...</p>}
-</div>
         </div>
 
         <div className='bg-gray-800 p-6'>
