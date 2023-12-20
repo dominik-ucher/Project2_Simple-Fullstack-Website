@@ -71,7 +71,7 @@ const News_Page = () => {
       <div className="grid grid-cols-3 md:gap-4">
         <div className="col-span-3 bg-white-200">
           <div className="grid grid-cols-2 md:grid-cols-3">
-          {nyheter && nyheter.slice(startIndex,endIndex).map((nyhet, index) => (
+          {/* {nyheter && nyheter.slice(startIndex,endIndex).map((nyhet, index) => (
               <div className="flex flex-col items-center text-lg text-black font-bold hover:text-yellow-300 p-2 md:p-6">
                 <Link key={nyhet.id} to={`/nyheter/${nyhet.id}_${nyhet.title}`}>
                 <div className="relative overflow-hidden transform transition-all duration-300 rounded-lg hover:scale-105">
@@ -85,7 +85,7 @@ const News_Page = () => {
                 </Link>
                 <div className='h-1 w-96 rounded-full bg-gray-300 mt-4 px-12' />
               </div>
-            ))}
+            ))} */}
           </div>
           <Pagination
               currentPage={currentPage}
