@@ -14,6 +14,7 @@ import volunteer from '../../img/volunteer.png'
 import team from '../../img/team.png'
 import referee from '../../img/referee.png'
 import arrow from '../../img/arrow.png'
+import sidebargif from '../../img/Sidebar_gif.gif'
 
 
 function ProgressBar({ name, progress, maxProgress, logo }) {
@@ -195,8 +196,9 @@ const Home = () => {
           <p className='flex justify-center font-bold text-3xl text-white mt-10'>Eller bruk vår Meny</p>
           <div className='flex justify-center mt-3'><div className='h-1 w-48 bg-white rounded-full' /></div>
           <div className='flex justify-center mt-10'>
-            <div className='w-96'>
-              <Sidebar />
+            <div className='h-96 w-auto'>
+              <img src={sidebargif} alt="" />
+              {/* <Sidebar /> */}
             </div>
           </div>
         </div>
