@@ -78,7 +78,7 @@ const Home = () => {
 
   useEffect(() => {
     // Fetch menus and pages from your backend endpoint
-    axios.get('/api/sidebar/menupages')
+    axiosInstance.get('/api/sidebar/menupages')
       .then(response => {
         setMenus(response.data); // Assuming the response contains menus and pages data
         console.log('Menus:', response.data);
