@@ -81,7 +81,6 @@ const Home = () => {
     axiosInstance.get('/api/sidebar/menupages')
       .then(response => {
         setMenus(response.data); // Assuming the response contains menus and pages data
-        console.log('Menus:', response.data);
       })
       .catch(error => {
         console.error('Error fetching menus and pages:', error);
