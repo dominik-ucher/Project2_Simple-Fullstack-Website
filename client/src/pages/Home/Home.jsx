@@ -223,21 +223,22 @@ const Home = () => {
         </div>
 
         <div className='bg-gray-800 p-6'>
-            <p className='flex justify-center font-bold text-3xl text-white'>Nyttig Informasjon</p>
-            <div className='flex justify-center mt-3'><div className='h-1 w-48 bg-white rounded-full' /></div>
-            <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
-              {menu && menu.map((menu,index) => (
-                    <Link key={menu.id} to={menu.link}>
-                    <div className='flex justify-center items-center mt-4 transform transition-all duration-300 rounded-lg hover:scale-105'>
-                    <img
-                      className="object-cover rounded-lg mt-4 h-48"
-                      src={`/upload/HomepageMenu_Bilder/${menu.img}`}
-                      alt="image description" />
-                    </div>
-                    </Link>
-                  ))}
-              </div>
+  <p className='flex justify-center font-bold text-3xl text-white'>Nyttig Informasjon</p>
+  <div className='flex justify-center mt-3'><div className='h-1 w-48 bg-white rounded-full' /></div>
+  <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+    {menu && menu.map((menuItem, index) => ( 
+      <Link key={menuItem.id} to={menuItem.link}>
+        <div className='flex justify-center items-center mt-4 transform transition-all duration-300 rounded-lg hover:scale-105'>
+          <img
+            className="object-cover rounded-lg mt-4 h-48"
+            src={`/upload/HomepageMenu_Bilder/${menuItem.img}`}
+            alt="image description"
+          />
         </div>
+      </Link>
+    ))}
+  </div>
+</div>
 
         <div className='p-6'>
         <p className='flex justify-center font-bold text-3xl'>En stolt fotballklubb</p>
