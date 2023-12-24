@@ -236,7 +236,7 @@ const Homepage_Menu = () => {
         onChange={(e) => setNewPersonData({ ...newPersonData, gruppe: e.target.value })}
         >
             <option value={null}>None</option>
-            {groups.map((group) => (
+            {groups && groups.map((group) => (
             <option key={group.id} value={group.id}>{group.navn}</option>
             ))}
         </Select>
@@ -259,7 +259,7 @@ const Homepage_Menu = () => {
             <Table.HeadCell>Delete</Table.HeadCell>
           </Table.Head>
           <Table.Body className="divide-y">
-            {persons.map((person) => (
+            {persons && persons.map((person) => (
               <Table.Row
                 key={person.id}
                 className="bg-white dark:border-gray-700 dark:bg-gray-800"
