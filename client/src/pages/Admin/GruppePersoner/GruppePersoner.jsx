@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../../../context/authContext';
 import { Card, Button, Label, TextInput, FileInput, Table, Select } from 'flowbite-react';
-import { useDropzone } from 'react-dropzone';
 import { useNavigate } from 'react-router-dom';
 import { FaUserAlt } from "react-icons/fa";
 
@@ -35,7 +34,7 @@ const Homepage_Menu = () => {
 
   const fetchPersons = async () => {
     try {
-      const response = await axios.get('/api/person');
+      const response = await axiosInstance.get('/api/person');
       setPersons(response.data);
     } catch (error) {
       console.error('Error fetching persons:', error);
@@ -44,7 +43,7 @@ const Homepage_Menu = () => {
 
   const fetchGroups = async () => {
     try {
-      const response = await axios.get('/api/person/gruppe');
+      const response = await axiosInstance.get('/api/person/gruppe');
       setGroups(response.data);
     } catch (error) {
       console.error('Error fetching groups:', error);
@@ -53,7 +52,7 @@ const Homepage_Menu = () => {
 
   const deleteGroupHandler = async (id) => {
     try {
-      await axios.delete(`/api/person/gruppe/${id}`);
+      await axiosInstance.delete(`/api/person/gruppe/${id}`);
       fetchGroups(); // Refresh groups after deletion
     } catch (error) {
       console.error('Error deleting group:', error);
@@ -62,7 +61,7 @@ const Homepage_Menu = () => {
 
   const deletePersonHandler = async (id) => {
     try {
-      await axios.delete(`/api/person/${id}`);
+      await axiosInstance.delete(`/api/person/${id}`);
       fetchPersons(); // Refresh persons after deletion
     } catch (error) {
       console.error('Error deleting person:', error);
@@ -71,7 +70,7 @@ const Homepage_Menu = () => {
 
   const addNewGroup = async () => {
     try {
-      await axios.post('/api/person/gruppe', { gruppe: newGroupName });
+      await axiosInstance.post('/api/person/gruppe', { gruppe: newGroupName });
       setNewGroupName(''); // Clear the input field after adding the group
       fetchGroups(); // Refresh groups after addition
     } catch (error) {
@@ -97,13 +96,9 @@ const Homepage_Menu = () => {
     if (newPersonData.img) {
       imgUrl = await upload();
     }
-    console.log(imgUrl)
-    console.log(newPersonData.navn)
-    console.log(newPersonData.epost)
-    console.log(newPersonData.tlf)
-    console.log(newPersonData.gruppe)
+
     try {
-      await axios.post('/api/person', {
+      await axiosInstance.post('/api/person', {
         img: imgUrl,
         navn: newPersonData.navn,
         epost: newPersonData.epost,
