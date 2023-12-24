@@ -106,14 +106,16 @@ const Admin = () => {
                     </p>
                 </Card>
                 </Link>
+                <Link to="/personeredit">
                 <Card className="max-w-sm mt-5 hover:bg-gray-200" style={{ minWidth: "385px", minHeight: "170px" }}>
                     <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    <p>Legg ut varsel (IKKE I BRUK)</p>
+                    <p>Legg til Personer</p>
                     </h5>
                     <p className="font-normal text-gray-700 dark:text-gray-400">
-                    <p>Kommer snart</p>
+                    <p>For å legge til grupper og personer til gruppene</p>
                     </p>
                 </Card>
+                </Link>
                 <Link to="/sidebarmenu_edit">
                 <Card className="max-w-sm mt-5 hover:bg-gray-200" style={{ minWidth: "385px", minHeight: "170px" }}>
                     <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
