@@ -15,6 +15,7 @@ const Homepage_Menu = () => {
   const [newPersonData, setNewPersonData] = useState({
     img: '',
     navn: '',
+    stilling: '',
     epost: '',
     tlf: '',
     gruppe: '', // Assuming gruppe is a group ID
@@ -101,6 +102,7 @@ const Homepage_Menu = () => {
       await axiosInstance.post('/api/person', {
         img: imgUrl,
         navn: newPersonData.navn,
+        stilling: newPersonData.stilling,
         epost: newPersonData.epost,
         tlf: newPersonData.tlf,
         gruppe: parseInt(newPersonData.gruppe),
@@ -186,6 +188,19 @@ const Homepage_Menu = () => {
         </div>
         <div>
             <div className="mb-2 mt-6 block">
+            <Label htmlFor="base" value="Stilling" />
+            </div>
+            <TextInput
+            id="Stilling"
+            type="text"
+            sizing="md"
+            placeholder='Stilling'
+            value={newPersonData.stilling}
+            onChange={(e) => setNewPersonData({ ...newPersonData, stilling: e.target.value })}
+            />
+        </div>
+        <div>
+            <div className="mb-2 mt-6 block">
             <Label htmlFor="base" value="E-post" />
             </div>
             <TextInput
@@ -237,6 +252,7 @@ const Homepage_Menu = () => {
           <Table.Head>
             <Table.HeadCell>Bilde</Table.HeadCell>
             <Table.HeadCell>Navn</Table.HeadCell>
+            <Table.HeadCell>Stilling</Table.HeadCell>
             <Table.HeadCell>E-post</Table.HeadCell>
             <Table.HeadCell>Telefon</Table.HeadCell>
             <Table.HeadCell>Gruppe</Table.HeadCell>
@@ -257,6 +273,9 @@ const Homepage_Menu = () => {
                 </Table.Cell>
                 <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                   {person.navn}
+                </Table.Cell>
+                <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+                  {person.stilling}
                 </Table.Cell>
                 <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                   {person.epost}

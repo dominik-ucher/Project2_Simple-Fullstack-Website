@@ -20,11 +20,12 @@ export const addPerson = (req, res) => {
       if (err) return res.status(403).json("Token is not valid!");
   
       const q =
-        "INSERT INTO person(`img`, `navn`, `epost`, `tlf`,`gruppe`) VALUES (?)";
+        "INSERT INTO person(`img`, `navn`, `stilling`, `epost`, `tlf`,`gruppe`) VALUES (?)";
   
       const values = [
         req.body.img,
         req.body.navn,
+        req.body.stilling,
         req.body.epost,
         req.body.tlf,
         req.body.gruppe,
@@ -46,9 +47,9 @@ export const addPerson = (req, res) => {
   
       const personId = req.params.id;
       const q =
-        "UPDATE person SET `img`=?,`navn`=?,`epost`=? ,`tlf`=? WHERE `id` = ?";
+        "UPDATE person SET `img`=?,`navn`=?,`stilling`=?,`epost`=? ,`tlf`=? WHERE `id` = ?";
   
-      const values = [req.body.img, req.body.navn, req.body.epost, req.body.tlf];
+      const values = [req.body.img, req.body.navn, req.body.stilling, req.body.epost, req.body.tlf];
   
       db.query(q, [...values, personId], (err, data) => {
         if (err) return res.status(500).json(err);
