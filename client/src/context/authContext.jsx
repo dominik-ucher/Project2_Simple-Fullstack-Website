@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
+import AutoLogout from "../context/AutoLogout";
 
 export const AuthContext = createContext();
 const axiosInstance = axios.create({baseURL: import.meta.env.VITE_REACT_APP_API_URL,});
@@ -29,6 +30,7 @@ export const AuthContexProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider value={{ currentUser, login, logout }}>
+      <AutoLogout />
       {children}
     </AuthContext.Provider>
   );
