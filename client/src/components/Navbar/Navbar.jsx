@@ -1,5 +1,5 @@
 'use client';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Navbar,Dropdown, Button } from 'flowbite-react';
 import Logo from '../../img/logo.png'
 import './Navbar.css'
@@ -25,6 +25,21 @@ export default function DefaultNavbar() {
   const [activeMenuId, setActiveMenuId] = useState(null);
   const [dropdownOpen, setDropdownOpen] = useState({});
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const sidebarRef = useRef(null);
+
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+        setSidebarOpen(false);
+      }
+    };
+
+    document.addEventListener('click', handleOutsideClick);
+
+    return () => {
+      document.removeEventListener('click', handleOutsideClick);
+    };
+  }, []);
 
 
   useEffect(() => {
@@ -153,7 +168,7 @@ export default function DefaultNavbar() {
 
   return (
     // <div className="sticky top-0 z-50 bg-gray-800">
-    <div className="main-container" style={{ overflowX:'hidden'}}>
+    <div className="main-container" style={{ overflowX:'hidden'}} ref={sidebarRef}>
     <div className='flex items-center bg-gray-800 h-auto w-screen border-b-2 border-yellow-300'>
       <div className='flex items-center p-4'>
         <button className='hover:border-2 rounded-2xl p-2' onClick={() => setSidebarOpen(!sidebarOpen)}><p><BsLayoutSidebarInset className="h-6 w-auto" color="white"/></p></button>
