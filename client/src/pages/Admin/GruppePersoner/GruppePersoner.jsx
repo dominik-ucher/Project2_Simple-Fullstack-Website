@@ -148,7 +148,7 @@ const Homepage_Menu = () => {
         epost: editedPerson.epost,
         tlf: editedPerson.tlf,
         gruppe: editedPerson.gruppe,
-      });
+      }, { withCredentials: true });
 
       const updatedPersons = [...persons];
       updatedPersons[index].editing = false;
