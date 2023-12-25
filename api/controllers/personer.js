@@ -47,9 +47,9 @@ export const addPerson = (req, res) => {
   
       const personId = req.params.id;
       const q =
-        "UPDATE person SET `img`=?,`navn`=?,`stilling`=?,`epost`=? ,`tlf`=? WHERE `id` = ?";
+        "UPDATE person SET `img`=?,`navn`=?,`stilling`=?,`epost`=? ,`tlf`=?, `gruppe`=? WHERE `id` = ?";
   
-      const values = [req.body.img, req.body.navn, req.body.stilling, req.body.epost, req.body.tlf];
+      const values = [req.body.img, req.body.navn, req.body.stilling, req.body.epost, req.body.tlf, req.body.gruppe];
   
       db.query(q, [...values, personId], (err, data) => {
         if (err) return res.status(500).json(err);

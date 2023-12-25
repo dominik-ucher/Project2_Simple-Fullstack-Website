@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { FaUserAlt } from "react-icons/fa";
 
 const Homepage_Menu = () => {
-  const axiosInstance = axios.create({baseURL: import.meta.env.VITE_REACT_APP_API_URL,});
+  const axiosInstance = axios.create({ baseURL: import.meta.env.VITE_REACT_APP_API_URL });
 
   const { currentUser } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ const Homepage_Menu = () => {
     stilling: '',
     epost: '',
     tlf: '',
-    gruppe: '', // Assuming gruppe is a group ID
+    gruppe: '',
   });
   const [newGroupName, setNewGroupName] = useState('');
 
@@ -53,8 +53,8 @@ const Homepage_Menu = () => {
 
   const deleteGroupHandler = async (id) => {
     try {
-      await axiosInstance.delete(`/api/person/gruppe/${id}`,{withCredentials: true,});
-      fetchGroups(); // Refresh groups after deletion
+      await axiosInstance.delete(`/api/person/gruppe/${id}`, { withCredentials: true });
+      fetchGroups(); 
     } catch (error) {
       console.error('Error deleting group:', error);
     }
@@ -62,8 +62,8 @@ const Homepage_Menu = () => {
 
   const deletePersonHandler = async (id) => {
     try {
-      await axiosInstance.delete(`/api/person/${id}`,{withCredentials: true,});
-      fetchPersons(); // Refresh persons after deletion
+      await axiosInstance.delete(`/api/person/${id}`, { withCredentials: true });
+      fetchPersons();
     } catch (error) {
       console.error('Error deleting person:', error);
     }
@@ -71,18 +71,18 @@ const Homepage_Menu = () => {
 
   const addNewGroup = async () => {
     try {
-      await axiosInstance.post('/api/person/gruppe', { gruppe: newGroupName },{withCredentials: true,});
-      setNewGroupName(''); // Clear the input field after adding the group
-      fetchGroups(); // Refresh groups after addition
+      await axiosInstance.post('/api/person/gruppe', { gruppe: newGroupName }, { withCredentials: true });
+      setNewGroupName('');
+      fetchGroups();
     } catch (error) {
       console.error('Error adding new group:', error);
     }
   };
 
-  const upload = async () => {
+  const upload = async (imageFile) => {
     try {
       const formData = new FormData();
-      formData.append("file", newPersonData.img);
+      formData.append("file", imageFile);
       const res = await axiosInstance.post("/api/upload_personbilde", formData);
       return res.data; 
     } catch (err) {
@@ -93,26 +93,72 @@ const Homepage_Menu = () => {
 
   const addNewPerson = async () => {
     let imgUrl = '';
-  
+    
+    // Check if a new image is added before uploading
     if (newPersonData.img) {
-      imgUrl = await upload();
+      imgUrl = await upload(newPersonData.img); // Pass the image file here
     }
-
+  
     try {
+      // Use imgUrl if it's a new image or retain the existing image
       await axiosInstance.post('/api/person', {
-        img: imgUrl,
+        img: imgUrl || newPersonData.img,
         navn: newPersonData.navn,
         stilling: newPersonData.stilling,
         epost: newPersonData.epost,
         tlf: newPersonData.tlf,
         gruppe: parseInt(newPersonData.gruppe),
-      },{withCredentials: true,});
-  
-      // Rest of the code remains unchanged
+      }, { withCredentials: true });
     } catch (error) {
       console.error('Error adding new person:', error);
     }
   };
+  
+  
+
+  const handleEditPerson = (index) => {
+    const updatedPersons = [...persons];
+    updatedPersons[index].editing = true;
+    setPersons(updatedPersons);
+  };
+
+  const handleEditInputChange = (e, index, field) => {
+    const updatedPersons = [...persons];
+    if (field === 'img') {
+      updatedPersons[index].tempImg = e.target.files[0]; // Store temporary edited image
+    } else {
+      updatedPersons[index][field] = e.target.value;
+    }
+    setPersons(updatedPersons);
+  };
+
+  const handleSavePerson = async (index) => {
+    try {
+      const editedPerson = persons[index];
+      let imgUrl = editedPerson.img; // Default to existing image URL
+
+      if (editedPerson.tempImg instanceof File) {
+        imgUrl = await upload(editedPerson.tempImg); // Upload the edited image
+      }
+
+      await axiosInstance.put(`/api/person/${editedPerson.id}`, {
+        img: imgUrl,
+        navn: editedPerson.navn,
+        stilling: editedPerson.stilling,
+        epost: editedPerson.epost,
+        tlf: editedPerson.tlf,
+        gruppe: editedPerson.gruppe,
+      });
+
+      const updatedPersons = [...persons];
+      updatedPersons[index].editing = false;
+      updatedPersons[index].tempImg = null; // Clear temporary edited image
+      setPersons(updatedPersons);
+    } catch (error) {
+      console.error('Error saving person:', error);
+    }
+  };
+  
   
 
   return (
@@ -248,6 +294,7 @@ const Homepage_Menu = () => {
         </div>
       </div>
       <div className="overflow-x-auto mt-6 w-auto flex justify-center">
+      <div style={{ maxWidth: '100%', overflowX: 'auto' }}>
         <Table striped>
           <Table.Head>
             <Table.HeadCell>Bilde</Table.HeadCell>
@@ -256,37 +303,107 @@ const Homepage_Menu = () => {
             <Table.HeadCell>E-post</Table.HeadCell>
             <Table.HeadCell>Telefon</Table.HeadCell>
             <Table.HeadCell>Gruppe</Table.HeadCell>
+            <Table.HeadCell>Edit</Table.HeadCell>
             <Table.HeadCell>Delete</Table.HeadCell>
           </Table.Head>
           <Table.Body className="divide-y">
-            {persons && persons.map((person) => (
+            {persons && persons.map((person, index) => (
               <Table.Row
                 key={person.id}
                 className="bg-white dark:border-gray-700 dark:bg-gray-800"
               >
                 <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                {person.img ? (
-                    <img className="rounded-full" src={`/upload/Personer/${person.img}`} alt="Person" style={{ width: '50px', height: '50px' }} />
-                ) : (
-                    <FaUserAlt />
-                )}
+              {/* Render the image input when editing */}
+              {person.editing ? (
+                <FileInput
+                  id={`file-upload-${index}`}
+                  onChange={(e) =>
+                    handleEditInputChange(e, index, 'img')
+                  }
+                />
+              ) : person.img ? (
+                <img
+                  className="rounded-full"
+                  src={`/upload/Personer/${person.img}`}
+                  alt="Person"
+                  style={{ width: '50px', height: '50px' }}
+                />
+              ) : (
+                <FaUserAlt />
+              )}
+            </Table.Cell>
+                <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+                  {person.editing ? (
+                    <input
+                      type="text"
+                      value={person.navn}
+                      onChange={(e) => handleEditInputChange(e, index, 'navn')}
+                    />
+                  ) : (
+                    person.navn
+                  )}
                 </Table.Cell>
                 <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                  {person.navn}
+                  {person.editing ? (
+                    <input
+                      type="text"
+                      value={person.stilling}
+                      onChange={(e) => handleEditInputChange(e, index, 'stilling')}
+                    />
+                  ) : (
+                    person.stilling
+                  )}
                 </Table.Cell>
                 <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                  {person.stilling}
+                  {person.editing ? (
+                    <input
+                      type="text"
+                      value={person.epost}
+                      onChange={(e) => handleEditInputChange(e, index, 'epost')}
+                    />
+                  ) : (
+                    person.epost
+                  )}
                 </Table.Cell>
                 <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                  {person.epost}
+                  {person.editing ? (
+                    <input
+                      type="text"
+                      value={person.tlf}
+                      onChange={(e) => handleEditInputChange(e, index, 'tlf')}
+                    />
+                  ) : (
+                    person.tlf
+                  )}
                 </Table.Cell>
                 <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                  {person.tlf}
+                  {person.editing ? (
+                    <Select
+                      id={`gruppe_${index}`}
+                      required
+                      value={person.gruppe}
+                      onChange={(e) => handleEditInputChange(e, index, 'gruppe')}
+                    >
+                      <option value={null}>None</option>
+                      {groups && groups.map((group) => (
+                        <option key={group.id} value={group.id}>{group.navn}</option>
+                      ))}
+                    </Select>
+                  ) : (
+                    groups.find((group) => group.id === person.gruppe)?.navn
+                  )}
                 </Table.Cell>
-                <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                    {groups.find((group) => group.id === person.gruppe)?.navn}
+                <Table.Cell>
+                  {person.editing ? (
+                    <Button onClick={() => handleSavePerson(index)} color="success">
+                      Save
+                    </Button>
+                  ) : (
+                    <Button onClick={() => handleEditPerson(index)} color="warning">
+                      Edit
+                    </Button>
+                  )}
                 </Table.Cell>
-                {/* Delete cell - Replace with Delete button */}
                 <Table.Cell>
                   <Button onClick={() => deletePersonHandler(person.id)} color="failure">
                     Delete
@@ -296,6 +413,7 @@ const Homepage_Menu = () => {
             ))}
           </Table.Body>
         </Table>
+      </div>
       </div>
       
     </>
