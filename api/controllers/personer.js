@@ -42,21 +42,53 @@ export const addPerson = (req, res) => {
     const token = req.cookies.access_token;
     if (!token) return res.status(401).json("Not authenticated!");
   
-    jwt.verify(token, "jwtkey", (err, userInfo) => {
+    jwt.verify(token, "jwtkey", async (err, userInfo) => {
       if (err) return res.status(403).json("Token is not valid!");
   
       const personId = req.params.id;
-      const q =
-        "UPDATE person SET `img`=?,`navn`=?,`stilling`=?,`epost`=? ,`tlf`=?, `gruppe`=? WHERE `id` = ?";
   
-      const values = [req.body.img, req.body.navn, req.body.stilling, req.body.epost, req.body.tlf, req.body.gruppe];
-  
-      db.query(q, [...values, personId], (err, data) => {
+      // Fetch the existing image filename
+      const getImageFilenameQuery = "SELECT img FROM person WHERE id = ?";
+      db.query(getImageFilenameQuery, [personId], async (err, result) => {
         if (err) return res.status(500).json(err);
-        return res.json("Person has been updated.");
+  
+        const existingImageFilename = result[0].img;
+        
+        // Check if there's a new image in the request
+        const newImage = req.body.img;
+        
+        // If there's a new image and an existing image, delete the existing image
+        if (newImage && existingImageFilename) {
+          const imagePath = `../client/upload/Personer/${existingImageFilename}`;
+          try {
+            // Delete the existing image file from storage
+            fs.unlinkSync(imagePath);
+          } catch (unlinkErr) {
+            console.error("Error deleting image:", unlinkErr);
+            // Handle error if necessary
+          }
+        }
+  
+        const q =
+          "UPDATE person SET `img`=?,`navn`=?,`stilling`=?,`epost`=? ,`tlf`=?, `gruppe`=? WHERE `id` = ?";
+  
+        const values = [
+          req.body.img,
+          req.body.navn,
+          req.body.stilling,
+          req.body.epost,
+          req.body.tlf,
+          req.body.gruppe,
+        ];
+  
+        db.query(q, [...values, personId], (err, data) => {
+          if (err) return res.status(500).json(err);
+          return res.json("Person has been updated.");
+        });
       });
     });
   };
+  
 
   export const deletePerson = (req, res) => {
     const token = req.cookies.access_token;
