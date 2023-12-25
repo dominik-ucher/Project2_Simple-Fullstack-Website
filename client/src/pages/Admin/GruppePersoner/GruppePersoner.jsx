@@ -53,7 +53,7 @@ const Homepage_Menu = () => {
 
   const deleteGroupHandler = async (id) => {
     try {
-      await axiosInstance.delete(`/api/person/gruppe/${id}`);
+      await axiosInstance.delete(`/api/person/gruppe/${id}`,{withCredentials: true,});
       fetchGroups(); // Refresh groups after deletion
     } catch (error) {
       console.error('Error deleting group:', error);
@@ -62,7 +62,7 @@ const Homepage_Menu = () => {
 
   const deletePersonHandler = async (id) => {
     try {
-      await axiosInstance.delete(`/api/person/${id}`);
+      await axiosInstance.delete(`/api/person/${id}`,{withCredentials: true,});
       fetchPersons(); // Refresh persons after deletion
     } catch (error) {
       console.error('Error deleting person:', error);
@@ -71,7 +71,7 @@ const Homepage_Menu = () => {
 
   const addNewGroup = async () => {
     try {
-      await axiosInstance.post('/api/person/gruppe', { gruppe: newGroupName });
+      await axiosInstance.post('/api/person/gruppe', { gruppe: newGroupName },{withCredentials: true,});
       setNewGroupName(''); // Clear the input field after adding the group
       fetchGroups(); // Refresh groups after addition
     } catch (error) {
@@ -106,7 +106,7 @@ const Homepage_Menu = () => {
         epost: newPersonData.epost,
         tlf: newPersonData.tlf,
         gruppe: parseInt(newPersonData.gruppe),
-      });
+      },{withCredentials: true,});
   
       // Rest of the code remains unchanged
     } catch (error) {
