@@ -27,11 +27,13 @@ import Homepage_Pic from "../src/pages/Admin/Homepage_Pic/Homepage_Pic";
 import Baneplan_Page from "./pages/Baneplan_Page/Baneplan_Page";
 import Personer from "./pages/Personer/Personer";
 import PersonerEdit from "./pages/Admin/GruppePersoner/GruppePersoner";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 
 const Layout = () =>{
   return (
     <>
     <div className="bg-cover bg-no-repeat bg-fixed bg-center h-full" style={{backgroundImage: 'url("../upload/background/background.png")'}}>
+    <ScrollToTop />
     <Navbar />
     <Outlet />
     <Footer />
