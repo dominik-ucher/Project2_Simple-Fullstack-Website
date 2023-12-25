@@ -109,6 +109,15 @@ const Homepage_Menu = () => {
         tlf: newPersonData.tlf,
         gruppe: parseInt(newPersonData.gruppe),
       }, { withCredentials: true });
+      setNewPersonData({
+        img: '',
+        navn: '',
+        stilling: '',
+        epost: '',
+        tlf: '',
+        gruppe: '',
+      });
+      fetchPersons();
     } catch (error) {
       console.error('Error adding new person:', error);
     }
