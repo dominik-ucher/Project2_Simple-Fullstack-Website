@@ -35,7 +35,7 @@ const Homepage_Menu = () => {
 
   const fetchPersons = async () => {
     try {
-      const response = await axiosInstance.get('/api/person', { withCredentials: true });
+      const response = await axiosInstance.get('/api/person');
       setPersons(response.data);
     } catch (error) {
       console.error('Error fetching persons:', error);
@@ -44,7 +44,7 @@ const Homepage_Menu = () => {
 
   const fetchGroups = async () => {
     try {
-      const response = await axiosInstance.get('/api/person/gruppe', { withCredentials: true });
+      const response = await axiosInstance.get('/api/person/gruppe');
       setGroups(response.data);
     } catch (error) {
       console.error('Error fetching groups:', error);
@@ -83,7 +83,7 @@ const Homepage_Menu = () => {
     try {
       const formData = new FormData();
       formData.append("file", newPersonData.img);
-      const res = await axiosInstance.post("/api/upload_personbilde", formData , { withCredentials: true });
+      const res = await axiosInstance.post("/api/upload_personbilde", formData);
       return res.data; 
     } catch (err) {
       console.log(err);
