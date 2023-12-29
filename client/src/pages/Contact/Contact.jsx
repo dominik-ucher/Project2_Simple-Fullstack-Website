@@ -51,7 +51,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="grid grid-cols-10 gap-4 px-20">
+    <div className="grid grid-cols-10 gap-4 md:px-20">
       <div className="col-span-10 md:col-span-5 mt-20">
         <h1 className="underline decoration-2 text-center font-bold text-4xl mt-5">Kontakt Oss</h1>
 
