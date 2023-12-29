@@ -194,6 +194,8 @@ export default function DefaultNavbar() {
             {links && links.map((link, index)=> (
               <Link key={link.id} className='text-sm text-white p-2' to={link.link}>{link.name}</Link>
             ))}
+            {currentUser && <Link className="text-sm text-white p-2" to="/admin">Admin Side</Link>}
+            {currentUser && <Button color="warning" className="mb-2" pill onClick={handleLogout}>Logout</Button>}  
           </div>
           <div className="w-auto mb-4">
             {renderMenuItems(sidebarMenus)}
