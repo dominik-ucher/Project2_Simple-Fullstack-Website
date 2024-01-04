@@ -15,6 +15,7 @@ import team from '../../img/team.png'
 import referee from '../../img/referee.png'
 import arrow from '../../img/arrow.png'
 import sidebargif from '../../img/Sidebar_gif.gif'
+import stoltklubb from '../../img/Stoltklubb_bilde.jpg'
 
 
 function ProgressBar({ name, progress, maxProgress, logo }) {
@@ -243,7 +244,7 @@ const Home = () => {
         <div className='flex justify-center mt-3'><div className='h-1 w-64 bg-black rounded-full' /></div>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mt-10'>
           <div className='flex justify-center items-center'>
-            <img src={Bane} className='rounded-3xl' alt ="" />
+            <img src={stoltklubb} className='rounded-3xl' alt ="" />
           </div>
           <div>
             {progressBars && progressBars.map((bar, index) => (
