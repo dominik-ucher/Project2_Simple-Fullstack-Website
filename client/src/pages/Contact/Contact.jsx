@@ -57,7 +57,7 @@ const Contact = () => {
 
         <form onSubmit={handleSubmit}>
           <div className="mb-2 block px-4 mt-20">
-            <Label htmlFor="name" value="Name" />
+            <Label htmlFor="name" value="Navn" />
           </div>
           <TextInput
             className="px-4"
@@ -65,7 +65,7 @@ const Contact = () => {
             name="name"
             sizing="md"
             type="text"
-            placeholder="Name"
+            placeholder="Navn"
             value={formData.name}
             onChange={handleInputChange}
             required
@@ -73,13 +73,13 @@ const Contact = () => {
 
           <div className="mt-4 px-4">
             <div className="mb-2 block">
-              <Label htmlFor="email" value="Your email" />
+              <Label htmlFor="email" value="E-post" />
             </div>
             <TextInput
               icon={HiMail}
               id="email"
               name="email"
-              placeholder="name@flowbite.com"
+              placeholder="navn@gmail.com"
               value={formData.email}
               onChange={handleInputChange}
               required
@@ -88,7 +88,7 @@ const Contact = () => {
           </div>
 
           <div className="mb-2 block mt-4 px-4">
-            <Label htmlFor="subject" value="Subject" />
+            <Label htmlFor="subject" value="Emne" />
           <TextInput
             id="subject"
             name="subject"
@@ -101,7 +101,7 @@ const Contact = () => {
 
           <div className="mt-4 px-4" id="select">
             <div className="mb-2 block">
-              <Label htmlFor="selectedOption" value="Select your contact" />
+              <Label htmlFor="selectedOption" value="Velg kontakt punkt" />
             </div>
             <Select
               id="selectedOption"
@@ -120,7 +120,7 @@ const Contact = () => {
 
           <div className="mt-4 px-4" id="textarea">
             <div className="mb-2 block">
-              <Label htmlFor="message" value="Your message" />
+              <Label htmlFor="message" value="Din Melding" />
             </div>
             <Textarea
               id="message"

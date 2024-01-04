@@ -51,18 +51,18 @@ const Register = () => {
     <div className="flex justify-center items-center h-screen">
       <img className="w-auto h-40 p-5" src={Logo} alt="" />
       <div className="bg-gray-200 p-6 rounded-md shadow-md">
-        <h2 className="flex justify-center items-center text-2xl font-bold mb-4">Register</h2>
+        <h2 className="flex justify-center items-center text-2xl font-bold mb-4">Registrer</h2>
         <form className="flex max-w-md flex-col gap-4">
           <div>
             <div className="mb-2 block">
               <Label
                 htmlFor="name2"
-                value="Your name"
+                value="Din Navn"
               />
             </div>
             <TextInput
               id="username"
-              placeholder="Name"
+              placeholder="Navn"
               required
               shadow
               type="text"
@@ -74,12 +74,12 @@ const Register = () => {
             <div className="mb-2 block">
               <Label
                 htmlFor="email2"
-                value="Your email"
+                value="Din E-post"
               />
             </div>
             <TextInput
               id="email"
-              placeholder="name@flowbite.com"
+              placeholder="navn@gmail.com"
               required
               shadow
               type="email"
@@ -91,7 +91,7 @@ const Register = () => {
             <div className="mb-2 block">
               <Label
                 htmlFor="password2"
-                value="Your password"
+                value="Din Passord"
               />
             </div>
             <TextInput
@@ -106,7 +106,7 @@ const Register = () => {
           <div className="flex items-center gap-2">
           </div>
           <Button type="submit" onClick={handleSubmit}>
-            Register new account
+            Registrer ny konto
           </Button>
           {err && <p className='text-red-500 font-bold flex jusitfy-center items-center'>{err}</p>}
         </form>

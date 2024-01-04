@@ -45,18 +45,18 @@ const Login = () => {
     <div className="flex justify-center items-center h-screen">
     <div className="bg-gray-200 p-6 rounded-md shadow-md">
     <div className='flex items-center justify-center'><img src={Logo} alt="" className='w-35 h-20 mr-4'/></div>
-    <h2 className="flex justify-center items-center text-2xl font-bold mb-4">Log In</h2>
+    <h2 className="flex justify-center items-center text-2xl font-bold mb-4">Logg Inn</h2>
     <form className="flex max-w-md flex-col gap-4">
     <div>
         <div className="mb-2 block">
           <Label
             htmlFor="name1"
-            value="Your name"
+            value="Din Navn"
           />
         </div>
         <TextInput
           id="username"
-          placeholder="name"
+          placeholder="Navn"
           required
           type="text"
           name="username"
@@ -67,7 +67,7 @@ const Login = () => {
         <div className="mb-2 block">
           <Label
             htmlFor="password1"
-            value="Your password"
+            value="Din Passord"
           />
         </div>
         <TextInput
@@ -82,8 +82,8 @@ const Login = () => {
       {isLoading ? (<Spinner aria-label="Spinner button example" />) : ('Log In' )}
       </Button>
       {err && <p className='text-red-500 font-bold flex items-center justify-center'>{err}</p>}
-      <h2>Don't you have an account?</h2> 
-      <h2>Use the <Link className="font-bold underline pointer" to="/contact">contact form</Link> to sign up!</h2>
+      <h2>Har du ikke konto?</h2> 
+      <h2>Bruk <Link className="font-bold underline pointer" to="/contact">kontakt formen</Link> til å få tildelt en bruker</h2>
     </form>
     </div>
     </div>

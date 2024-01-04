@@ -143,7 +143,7 @@ const Sponsor_Edit = () => {
 
       <div className="max-w-md mt-5" id="select">
       <div className="mb-2 block">
-        <Label htmlFor="countries" value="Select your country"/>
+        <Label htmlFor="countries" value="Select sponsor type"/>
       </div>
       <Select id="type" value={newSponsor.type} onChange={handleTypeChange} required>
         <option value="Hoved">Hoved</option>
