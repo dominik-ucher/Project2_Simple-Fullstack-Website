@@ -105,14 +105,17 @@ const Homepage_Menu = () => {
       accept: 'image/*',
       onDrop: (acceptedFiles) => onDrop(acceptedFiles, index),
     });
-
+  
     return (
       <div {...getRootProps()} className="dropzone">
         <input {...getInputProps()} />
-        <p>Drag 'n' drop an image here, or click to select an image</p>
+        {editingIndex === index && ( // Check if editingIndex matches the current index
+          <p>Drag 'n' drop an image here, or click to select an image</p>
+        )}
       </div>
     );
   };
+  
 
   return (
     <>

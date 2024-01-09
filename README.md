@@ -32,7 +32,7 @@
 - Fix auto logout
 - File upload for nyheter
 - File upload before published pages
-- Admin page "Drag and Drop" shown when clicked edit
+<!-- - Admin page "Drag and Drop" shown when clicked edit -->
 - Search function in Admin Personer
 - Add meta tags
 
