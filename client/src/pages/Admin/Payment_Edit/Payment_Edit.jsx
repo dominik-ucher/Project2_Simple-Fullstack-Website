@@ -33,10 +33,7 @@ const Payment_Edit = () => {
             <Table.HeadCell>Forfalls Dato</Table.HeadCell>
             <Table.HeadCell>Status</Table.HeadCell>
             <Table.HeadCell>Re-send</Table.HeadCell>
-            <Table.HeadCell>Rediger</Table.HeadCell>
-            <Table.HeadCell>
-                <span className="sr-only">Edit</span>
-            </Table.HeadCell>
+            <Table.HeadCell>Slett</Table.HeadCell>
             </Table.Head>
             <Table.Body className="divide-y">
             <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
@@ -50,9 +47,9 @@ const Payment_Edit = () => {
                 <Table.Cell>14.02.2024</Table.Cell>
                 <Table.Cell>Betalt</Table.Cell>
                 <Table.Cell>Sende pånytt</Table.Cell>
-                <Table.Cell>Rediger</Table.Cell>
+                <Table.Cell>Slett</Table.Cell>
             </Table.Row>
-            
+
             <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
                 <Table.Cell>Ola</Table.Cell>
                 <Table.Cell>Nordman</Table.Cell>
@@ -64,7 +61,7 @@ const Payment_Edit = () => {
                 <Table.Cell>14.02.2024</Table.Cell>
                 <Table.Cell>Betalt</Table.Cell>
                 <Table.Cell>Sende pånytt</Table.Cell>
-                <Table.Cell>Rediger</Table.Cell>
+                <Table.Cell>Slett</Table.Cell>
             </Table.Row>
 
             </Table.Body>

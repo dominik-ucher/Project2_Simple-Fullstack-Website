@@ -11,7 +11,16 @@ const Payment_Create = () => {
   const navigate = useNavigate();
   const { currentUser } = useContext(AuthContext);
 
-  const [selectedDate, setSelectedDate] = useState(null);
+  const [newFaktura, setNewFaktura] = useState({
+    fornavn: null,
+    etternavn: null,
+    epost: null,
+    telefon: null,
+    vare: null,
+    forfallsdato: null,
+    pris: null,
+    beskrivelse: null,
+  });
 
   useEffect(() => {
     if (!currentUser) {
@@ -19,63 +28,100 @@ const Payment_Create = () => {
     }
   }, [currentUser, navigate]);
 
+  const handleInputChange = (field, value) => {
+    setNewFaktura({ ...newFaktura, [field]: value });
+  };
+
   return (
     <div className='h-screen flex justify-center items-center'>
-      <div>
-        <h1 className='text-center mt-8 text-2xl font-bold'>Opprette Regning</h1>
-
-        <div className='flex flex-col mt-8 space-y-4'>
-
-          <div className='flex space-x-4'>
-            <div className="flex flex-col">
-              <Label htmlFor="input-gray" color="gray" value="Fornavn" />
-              <TextInput id="input-gray" placeholder="Fornavn" required color="gray" />
-            </div>
-            <div className="flex flex-col">
-              <Label htmlFor="input-gray" color="gray" value="Etternavn" />
-              <TextInput id="input-gray" placeholder="Etternavn" required color="gray" />
-            </div>
-
-            <div className="flex flex-col">
-              <Label htmlFor="input-blue" color="blue" value="E-post" />
-              <TextInput id="input-blue" placeholder="E-post" required color="blue" />
-            </div>
-            <div className="flex flex-col">
-              <Label htmlFor="input-blue" color="blue" value="Telefon" />
-              <TextInput id="input-blue" placeholder="Telefon" required color="blue" />
-            </div>
+      <div className='bg-white p-8 rounded-lg shadow-lg'>
+        <h1 className='text-center text-3xl font-bold mb-6'>Opprette Regning</h1>
+        <div className='grid grid-cols-2 gap-6'>
+          <div className='flex flex-col'>
+            <Label htmlFor='fornavn' color='gray' value='Fornavn' />
+            <TextInput
+              id='fornavn'
+              placeholder='Fornavn'
+              required
+              color='gray'
+              onChange={(e) => handleInputChange('fornavn', e.target.value)}
+            />
           </div>
-
-          <div className='flex space-x-4'>
-            <div className="flex flex-col">
-              <Label htmlFor="input-blue" color="blue" value="Vare" />
-              <Select id="countries" required>
-                  <option>Klubbhus Utleie</option>
-                  <option>Baneutleie</option>
-              </Select>
-            </div>
-            <div className="flex flex-col">
-              <Label htmlFor="input-blue" color="blue" value="Forfalls Dato" />
-              <DatePicker
-                id="input-date"
-                selected={selectedDate}
-                onChange={date => setSelectedDate(date)}
-                placeholderText="Velg dato"
-                dateFormat="dd.MM.yyyy"
-                className="form-control rounded-xl border-gray-200"
-              />
-            </div>
-            <div className="flex flex-col">
-              <Label htmlFor="input-blue" color="blue" value="Pris" />
-              <TextInput id="input-blue" placeholder="Pris" required color="blue" />
-            </div>
-            <div className="flex flex-col">
-              <Label htmlFor="input-blue" color="blue" value="Evt. Beskrivelse" />
-              <TextInput id="input-blue" placeholder="Beskrivelse" required color="blue" />
-            </div>
+          <div className='flex flex-col'>
+            <Label htmlFor='etternavn' color='gray' value='Etternavn' />
+            <TextInput
+              id='etternavn'
+              placeholder='Etternavn'
+              required
+              color='gray'
+              onChange={(e) => handleInputChange('etternavn', e.target.value)}
+            />
           </div>
-          <Button color="dark" className="mt-6 w-full">Send Faktura</Button>
+          <div className='flex flex-col'>
+            <Label htmlFor='epost' color='blue' value='E-post' />
+            <TextInput
+              id='epost'
+              placeholder='E-post'
+              required
+              color='blue'
+              onChange={(e) => handleInputChange('epost', e.target.value)}
+            />
+          </div>
+          <div className='flex flex-col'>
+            <Label htmlFor='telefon' color='blue' value='Telefon' />
+            <TextInput
+              id='telefon'
+              placeholder='Telefon'
+              required
+              color='blue'
+              onChange={(e) => handleInputChange('telefon', e.target.value)}
+            />
+          </div>
+          <div className='flex flex-col'>
+            <Label htmlFor='vare' color='blue' value='Vare' />
+            <Select
+              id='vare'
+              required
+              onChange={(e) => handleInputChange('vare', e.target.value)}
+            >
+              <option>Klubbhus Utleie</option>
+              <option>Baneutleie</option>
+            </Select>
+          </div>
+          <div className='flex flex-col'>
+            <Label htmlFor='forfallsdato' color='blue' value='Forfalls Dato' />
+            <DatePicker
+              id='forfallsdato'
+              onChange={(date) => handleInputChange('forfallsdato', date)}
+              placeholderText='Velg dato'
+              dateFormat='dd.MM.yyyy'
+              className='form-control rounded-xl border-gray-200'
+            />
+          </div>
+          <div className='flex flex-col'>
+            <Label htmlFor='pris' color='blue' value='Pris' />
+            <TextInput
+              id='pris'
+              placeholder='Pris'
+              required
+              color='blue'
+              onChange={(e) => handleInputChange('pris', e.target.value)}
+            />
+          </div>
+          <div className='flex flex-col'>
+            <Label htmlFor='beskrivelse' color='blue' value='Evt. Beskrivelse' />
+            <TextInput
+              id='beskrivelse'
+              placeholder='Beskrivelse'
+              required
+              color='blue'
+              onChange={(e) => handleInputChange('beskrivelse', e.target.value)}
+            />
+          </div>
         </div>
+        <Button color='dark' className='mt-6 w-full'>
+          Send Faktura
+        </Button>
       </div>
     </div>
   );
