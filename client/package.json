@@ -25,6 +25,7 @@
     "quill-better-table": "^1.2.10",
     "react": "^18.2.0",
     "react-beautiful-dnd": "^13.1.1",
+    "react-datepicker": "^4.25.0",
     "react-dom": "^18.2.0",
     "react-dropzone": "^14.2.3",
     "react-fade-in": "^2.0.1",
