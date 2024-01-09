@@ -28,6 +28,8 @@ import Baneplan_Page from "./pages/Baneplan_Page/Baneplan_Page";
 import Personer from "./pages/Personer/Personer";
 import PersonerEdit from "./pages/Admin/GruppePersoner/GruppePersoner";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
+import Payment_Create from "./pages/Admin/Payment_Create/Payment_Create";
+import Payment_Edit from "./pages/Admin/Payment_Edit/Payment_Edit";
 
 const Layout = () =>{
   return (
@@ -126,6 +128,14 @@ const router = createBrowserRouter([
       {
         path: "/personeredit",
         element: <PersonerEdit/>
+      },
+      {
+        path: "/paymentedit",
+        element: <Payment_Edit />
+      },
+      {
+        path: "/paymentcreate",
+        element: <Payment_Create />
       },
     ]
   },

@@ -73,6 +73,16 @@ const Admin = () => {
                 </p>
             </Card>
             </Link>
+            <Link to="/sidebarmenu_edit">
+                <Card className="max-w-sm mt-5 hover:bg-gray-200" style={{ minWidth: "385px", minHeight: "170px" }}>
+                    <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                    <p>Rediger Meny</p>
+                    </h5>
+                    <p className="font-normal text-gray-700 dark:text-gray-400">
+                    <p>Redigere Side Menyen. Legges til eller slette faner.</p>
+                    </p>
+                </Card>
+            </Link>
                     
             </div>
             <div className="col-span-10 md:col-span-5 bg-white-200 flex flex-col items-center mt-20">
@@ -116,16 +126,27 @@ const Admin = () => {
                     </p>
                 </Card>
                 </Link>
-                <Link to="/sidebarmenu_edit">
+                <Link to="/paymentcreate">
                 <Card className="max-w-sm mt-5 hover:bg-gray-200" style={{ minWidth: "385px", minHeight: "170px" }}>
                     <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    <p>Rediger Meny</p>
+                    <p>Opprette en faktura</p>
                     </h5>
                     <p className="font-normal text-gray-700 dark:text-gray-400">
-                    <p>Redigere Side Menyen. Legges til eller slette faner.</p>
+                    <p>For å opprette og sende faktura</p>
                     </p>
                 </Card>
                 </Link>
+                <Link to="/paymentedit">
+                <Card className="max-w-sm mt-5 hover:bg-gray-200" style={{ minWidth: "385px", minHeight: "170px" }}>
+                    <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                    <p>Redigere betalinger</p>
+                    </h5>
+                    <p className="font-normal text-gray-700 dark:text-gray-400">
+                    <p>Oversikt og mulighet til å redigere faktura som har blitt sendt</p>
+                    </p>
+                </Card>
+                </Link>
+                
             </div>
         </div></>
     )

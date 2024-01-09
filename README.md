@@ -34,6 +34,8 @@
 - File upload before published pages
 <!-- - Admin page "Drag and Drop" shown when clicked edit -->
 - Search function in Admin Personer
+- Add payment gateway
+- Implement email on VPS
 - Add meta tags
 
 
