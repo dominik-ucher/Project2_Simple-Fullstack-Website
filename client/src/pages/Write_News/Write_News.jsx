@@ -72,18 +72,15 @@ const Write_News = () => {
         toolbar: [
           ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
           ['blockquote', 'code-block'],
-        
           [{ 'header': 1 }, { 'header': 2 }],               // custom button values
           [{ 'list': 'ordered'}, { 'list': 'bullet' }],
           [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
           [{ 'direction': 'rtl' }],                         // text direction
-        
           [{ 'header': [1, 2, 3, 4, false] }],
-        
           [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
           [{ 'font': [] }],
           [{ 'align': [] }],
-
+          [{ 'link': 'link' }],
           ['clean'] 
         ],
       };

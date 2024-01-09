@@ -8,13 +8,7 @@
         III. Flowbite and TailwindCSS installed
         IV. react-quill (Text Editor) installed
 
-2. Database
-    a. Tables
-        I. Users (id, name, email, password)
-        II. Posts (id, title, desc, img, date, fk_uid)
-        III. Pages (id, title, desc, img, date, fk_uid)
-
-3. Backend Development
+2. Backend Development
     a. Installations
         I. npm init -y
         II. yarn add express mysql nodemon
@@ -31,15 +25,16 @@
         XIII. yarn add fs
 
 # Things to fix before publishing
-<!-- - Reverse back to old commit, one before files -->
-<!-- - Contact Page -->
-<!-- - Upload several files at once -->
-<!-- - Pages without menuid show as main -->
-<!-- - .map functions must be fixed -->
-- Show page with contact info and baneplan under respected menu
-- Page with contact info
-- .env file
-- Fix proxy
+- Lazy Load img
+- Fix side menu closing
+- Upload files in Nyheter
+- "Are you sure you want to delete" modula
+- Fix auto logout
+- File upload for nyheter
+- File upload before published pages
+- Admin page "Drag and Drop" shown when clicked edit
+- Search function in Admin Personer
+- Add meta tags
 
 
 ## How to use VPS
