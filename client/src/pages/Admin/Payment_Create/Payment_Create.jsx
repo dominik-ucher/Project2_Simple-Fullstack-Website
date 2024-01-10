@@ -16,10 +16,11 @@ const Payment_Create = () => {
     etternavn: null,
     epost: null,
     telefon: null,
-    vare: null,
+    vare: '',
     forfallsdato: null,
     pris: null,
     beskrivelse: null,
+    status: "Ubetalt",
   });
 
   useEffect(() => {
@@ -29,8 +30,29 @@ const Payment_Create = () => {
   }, [currentUser, navigate]);
 
   const handleInputChange = (field, value) => {
-    setNewFaktura({ ...newFaktura, [field]: value });
+    if (field === 'pris') {
+      const parsedValue = parseInt(value, 10); // Convert pris to an integer
+      setNewFaktura({ ...newFaktura, [field]: isNaN(parsedValue) ? null : parsedValue });
+    } else if (field === 'forfallsdato') {
+      const formattedDate = value ? new Date(value).toISOString().slice(0, 19).replace('T', ' ') : null; // Convert date to correct format
+      setNewFaktura({ ...newFaktura, [field]: formattedDate });
+    } else {
+      setNewFaktura({ ...newFaktura, [field]: value });
+    }
   };
+  
+
+  const handleClick = async () => {
+    try {
+      const response = await axiosInstance.post('/api/payment_sql/', newFaktura, {withCredential: true});
+      console.log('Response from backend:', response.data);
+
+    } catch (error) {
+      console.error('Error occurred while uploading:', error);
+
+    }
+  };
+  
 
   return (
     <div className='h-screen flex justify-center items-center'>
@@ -82,16 +104,19 @@ const Payment_Create = () => {
             <Select
               id='vare'
               required
+              value={newFaktura.vare} 
               onChange={(e) => handleInputChange('vare', e.target.value)}
             >
-              <option>Klubbhus Utleie</option>
-              <option>Baneutleie</option>
+              <option value=''>None</option> {/* Set a default empty option */}
+              <option value='Klubbhus Utleie'>Klubbhus Utleie</option>
+              <option value='Baneutleie'>Baneutleie</option>
             </Select>
           </div>
           <div className='flex flex-col'>
             <Label htmlFor='forfallsdato' color='blue' value='Forfalls Dato' />
             <DatePicker
               id='forfallsdato'
+              selected={newFaktura.forfallsdato ? new Date(newFaktura.forfallsdato) : null}
               onChange={(date) => handleInputChange('forfallsdato', date)}
               placeholderText='Velg dato'
               dateFormat='dd.MM.yyyy'
@@ -119,7 +144,7 @@ const Payment_Create = () => {
             />
           </div>
         </div>
-        <Button color='dark' className='mt-6 w-full'>
+        <Button color='dark' className='mt-6 w-full' onClick={handleClick}>
           Send Faktura
         </Button>
       </div>

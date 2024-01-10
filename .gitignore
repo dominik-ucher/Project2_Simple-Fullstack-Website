@@ -9,3 +9,7 @@ api/db.js
 
 #Ignore index.js backend file because of different file upload storage
 api/index.js
+
+# Remember to add it to VPS
+api/controllers/payment_sql.js
+api/controllers/payment.js

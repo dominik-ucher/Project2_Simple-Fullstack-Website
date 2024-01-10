@@ -8,6 +8,20 @@ const Payment_Edit = () => {
   const axiosInstance = axios.create({baseURL: import.meta.env.VITE_REACT_APP_API_URL,});
   const navigate = useNavigate();
   const { currentUser } = useContext(AuthContext);
+  const [customer, setCustomer] = useState([]);
+
+  useEffect(() => {
+    fetchCustomers();
+  })
+
+  const fetchCustomers = async () => {
+    try {
+      const response = await axiosInstance.get('/api/payment_sql/')
+      setCustomer(response.data);
+    } catch  (error) {
+      console.error('Error fetching customers', error);
+    }
+  }
 
   useEffect(() => {
     if (!currentUser) {
@@ -20,7 +34,7 @@ const Payment_Edit = () => {
     <>
       <h1 className='text-center mt-8 text-2xl font-bold'>Oversikt over Regninger</h1>
 
-      <div className="overflow-x-auto mt-20 px-8">
+      <div className="overflow-x-auto mt-20">
         <Table striped>
             <Table.Head>
             <Table.HeadCell>Fornavn</Table.HeadCell>
@@ -36,34 +50,21 @@ const Payment_Edit = () => {
             <Table.HeadCell>Slett</Table.HeadCell>
             </Table.Head>
             <Table.Body className="divide-y">
-            <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
-                <Table.Cell>Ola</Table.Cell>
-                <Table.Cell>Nordman</Table.Cell>
-                <Table.Cell>ola@gmail.com</Table.Cell>
-                <Table.Cell>45195555</Table.Cell>
-                <Table.Cell>Klubbhus Utleie</Table.Cell>
-                <Table.Cell>4000,-</Table.Cell>
-                <Table.Cell></Table.Cell>
-                <Table.Cell>14.02.2024</Table.Cell>
-                <Table.Cell>Betalt</Table.Cell>
+            {customer && customer.map((cust) => ( 
+            <Table.Row key={cust.id} className="bg-white dark:border-gray-700 dark:bg-gray-800">
+                <Table.Cell>{cust.fornavn || ''}</Table.Cell>
+                <Table.Cell>{cust.etternavn || ''}</Table.Cell>
+                <Table.Cell>{cust.epost || ''}</Table.Cell>
+                <Table.Cell>{cust.telefon || ''}</Table.Cell>
+                <Table.Cell>{cust.vare || ''}</Table.Cell>
+                <Table.Cell>{cust.pris || ''},-</Table.Cell>
+                <Table.Cell>{cust.beskrivelse || ''}</Table.Cell>
+                <Table.Cell>{cust.forfallsdato && new Date(cust.forfallsdato).toLocaleDateString('nb-NO')}</Table.Cell>
+                <Table.Cell>{cust.status || ''}</Table.Cell>
                 <Table.Cell>Sende pånytt</Table.Cell>
                 <Table.Cell>Slett</Table.Cell>
             </Table.Row>
-
-            <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
-                <Table.Cell>Ola</Table.Cell>
-                <Table.Cell>Nordman</Table.Cell>
-                <Table.Cell>ola@gmail.com</Table.Cell>
-                <Table.Cell>45195555</Table.Cell>
-                <Table.Cell>Klubbhus Utleie</Table.Cell>
-                <Table.Cell>4000,-</Table.Cell>
-                <Table.Cell></Table.Cell>
-                <Table.Cell>14.02.2024</Table.Cell>
-                <Table.Cell>Betalt</Table.Cell>
-                <Table.Cell>Sende pånytt</Table.Cell>
-                <Table.Cell>Slett</Table.Cell>
-            </Table.Row>
-
+            ))}
             </Table.Body>
         </Table>
        </div>
