@@ -129,7 +129,7 @@ const Admin = () => {
                 <Link to="/paymentcreate">
                 <Card className="max-w-sm mt-5 hover:bg-gray-200" style={{ minWidth: "385px", minHeight: "170px" }}>
                     <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    <p>Opprette en faktura</p>
+                    <p>!! IKKE I BRUK !! Opprette en faktura</p>
                     </h5>
                     <p className="font-normal text-gray-700 dark:text-gray-400">
                     <p>For å opprette og sende faktura</p>
@@ -139,7 +139,7 @@ const Admin = () => {
                 <Link to="/paymentedit">
                 <Card className="max-w-sm mt-5 hover:bg-gray-200" style={{ minWidth: "385px", minHeight: "170px" }}>
                     <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    <p>Redigere betalinger</p>
+                    <p>!! IKKE I BRUK !! Redigere betalinger</p>
                     </h5>
                     <p className="font-normal text-gray-700 dark:text-gray-400">
                     <p>Oversikt og mulighet til å redigere faktura som har blitt sendt</p>
