@@ -102,7 +102,7 @@ const Single_News = () => {
                 <Link key={nyhet.id} to={`/nyheter/${nyhet.id}_${nyhet.title}`}>
                 <div className="relative overflow-hidden transform transition-all duration-300 rounded-lg hover:scale-105">
                 <img
-                  className="object-cover h-48 w-96 rounded-3xl"
+                  className="object-cover h-48 w-96 rounded-xl"
                   src={`../upload/Nyheter/Nyheter_Bilder/${nyhet.img}`}
                   alt=""
                 />

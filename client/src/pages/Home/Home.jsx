@@ -136,12 +136,12 @@ const Home = () => {
           <div className='p-6'>
             <div className='relative'>
               <img
-                className="object-cover h-auto w-full rounded-3xl"
+                className="object-cover h-auto w-full rounded-xl"
                 key={mainpic.id}
                 src={`../upload/Homepage_Bilder/${mainpic.img}`}
                 alt="image description"
               />
-              <div className="absolute inset-0 bg-gray-800 bg-opacity-75 text-white text-center p-4 rounded-3xl flex flex-col justify-center items-center">
+              <div className="absolute inset-0 bg-gray-800 bg-opacity-75 text-white text-center p-4 rounded-xl flex flex-col justify-center items-center">
                 <p className="text-xl md:text-4xl font-bold text-center">Velkommen til Idrettslaget Trond</p>
                 <p className="text-md md:text-2xl mt-2 font-bold text-center">Artig-Inkluderende-Utviklende</p>
                 
@@ -164,7 +164,7 @@ const Home = () => {
                 <Link key={nyhet.id} to={`/nyheter/${nyhet.id}_${nyhet.title}`}>
                 <div className="relative overflow-hidden transform transition-all duration-300 rounded-lg hover:scale-105">
                 <img
-                  className="object-cover h-48 w-96 rounded-3xl"
+                  className="object-cover h-48 w-96 rounded-xl"
                   src={`../upload/Nyheter/Nyheter_Bilder/${nyhet.img}`}
                   alt=""
                 />
@@ -211,9 +211,7 @@ const Home = () => {
                 <div>
                   {menu1.pages && Array.isArray(menu1.pages) && menu1.pages.map(page => (
                     <div key={page.pageId} className='p-4'>
-                      <Link to={`/side/${page.pageId}_${page.pageTitle}`}>
-                        <p className='flex justify-center text-md hover:font-bold hover:underline'>{page.pageTitle}</p>
-                      </Link>
+                        <p className='flex justify-center text-md hover:font-bold hover:underline'><Link to={`/side/${page.pageId}_${page.pageTitle}`}>{page.pageTitle}</Link></p>
                     </div>
                   ))}
                 </div>
@@ -227,14 +225,14 @@ const Home = () => {
             <div className='flex justify-center mt-3'><div className='h-1 w-48 bg-white rounded-full' /></div>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
               {menu && menu.map((menu,index) => (
-                    <Link key={menu.id} to={menu.link}>
                     <div className='flex justify-center items-center mt-4 transform transition-all duration-300 rounded-lg hover:scale-105'>
+                    <Link key={menu.id} to={menu.link}>
                     <img
                       className="object-cover rounded-lg mt-4 h-48"
                       src={`/upload/HomepageMenu_Bilder/${menu.img}`}
                       alt="image description" />
-                    </div>
                     </Link>
+                    </div>
                   ))}
               </div>
         </div>

@@ -46,12 +46,12 @@ const News_Page = () => {
           <div className='p-6'>
             <div className='relative'>
               <img
-                className="object-cover h-auto w-full rounded-3xl"
+                className="object-cover h-auto w-full rounded-xl"
                 key={mainpic.id}
                 src={`../upload/Homepage_Bilder/${mainpic.img}`}
                 alt="image description"
               />
-              <div className="absolute inset-0 bg-gray-800 bg-opacity-75 text-white text-center p-4 rounded-3xl flex flex-col justify-center items-center">
+              <div className="absolute inset-0 bg-gray-800 bg-opacity-75 text-white text-center p-4 rounded-xl flex flex-col justify-center items-center">
                 <p className="text-xl md:text-4xl font-bold text-center">Nyheter</p>
                 {/* <p className="text-md md:text-2xl mt-2 font-bold text-center">Nyheter</p> */}
                 
@@ -76,7 +76,7 @@ const News_Page = () => {
                 <Link key={nyhet.id} to={`/nyheter/${nyhet.id}_${nyhet.title}`}>
                 <div className="relative overflow-hidden transform transition-all duration-300 rounded-lg hover:scale-105">
                 <img
-                  className="object-cover h-48 w-96 rounded-3xl"
+                  className="object-cover h-48 w-96 rounded-xl"
                   src={`../upload/Nyheter/Nyheter_Bilder/${nyhet.img}`}
                   alt=""
                 />
