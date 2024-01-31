@@ -22,6 +22,7 @@ export const AuthContexProvider = ({ children }) => {
       withCredentials:true,
     });
     setCurrentUser(null);
+    localStorage.removeItem("user");
   };
 
   useEffect(() => {

@@ -1,38 +1,33 @@
-import { useEffect, useContext } from 'react';
-import { AuthContext } from '../context/authContext'; // Assuming you have an AuthContext
+// AutoLogout.js
+import { useContext, useEffect } from "react";
+import { AuthContext } from "./AuthContext";
 
 const AutoLogout = () => {
   const { logout } = useContext(AuthContext);
 
   useEffect(() => {
-    let logoutTimer;
+    const interval = setInterval(() => {
+      const token = localStorage.getItem("access_token");
 
-    const startLogoutTimer = () => {
-      logoutTimer = setTimeout(() => {
-        logout(); // Call your logout function from the context
-      }, 3600000); // 30 seconds in milliseconds
-    };
+      if (!token) {
+        // No token, user is not logged in
+        return;
+      }
 
-    const resetLogoutTimer = () => {
-      clearTimeout(logoutTimer);
-      startLogoutTimer();
-    };
+      // Decode the token to get the expiration time
+      const decodedToken = jwt.decode(token);
+      const expirationTime = decodedToken.exp * 1000; // Convert to milliseconds
 
-    // Start the timer initially or reset it whenever there's activity
-    startLogoutTimer();
+      if (Date.now() >= expirationTime) {
+        // Token has expired, log the user out
+        logout();
+      }
+    }, 60000); // Check every minute
 
-    // Reset the timer on user activity, e.g., interacting with the app
-    window.addEventListener('mousemove', resetLogoutTimer);
-    window.addEventListener('keypress', resetLogoutTimer);
-
-    return () => {
-      clearTimeout(logoutTimer);
-      window.removeEventListener('mousemove', resetLogoutTimer);
-      window.removeEventListener('keypress', resetLogoutTimer);
-    };
+    return () => clearInterval(interval);
   }, [logout]);
 
-  return null; // No UI for this component
+  return null;
 };
 
 export default AutoLogout;
