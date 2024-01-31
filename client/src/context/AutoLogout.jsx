@@ -1,6 +1,6 @@
 // AutoLogout.js
 import { useContext, useEffect } from "react";
-import { AuthContext } from "../context/AuthContext";
+import { AuthContext } from "../context/authContext";
 
 const AutoLogout = () => {
   const { logout } = useContext(AuthContext);
