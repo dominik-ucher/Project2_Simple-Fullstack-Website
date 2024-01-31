@@ -18,12 +18,15 @@ const Write_News = () => {
     const state = useLocation().state;
     const [title, setTitle] = useState(state?.title || "");
     const [value, setValue] = useState(state?.desc || "");
-    const [file, setFile] = useState(null);
-    const [fileUrl, setFileUrl] = useState(null);
+    const [image, setImage] = useState(null);
+    const [imageUrl, setImageUrl] = useState(null);
     const { currentUser } = useContext(AuthContext);
+    const [file, setFile] = useState(null);
+    const [files, setFiles] = useState([]);
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(null)
     const [isLoading, setIsLoading] = useState(false);
+    const [insertedId, setInsertedId] = useState(null)
 
     const navigate = useNavigate()
 
@@ -33,11 +36,17 @@ const Write_News = () => {
         }
       }, [currentUser, navigate]);
 
+      useEffect(() => {
+        if (state) {
+          setInsertedId(state?.id);
+        }
+      }, [state]);
 
-    const upload = async () => {
+
+    const uploadimg = async () => {
         try {
         const formData = new FormData();
-        formData.append("file", file);
+        formData.append("file", image);
         const res = await axiosInstance.post("/api/upload_nyhetbilde", formData);
         return res.data; 
         } catch (err) {
@@ -58,7 +67,7 @@ const Write_News = () => {
             setError("Tekst feltet er tom!")
             return
         }
-        if (file === null && state.img === null){
+        if (image === null && state.img === null){
             setIsLoading(false);
             setError("Bilde feltet er tom!")
             return
@@ -66,28 +75,27 @@ const Write_News = () => {
 
         e.preventDefault();
         let imgUrl = null;
-        if (file) {
-            imgUrl = await upload();
+        if (image) {
+            imgUrl = await uploadimg();
         }      
 
         try {
-        state
-            ? await axiosInstance.put(`/api/nyheter/${state.id}`, {
+        const response = insertedId
+            ? await axiosInstance.put(`/api/nyheter/${insertedId}`, {
                 title,
                 desc: value,
-                img: file ? imgUrl : state.img , //imgURL BLIR NULL
+                img: image ? imgUrl : state.img , //imgURL BLIR NULL
             },{withCredentials: true,})
             : await axiosInstance.post(`/api/nyheter/`, {
                 title,
                 desc: value,
-                img: file ? imgUrl : "",
+                img: image ? imgUrl : "",
                 date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
             },{withCredentials: true,});
+            const insertedId2 = response.data.id;
+            if (insertedId === null){setInsertedId(insertedId2);}
             setIsLoading(false);
-            setSuccess("Nyhet har blitt publisert. Du blir sendt til hjemmesiden.")
-            setTimeout(()=>{
-                navigate("/")
-              }, 1000)
+            setSuccess(<p>Siden har blitt publisert. Klikk {<Link className="underline hover:font-bold" to="/">her</Link>} for å komme til hjemmesiden</p>)
         } catch (err) {
             if (err.response && err.response.data && err.response.data.error) {
                 setIsLoading(false);
@@ -117,12 +125,52 @@ const Write_News = () => {
         ],
       };
 
+      const fetchFiles = async () => {
+        try {
+          const response = await axiosInstance.get(`/api/nyheterfiler/${insertedId}`);
+          setFiles(response.data); // Assuming backend responds with an array of files
+        } catch (err) {
+          console.error('Error fetching files:', err);
+        }
+      };
+
+      useEffect(() => {
+        if (insertedId) {
+          fetchFiles();
+        }
+      }, [insertedId]);
+
+      const handleFileUpload = async () => {
+        try {
+          if (file) {
+            const formData = new FormData();
+            formData.append('file', file);
+      
+            const res = await axiosInstance.post('/api/upload_nyhetfile', formData);
+            await axiosInstance.post('/api/nyheterfiler/', { filnavn: res.data, nyhet_id: insertedId }, { withCredentials: true });
+            await fetchFiles(); // Update file list immediately after upload
+            setFile(null); // Reset file state after upload
+          }
+        } catch (err) {
+          console.error('Error uploading file:', err);
+        }
+      };
+
+      const handleDelete = async (fileId) => {
+        try {
+          await axiosInstance.delete(`/api/nyheterfiler/${fileId}`);
+          await fetchFiles(); // Update files immediately after deletion
+        } catch (err) {
+          console.error('Error deleting file:', err);
+        }
+      };
+
     return(
         <div className='add'>
             <div className="content max-w-3xl mx-auto px-4">
                     <img 
                     className='w-100 h-auto mt-4 px-4'
-                    src={fileUrl || `/upload/Nyheter/Nyheter_Bilder/${state?.img}`} 
+                    src={imageUrl || `/upload/Nyheter/Nyheter_Bilder/${state?.img}`} 
                     alt="" 
                     />
                     <div className="mb-2 block mt-10 px-20">
@@ -138,16 +186,47 @@ const Write_News = () => {
                     id="file"
                     type="file"
                     onChange={(e) => {
-                        const selectedFile = e.target.files[0];
-                        setFile(selectedFile);
-                        setFileUrl(URL.createObjectURL(selectedFile));
+                        const selectedImage = e.target.files[0];
+                        setImage(selectedImage);
+                        setImageUrl(URL.createObjectURL(selectedImage));
                     }}
                     />
-                    <Label htmlFor="file" className='file' value={`Currently selected image: ${file ? file.name : (state?.img || '')}`} />
+                    <Label htmlFor="file" className='file' value={`Currently selected image: ${image ? image.name : (state?.img || '')}`} />
                     </div>
                     
                     <div className="editorContainer h-60 h-screen mt-8">
                         <ReactQuill className="mt-5 px-20 h-3/4" theme="snow" modules={modules} value={value} onChange={setValue} />
+                    </div>
+
+                    {/* File upload section */}
+                    {insertedId ? (
+                    <div className='max-w-md px-20 mt-5' id='fileUpload'>
+                        <Label htmlFor='file' className='file' value='Upload File' />
+                        <FileInput
+                        type='file'
+                        id='file'
+                        onChange={(e) => {
+                            const selectedFile = e.target.files[0];
+                            setFile(selectedFile);
+                        }}
+                        />
+                        <Label htmlFor='file' className='file' value={`Currently selected file: ${file ? file.name : state?.file || ''}`} />
+                        <Button color='dark' onClick={handleFileUpload}>
+                        Upload File
+                        </Button>
+                    </div>
+                    ) : (<div className='mb-2 block'>
+                    <div className='text-red-600 flex justify-center'>Du må publisere siden før du kan laste opp filer!</div>
+                    </div>)}
+
+                    {/* Display uploaded files */}
+                    <div>
+                    {files && files.map((uploadedFile) => (
+                        <div key={uploadedFile.id} className='flex p-4 gap-4 px-20'>
+                        <span>{uploadedFile.filnavn.split("__")[1]}</span>
+                        <Button color='failure' size='xs' onClick={() => handleDelete(uploadedFile.id)}>Delete</Button>
+                        </div>
+                    ))}
                     </div>
                     
                     <div className='mt-5 px-20'>

@@ -39,7 +39,6 @@ const Admin = () => {
                 </h5>
                 <p className="font-normal text-gray-700 dark:text-gray-400">
                 <p>For å legge til nye nyheter.</p>
-                <p>OBS! Filer kan ikke legges til enda på nyhetene. Oppdatering jobbes med.</p>
                 </p>
             </Card>
             </Link>

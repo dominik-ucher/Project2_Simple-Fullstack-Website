@@ -21,6 +21,7 @@ const Single_News = () => {
   const nyhetId = location.pathname.split("/")[2].split("_")[0];
   const { currentUser } = useContext(AuthContext);
   const [nyheter, setNyheter] = useState([])
+  const [files, setFiles] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,6 +40,9 @@ const Single_News = () => {
       try {
         const res = await axiosInstance.get(`/api/nyheter/${nyhetId}`,{withCredentials: true,});
         setNyhet(res.data);
+        // Fetch associated files for the side
+        const filesRes = await axiosInstance.get(`/api/nyheterfiler/${nyhetId}`, { withCredentials: true });
+        setFiles(filesRes.data);
       } catch (err) {
         console.log(err);
       }
@@ -93,11 +97,36 @@ const Single_News = () => {
             <div className="text-black flex flex-col mt-10 my-special-content">
               <p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(nyhet.desc).replace(/<a/g, '<a class="text-blue-500 underline"') }}></p>
             </div>
+            
+            {/* Display uploaded files */}
+            <div>
+            {files && files.length > 0 && (
+              <h1 className='underline font-bold text-xl mt-16'>Vedlegg</h1>
+            )}
+
+            {files && files.map((file) => {
+              // Split the file name by '__' and take the second part
+              const fileNameParts = file.filnavn.split('__');
+              const displayedFileName = fileNameParts.length > 1 ? fileNameParts[1] : file.filnavn;
+
+              return (
+                <a
+                  key={file.id} // Assuming file.id exists
+                  className='text-black flex items-center mt-2 underline'
+                  href={`/upload/Nyheter/Nyheter_Filer/${file.filnavn}`} // Update with correct file URL
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {displayedFileName} {/* Display the part after '__' in the file name */}
+                </a>
+              );
+            })}
+          </div>
         </div>
         </div>
         <div className="col-span-10 md:col-span-3 bg-white-200">
           <h1 className='text-2xl flex justify-center font-bold mt-6'>Andre Nyheter</h1>
-          {nyheter && nyheter.slice(0,4).map((nyhet, index) => (
+          {nyheter && nyheter.slice(1,5).map((nyhet, index) => (
               <div className="flex flex-col items-center text-lg text-black font-bold hover:text-yellow-300 p-6">
                 <Link key={nyhet.id} to={`/nyheter/${nyhet.id}_${nyhet.title}`}>
                 <div className="relative overflow-hidden transform transition-all duration-300 rounded-lg hover:scale-105">

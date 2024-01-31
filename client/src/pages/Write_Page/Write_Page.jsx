@@ -91,9 +91,9 @@ const Write_Page = () => {
     }
 
     try {
-      const response = state
+      const response = insertedId
         ? await axiosInstance.put(
-            `/api/sider/${state.id}`,
+            `/api/sider/${insertedId}`,
             {
               title,
               desc: value,

@@ -43,7 +43,8 @@ export const addNyheter = (req, res) => {
 
     db.query(q, [values], (err, data) => {
       if (err) return res.status(500).json(err);
-      return res.json("News has been created.");
+      const insertedId = data.insertId; // Get the ID of the newly inserted record
+      return res.json({ message: "Side has been created.", id: insertedId });
     });
   });
 };
