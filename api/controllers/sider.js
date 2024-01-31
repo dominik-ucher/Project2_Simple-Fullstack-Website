@@ -66,7 +66,7 @@ export const deleteSide = (req, res) => {
         const imageFilename = result[0].img;
   
         // Delete the image file from storage
-        const imagePath = `../client/upload/Sider/Sider_Bilder/${imageFilename}`;
+        const imagePath = `/var/www/iltrond/client/upload/Sider/Sider_Bilder/${imageFilename}`;
         fs.unlink(imagePath, (unlinkErr) => {
           if (unlinkErr) console.error("Error deleting image:", unlinkErr);
   

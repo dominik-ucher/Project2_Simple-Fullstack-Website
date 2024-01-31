@@ -60,7 +60,7 @@ export const getFile = (req, res) => {
   
         const filename = result[0].filnavn;
   
-        const filePath = `../client/upload/Nyheter/Nyheter_Filer/${filename}`;
+        const filePath = `/var/www/iltrond/client/upload/Nyheter/Nyheter_Filer/${filename}`;
         fs.unlink(filePath, (unlinkErr) => {
           if (unlinkErr) {
             console.error("Error deleting file:", unlinkErr);
