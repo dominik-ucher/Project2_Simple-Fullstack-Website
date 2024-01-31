@@ -25,6 +25,7 @@ const Write_Page = () => {
   const { currentUser } = useContext(AuthContext);
   const [file, setFile] = useState(null);
   const [files, setFiles] = useState([]);
+  const [error, setError] = useState(null);
   
   useEffect(() => {
     if (!currentUser) {
@@ -61,6 +62,16 @@ const Write_Page = () => {
 
 
   const handleClick = async (e) => {
+    setError(null)
+    if (title === ""){
+      setError("Tittel feltet er tom!")
+      return
+    }
+    if (value === ""){
+      setError("Tekst feltet er tom!")
+      return
+    }
+
     e.preventDefault();
     let imgUrl = null;
     if (image) {
@@ -188,9 +199,9 @@ const Write_Page = () => {
   {/* File upload section */}
   <div className='max-w-md px-20 mt-5' id='fileUpload'>
           <div className='mb-2 block'>
-            <div className='text-red-600'>You can only upload files after a page is Published. Will not work before.</div>
-            <Label htmlFor='file' className='file' value='Upload File' />
+            <div className='text-red-600'>Du må publisere siden før du kan laste opp filer!</div>
           </div>
+          <Label htmlFor='file' className='file' value='Upload File' />
           <FileInput
             type='file'
             id='file'
@@ -203,6 +214,7 @@ const Write_Page = () => {
           <Button color='dark' onClick={handleFileUpload}>
             Upload File
           </Button>
+        
         </div>
 
         {/* Display uploaded files */}
@@ -240,6 +252,7 @@ const Write_Page = () => {
           <Button color='dark' onClick={handleClick}>
             Publish
           </Button>
+          {error && <p className='text-lg mt-5 text-red-500'>{error}</p>}
         </div>
       </div>
     </div>

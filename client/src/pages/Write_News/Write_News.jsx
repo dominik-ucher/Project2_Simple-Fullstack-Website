@@ -5,7 +5,7 @@ import Logo from '../../img/logo.png'
 import { Link, useLocation, useNavigate } from "react-router-dom"
 import  Sidebar  from '../../components/Sidebar/Sidebar.jsx'
 import 'react-quill/dist/quill.snow.css'
-import { Label, TextInput, FileInput, Button } from 'flowbite-react';
+import { Label, TextInput, FileInput, Button, Spinner } from 'flowbite-react';
 import 'react-quill/dist/quill.snow.css'
 import ReactQuill from 'react-quill'
 import moment from 'moment'
@@ -21,6 +21,9 @@ const Write_News = () => {
     const [file, setFile] = useState(null);
     const [fileUrl, setFileUrl] = useState(null);
     const { currentUser } = useContext(AuthContext);
+    const [error, setError] = useState(null);
+    const [success, setSuccess] = useState(null)
+    const [isLoading, setIsLoading] = useState(false);
 
     const navigate = useNavigate()
 
@@ -43,6 +46,24 @@ const Write_News = () => {
     };
 
     const handleClick = async (e) => {
+        setError(null);
+        setIsLoading(true);
+        if (title === ""){
+            setIsLoading(false);
+            setError("Tittel feltet er tom!")
+            return
+        }
+        if (value === ""){
+            setIsLoading(false);
+            setError("Tekst feltet er tom!")
+            return
+        }
+        if (file === null){
+            setIsLoading(false);
+            setError("Bilde feltet er tom!")
+            return
+        }
+
         e.preventDefault();
         let imgUrl = null;
         if (file) {
@@ -62,9 +83,20 @@ const Write_News = () => {
                 img: file ? imgUrl : "",
                 date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
             },{withCredentials: true,});
-            navigate("/")
+            setIsLoading(false);
+            setSuccess("Nyhet har blitt publisert. Du blir sendt til hjemmesiden.")
+            setTimeout(()=>{
+                navigate("/")
+              }, 1000)
         } catch (err) {
-        console.log(err);
+            if (err.response && err.response.data && err.response.data.error) {
+                setIsLoading(false);
+                setError(err.response.data.error);
+            } else {
+                setIsLoading(false);
+                setError("En uforventet feil har skjedd!");
+            }
+            console.log(err);
         }
     };
 
@@ -119,8 +151,11 @@ const Write_News = () => {
                     </div>
                     
                     <div className='mt-5 px-20'>
-                    <Button color="dark" onClick={handleClick}>Publish</Button>
+                    <Button color="dark" onClick={handleClick} disabled={isLoading}>{isLoading ? (<Spinner aria-label="Spinner button example" />) : ('Publish' )}</Button>
+                    {error && <p className='text-lg mt-5 text-red-500'>{error}</p>}
+                    {success && <p className='text-lg mt-5 text-green-500'>{success}</p>}
                     </div>
+                    
             </div>
         </div>
     )
