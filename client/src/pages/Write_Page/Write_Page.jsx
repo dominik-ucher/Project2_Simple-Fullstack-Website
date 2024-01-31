@@ -1,6 +1,6 @@
 // Write_Page.js
 import React, { useState, useEffect, useContext } from 'react';
-import { Label, TextInput, FileInput, Button, Select } from 'flowbite-react';
+import { Label, TextInput, FileInput, Button, Select, Spinner } from 'flowbite-react';
 import 'react-quill/dist/quill.snow.css';
 import ReactQuill from 'react-quill';
 import moment from 'moment';
@@ -26,12 +26,21 @@ const Write_Page = () => {
   const [file, setFile] = useState(null);
   const [files, setFiles] = useState([]);
   const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null)
+  const [isLoading, setIsLoading] = useState(false);
+  const [insertedId, setInsertedId] = useState(null)
   
   useEffect(() => {
     if (!currentUser) {
       navigate('/unauthorized_401');
     }
   }, [currentUser, navigate]);
+
+  useEffect(() => {
+    if (state) {
+      setInsertedId(state?.id);
+    }
+  }, [state]);
 
   useEffect(() => {
     // Fetch the sidebar menu items from the backend
@@ -63,11 +72,14 @@ const Write_Page = () => {
 
   const handleClick = async (e) => {
     setError(null)
+    setIsLoading(true);
     if (title === ""){
+      setIsLoading(false);
       setError("Tittel feltet er tom!")
       return
     }
     if (value === ""){
+      setIsLoading(false);
       setError("Tekst feltet er tom!")
       return
     }
@@ -79,7 +91,7 @@ const Write_Page = () => {
     }
 
     try {
-      state
+      const response = state
         ? await axiosInstance.put(
             `/api/sider/${state.id}`,
             {
@@ -101,9 +113,19 @@ const Write_Page = () => {
             },
             { withCredentials: true }
           );
-      navigate('/');
+          const insertedId2 = response.data.id;
+          if (insertedId === null){setInsertedId(insertedId2);}
+          setIsLoading(false);
+          setSuccess(<p>Siden har blitt publisert. Klikk {<Link className="underline hover:font-bold" to="/">her</Link>} for å komme til hjemmesiden</p>)
     } catch (err) {
-      console.log(err);
+      if (err.response && err.response.data && err.response.data.error) {
+        setIsLoading(false);
+        setError(err.response.data.error);
+    } else {
+        setIsLoading(false);
+        setError("En uforventet feil har skjedd!");
+    }
+    console.log(err);
     }
   };
 
@@ -126,7 +148,7 @@ const Write_Page = () => {
 
   const fetchFiles = async () => {
     try {
-      const response = await axiosInstance.get(`/api/siderfiler/${state.id}`);
+      const response = await axiosInstance.get(`/api/siderfiler/${insertedId}`);
       setFiles(response.data); // Assuming backend responds with an array of files
     } catch (err) {
       console.error('Error fetching files:', err);
@@ -134,10 +156,10 @@ const Write_Page = () => {
   };
 
   useEffect(() => {
-    if (state?.id) {
+    if (insertedId) {
       fetchFiles();
     }
-  }, [state?.id]);
+  }, [insertedId]);
 
   // In the handleFileUpload function
   const handleFileUpload = async () => {
@@ -147,7 +169,7 @@ const Write_Page = () => {
         formData.append('file', file);
   
         const res = await axiosInstance.post('/api/upload_sidefile', formData);
-        await axiosInstance.post('/api/siderfiler/', { filnavn: res.data, side_id: state.id }, { withCredentials: true });
+        await axiosInstance.post('/api/siderfiler/', { filnavn: res.data, side_id: insertedId }, { withCredentials: true });
         await fetchFiles(); // Update file list immediately after upload
         setFile(null); // Reset file state after upload
       }
@@ -197,35 +219,36 @@ const Write_Page = () => {
         </div>
 
   {/* File upload section */}
+  {insertedId ? (
   <div className='max-w-md px-20 mt-5' id='fileUpload'>
-          <div className='mb-2 block'>
-            <div className='text-red-600'>Du må publisere siden før du kan laste opp filer!</div>
-          </div>
-          <Label htmlFor='file' className='file' value='Upload File' />
-          <FileInput
-            type='file'
-            id='file'
-            onChange={(e) => {
-              const selectedFile = e.target.files[0];
-              setFile(selectedFile);
-            }}
-          />
-          <Label htmlFor='file' className='file' value={`Currently selected file: ${file ? file.name : state?.file || ''}`} />
-          <Button color='dark' onClick={handleFileUpload}>
-            Upload File
-          </Button>
-        
-        </div>
+    <Label htmlFor='file' className='file' value='Upload File' />
+    <FileInput
+      type='file'
+      id='file'
+      onChange={(e) => {
+        const selectedFile = e.target.files[0];
+        setFile(selectedFile);
+      }}
+    />
+    <Label htmlFor='file' className='file' value={`Currently selected file: ${file ? file.name : state?.file || ''}`} />
+    <Button color='dark' onClick={handleFileUpload}>
+      Upload File
+    </Button>
+  </div>
+) : (<div className='mb-2 block'>
+<div className='text-red-600 flex justify-center'>Du må publisere siden før du kan laste opp filer!</div>
+</div>)}
 
-        {/* Display uploaded files */}
-        <div>
-          {files && files.map((uploadedFile) => (
-            <div key={uploadedFile.id}>
-              <span>{uploadedFile.filnavn}</span>
-              <Button color='failure' size='xs' onClick={() => handleDelete(uploadedFile.id)}>Delete</Button>
-            </div>
-          ))}
-        </div>
+{/* Display uploaded files */}
+<div>
+  {files && files.map((uploadedFile) => (
+    <div key={uploadedFile.id} className='flex p-4 gap-4 px-20'>
+      <span>{uploadedFile.filnavn.split("__")[1]}</span>
+      <Button color='failure' size='xs' onClick={() => handleDelete(uploadedFile.id)}>Delete</Button>
+    </div>
+  ))}
+</div>
+
 
 
         <div className='max-w-md mt-10 px-20 mb-2' id='select'>
@@ -249,10 +272,11 @@ const Write_Page = () => {
 
 
         <div className='mt-5 px-20'>
-          <Button color='dark' onClick={handleClick}>
-            Publish
+          <Button color='dark' onClick={handleClick} disabled={isLoading}>
+          {isLoading ? (<Spinner aria-label="Spinner button example" />) : ('Publiser' )}
           </Button>
           {error && <p className='text-lg mt-5 text-red-500'>{error}</p>}
+          {success && <p className='text-lg mt-5 text-green-500'>{success}</p>}
         </div>
       </div>
     </div>
