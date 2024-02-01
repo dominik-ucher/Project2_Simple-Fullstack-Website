@@ -110,14 +110,14 @@ const Write_News = () => {
 
     const modules = {
         toolbar: [
-          ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+          ['bold', 'italic', 'underline', 'strike'],        
           ['blockquote', 'code-block'],
-          [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+          [{ 'header': 1 }, { 'header': 2 }],               
           [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-          [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
-          [{ 'direction': 'rtl' }],                         // text direction
+          [{ 'script': 'sub'}, { 'script': 'super' }],      
+          [{ 'direction': 'rtl' }],                         
           [{ 'header': [1, 2, 3, 4, false] }],
-          [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+          [{ 'color': [] }, { 'background': [] }],          
           [{ 'font': [] }],
           [{ 'align': [] }],
           [{ 'link': 'link' }],
@@ -148,8 +148,8 @@ const Write_News = () => {
       
             const res = await axiosInstance.post('/api/upload_nyhetfile', formData);
             await axiosInstance.post('/api/nyheterfiler/', { filnavn: res.data, nyhet_id: insertedId }, { withCredentials: true });
-            await fetchFiles(); // Update file list immediately after upload
-            setFile(null); // Reset file state after upload
+            await fetchFiles(); 
+            setFile(null); 
           }
         } catch (err) {
           console.error('Error uploading file:', err);
@@ -159,7 +159,7 @@ const Write_News = () => {
       const handleDelete = async (fileId) => {
         try {
           await axiosInstance.delete(`/api/nyheterfiler/${fileId}`);
-          await fetchFiles(); // Update files immediately after deletion
+          await fetchFiles(); 
         } catch (err) {
           console.error('Error deleting file:', err);
         }

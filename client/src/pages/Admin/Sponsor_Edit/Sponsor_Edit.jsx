@@ -133,13 +133,6 @@ const Sponsor_Edit = () => {
           required
         />
       </div>
-      {/* <input type="text" placeholder="Link" value={newSponsor.link} onChange={handleLinkChange} /> */}
-      {/* <select value={newSponsor.type} onChange={handleTypeChange}>
-        <option value="Hoved">Hoved</option>
-        <option value="Gull">Gull</option>
-        <option value="Solv">Solv</option>
-        <option value="Bronse">Bronse</option>
-      </select> */}
 
       <div className="max-w-md mt-5" id="select">
       <div className="mb-2 block">

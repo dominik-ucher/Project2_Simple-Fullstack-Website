@@ -164,26 +164,6 @@ const Single_News = () => {
                 </Link>
               </div>
             ))}
-          {/* {nyheter && nyheter.slice(1, 5).map((nyhet1, index) => (
-              <Link to={`/nyheter/${nyhet1.id}_${nyhet1.title}`} key={nyhet1.id}>
-                <div>
-                  <Card className="max-w-sm mt-10">
-                    <img
-                      className="object-cover h-48 w-96"
-                      src={`../upload/Nyheter/Nyheter_Bilder/${nyhet1.img}`}
-                      alt=""
-                    />
-                    <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                      <p className='line-clamp-3'>{nyhet1.title}</p>
-                    </h5>
-                    <div className="overflow-hidden text-gray-700 dark:text-gray-400">
-                      <div className="h-10" style={{ display: '-webkit-box', WebkitBoxOrient: 'vertical' }} dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(`<span>${nyhet1.desc}</span>`) }}></div>
-                    </div>
-                    <Button gradientDuoTone='redToYellow' outline className="flex"><h2>Les mer</h2></Button>
-                  </Card>
-                </div>
-              </Link>
-            ))} */}
         </div>
         </div>
     )

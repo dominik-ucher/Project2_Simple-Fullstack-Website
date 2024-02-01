@@ -53,7 +53,6 @@ const News_Page = () => {
               />
               <div className="absolute inset-0 bg-gray-800 bg-opacity-75 text-white text-center p-4 rounded-xl flex flex-col justify-center items-center">
                 <p className="text-xl md:text-4xl font-bold text-center">Nyheter</p>
-                {/* <p className="text-md md:text-2xl mt-2 font-bold text-center">Nyheter</p> */}
                 
                 {/* Arrow image */}
                 <div className="absolute flex justify-center bottom-0 left-0 right-0 mb-4">

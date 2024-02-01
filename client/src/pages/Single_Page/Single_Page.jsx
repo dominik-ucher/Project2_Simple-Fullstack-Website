@@ -152,10 +152,6 @@ const Single_Page = () => {
         })}
       </div>
         </div>
-        // <div className="col-span-10 md:col-span-3 bg-white-200">
-        //         <Sidebar />
-        // </div>
-        // </div>
     )
 }
 
