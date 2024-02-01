@@ -65,9 +65,9 @@ const Homepage_Pic = () => {
 
   return (
     <div className='flex flex-col items-center'>
-      <h1 className='text-3xl font-bold mt-5'>Homepage Picture Management</h1>
+      <h1 className='text-3xl font-bold mt-5'>Homepage Bilde</h1>
 
-      <h2 className='font-bold text-3xl mt-5'>Update Picture</h2>
+      <h2 className='font-bold text-3xl mt-5 mb-5'>Oppdatere Bilde</h2>
 
       {/* Display the current homepage picture */}
       {homepagepic.img && (
@@ -82,11 +82,11 @@ const Homepage_Pic = () => {
         {/* File input for uploading a new picture */}
         <div className="max-w-md mt-5" id="fileUpload">
           <div className="mb-2 block">
-            <Label htmlFor="file" value="Upload New Picture" />
+            <Label htmlFor="file" value="Last opp ny bilde" />
           </div>
           <FileInput id="file"/>
           <Button className="mt-12" color="dark" onClick={handleClick}>
-            Update
+            Oppdater
           </Button>
         </div>
       </div>

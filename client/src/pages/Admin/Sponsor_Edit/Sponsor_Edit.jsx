@@ -85,13 +85,13 @@ const Sponsor_Edit = () => {
 
   return (
     <div className='flex flex-col items-center'>
-      <h1 className='text-3xl font-bold mt-5'>Sponsor Management</h1>
+      <h1 className='text-3xl font-bold mt-5'>Sponsorer</h1>
       <Table className='mt-10'>
         <Table.Head>
-          <Table.HeadCell>Image</Table.HeadCell>
+          <Table.HeadCell>Bilde</Table.HeadCell>
           <Table.HeadCell>Link</Table.HeadCell>
           <Table.HeadCell>Type</Table.HeadCell>
-          <Table.HeadCell>Actions</Table.HeadCell>
+          <Table.HeadCell>Handling</Table.HeadCell>
         </Table.Head>
         <Table.Body>
           {sponsors && sponsors.map(sponsor => (
@@ -100,20 +100,20 @@ const Sponsor_Edit = () => {
               <Table.Cell><a href={sponsor.link} target="_blank" rel="noopener noreferrer">{sponsor.link}</a></Table.Cell>
               <Table.Cell>{sponsor.type}</Table.Cell>
               <Table.Cell>
-                <Button color="failure" size="xs" onClick={() => handleDelete(sponsor.id)}>Delete</Button>
+                <Button color="failure" size="xs" onClick={() => handleDelete(sponsor.id)}>Slett</Button>
               </Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>
       </Table>
 
-      <h2 className='font-bold text-3xl mt-5'>Add New Sponsor</h2>
+      <h2 className='font-bold text-3xl mt-5'>Legg til ny Sponsor</h2>
 
       <div className="max-w mt-5 flex items-center jusitfy-center space-x-4" id="addSponsor">
 
       <div className="max-w-md mt-5" id="fileUpload">
       <div className="mb-2 block">
-        <Label htmlFor="file"value="Upload file"/>
+        <Label htmlFor="file"value="Fil opplastning"/>
       </div>
       <FileInput id="file" onChange={handleFileChange}/>
       </div>
@@ -143,7 +143,7 @@ const Sponsor_Edit = () => {
 
       <div className="max-w-md mt-5" id="select">
       <div className="mb-2 block">
-        <Label htmlFor="countries" value="Select sponsor type"/>
+        <Label htmlFor="countries" value="Sponsor Type"/>
       </div>
       <Select id="type" value={newSponsor.type} onChange={handleTypeChange} required>
         <option value="Hoved">Hoved</option>
@@ -153,7 +153,7 @@ const Sponsor_Edit = () => {
       </Select>
     </div>
 
-      <Button className="mt-12" color="dark" onClick={handleAddSponsor}>Add Sponsor</Button>
+      <Button className="mt-12" color="dark" onClick={handleAddSponsor}>Legg til Sponsor</Button>
       </div>
     </div>
     

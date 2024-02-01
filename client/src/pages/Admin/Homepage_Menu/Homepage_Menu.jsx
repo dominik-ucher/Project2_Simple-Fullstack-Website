@@ -123,16 +123,16 @@ const Homepage_Menu = () => {
       <table className="table-auto mt-4 mx-auto">
         <thead>
           <tr>
-            <th className="px-4 py-2">Image</th>
+            <th className="px-4 py-2">Bilde</th>
             <th className="px-4 py-2">Link</th>
-            <th className="px-4 py-2">Actions</th>
+            <th className="px-4 py-2">Handling</th>
           </tr>
         </thead>
         <tbody>
           {pics && pics.map((pic, index) => (
             <tr key={index}>
               <td className="border px-4 py-2">
-                <img src={`/upload/HomepageMenu_Bilder/${pic.img}`} alt={`Image ${index}`} className="w-16 h-16" />
+                <img src={`/upload/HomepageMenu_Bilder/${pic.img}`} alt={`Image ${index}`} className="w-68 h-32" />
                 <Dropzone onDrop={onDrop} index={index} /> {/* Pass onDrop function and index to Dropzone component */}
               </td>
               <td className="border px-4 py-2">
@@ -152,14 +152,14 @@ const Homepage_Menu = () => {
                     className="px-2 py-1 bg-blue-500 text-white rounded-md mr-2"
                     onClick={() => setEditingIndex(index)}
                   >
-                    Edit
+                    Rediger
                   </button>
                 ) : (
                   <button
                     className="px-2 py-1 bg-green-500 text-white rounded-md mr-2"
                     onClick={() => handleSave(index)}
                   >
-                    Save
+                    Lagre
                   </button>
                 )}
                 <button
@@ -173,12 +173,15 @@ const Homepage_Menu = () => {
           ))}
         </tbody>
       </table>
+      <div className='flex justify-center mt-10'>
       <Button
-        className="px-2 py-1 bg-green-500 text-white rounded-md mt-4"
+        color="dark"
+        size="xl"
         onClick={handleAdd}
       >
-        Add New Row
+        Legg til ny rad
       </Button>
+      </div>
     </>
   );
 };

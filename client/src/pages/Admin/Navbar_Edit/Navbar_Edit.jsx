@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { AuthContext } from '../../../context/authContext';
-import { Card } from 'flowbite-react';
+import { Button, Card } from 'flowbite-react';
 import { Link } from 'react-router-dom';
 
 const Navbar_Edit = () => {
@@ -105,9 +105,9 @@ const Navbar_Edit = () => {
       <table className="table-auto mt-4 mx-auto">
         <thead>
           <tr>
-            <th className="px-4 py-2">Name</th>
+            <th className="px-4 py-2">Navn</th>
             <th className="px-4 py-2">Link</th>
-            <th className="px-4 py-2">Actions</th>
+            <th className="px-4 py-2">Handling</th>
           </tr>
         </thead>
         <tbody>
@@ -149,21 +149,21 @@ const Navbar_Edit = () => {
                     className="px-2 py-1 bg-green-500 text-white rounded-md mr-2"
                     onClick={() => handleSave(index)}
                   >
-                    Save
+                    Lagre
                   </button>
                 ) : (
                   <button
                     className="px-2 py-1 bg-blue-500 text-white rounded-md mr-2"
                     onClick={() => handleEdit(index)}
                   >
-                    Edit
+                    Rediger
                   </button>
                 )}
                 <button
                   className="px-2 py-1 bg-red-500 text-white rounded-md"
                   onClick={() => handleDelete(index)}
                 >
-                  Delete
+                  Slett
                 </button>
               </td>
             </tr>
@@ -171,13 +171,14 @@ const Navbar_Edit = () => {
         </tbody>
       </table>
 
-      <div className='flex justify-center'>
-      <button
-        className="px-2 py-1 bg-green-500 text-white rounded-md mt-4"
+      <div className='flex justify-center mt-10'>
+      <Button
+        color="dark"
+        size="xl"
         onClick={handleAddLink}
       >
-        Add New Link
-      </button>
+        Legg til ny lenke
+      </Button>
       </div>
     </>
   );

@@ -81,7 +81,7 @@ const Sidebar_Menu = () => {
         <div key={menu.id} className="pl-4">
           <div className="flex items-center gap-4">
             <span>{`${'-'.repeat(level)} ${menu.name}`}</span>
-            <Button className="mt-4" size="xs" color="failure" onClick={() => handleDeleteMenu(menu.id)}>Delete</Button>
+            <Button className="mt-4" size="xs" color="failure" onClick={() => handleDeleteMenu(menu.id)}>Slett</Button>
           </div>
           {renderMenuItems(menus, menu.id, level + 1)}
         </div>
@@ -90,23 +90,23 @@ const Sidebar_Menu = () => {
 
   return (
     <div className="flex flex-col items-center justify-center h-auto pb-100 mt-5">
-      <h1 className="text-center mt-8 text-2xl font-bold">Sidebar Menu</h1>
+      <h1 className="text-center mt-8 text-2xl font-bold">Side Menyen</h1>
 
       {/* List of Menus */}
       <div className="mt-5">
-        <h2 className="text-xl font-bold">Menus:</h2>
+        <h2 className="text-xl font-bold">Meny:</h2>
         {renderMenuItems(sidebarMenus)}
       </div>
 
       <form className="flex flex-col gap-4 mt-5" onSubmit={handleSubmit}>
         <div>
           <div className="mb-2 block">
-            <Label color="gray" htmlFor="input-gray" value="Menu name" />
+            <Label color="gray" htmlFor="input-gray" value="Meny Navn" />
           </div>
           <TextInput
             color="gray"
             id="input-gray"
-            placeholder="Input Gray"
+            placeholder="Navn"
             required
             value={menuname}
             onChange={(e) => setMenuname(e.target.value)}
@@ -115,7 +115,7 @@ const Sidebar_Menu = () => {
 
         <div className="mt-5 px-4" id="select">
           <div className="mb-2 block">
-            <Label htmlFor="sidebar" value="Put under another menu (Leave blank if you want it to be a new one)" />
+            <Label htmlFor="sidebar" value="Sett undermeny (La være blank hvis det skal være hovedmeny)" />
           </div>
           <Select id="sidebar" required onChange={(e) => setSelectedSidebarId(e.target.value)}>
             <option value={null}>None</option>
@@ -128,7 +128,7 @@ const Sidebar_Menu = () => {
         </div>
 
         <Button type="submit" color="dark" className="mt-5">
-          Publish
+          Publiser
         </Button>
       </form>
     </div>
