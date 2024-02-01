@@ -28,7 +28,7 @@
 - Lazy Load img
 - Fix side menu closing
 <!-- - Upload files in Nyheter -->
-- "Are you sure you want to delete" modula
+<!-- - "Are you sure you want to delete" modula -->
 <!-- - Fix auto logout -->
 <!-- - File upload before published pages -->
 <!-- - Admin page "Drag and Drop" shown when clicked edit -->

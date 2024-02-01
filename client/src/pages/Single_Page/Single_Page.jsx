@@ -4,19 +4,21 @@ import deleteicon from '../../img/delete.png'
 import Logo from '../../img/logo.png'
 import { Link, useLocation, useNavigate } from "react-router-dom"
 import  Sidebar  from '../../components/Sidebar/Sidebar.jsx'
-import { Card } from 'flowbite-react';
+import { Button, Card } from 'flowbite-react';
 import axios from 'axios';
 import moment from 'moment'
 import { useContext } from 'react';
 import { AuthContext } from '../../context/authContext'
 import DOMPurify from "dompurify";
 import './Single_Page.css'
+import { CiWarning } from "react-icons/ci";
 
 const Single_Page = () => {
 
   const axiosInstance = axios.create({baseURL: import.meta.env.VITE_REACT_APP_API_URL,});
   const [side, setSide] = useState({});
   const [files, setFiles] = useState([]);
+  const [openModula, setOpenModula] = useState(false);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -93,7 +95,29 @@ const Single_Page = () => {
                     <Link to={`/write_page?edit=2`} state={side}>
                     <img className="w-10 h-10 cursor-pointer" src={editicon} alt="" />
                     </Link>
-                    <img onClick={handleDelete} className="w-10 h-10 cursor-pointer" src={deleteicon} alt="" />
+                    <img onClick={() => setOpenModula(true)} className="w-10 h-10 cursor-pointer" src={deleteicon} alt="" />
+
+                    {/* Modula */}
+                    {openModula && (
+                      <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-100 bg-opacity-50">
+                        <div className="bg-white w-auto h-auto p-8 rounded-lg">
+                          {/* Add your modal content here */}
+                          <div className='flex flex-col justify-center items-center'>
+                          <CiWarning className='w-32 h-auto' color='red'/>
+                          <h1 className='text-lg font-bold'>Er du sikker på du vil slette denne Siden?</h1>
+                          </div>
+                          {/* Close button */}
+                          <div className='flex gap-5 mt-5 justify-center'>
+                            <Button color="failure" onClick={handleDelete}>
+                              Slett
+                            </Button>
+                            <Button color="dark" onClick={() => setOpenModula(false)}>
+                              Avbryt
+                            </Button>
+                          </div>
+                        </div>
+                      </div>
+                    )}
                     </>
                     )}
                 </div>
