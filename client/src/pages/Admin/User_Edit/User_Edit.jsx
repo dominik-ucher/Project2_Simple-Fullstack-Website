@@ -80,9 +80,9 @@ const User_Edit = () => {
       <table className="table-auto mt-4 mx-auto">
         <thead>
           <tr>
-            <th className="px-4 py-2">Username</th>
-            <th className="px-4 py-2">Email</th>
-            <th className="px-4 py-2">Actions</th>
+            <th className="px-4 py-2">Brukernavn</th>
+            <th className="px-4 py-2">E-post</th>
+            <th className="px-4 py-2">Handling</th>
           </tr>
         </thead>
         <tbody>
@@ -124,14 +124,14 @@ const User_Edit = () => {
                     className="px-2 py-1 bg-green-500 text-white rounded-md mr-2"
                     onClick={() => handleSave(index)}
                   >
-                    Save
+                    Lagre
                   </button>
                 ) : (
                   <button
                     className="px-2 py-1 bg-blue-500 text-white rounded-md mr-2"
                     onClick={() => handleEdit(index)}
                   >
-                    Edit
+                    Rediger
                   </button>
                 )}
                 {/* Delete button */}
@@ -139,7 +139,7 @@ const User_Edit = () => {
                   className="px-2 py-1 bg-red-500 text-white rounded-md"
                   onClick={() => handleDeleteUser(user.id)}
                 >
-                  Delete
+                  Slett
                 </button>
               </td>
             </tr>

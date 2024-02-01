@@ -59,7 +59,7 @@ export const addPerson = (req, res) => {
         
         // If there's a new image and an existing image, delete the existing image
         if (newImage && existingImageFilename) {
-          const imagePath = `../client/upload/Personer/${existingImageFilename}`;
+          const imagePath = `/var/www/iltrond/client/upload/Personer/${existingImageFilename}`;
           try {
             // Delete the existing image file from storage
             fs.unlinkSync(imagePath);
@@ -106,7 +106,7 @@ export const addPerson = (req, res) => {
           const imageFilename = result[0].img;
     
           // Delete the image file from storage
-          const imagePath = `../client/upload/Personer/${imageFilename}`;
+          const imagePath = `/var/www/iltrond/client/upload/Personer/${imageFilename}`;
           fs.unlink(imagePath, (unlinkErr) => {
             if (unlinkErr) console.error("Error deleting image:", unlinkErr);
     

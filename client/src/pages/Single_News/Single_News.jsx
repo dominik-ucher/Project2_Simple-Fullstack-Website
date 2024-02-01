@@ -11,6 +11,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../../context/authContext'
 import DOMPurify from "dompurify";
 import './Single_News.css'
+import { CiWarning } from "react-icons/ci";
 
 const Single_News = () => {
 
@@ -22,6 +23,7 @@ const Single_News = () => {
   const { currentUser } = useContext(AuthContext);
   const [nyheter, setNyheter] = useState([])
   const [files, setFiles] = useState([]);
+  const [openModula, setOpenModula] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -89,7 +91,29 @@ const Single_News = () => {
                     <Link to={`/write_news?edit=2`} state={nyhet}>
                     <img className="w-10 h-10 cursor-pointer" src={editicon} alt="" />
                     </Link>
-                    <img onClick={handleDelete} className="w-10 h-10 cursor-pointer" src={deleteicon} alt="" />
+                    <img onClick={() => setOpenModula(true)} className="w-10 h-10 cursor-pointer" src={deleteicon} alt="" />
+                    
+                    {/* Modula */}
+                    {openModula && (
+                      <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-100 bg-opacity-50">
+                        <div className="bg-white w-auto h-auto p-8 rounded-lg">
+                          {/* Add your modal content here */}
+                          <div className='flex flex-col justify-center items-center'>
+                          <CiWarning className='w-32 h-auto' color='red'/>
+                          <h1 className='text-lg font-bold'>Er du sikker på du vil slette denne Nyheten?</h1>
+                          </div>
+                          {/* Close button */}
+                          <div className='flex gap-5 mt-5 justify-center'>
+                            <Button color="failure" onClick={handleDelete}>
+                              Slett
+                            </Button>
+                            <Button color="dark" onClick={() => setOpenModula(false)}>
+                              Avbryt
+                            </Button>
+                          </div>
+                        </div>
+                      </div>
+                    )}
                     </>
                     )}
                 </div>

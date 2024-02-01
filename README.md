@@ -27,11 +27,10 @@
 # Things to fix before publishing
 - Lazy Load img
 - Fix side menu closing
-- Upload files in Nyheter
-- "Are you sure you want to delete" modula
-- Fix auto logout
-- File upload for nyheter
-- File upload before published pages
+<!-- - Upload files in Nyheter -->
+<!-- - "Are you sure you want to delete" modula -->
+<!-- - Fix auto logout -->
+<!-- - File upload before published pages -->
 <!-- - Admin page "Drag and Drop" shown when clicked edit -->
 - Search function in Admin Personer
 - Add payment gateway
