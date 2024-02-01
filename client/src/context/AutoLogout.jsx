@@ -1,30 +1,35 @@
-// AutoLogout.js
-import { useContext, useEffect } from "react";
+// SessionTimeout.js
+import { useEffect, useContext } from "react";
 import { AuthContext } from "../context/authContext";
 
 const AutoLogout = () => {
   const { logout } = useContext(AuthContext);
 
+  const checkSessionTimeout = () => {
+    const lastActivityTimestamp = localStorage.getItem("lastActivityTimestamp");
+    const sessionTimeout = 60 *60 * 1000; // 60 minutes in milliseconds
+
+    if (lastActivityTimestamp && Date.now() - lastActivityTimestamp > sessionTimeout) {
+      logout(); // Logout the user if the session has expired
+    }
+  };
+
+  const updateLastActivityTimestamp = () => {
+    localStorage.setItem("lastActivityTimestamp", Date.now());
+  };
+
   useEffect(() => {
-    const interval = setInterval(() => {
-      const token = localStorage.getItem("access_token");
+    const interval = setInterval(checkSessionTimeout, 1000); // Check every second
 
-      if (!token) {
-        // No token, user is not logged in
-        return;
-      }
+    // Update the last activity timestamp on user activity
+    document.addEventListener("mousemove", updateLastActivityTimestamp);
+    document.addEventListener("keydown", updateLastActivityTimestamp);
 
-      // Decode the token to get the expiration time
-      const decodedToken = jwt.decode(token);
-      const expirationTime = decodedToken.exp * 1000; // Convert to milliseconds
-
-      if (Date.now() >= expirationTime) {
-        // Token has expired, log the user out
-        logout();
-      }
-    }, 60000); // Check every minute
-
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      document.removeEventListener("mousemove", updateLastActivityTimestamp);
+      document.removeEventListener("keydown", updateLastActivityTimestamp);
+    };
   }, [logout]);
 
   return null;
