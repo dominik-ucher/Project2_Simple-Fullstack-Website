@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Label, TextInput, Select, Textarea, Button } from 'flowbite-react';
+import { Label, TextInput, Select, Textarea, Button, Spinner } from 'flowbite-react';
 import { HiMail } from 'react-icons/hi';
 import Logo from '../../img/logo.png';
 import axios from 'axios';
@@ -14,6 +14,7 @@ const Contact = () => {
     message: '',
   });
   const [isSent, setIsSent] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);  
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -22,6 +23,7 @@ const Contact = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsLoading(true);
   
     try {
       const response = await axiosInstance.post('/api/contact/send-email', formData, {
@@ -41,6 +43,7 @@ const Contact = () => {
           selectedOption: 'leder@trondfotball.no',
           message: '',
         });
+        setIsLoading(false);
       } else {
         // Handle failure
         console.error('Failed to send email');
@@ -134,9 +137,7 @@ const Contact = () => {
           </div>
 
           <div className="px-4 mt-4">
-            <Button className="px-4" color="dark" pill type="submit">
-              <p>Send</p>
-            </Button>
+          <Button pill size="lg" color="dark" onClick={handleSubmit} disabled={isLoading}>{isLoading ? (<Spinner aria-label="Spinner button example" />) : ('Send' )}</Button>
             {isSent && (
               <div className="text-green-500">Email Sent</div>
             )}
