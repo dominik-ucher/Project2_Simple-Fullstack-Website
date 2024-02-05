@@ -12,6 +12,11 @@ const AutoLogout = () => {
     if (lastActivityTimestamp && Date.now() - lastActivityTimestamp > sessionTimeout) {
       logout(); // Logout the user if the session has expired
     }
+
+    if(!lastActivityTimestamp){
+      logout();
+    }
+
   };
 
   const updateLastActivityTimestamp = () => {
@@ -19,6 +24,7 @@ const AutoLogout = () => {
   };
 
   useEffect(() => {
+    checkSessionTimeout();
     const interval = setInterval(checkSessionTimeout, 1000); // Check every second
 
     // Update the last activity timestamp on user activity
