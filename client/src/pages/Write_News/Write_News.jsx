@@ -67,7 +67,7 @@ const Write_News = () => {
             setError("Tekst feltet er tom!")
             return
         }
-        if (image === null && state.img === null){
+        if (image === null && state?.img === undefined){
             setIsLoading(false);
             setError("Bilde feltet er tom!")
             return
