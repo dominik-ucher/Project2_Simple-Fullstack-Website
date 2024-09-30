@@ -25,3 +25,5 @@ To get the project up and running on your local machine:
    - In the `client` folder, run: `yarn dev`
    - In the `api` folder, run: `yarn start`
 5. Access the project on your **localhost** and you're good to go!
+
+## OBS: There are some files removed, due to sensitivity. Therefore you might need to add these files for the app to work properly
