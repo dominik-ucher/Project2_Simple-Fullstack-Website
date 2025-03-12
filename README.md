@@ -1,6 +1,6 @@
 ### 🌐 About the Project
 
-Welcome to **RaindropCoding** —a simple fullstack web application designed as a hobby project! Built with **ReactJS**, **NodeJS**, **MySQL** and hosted on my own VPS server using **Ubuntu** and **NGINX**.
+Welcome to **RaindropCoding** —a simple fullstack web application project! Built with **ReactJS**, **NodeJS**, **MySQL** and hosted on a VPS server using **Ubuntu** and **NGINX**.
 
 🚀 **Tech Stack**:
 - **Frontend**: ReactJS
